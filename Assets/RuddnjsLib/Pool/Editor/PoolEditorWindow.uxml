@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="PoolItem" src="project://database/Assets/GGMPool/Editor/UI/PoolItem.uxml?fileID=9197481963319205126&amp;guid=b7ef8abe1549e1147ba93f476c8ccbc2&amp;type=3#PoolItem" />
+    <Style src="project://database/Assets/GGMPool/Editor/PoolEditorWindow.uss?fileID=7433441132597879392&amp;guid=fcaaafd78a58f2d4590a96ffd738f57f&amp;type=3#PoolEditorWindow" />
+    <ui:VisualElement name="TopBar" class="top-bar">
+        <ui:Button text="생성" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BtnCreate" />
+    </ui:VisualElement>
+    <GGMSplitView name="SplitView" fixed-pane-initial-dimension="280">
+        <ui:VisualElement name="LeftPanel" class="left-panel">
+            <ui:ScrollView name="ItemView">
+                <ui:Instance template="PoolItem" name="PoolItem" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightPanel" style="flex-grow: 1;">
+            <ui:VisualElement name="InspectorView" style="flex-grow: 1;">
+                <ui:VisualElement name="NameChangeSection" style="flex-direction: row; border-top-width: 0; border-right-width: 0; border-bottom-width: 2px; border-left-width: 0; border-left-color: rgb(88, 88, 88); border-right-color: rgb(88, 88, 88); border-top-color: rgb(88, 88, 88); border-bottom-color: rgb(88, 88, 88);">
+                    <ui:TextField picking-mode="Ignore" name="AssetNameField" style="flex-grow: 1; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px;" />
+                    <ui:Button text="이름 교체" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BtnChange" />
+                </ui:VisualElement>
+                <ui:VisualElement name="TypeInspector" class="inspector-container">
+                    <ui:Label tabindex="-1" text="Type Inspector" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InspectorLabel" class="title-label" />
+                    <ui:VisualElement name="GUIContainer" class="gui-container">
+                        <ui:IMGUIContainer name="TypeInspectorView" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="ItemInspector" class="inspector-container">
+                    <ui:Label tabindex="-1" text="Item Inspector" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InspectorLabel" class="title-label" />
+                    <ui:VisualElement name="GUIContainer" class="gui-container">
+                        <ui:IMGUIContainer name="ItemInspectorView" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </GGMSplitView>
+</ui:UXML>

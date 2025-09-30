@@ -1,0 +1,40 @@
+.pool-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 35px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: normal;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.pool-item.active {
+    background-color: rgb(91, 91, 91);
+}
+
+.pool-item:hover {
+    background-color: rgb(77, 77, 77);
+}
+
+.btn-red {
+    background-color: rgb(159, 44, 46);
+}
+
+.btn-red:hover {
+    background-color: rgb(212, 69, 23);
+}

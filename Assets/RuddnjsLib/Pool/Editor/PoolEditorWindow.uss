@@ -1,0 +1,49 @@
+.top-bar {
+    flex-basis: 35px;
+    flex-shrink: 0;
+    background-color: rgb(47, 47, 47);
+    flex-direction: row;
+    align-items: center;
+}
+
+.left-panel {
+    flex-grow: 1;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.inspector-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.title-label {
+    font-size: 15px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.gui-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Ruddnjs.Pool.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f36a71b858fae014e923b804556fe7eb"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
