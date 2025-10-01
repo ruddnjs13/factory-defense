@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 70afa1a09539a46aeadf26cbbdbe0037
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/Networking/AsyncStatus.cs
+  uploadId: 749417

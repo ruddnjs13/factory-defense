@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: a6efc364ab9a54b1bbbdd4fe34bb6342
+timeCreated: 1523819846
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/OperationDrawers/ToCamelCaseOperationDrawer.cs
+  uploadId: 749417

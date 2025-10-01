@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 634617aa440834ea49e0741413f240da
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/GUI/SavePresetWindow.cs
+  uploadId: 749417

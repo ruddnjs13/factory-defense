@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 8695c85de65544689a9eb58090b3c513
+timeCreated: 1523819846
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/OperationDrawers/TrimCharactersOperationDrawer.cs
+  uploadId: 749417

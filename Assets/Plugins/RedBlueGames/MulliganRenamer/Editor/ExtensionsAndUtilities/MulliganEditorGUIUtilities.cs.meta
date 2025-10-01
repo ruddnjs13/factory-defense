@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: eb4eba937515b443dbd5f697b3430cb6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/ExtensionsAndUtilities/MulliganEditorGUIUtilities.cs
+  uploadId: 749417

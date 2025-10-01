@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: fa2a382df0a364494ab1c302abfe913e
+timeCreated: 1495391168
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/Operations/AddStringOperation.cs
+  uploadId: 749417
