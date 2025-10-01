@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 344b866e85b40de498bfdf351aa764f1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/AssetHunts!/GameDev Starter Kit - Form Factory/Script/Auto Texture
+    Offse.cs
+  uploadId: 749417

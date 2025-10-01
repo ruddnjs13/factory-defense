@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c745fe0d24414074186e8f955db05864
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/com.litefeel.aligntools/Editor/AlignToolsWorld.cs
+  uploadId: 749417

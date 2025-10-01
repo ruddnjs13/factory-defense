@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 161a99cb193784a3e94cc1ebdbcc0cbf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/ExtensionsAndUtilities/RenameResultUtilities.cs
+  uploadId: 749417

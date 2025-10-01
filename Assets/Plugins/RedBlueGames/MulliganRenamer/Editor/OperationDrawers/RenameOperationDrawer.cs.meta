@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 430ae7b20bb1149cab01ab2e610bf406
+timeCreated: 1523813801
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/RedBlueGames/MulliganRenamer/Editor/OperationDrawers/RenameOperationDrawer.cs
+  uploadId: 749417

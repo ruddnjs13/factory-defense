@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1023ae0f168447a438ef8bd4f9bbed50
+timeCreated: 1532514770
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.0.0
+  assetPath: Assets/Plugins/com.litefeel.aligntools/Editor/AdjustPosition.cs
+  uploadId: 749417
