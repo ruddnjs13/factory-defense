@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: 008cf9f81c7666947b3a527b1b60bbff
+guid: a2050d5ae3a6fc24da30f746a57b35e1
 TextScriptImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 301599
-  packageName: GameDev Starter Kit - Form Factory
-  packageVersion: v1.0.0
-  assetPath: Assets/AssetHunts!/GameDev Starter Kit - Form Factory/Hello Fellow Dev!.txt
-  uploadId: 749417
