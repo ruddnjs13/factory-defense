@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Blade.Entities
+namespace Code.Entities
 {
     [CreateAssetMenu(fileName = "EntityFinder", menuName = "SO/EntityFinder", order = 0)]
     public class EntityFinderSO : ScriptableObject

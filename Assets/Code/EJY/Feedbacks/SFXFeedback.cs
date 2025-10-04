@@ -1,9 +1,9 @@
-using Blade.Core;
-using Blade.Events;
-using Blade.Sounds;
+using Code.Events;
+using Code.Sounds;
+using Core.GameEvent;
 using UnityEngine;
 
-namespace Blade.Feedbacks
+namespace Code.Feedbacks
 {
     public class SFXFeedback : Feedback
     {

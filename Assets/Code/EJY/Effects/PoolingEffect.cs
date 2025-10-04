@@ -2,7 +2,7 @@ using System;
 using RuddnjsPool;
 using UnityEngine;
 
-namespace Blade.Effects
+namespace Code.Effects
 {
     public class PoolingEffect : MonoBehaviour, IPoolable
     {

@@ -1,12 +1,11 @@
-using System;
-using Blade.Core;
-using Blade.Core.StatSystem;
-using Blade.Entities;
-using Blade.Events;
-using Blade.UI;
+using Code.Core.StatSystem;
+using Code.Entities;
+using Code.Events;
+using Code.UI;
+using Core.GameEvent;
 using UnityEngine;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     public class EntityHealth : MonoBehaviour, IEntityComponent, IDamageable, IAfterInitialize
     {
@@ -57,8 +56,6 @@ namespace Blade.Combat
             _actionData.HitByPowerAttack = attackData.isPowerAttack;
             _actionData.DamageData = damageData;
 
-            //넉백은 나중에 처리한다.
-            //데미지도 나중에 처리한다.
             currentHealth = Mathf.Clamp(currentHealth - damageData.damage, 0, maxHealth);
             
             onHealthChangedEvent?.Invoke(currentHealth, maxHealth);
@@ -69,10 +66,10 @@ namespace Blade.Combat
 
             if (currentHealth <= 0)
             {
-                _entity.OnDeathEvent?.Invoke(); //이벤트만 발행한다.
+                _entity.OnDeathEvent?.Invoke();
             }
 
-            _entity.OnHitEvent?.Invoke(); //이벤트만 발행한다.
+            _entity.OnHitEvent?.Invoke();
         }
 
        

@@ -1,7 +1,8 @@
-using Blade.Core;
+using Code.Core;
+using Core.GameEvent;
 using UnityEngine;
 
-namespace Blade.Events
+namespace Code.Events
 {
     public static  class TextEvents
     {

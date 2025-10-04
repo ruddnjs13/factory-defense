@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Blade.Entities
+namespace Code.Entities
 {
     public class EntityAnimator : MonoBehaviour, IEntityComponent
     {

@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using Blade.Combat;
-using Blade.Core.StatSystem;
-using Blade.Entities;
+using Code.Combat;
+using Code.Core.StatSystem;
+using Code.Entities;
 using UnityEngine;
 
-namespace Blade.Enemies
+namespace Code.Enemies
 {
     public class MeleeEnemyAttackComponent : MonoBehaviour, IEntityComponent, IAfterInitialize
     {

@@ -1,9 +1,9 @@
 using System;
-using Blade.Entities;
+using Code.Entities;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Blade.Feedbacks
+namespace Code.Feedbacks
 {
     [RequireComponent(typeof(CinemachineImpulseSource))]
     public class CameraShakeFeedback : Feedback

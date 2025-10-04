@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.VFX;
 using VHierarchy.Libs;
 
-namespace Blade.Feedbacks
+namespace Code.Feedbacks
 {
     public class DisintegrateFeedback : Feedback
     {

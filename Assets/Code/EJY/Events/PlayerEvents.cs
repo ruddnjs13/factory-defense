@@ -1,6 +1,7 @@
-using Blade.Core;
+using Code.Core;
+using Core.GameEvent;
 
-namespace Blade.Events
+namespace Code.Events
 {
     public class PlayerEvents
     {

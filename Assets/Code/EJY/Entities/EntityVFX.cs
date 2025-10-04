@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Blade.Effects;
+using Code.Effects;
 using UnityEngine;
 
-namespace Blade.Entities
+namespace Code.Entities
 {
     public class EntityVFX : MonoBehaviour, IEntityComponent
     {

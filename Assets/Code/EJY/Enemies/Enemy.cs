@@ -1,11 +1,9 @@
-using System;
-using Blade.Entities;
-using UnityEngine;
+using Code.Entities;
 
-namespace Blade.Enemies
+namespace Code.EJY.Enemies
 {
     public abstract class Enemy : Entity
     {
-        public float detectRange;
+        public float attackRange;
     }
 }

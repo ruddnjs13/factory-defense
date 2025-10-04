@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     public class SphereDamageCaster : DamageCaster
     {

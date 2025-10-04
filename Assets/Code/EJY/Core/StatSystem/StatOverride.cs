@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Blade.Core.StatSystem
+namespace Code.Core.StatSystem
 {
         [Serializable]
     public class StatOverride

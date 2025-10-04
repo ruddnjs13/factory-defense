@@ -1,6 +1,6 @@
 using System;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     [Flags]
     public enum DamageType

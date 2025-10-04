@@ -1,7 +1,7 @@
-using Blade.Combat;
+using Code.Combat;
 using UnityEngine;
 
-namespace Blade.Entities
+namespace Code.Entities
 {
     public class ActionData : MonoBehaviour, IEntityComponent
     {

@@ -1,6 +1,6 @@
-using Blade.Entities;
+using Code.Entities;
 
-namespace Blade.FSM
+namespace Code.FSM
 {
     public abstract class EntityState
     {

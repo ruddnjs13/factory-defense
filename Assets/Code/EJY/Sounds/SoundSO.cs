@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Blade.Sounds
+namespace Code.Sounds
 {
     [CreateAssetMenu(fileName = "Sound clip", menuName = "SO/SoundClip", order = 0)]
     public class SoundSO : ScriptableObject

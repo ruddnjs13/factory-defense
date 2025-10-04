@@ -1,8 +1,9 @@
-using Blade.Core;
-using Blade.Sounds;
+using Code.Core;
+using Code.Sounds;
+using Core.GameEvent;
 using UnityEngine;
 
-namespace Blade.Events
+namespace Code.Events
 {
     public static class SoundsEvents
     {

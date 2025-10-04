@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Blade.UI
+namespace Code.UI
 {
     [CreateAssetMenu(fileName = "TextInfo", menuName = "SO/UI/TextInfo", order = 0)]
     public class TextInfoSO : ScriptableObject

@@ -1,13 +1,13 @@
-using Blade.Combat;
-using Blade.Effects;
-using Blade.Entities;
+using Code.Combat;
+using Code.Effects;
+using Code.Entities;
 using DG.Tweening;
 using RuddnjsLib.Dependencies;
 using RuddnjsPool;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
 
-namespace Blade.Feedbacks
+namespace Code.Feedbacks
 {
     public class HitImpactFeedback : Feedback
     {

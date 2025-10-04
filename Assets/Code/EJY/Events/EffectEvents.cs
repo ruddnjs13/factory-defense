@@ -1,8 +1,8 @@
-using Blade.Core;
+using Core.GameEvent;
 using RuddnjsPool;
 using UnityEngine;
 
-namespace Blade.Events
+namespace Code.Events
 {
     public static class EffectEvents
     {

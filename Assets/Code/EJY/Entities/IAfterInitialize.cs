@@ -1,6 +1,6 @@
-using Blade.Core.StatSystem;
+using Code.Core.StatSystem;
 
-namespace Blade.Entities
+namespace Code.Entities
 {
     public interface IAfterInitialize
     {

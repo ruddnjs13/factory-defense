@@ -1,10 +1,10 @@
-using Blade.Core.StatSystem;
-using Blade.Entities;
+using Code.Core.StatSystem;
+using Code.Entities;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Blade.Enemies
+namespace Code.Enemies
 {
     public class NavMovement : MonoBehaviour, IEntityComponent, IAfterInitialize
     {

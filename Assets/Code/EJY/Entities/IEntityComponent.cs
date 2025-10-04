@@ -1,4 +1,4 @@
-namespace Blade.Entities
+namespace Code.Entities
 {
     public interface IEntityComponent
     {

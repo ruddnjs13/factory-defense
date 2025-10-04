@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace Blade.Effects
+namespace Code.Effects
 {
     public class PlayGraphVFX : MonoBehaviour, IPlayableVFX
     {

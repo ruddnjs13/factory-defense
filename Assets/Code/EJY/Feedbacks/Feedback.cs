@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Blade.Feedbacks
+namespace Code.Feedbacks
 {
     public abstract class Feedback : MonoBehaviour
     {

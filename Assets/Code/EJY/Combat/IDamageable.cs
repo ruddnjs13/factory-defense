@@ -1,7 +1,7 @@
-using Blade.Entities;
+using Code.Entities;
 using UnityEngine;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     public interface IDamageable
     {

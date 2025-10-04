@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Blade.UI
+namespace Code.UI
 {
     public class UIBar : MonoBehaviour
     {

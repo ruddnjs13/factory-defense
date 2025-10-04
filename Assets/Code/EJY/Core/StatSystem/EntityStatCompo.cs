@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Blade.Entities;
+using Code.Entities;
 using UnityEngine;
 
-namespace Blade.Core.StatSystem
+namespace Code.Core.StatSystem
 {
     public class EntityStatCompo : MonoBehaviour, IEntityComponent
     {

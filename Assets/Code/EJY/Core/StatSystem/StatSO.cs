@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Blade.Core.StatSystem
+namespace Code.Core.StatSystem
 {
     [CreateAssetMenu(fileName = "StatSO", menuName = "SO/StatSystem/Stat", order = 0)]
     public class StatSO : ScriptableObject, ICloneable

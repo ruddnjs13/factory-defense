@@ -1,10 +1,10 @@
 using System;
-using Blade.Core.StatSystem;
-using Blade.Entities;
+using Code.Core.StatSystem;
+using Code.Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     public class DamageCompo : MonoBehaviour, IEntityComponent, IAfterInitialize
     {

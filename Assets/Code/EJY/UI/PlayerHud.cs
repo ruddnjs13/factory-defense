@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Blade.Core;
-using Blade.Events;
+using Code.Events;
+using Core.GameEvent;
 using UnityEngine;
 
-namespace Blade.UI
+namespace Code.UI
 {
     public class PlayerHud : MonoBehaviour
     {

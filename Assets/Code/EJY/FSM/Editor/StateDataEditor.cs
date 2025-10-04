@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
  
-namespace Blade.FSM.Editor
+namespace Code.FSM.Editor
 {
     [CustomEditor(typeof(StateDataSO))]
     public class StateDataEditor : UnityEditor.Editor

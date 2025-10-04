@@ -1,11 +1,12 @@
-using Blade.Core;
-using Blade.Entities;
-using Blade.Events;
-using Blade.Sounds;
+using Code.Core;
+using Code.Entities;
+using Code.Events;
+using Code.Sounds;
+using Core.GameEvent;
 using RuddnjsPool;
 using UnityEngine;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     public class Projectile : MonoBehaviour, IPoolable
     {
@@ -77,7 +78,7 @@ namespace Blade.Combat
                 cameraChannel.RaiseEvent(impulseEvt);
             }
 
-            _myPool.Push(this);
+            _myPool.Push(this); 
 
             //폭발
         }

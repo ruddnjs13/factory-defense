@@ -1,7 +1,7 @@
-using Blade.Entities;
+using Code.Entities;
 using UnityEngine;
 
-namespace Blade.Combat
+namespace Code.Combat
 {
     public abstract class DamageCaster : MonoBehaviour
     {
@@ -22,12 +22,6 @@ namespace Blade.Combat
             if (target.TryGetComponent(out IDamageable damageable))
             {
                 damageable.ApplyDamage(damageData, position, normal, attackData, _owner);
-            }
-
-            if (attackData.knockBackMovement != null 
-                && target.TryGetComponent(out IKnockBackable knockBackable))
-            {
-                knockBackable.KnockBack(transform.forward, attackData.knockBackMovement);
             }
         }
     }

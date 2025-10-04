@@ -2,7 +2,7 @@ using RuddnjsPool;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Blade.Sounds
+namespace Code.Sounds
 {
     [RequireComponent(typeof(AudioSource))]
     public class SoundPlayer : MonoBehaviour, IPoolable

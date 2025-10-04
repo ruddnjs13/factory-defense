@@ -1,6 +1,6 @@
-using Blade.Core;
+using Core.GameEvent;
 
-namespace Blade.Events
+namespace Code.Events
 {
     public static class CameraEvents
     {
