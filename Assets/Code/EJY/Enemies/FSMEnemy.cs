@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Enemies
 {
-    public abstract class FSMEnemy : Enemy
+    public class FSMEnemy : Enemy
     {
         [SerializeField] private StateDataSO[] states;
         protected EntityStateMachine _stateMachine;

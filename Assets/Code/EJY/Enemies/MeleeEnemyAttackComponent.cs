@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Enemies
 {
-    public class MeleeEnemyAttackComponent : EnemyAttackCompo, IEntityComponent, IAfterInitialize
+    public class MeleeEnemyAttackComponent : EnemyAttackCompo
     {
         [SerializeField] private OverlapDamageCaster[] casters;
         private bool _isActive;

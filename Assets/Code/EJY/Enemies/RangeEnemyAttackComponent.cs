@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 namespace Code.EJY.Enemies
 {
-    public class RangeEnemyAttackComponent : EnemyAttackCompo, IEntityComponent, IAfterInitialize
+    public class RangeEnemyAttackComponent : EnemyAttackCompo
     {
         [SerializeField] private PoolingItemSO bulletPool;
 

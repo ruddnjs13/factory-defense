@@ -1,7 +1,5 @@
 using Code.Core.StatSystem;
 using Code.Entities;
-using Code.Events;
-using Code.UI;
 using Core.GameEvent;
 using UnityEngine;
 
@@ -12,8 +10,6 @@ namespace Code.Combat
         private Entity _entity;
         private ActionData _actionData;
         private EntityStatCompo _statCompo;
-        [SerializeField] private TextInfoSO normal, critical;
-        [SerializeField] private GameEventChannelSO textChannel;
         [SerializeField] private StatSO hpStat;
         [SerializeField] private float maxHealth;
         [SerializeField] private float currentHealth;
@@ -60,10 +56,6 @@ namespace Code.Combat
             
             onHealthChangedEvent?.Invoke(currentHealth, maxHealth);
             
-            int typeHash = damageData.isCritical ? critical.nameHash : normal.nameHash;
-            Vector3 position = hitPoint + new Vector3(0,1.5f);
-            textChannel.RaiseEvent(TextEvents.PopupTextEvent.Init(damageData.damage.ToString(),typeHash,  position, 0.5f));
-
             if (currentHealth <= 0)
             {
                 _entity.OnDeathEvent?.Invoke();
