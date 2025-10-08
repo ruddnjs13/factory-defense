@@ -33,9 +33,11 @@ namespace Code.LKW.Turrets
         {
             
         }
-
+        
         public void RotateShooter()
         {
+            if(_target == null) return;
+            
             Vector3 dir = (_target.position - transform.position).normalized;
             dir.y = 0;
             
@@ -49,6 +51,10 @@ namespace Code.LKW.Turrets
                 targetRot,
                 turretData.rotationSpeed * Time.deltaTime
             );
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
         }
     }
 }
