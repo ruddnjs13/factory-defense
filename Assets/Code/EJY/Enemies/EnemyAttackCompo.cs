@@ -1,6 +1,7 @@
 using System;
 using Code.Combat;
 using Code.Core.StatSystem;
+using Code.Enemies;
 using Code.Entities;
 using UnityEngine;
 
@@ -19,13 +20,14 @@ namespace Code.EJY.Enemies
         protected DamageCompo _damageCompo;
         protected EntityStatCompo _statCompo;
         protected EntityAnimatorTrigger _trigger;
+        protected NavMovement _movement;
         
         protected float _lastAttackTime;
         
         private Collider[] _hits;
         
         public Transform CurrentTarget { get; private set; }
-        public bool IsTargeting { get; private set; }
+        public NotifyValue<bool> IsTargeting { get; private set; } = new NotifyValue<bool>(false);
         public bool InAttackRange { get; private set; }
 
         public bool CanAttack => Time.time - _lastAttackTime < attackInterval;
@@ -36,11 +38,24 @@ namespace Code.EJY.Enemies
             _statCompo = entity.GetCompo<EntityStatCompo>();
             _damageCompo = entity.GetCompo<DamageCompo>();
             _trigger = entity.GetCompo<EntityAnimatorTrigger>();
+            _movement = entity.GetCompo<NavMovement>();
             _hits = new Collider[1];
+            IsTargeting.OnValueChanged += HandleTargetingChanged;
+
         }
 
         public virtual void AfterInitialize()
         {
+        }
+
+        private void OnDestroy()
+        {
+            IsTargeting.OnValueChanged -= HandleTargetingChanged;
+        }
+        
+        private void HandleTargetingChanged(bool prev, bool next)
+        {
+            _movement.SetDestination(next ? CurrentTarget.position : _enemy.TargetTrm.position);
         }
 
         public virtual void Attack()
@@ -50,13 +65,13 @@ namespace Code.EJY.Enemies
 
         protected virtual void FixedUpdate()
         {
-            int amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, detectRange, _hits, whatIsTarget);
+            Array.Clear(_hits, 0, 1);
+            Physics.OverlapSphereNonAlloc(_enemy.transform.position, detectRange, _hits, whatIsTarget);
             
-            IsTargeting = amount > 0;
+            CurrentTarget =_hits[0]?.transform;
+            IsTargeting.Value = CurrentTarget != null;
             
-            CurrentTarget = IsTargeting ? _hits[0].transform : null;
-            
-            amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, attackRange, _hits, whatIsTarget);
+            int amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, attackRange, _hits, whatIsTarget);
 
             InAttackRange = amount > 0;
         }
