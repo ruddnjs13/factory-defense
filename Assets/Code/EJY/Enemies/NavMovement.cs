@@ -1,4 +1,5 @@
 using Code.Core.StatSystem;
+using Code.EJY.Enemies;
 using Code.Entities;
 using DG.Tweening;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Code.Enemies
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private float stopOffset = 0.05f; //거리에 대한 오프셋
         [SerializeField] private float rotateSpeed = 10f;
-        private Entity _entity;
+        private Enemy _enemy;
         private EntityStatCompo _statCompo;
         private Transform _lookAtTrm;
 
@@ -40,8 +41,10 @@ namespace Code.Enemies
 
         public void Initialize(Entity entity)
         {
-            _entity = entity;
-            _statCompo = _entity.GetCompo<EntityStatCompo>();
+            _enemy = entity as Enemy;
+            _statCompo = entity.GetCompo<EntityStatCompo>();
+            
+            SetDestination(_enemy.TargetTrm.position);
         }
 
         public void AfterInitialize()
@@ -56,7 +59,7 @@ namespace Code.Enemies
 
         private void OnDestroy()
         {
-            _entity.transform.DOKill();
+            _enemy.transform.DOKill();
             _statCompo.UnSubscribeStat(moveSpeedStat, HandleMoveSpeedChange);
         }
 
@@ -80,18 +83,18 @@ namespace Code.Enemies
 
         public Quaternion LookAtTarget(Vector3 target, bool isSmooth = true)
         {
-            Vector3 direction = target - _entity.transform.position;
+            Vector3 direction = target - _enemy.transform.position;
             direction.y = 0;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
 
             if (isSmooth)
             {
-                _entity.transform.rotation = Quaternion.Slerp(_entity.transform.rotation,
+                _enemy.transform.rotation = Quaternion.Slerp(_enemy.transform.rotation,
                     lookRotation, Time.deltaTime * rotateSpeed);
             }
             else
             {
-                _entity.transform.rotation = lookRotation;
+                _enemy.transform.rotation = lookRotation;
             }
 
             return lookRotation;

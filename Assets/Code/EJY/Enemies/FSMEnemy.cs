@@ -8,11 +8,12 @@ namespace Code.Enemies
     public class FSMEnemy : Enemy
     {
         [SerializeField] private StateDataSO[] states;
-        protected EntityStateMachine _stateMachine;
+        private EntityStateMachine _stateMachine;
 
         private void Start()
         {
             _stateMachine = new EntityStateMachine(this, states);
+            ChangeState("IDLE");
         }
 
         private void Update()

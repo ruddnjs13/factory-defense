@@ -39,8 +39,17 @@ namespace Code.Entities
             _components.Values.ToList().ForEach(component => component.Initialize(this));
         }
 
-        public T GetCompo<T>() where T : IEntityComponent
-            => (T)_components.GetValueOrDefault(typeof(T));
+        public T GetCompo<T>() where T : class, IEntityComponent
+        {
+            foreach (var kvp in _components)
+            {
+                if (typeof(T).IsAssignableFrom(kvp.Key))
+                    return kvp.Value as T;
+            }
+
+            return null;
+        }
+
 
         public IEntityComponent GetCompo(Type type)
             => _components.GetValueOrDefault(type);

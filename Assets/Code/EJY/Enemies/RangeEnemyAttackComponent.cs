@@ -39,8 +39,8 @@ namespace Code.EJY.Enemies
             {
                 Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
 
-                projectile.SetupProjectile(_entity, _damageCompo.CalculateDamage(damageStat, attackData)
-                    , firePos.position, projectile.transform.rotation, _entity.transform.forward * bulletSpeed);
+                projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
+                    , firePos.position, projectile.transform.rotation, _enemy.transform.forward * bulletSpeed);
             }
             else
             {
@@ -51,8 +51,8 @@ namespace Code.EJY.Enemies
                     Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
                     float angle = startRotation + i * pattern.fireAngle;
                     Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
-                    projectile.SetupProjectile(_entity, _damageCompo.CalculateDamage(damageStat, attackData)
-                        , firePos.position, rotation,  rotation * _entity.transform.forward * bulletSpeed);
+                    projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
+                        , firePos.position, rotation,  rotation * _enemy.transform.forward * bulletSpeed);
                 }
             }
         }

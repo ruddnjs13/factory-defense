@@ -1,21 +1,20 @@
 using Code.Entities;
+using UnityEngine;
 
 namespace Code.EJY.Enemies.States
 {
     public class EnemyIdleState : EnemyState
     {
         private EnemyAttackCompo _attackCompo;
-        private TargetDetector _detector;
 
         public EnemyIdleState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _attackCompo = entity.GetCompo<EnemyAttackCompo>();
-            _detector = entity.GetCompo<TargetDetector>();
         }
 
         public override void Update()
         {
-            bool inRange = _detector.IsTargeting && _attackCompo.InAttackRange(_detector.CurrentTarget.position);
+            bool inRange = _attackCompo.IsTargeting && _attackCompo.InAttackRange;
             
             if (inRange && _attackCompo.CanAttack)
             {
