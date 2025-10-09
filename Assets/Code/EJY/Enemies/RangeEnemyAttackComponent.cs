@@ -1,39 +1,29 @@
-using System;
 using Code.Combat;
 using Code.Core.StatSystem;
 using Code.Entities;
+using Code.Patterns.PatternDatas;
 using RuddnjsLib.Dependencies;
 using RuddnjsPool;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.EJY.Enemies
 {
-    public class RangeEnemyAttackComponent : MonoBehaviour, IEntityComponent, IAfterInitialize
+    public class RangeEnemyAttackComponent : EnemyAttackCompo
     {
         [SerializeField] private PoolingItemSO bulletPool;
-        [SerializeField] private AttackDataSO attackData;
-        [SerializeField] private StatSO meleeDamageStat;
-        [SerializeField] private Transform[] firePoints;
-        
-        private Entity _entity;
-        private DamageCompo _damageCompo;
-        private EntityStatCompo _statCompo;
-        private EntityAnimatorTrigger _trigger;
-        
+
+        [SerializeField] private Transform firePos;
+        [SerializeField] private PatternSO pattern;
+        [SerializeField] private float bulletSpeed = 8f;
+
         private DamageData _currentDamageData;
 
         [Inject] private PoolManagerMono _poolManager;
         
-        public void Initialize(Entity entity)
-        {
-            _entity = entity;
-            _statCompo = entity.GetCompo<EntityStatCompo>();
-            _damageCompo = entity.GetCompo<DamageCompo>();
-            _trigger = entity.GetCompo<EntityAnimatorTrigger>();
-        }
 
-        public void AfterInitialize()
+        public override void AfterInitialize()
         {
             _trigger.OnFireTrigger += FireBullet;
         }
@@ -45,9 +35,26 @@ namespace Code.EJY.Enemies
 
         private void FireBullet()
         {
-            Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
-            //projectile.SetupProjectile(_entity, _damageCompo.CalculateDamage(meleeDamageStat, attackData)
-            //    , firePoints[0].position, projectile.transform.rotation);
+            if (pattern.bulletCount == 1)
+            {
+                Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
+
+                projectile.SetupProjectile(_entity, _damageCompo.CalculateDamage(damageStat, attackData)
+                    , firePos.position, projectile.transform.rotation, _entity.transform.forward * bulletSpeed);
+            }
+            else
+            {
+                float startRotation = -(pattern.fireAngle * pattern.bulletCount - 1) / 2;
+                
+                for (int i = 0; i < pattern.bulletCount; ++i)
+                {
+                    Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
+                    float angle = startRotation + i * pattern.fireAngle;
+                    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
+                    projectile.SetupProjectile(_entity, _damageCompo.CalculateDamage(damageStat, attackData)
+                        , firePos.position, rotation,  rotation * _entity.transform.forward * bulletSpeed);
+                }
+            }
         }
     }
 }
