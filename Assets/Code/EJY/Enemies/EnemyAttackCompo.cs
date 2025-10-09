@@ -10,6 +10,7 @@ namespace Code.EJY.Enemies
         [SerializeField] protected AttackDataSO attackData;
         [SerializeField] protected StatSO damageStat;
         [SerializeField] protected float attackInterval = 0.5f;
+        [SerializeField] protected float attackRange = 1.5f;
         
         protected Entity _entity;
         protected DamageCompo _damageCompo;
@@ -36,5 +37,8 @@ namespace Code.EJY.Enemies
         {
             _lastAttackTime = Time.time;
         }
+
+        public bool InAttackRange(Vector3 targetPosition) =>
+            Vector3.Distance(_entity.transform.position, targetPosition) < attackRange;
     }
 }
