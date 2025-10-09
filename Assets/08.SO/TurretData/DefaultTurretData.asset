@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   reloadTimer: 1
-  rotationSpeed: 240
-  shootAllowanceAngle: 0
+  rotationSpeed: 60
+  shootAllowanceAngle: 20

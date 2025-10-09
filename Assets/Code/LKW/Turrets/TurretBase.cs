@@ -1,60 +1,163 @@
 using System;
+using System.Collections.Generic;
+using Code.EJY.Enemies;
 using UnityEngine;
 
 namespace Code.LKW.Turrets
 {
     public abstract class TurretBase : MonoBehaviour
     {
+        [Header("Turret Settings")]
         [SerializeField] private TurretDataSO turretData;
-        
-        private float _reloadTimer;
-       [SerializeField] private Transform _target;
+        [SerializeField] private LayerMask targetLayer;
 
         [SerializeField] private GameObject turretShooter;
+        
+        private SphereCollider sphereCollider;
+        
+        private float _reloadTimer;
+        private Enemy _target;
+        private readonly List<Enemy> _targets = new List<Enemy>();
 
+        private bool _isShootAngle = false;
+         
         private void Update()
         {
             Tick();
         }
-
+        
         public virtual void Tick()
         {
-            //FindTarget();
-            
+            HandleReloadTimer();
+            FindTarget();
             RotateShooter();
+            TryShoot();
         }
 
-        public void FindTarget()
+        #region Init
+        private void Awake()
         {
-            
+            sphereCollider = GetComponent<SphereCollider>();
         }
 
-        public void Shoot()
+        private void OnEnable()
         {
-            
+            sphereCollider.radius = turretData.range;
         }
+        #endregion
+
+        #region Shooting Logic
         
-        public void RotateShooter()
+        private void HandleReloadTimer()
         {
-            if(_target == null) return;
-            
-            Vector3 dir = (_target.position - transform.position).normalized;
-            dir.y = 0;
-            
-            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-            
-            Quaternion targetRot = Quaternion.Euler(0,angle, 0);
+            if (_reloadTimer > 0f)
+                _reloadTimer -= Time.deltaTime;
+        }
 
-            turretShooter.transform.rotation = Quaternion.RotateTowards
-            (
+        private void TryShoot()
+        {
+            if (_target == null || _target.IsDead || !_isShootAngle ||_reloadTimer > 0f) return;            
+
+            Shoot();
+            _reloadTimer = turretData.reloadTimer;
+        }
+
+        protected abstract void Shoot();
+
+        private void RotateShooter()
+        {
+            if (_target == null || _target.IsDead)
+                return;
+
+            Vector3 targetPos = _target.transform.position;
+            float distance = Vector3.Distance(transform.position, targetPos);
+
+            if (distance > turretData.range)
+            {
+                _target = null;
+                return;
+            }
+
+            Vector3 dir = (targetPos - transform.position).normalized;
+            dir.y = 0;
+
+            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+            Quaternion targetRot = Quaternion.Euler(0, angle, 0);
+            
+            float desiredAngle = Mathf.DeltaAngle(turretShooter.transform.localEulerAngles.y, angle);
+            _isShootAngle = Mathf.Abs(desiredAngle) <= turretData.shootAllowanceAngle;
+
+            turretShooter.transform.rotation = Quaternion.RotateTowards(
                 turretShooter.transform.rotation,
                 targetRot,
                 turretData.rotationSpeed * Time.deltaTime
             );
         }
 
+        #endregion
+        
+        #region Targeting Logic
+        
+        private void FindTarget()
+        {
+            if (_targets.Count == 0)
+            {
+                _target = null;
+                return;
+            }
+
+            Enemy closestTarget = null;
+            float closestDistance = float.MaxValue;
+
+            for (int i = _targets.Count - 1; i >= 0; i--)
+            {
+                Enemy enemy = _targets[i];
+
+                if (enemy == null || enemy.IsDead)
+                {
+                    _targets.RemoveAt(i);
+                    continue;
+                }
+
+                float distance = Vector2.Distance(
+                    new Vector2(transform.position.x, transform.position.z),
+                    new Vector2(enemy.transform.position.x, enemy.transform.position.z)
+                );
+
+                if (distance <= turretData.range && distance < closestDistance)
+                {
+                    closestTarget = enemy;
+                    closestDistance = distance;
+                }
+            }
+
+            _target = closestTarget;
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
+            if (((1 << other.gameObject.layer) & targetLayer) == 0) return;
+
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null && !_targets.Contains(enemy))
+            {
+                _targets.Add(enemy);
+            }
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (((1 << other.gameObject.layer) & targetLayer) == 0) return;
+
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null && _targets.Contains(enemy))
+            {
+                _targets.Remove(enemy);
+            }
+
+            if (_target == enemy)
+                _target = null;
+        }
+        #endregion
     }
 }
