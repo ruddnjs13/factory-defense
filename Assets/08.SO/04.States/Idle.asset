@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   stateName: IDLE
-  className: Code.EJY.Enemies.States.EnemyDeadState
+  className: Code.EJY.Enemies.States.EnemyIdleState
   animParamName: IDLE
   animationHash: -357476191
