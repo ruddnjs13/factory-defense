@@ -14,8 +14,9 @@ namespace Code.EJY.Enemies
     {
         [SerializeField] private PoolingItemSO bulletPool;
 
+        [SerializeField] private RangePatternSO rangePattern;
         [SerializeField] private Transform firePos;
-        [SerializeField] private PatternSO pattern;
+        [SerializeField] private Projectile projectile; // 임시
         [SerializeField] private float bulletSpeed = 8f;
 
         private DamageData _currentDamageData;
@@ -35,24 +36,29 @@ namespace Code.EJY.Enemies
 
         private void FireBullet()
         {
-            if (pattern.bulletCount == 1)
+            Vector3 direction = firePos.forward;
+            if (rangePattern.bulletCount == 1)
             {
-                Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
+                //Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
+                Projectile projectile = GameObject.Instantiate(this.projectile, firePos.position, firePos.rotation);
 
+                
                 projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
-                    , firePos.position, projectile.transform.rotation, _enemy.transform.forward * bulletSpeed);
+                    , firePos.position, Quaternion.LookRotation(direction), direction * bulletSpeed);
             }
             else
             {
-                float startRotation = -(pattern.fireAngle * pattern.bulletCount - 1) / 2;
-                
-                for (int i = 0; i < pattern.bulletCount; ++i)
+                float startRotation = -(rangePattern.fireAngle * (rangePattern.bulletCount - 1)) / 2;
+                for (int i = 0; i < rangePattern.bulletCount; ++i) 
                 {
-                    Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
-                    float angle = startRotation + i * pattern.fireAngle;
-                    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
+                    //Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
+                    Projectile projectile = GameObject.Instantiate(this.projectile, firePos.position, firePos.rotation);
+                    float angle = startRotation + i * rangePattern.fireAngle;
+                    Quaternion rotation = Quaternion.Euler(0, angle, 0);
+                    Vector3 fireDirection = rotation * direction;
+                    Quaternion forwardRotation = Quaternion.LookRotation(fireDirection);
                     projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
-                        , firePos.position, rotation,  rotation * _enemy.transform.forward * bulletSpeed);
+                        , firePos.position, forwardRotation,fireDirection * bulletSpeed);
                 }
             }
         }
