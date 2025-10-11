@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace Code.Patterns.PatternDatas
 {
-    public class PatternSO : ScriptableObject
+    [CreateAssetMenu(menuName = "SO/Combat/RangePattern")]
+    public class RangePatternSO : ScriptableObject
     {
         public float fireAngle = 45f;
         public int bulletCount = 8;
