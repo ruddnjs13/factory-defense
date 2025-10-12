@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d3064fd2d20ff46a496b11a849755f, type: 3}
-  m_Name: PoolManager
+  m_Script: {fileID: 11500000, guid: 839fcb1266e05ce4f9b82007201059f7, type: 3}
+  m_Name: EnemyBullet
   m_EditorClassIdentifier: 
-  poolingItemList:
-  - {fileID: 11400000, guid: d309fe6e3df97664cb1f459306a429bc, type: 2}
-  - {fileID: 11400000, guid: 1f24aff4caf160743838ab25934eb861, type: 2}
-  _rootTrm: {fileID: 0}
+  poolType: {fileID: 11400000, guid: bb3786db27625f4408ae48409d18a038, type: 2}
+  prefab: {fileID: 2369188626507781958, guid: f92626e29e7fc8c41b43b56d12180224, type: 3}
+  initCount: 3
