@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.EJY.Enemies;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.LKW.Turrets
 {
@@ -11,12 +12,12 @@ namespace Code.LKW.Turrets
         [SerializeField] private TurretDataSO turretData;
         [SerializeField] private LayerMask targetLayer;
 
-        [SerializeField] private GameObject turretShooter;
+        [SerializeField] protected GameObject turretHead;
         
         private SphereCollider sphereCollider;
         
         private float _reloadTimer;
-        private Enemy _target;
+        protected Enemy _target;
         private readonly List<Enemy> _targets = new List<Enemy>();
 
         private bool _isShootAngle = false;
@@ -84,11 +85,11 @@ namespace Code.LKW.Turrets
             float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             Quaternion targetRot = Quaternion.Euler(0, angle, 0);
             
-            float desiredAngle = Mathf.DeltaAngle(turretShooter.transform.localEulerAngles.y, angle);
+            float desiredAngle = Mathf.DeltaAngle(turretHead.transform.localEulerAngles.y, angle);
             _isShootAngle = Mathf.Abs(desiredAngle) <= turretData.shootAllowanceAngle;
 
-            turretShooter.transform.rotation = Quaternion.RotateTowards(
-                turretShooter.transform.rotation,
+            turretHead.transform.rotation = Quaternion.RotateTowards(
+                turretHead.transform.rotation,
                 targetRot,
                 turretData.rotationSpeed * Time.deltaTime
             );

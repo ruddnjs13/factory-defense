@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d3064fd2d20ff46a496b11a849755f, type: 3}
-  m_Name: PoolManager
+  m_Script: {fileID: 11500000, guid: 91403014b80540929ca4d2d1b4660526, type: 3}
+  m_Name: DuoTurretData
   m_EditorClassIdentifier: 
-  poolingItemList:
-  - {fileID: 11400000, guid: d309fe6e3df97664cb1f459306a429bc, type: 2}
-  _rootTrm: {fileID: 0}
+  range: 10
+  reloadTimer: 0.2
+  rotationSpeed: 180
+  shootAllowanceAngle: 15
