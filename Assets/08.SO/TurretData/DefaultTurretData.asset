@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DefaultTurretData
   m_EditorClassIdentifier: 
   range: 10
-  reloadTimer: 1
-  rotationSpeed: 240
-  shootAllowanceAngle: 0
+  reloadTimer: 0.4
+  rotationSpeed: 180
+  shootAllowanceAngle: 12
