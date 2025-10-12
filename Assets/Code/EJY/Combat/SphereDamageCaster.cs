@@ -4,7 +4,7 @@ namespace Code.Combat
 {
     public class SphereDamageCaster : DamageCaster
     {
-        [SerializeField, Range(0.5f, 3f)] private float castRadius = 1f;
+        [SerializeField, Range(0.1f, 3f)] private float castRadius = 1f;
         [SerializeField, Range(0, 1f)] private float castInterpolation = 0.5f;
         [SerializeField, Range(0, 3f)] private float castingRange = 1f;
         
