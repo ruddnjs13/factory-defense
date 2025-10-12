@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
+  m_Name: Miner
+  m_EditorClassIdentifier: 
+  machineName: 
+  machineGhostPrefab: {fileID: 440181983381662770, guid: fa724a6c93b176f49b062d2ec442ddf2, type: 3}
+  machinePrefab: {fileID: 9209570748454165587, guid: 88cb98f487d27a5468a69e42dd2d3d78, type: 3}
