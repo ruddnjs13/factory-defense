@@ -798,11 +798,11 @@ MonoBehaviour:
   attackInterval: 0.5
   attackRange: 5.5
   detectRange: 7.5
-  bulletPool: {fileID: 0}
+  bulletPool: {fileID: 11400000, guid: 1f24aff4caf160743838ab25934eb861, type: 2}
   rangePattern: {fileID: 11400000, guid: ef309da91012e2e43946dee870974677, type: 2}
   firePos: {fileID: 7171041533679183700}
-  projectile: {fileID: 6262717721483757937, guid: f92626e29e7fc8c41b43b56d12180224, type: 3}
   bulletSpeed: 8
+  poolManager: {fileID: 11400000, guid: 20d4958a93554864f90e604391087170, type: 2}
 --- !u!1 &8872751620071908402
 GameObject:
   m_ObjectHideFlags: 0

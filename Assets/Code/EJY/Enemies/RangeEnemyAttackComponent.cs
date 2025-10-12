@@ -1,6 +1,4 @@
 using Code.Combat;
-using Code.Core.StatSystem;
-using Code.Entities;
 using Code.Patterns.PatternDatas;
 using RuddnjsLib.Dependencies;
 using RuddnjsPool;
@@ -16,12 +14,11 @@ namespace Code.EJY.Enemies
 
         [SerializeField] private RangePatternSO rangePattern;
         [SerializeField] private Transform firePos;
-        [SerializeField] private Projectile projectile; // 임시
         [SerializeField] private float bulletSpeed = 8f;
+        [SerializeField] private PoolManagerSO poolManager;
 
         private DamageData _currentDamageData;
 
-        [Inject] private PoolManagerMono _poolManager;
         
 
         public override void AfterInitialize()
@@ -39,8 +36,7 @@ namespace Code.EJY.Enemies
             Vector3 direction = firePos.forward;
             if (rangePattern.bulletCount == 1)
             {
-                //Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
-                Projectile projectile = GameObject.Instantiate(this.projectile, firePos.position, firePos.rotation);
+                Projectile projectile = poolManager.Pop(bulletPool.poolType) as Projectile;
 
                 
                 projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
@@ -51,8 +47,7 @@ namespace Code.EJY.Enemies
                 float startRotation = -(rangePattern.fireAngle * (rangePattern.bulletCount - 1)) / 2;
                 for (int i = 0; i < rangePattern.bulletCount; ++i) 
                 {
-                    //Projectile projectile = _poolManager.Pop<Projectile>(bulletPool);
-                    Projectile projectile = GameObject.Instantiate(this.projectile, firePos.position, firePos.rotation);
+                    Projectile projectile = poolManager.Pop(bulletPool.poolType) as Projectile;
                     float angle = startRotation + i * rangePattern.fireAngle;
                     Quaternion rotation = Quaternion.Euler(0, angle, 0);
                     Vector3 fireDirection = rotation * direction;

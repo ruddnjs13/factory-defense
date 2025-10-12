@@ -218,7 +218,7 @@ MonoBehaviour:
   damageCaster: {fileID: 6092970893399747140}
   attackData: {fileID: 11400000, guid: d73d66ac4ac951c4db9a8a736129b03e, type: 2}
   rbCompo: {fileID: 1307001874844799860}
-  impactItem: {fileID: 0}
+  impactItem: {fileID: 11400000, guid: 1f24aff4caf160743838ab25934eb861, type: 2}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   cameraChannel: {fileID: 11400000, guid: 12a518d0647c1fd4aaf498caddfb5f19, type: 2}
   soundChannel: {fileID: 11400000, guid: 4e0ab403785d797419f1f4574d0a16fb, type: 2}
@@ -245,7 +245,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
