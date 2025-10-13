@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Chipmunk.ComponentContainers;
 using Code.SHS.Extensions;
 using Code.SHS.Machines.Events;
+using Code.SHS.Machines.ResourceVisualizer;
 using Code.SHS.Worlds;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,6 +15,7 @@ namespace Code.SHS.Machines
         [SerializeField] protected DirectionEnum inputDirection;
         [SerializeField] protected DirectionEnum outputDirection;
 
+        [SerializeField] private BaseResourceVisualizer resourceVisualizer;
         public Resource? currentResource;
 
         private IInputResource linkedInputMachine;
@@ -67,6 +69,7 @@ namespace Code.SHS.Machines
         {
             OnResourceInput?.Invoke(resource);
             currentResource = resource;
+            resourceVisualizer.StartTransport(resource, TransportInterval);
             transferTimer = 0f;
         }
 
@@ -85,6 +88,7 @@ namespace Code.SHS.Machines
                     if (inputMachine.TryReceiveResource(this, (Resource)currentResource))
                     {
                         OnResourceOutput?.Invoke((Resource)currentResource);
+                        resourceVisualizer.EndTransport();
                         currentResource = null;
                     }
                 }
