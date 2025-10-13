@@ -134,6 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2386632566011855083}
+  - component: {fileID: 3391555256054919794}
   m_Layer: 0
   m_Name: DeadFeedback
   m_TagString: Untagged
@@ -156,6 +157,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3369206799315699561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3391555256054919794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999902214172149954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTrm: {fileID: 3369206799315699561}
+  duration: 0.3
 --- !u!1 &1093945518469549759
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +278,7 @@ GameObject:
   - component: {fileID: 7663118893658095606}
   - component: {fileID: 5219501838574228335}
   - component: {fileID: 879101256934507280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,6 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8289418425755156941}
+  - component: {fileID: 5258347900308904866}
   m_Layer: 0
   m_Name: HitFeedback
   m_TagString: Untagged
@@ -472,6 +488,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3369206799315699561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5258347900308904866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127632176030799685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3eac14076aa413cb8eb9bf75747fd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 701845822998007963}
+  blinkDuration: 0.15
+  blinkIntensity: 0.15
 --- !u!1 &6434253776871687613
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +689,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b1f1bde15a5f7549a65ff473e388ef4, type: 3}
+  - {fileID: 2100000, guid: 4ce7b64396612564e8aaf470dae7ccc6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1066,7 +1097,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5425313525334364070, guid: 34ddd6cb9827642478651445800c0c19, type: 3}
       propertyPath: m_Name
-      value: AttackCompo
+      value: MeleeAttackCompo
       objectReference: {fileID: 0}
     - target: {fileID: 5510823810283793986, guid: 34ddd6cb9827642478651445800c0c19, type: 3}
       propertyPath: m_LocalPosition.x
