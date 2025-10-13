@@ -1,25 +1,23 @@
 using Code.SHS.Extensions;
 using Code.SHS.Machines.Events;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
     public class Miner : ResourceTransporter
     {
-        [SerializeField] private float miningInterval = 2f;
         [SerializeField] private ResourceSO testResource;
-        private float miningTimer = 0f;
 
-        public override void Update()
+        [SerializeField] private float mineInterval = 2f;
+        private float mineTimer;
+
+        public override void OnTick(float deltaTime)
         {
-            base.Update();
-            miningTimer += Time.deltaTime;
-
-            if (miningTimer >= miningInterval)
-            {
-                miningTimer = 0f;
+            base.OnTick(deltaTime);
+            if (mineTimer >= mineInterval)
                 MineResource();
-            }
+            mineTimer += deltaTime;
         }
 
         protected override void MachineConstructHandler(MachineConstructEvent evt)
@@ -29,10 +27,10 @@ namespace Code.SHS.Machines
 
         private void MineResource()
         {
-            ExtractResource();
+            Debug.Log("MineResource");
+            mineTimer -= mineInterval;
             if (currentResource != null) return;
-            currentResource = new Resource(testResource);
-            resourceVisual = Instantiate(testResource.prefab, transform);
+            ReceiveResource(new Resource(testResource));
         }
     }
 }
