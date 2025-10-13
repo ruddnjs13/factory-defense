@@ -11,7 +11,7 @@ using UnityEngine.Serialization;
 
 namespace Code.LKW.Turrets
 {
-    public abstract class TurretBase : Entity
+    public abstract class TurretBase : BaseMachine
     {
         [Header("Turret Settings")]
         [Space]
