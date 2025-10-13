@@ -1,4 +1,4 @@
-namespace Code.SHS.Machines
+namespace Code.SHS.TickSystem
 {
     public interface ITick
     {

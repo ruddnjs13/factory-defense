@@ -2,9 +2,9 @@ using System;
 using Chipmunk.ComponentContainers;
 using UnityEngine;
 
-namespace Code.SHS.Machines
+namespace Code.SHS.Machines.ResourceVisualizer
 {
-    public class ResourceVisualizer : MonoBehaviour, IContainerComponent
+    public class BaseResourceVisualizer : MonoBehaviour, IExcludeContainerComponent
     {
         private float _progress;
         private float _duration;
@@ -18,19 +18,16 @@ namespace Code.SHS.Machines
 
         public void OnInitialize(ComponentContainer componentContainer)
         {
-            transporter = componentContainer.GetSubclassComponent<ITransporter>();
             Debug.Assert(transporter != null,
                 $"can not find transporter component in {componentContainer.gameObject.name}");
-            transporter.OnResourceInput += StartTransport;
-            transporter.OnResourceOutput += EndTransport;
             gameObject.SetActive(false);
         }
 
 
-        private void StartTransport(Resource obj)
+        private void StartTransport(Resource obj, float duration)
         {
             _progress = 0f;
-            _duration = transporter.TransportInterval;
+            _duration = duration;
             resourceObject = Instantiate(obj.ResourceSo.prefab, transform);
             gameObject.SetActive(true);
             transform.localPosition = _startPoint;

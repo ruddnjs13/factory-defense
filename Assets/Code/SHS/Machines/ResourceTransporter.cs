@@ -14,14 +14,6 @@ namespace Code.SHS.Machines
         [SerializeField] protected DirectionEnum inputDirection;
         [SerializeField] protected DirectionEnum outputDirection;
 
-        // 회전되기 전의 원본 방향 (인스펙터에서 설정한 로컬 방향)
-        private DirectionEnum _localInputDirection;
-        private DirectionEnum _localOutputDirection;
-
-        // 실제 월드 기준 방향 (회전이 적용된 방향)
-        private DirectionEnum _worldInputDirection;
-        private DirectionEnum _worldOutputDirection;
-
         public Resource? currentResource;
 
         private IInputResource linkedInputMachine;
@@ -37,15 +29,9 @@ namespace Code.SHS.Machines
         {
             base.OnInitialize(componentContainer);
 
-            _localInputDirection = inputDirection;
-            _localOutputDirection = outputDirection;
-
             float yRotation = transform.eulerAngles.y;
-            _worldInputDirection = Direction.RotateDirection(_localInputDirection, yRotation);
-            _worldOutputDirection = Direction.RotateDirection(_localOutputDirection, yRotation);
-
-            inputDirection = _worldInputDirection;
-            outputDirection = _worldOutputDirection;
+            inputDirection = Direction.RotateDirection(inputDirection, yRotation);
+            outputDirection = Direction.RotateDirection(outputDirection, yRotation);
         }
 
         protected override void MachineConstructHandler(MachineConstructEvent evt)
@@ -56,7 +42,6 @@ namespace Code.SHS.Machines
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
-            Debug.Log(TransportInterval);
             if (transferTimer >= TransportInterval)
                 OutputItem();
             transferTimer += deltaTime;

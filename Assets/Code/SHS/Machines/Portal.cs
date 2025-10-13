@@ -8,19 +8,21 @@ namespace Code.SHS.Machines
     {
         [SerializeField] private DirectionEnum facingDirection;
         [SerializeField] private TMP_Text resourceCountText;
-        public static int resourceCount = 0;
+        public static int resourceCount = 1000;
 
-        public void OnTick(float deltaTime)
+        public override void Update()
         {
+            base.Update();
+            resourceCountText.text = resourceCount.ToString();
         }
-
-        public Vector2Int Position { get; }
-        public Vector2Int Size { get; }
 
         public bool CanAcceptInputFrom(IOutputResource machine)
         {
             Vector2Int direction = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
             Vector2Int anotherDirection = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
+            Debug.Log(machine.Position);
+            Debug.Log(Position + direction);
+            Debug.Log(Position + anotherDirection);
             return machine.Position == Position + direction || machine.Position == Position + anotherDirection;
         }
 
@@ -33,7 +35,6 @@ namespace Code.SHS.Machines
         public void ReceiveResource(Resource resource)
         {
             resourceCount += 1;
-            resourceCountText.text = resourceCount.ToString();
         }
     }
 }
