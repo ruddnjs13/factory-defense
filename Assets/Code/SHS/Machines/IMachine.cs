@@ -1,3 +1,4 @@
+using Code.SHS.TickSystem;
 using UnityEngine;
 
 namespace Code.SHS.Machines

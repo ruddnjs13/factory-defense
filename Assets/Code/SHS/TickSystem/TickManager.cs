@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Code.SHS.Machines
+namespace Code.SHS.TickSystem
 {
     [AddComponentMenu("")]
     public class TickManager : MonoBehaviour
