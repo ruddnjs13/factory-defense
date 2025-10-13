@@ -16,7 +16,7 @@ namespace Code.Feedbacks
             Sequence seq = DOTween.Sequence();
             seq.Append(targetTrm.DOScale(Vector3.zero, duration));
             seq.AppendInterval(duration);
-            OnFeedbackComplete?.Invoke();
+            seq.OnComplete(() => OnFeedbackComplete?.Invoke());
         }
 
         public override void StopFeedback()

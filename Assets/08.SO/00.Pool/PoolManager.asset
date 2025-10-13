@@ -15,4 +15,6 @@ MonoBehaviour:
   poolingItemList:
   - {fileID: 11400000, guid: d309fe6e3df97664cb1f459306a429bc, type: 2}
   - {fileID: 11400000, guid: 1f24aff4caf160743838ab25934eb861, type: 2}
+  - {fileID: 11400000, guid: 7fa8c3da5cfc08f4492bd1eccb090b0a, type: 2}
+  - {fileID: 11400000, guid: 18539b5225fe8f74fa86e5db2a64ad74, type: 2}
   _rootTrm: {fileID: 0}

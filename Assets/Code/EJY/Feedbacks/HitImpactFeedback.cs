@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Code.Combat;
 using Code.Effects;
 using Code.Entities;
@@ -6,25 +8,32 @@ using RuddnjsLib.Dependencies;
 using RuddnjsPool;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Feedbacks
 {
     public class HitImpactFeedback : Feedback
     {
-        [SerializeField] private PoolingItemSO hitImpactItem;
         [SerializeField] private float playDuration = 0.5f;
         [SerializeField] private ActionData actionData;
-        [SerializeField] private DamageType allowedDamageType;
         
-        [Inject] private PoolManagerMono _poolManager;
+        [SerializeField] private PoolManagerSO poolManager;
 
         private PoolingEffect _effect;
-        
+        private Dictionary<DamageType, PoolingItemSO> _hitImpactDict;
+
+        private void Awake()
+        {
+            _hitImpactDict = new Dictionary<DamageType, PoolingItemSO>();
+            GetComponentsInChildren<HitImpact>().ToList()
+                .ForEach(x => _hitImpactDict.Add(x.AllowedDamageType, x.PoolingItem));   
+        }
+
         public override void CreateFeedback()
         {
-            if ((actionData.DamageData.damageType & allowedDamageType) == 0) return;
-            
-            _effect = _poolManager.Pop<PoolingEffect>(hitImpactItem);
+            PoolingItemSO hitPoolItem = _hitImpactDict.GetValueOrDefault(actionData.DamageData.damageType); 
+            Debug.Assert(hitPoolItem != null, $"DamageType can not found, damage type is {actionData.DamageData.damageType}");
+            _effect = poolManager.Pop(hitPoolItem.poolType) as PoolingEffect;
             
             Quaternion rotation = Quaternion.LookRotation(actionData.HitNormal * -1);
             _effect.PlayVFX(actionData.HitPoint, rotation);
@@ -35,7 +44,7 @@ namespace Code.Feedbacks
         public override void StopFeedback()
         {
             if (_effect == null) return;
-            _poolManager.Push(_effect);
+            poolManager.Push(_effect);
         }
     }
 }
