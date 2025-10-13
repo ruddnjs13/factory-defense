@@ -48,6 +48,53 @@ MonoBehaviour:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
     overrideBaseValue: 100
+  - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
+    isUseOverride: 1
+    overrideBaseValue: 10
+--- !u!1 &1315535045189026097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 675538863490933124}
+  - component: {fileID: 8774751401202054056}
+  m_Layer: 0
+  m_Name: DamageCompo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &675538863490933124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315535045189026097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 237679404654795121}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8774751401202054056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315535045189026097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d9bb91d8be43f79cab228f0f50befc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417885786407353877
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +138,7 @@ GameObject:
   - component: {fileID: 6484941280280787239}
   - component: {fileID: 199062443586517227}
   m_Layer: 0
-  m_Name: ActionData (1)
+  m_Name: ActionData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +302,8 @@ GameObject:
   - component: {fileID: 4635900655321353793}
   - component: {fileID: 8290303188609170174}
   - component: {fileID: 4349858021496958874}
-  m_Layer: 0
+  - component: {fileID: 223792217399840397}
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,6 +399,21 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: -0.004442513, y: 0.2748716, z: 0.0028538704}
+--- !u!114 &223792217399840397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780640469145935817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a76bd1bbcf04f52bd04a884a1840f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpStat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
+  maxHealth: 0
+  currentHealth: 0
 --- !u!1 &8494490316000351532
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 237679404654795121}
+  - component: {fileID: -6010941207377639770}
   - component: {fileID: 2489093148904239951}
   - component: {fileID: 1848315771974398130}
   - component: {fileID: 2842010154365732679}
@@ -387,8 +451,21 @@ Transform:
   - {fileID: 3893200397695634303}
   - {fileID: 513166256293286478}
   - {fileID: 6484941280280787239}
+  - {fileID: 675538863490933124}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6010941207377639770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494490316000351532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46dcb74cf4b291489ab4f768ed93fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2489093148904239951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,11 +485,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   turretData: {fileID: 11400000, guid: 4a77e0b4a62da0e499fc5d8844d90362, type: 2}
+  attackData: {fileID: 11400000, guid: 0ce41afebbb061048a17bdb55b341717, type: 2}
+  turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
   turretHead: {fileID: 5328632017233840044}
-  recoilAmount: 0.4
+  recoilAmount: 0.3
   firePos: {fileID: 6244493790419728172}
   shooter: {fileID: 1983261678809589301}
   poolManager: {fileID: 11400000, guid: 20d4958a93554864f90e604391087170, type: 2}
@@ -652,7 +731,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 0.5411765}
+      maxColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0.5411765}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1076,7 +1155,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 9.64
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -1162,7 +1241,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.2
       mode: 0
       spread: 0
       speed:

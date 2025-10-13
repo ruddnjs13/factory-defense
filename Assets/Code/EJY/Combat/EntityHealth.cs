@@ -1,3 +1,4 @@
+using Chipmunk.ComponentContainers;
 using Code.Core.StatSystem;
 using Code.Entities;
 using Core.GameEvent;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Combat
 {
-    public class EntityHealth : MonoBehaviour, IEntityComponent, IDamageable, IAfterInitialize
+    public class EntityHealth : MonoBehaviour, IEntityComponent, IDamageable, IAfterInitialize, IContainerComponent
     {
         private Entity _entity;
         private ActionData _actionData;
@@ -20,6 +21,13 @@ namespace Code.Combat
         public float MaxHealth => maxHealth;
         public float CurrentHealth => currentHealth;
         
+
+
+        public ComponentContainer ComponentContainer { get; set; }
+
+        public void OnInitialize(ComponentContainer componentContainer)
+        {
+        }
         public void Initialize(Entity entity)
         {
             _entity = entity;
@@ -63,7 +71,5 @@ namespace Code.Combat
 
             _entity.OnHitEvent?.Invoke();
         }
-
-       
     }
 }

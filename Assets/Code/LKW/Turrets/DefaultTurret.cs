@@ -15,8 +15,6 @@ namespace Code.LKW.Turrets
         
         protected override void Shoot()
         {
-            Debug.Log("shoot");
-            
             Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
             
             bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
