@@ -1,4 +1,6 @@
 using Code.Combat;
+using Code.Effects;
+using Code.Events;
 using DG.Tweening;
 using RuddnjsPool;
 using UnityEngine;
@@ -13,6 +15,7 @@ namespace Code.LKW.Turrets
         [SerializeField] private PoolManagerSO poolManager;
         [SerializeField] private PoolingItemSO bulletItem;
         
+        
         protected override void Shoot()
         {
             Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
@@ -20,7 +23,10 @@ namespace Code.LKW.Turrets
             bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
                 ,attackData),firePos.position ,Quaternion.LookRotation(firePos.forward),firePos.forward *  turretData.bulletSpeed);
             
-            Recoil();
+            var evt = EffectEvents.PlayPoolEffect.Initializer(firePos.position,
+                Quaternion.Euler(firePos.forward), muzzleParticleItem , 0.4f );
+            
+            effectChannel.RaiseEvent(evt);
         }
 
         public void Recoil()

@@ -258,6 +258,111 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3379775363980302916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066923640675705823}
+  - component: {fileID: 7564977135822958206}
+  m_Layer: 0
+  m_Name: DestroyFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066923640675705823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379775363980302916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 237679404654795121}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7564977135822958206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379775363980302916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTrm: {fileID: 237679404654795121}
+  duration: 1.2
+  OnFeedbackComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &4563732052692668913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4876900308797485800}
+  - component: {fileID: 8938220801316660767}
+  m_Layer: 0
+  m_Name: Decal Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4876900308797485800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563732052692668913}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.1800001, y: 1.14, z: 3.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 237679404654795121}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8938220801316660767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563732052692668913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 3df8dc30bf0324e47b9832fe368c7c33, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_DecalLayerMask: 2
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 8.5}
+  m_Size: {x: 20, y: 20, z: 17}
+  m_FadeFactor: 1
 --- !u!1 &5328632017233840044
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +557,8 @@ Transform:
   - {fileID: 513166256293286478}
   - {fileID: 6484941280280787239}
   - {fileID: 675538863490933124}
+  - {fileID: 1066923640675705823}
+  - {fileID: 4876900308797485800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-6010941207377639770
@@ -483,8 +590,20 @@ MonoBehaviour:
       m_Calls: []
   OnDeathEvent:
     m_PersistentCalls:
-      m_Calls: []
-  <MachineSo>k__BackingField: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 7564977135822958206}
+        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <MachineSo>k__BackingField: {fileID: 11400000, guid: 73ee9e3a36a5e0048b88e74bca402b49, type: 2}
   <Size>k__BackingField: {x: 0, y: 0}
   turretData: {fileID: 11400000, guid: 4a77e0b4a62da0e499fc5d8844d90362, type: 2}
   attackData: {fileID: 11400000, guid: 0ce41afebbb061048a17bdb55b341717, type: 2}
@@ -493,6 +612,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   turretHead: {fileID: 5328632017233840044}
+  effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
+  muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
   recoilAmount: 0.3
   firePos: {fileID: 6244493790419728172}
   shooter: {fileID: 1983261678809589301}

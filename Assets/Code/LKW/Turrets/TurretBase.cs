@@ -5,6 +5,8 @@ using Code.Core.StatSystem;
 using Code.EJY.Enemies;
 using Code.Entities;
 using Code.SHS.Machines;
+using Core.GameEvent;
+using RuddnjsPool;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -20,6 +22,8 @@ namespace Code.LKW.Turrets
         [SerializeField] protected StatSO turretDamageStat;
         [SerializeField] private LayerMask targetLayer;
         [SerializeField] protected GameObject turretHead;
+        [SerializeField] protected GameEventChannelSO effectChannel;
+        [SerializeField] protected PoolingItemSO muzzleParticleItem;
         [Space]
         [Space]
         
