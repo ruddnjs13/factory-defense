@@ -58,23 +58,5 @@ namespace Code.Entities
         {
             Destroy(gameObject);
         }
-
-        public void RotateToTarget(Vector3 targetPosition, bool isSmooth = false)
-        {
-            Vector3 direction = targetPosition - transform.position;
-            direction.y = 0;
-            Quaternion targetRotation = Quaternion.LookRotation(direction.normalized);
-
-            if (isSmooth)
-            {
-                const float smoothRotateSpeed = 15f;
-                transform.rotation = 
-                    Quaternion.RotateTowards(transform.rotation, targetRotation, smoothRotateSpeed * Time.deltaTime);
-            }
-            else
-            {
-                transform.rotation = targetRotation;
-            }
-        }
     }
 }

@@ -4,6 +4,8 @@ using Code.Combat;
 using Code.Core.StatSystem;
 using Code.EJY.Enemies;
 using Code.Entities;
+using Code.SHS.Machines;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 

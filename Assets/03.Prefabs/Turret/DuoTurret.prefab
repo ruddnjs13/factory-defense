@@ -5323,6 +5323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6988910358074824127}
+  - component: {fileID: -3661792455331551356}
   - component: {fileID: 7460670818736072856}
   - component: {fileID: 6689209275001379501}
   - component: {fileID: 2455330616815819997}
@@ -5352,6 +5353,18 @@ Transform:
   - {fileID: 1909438070782977960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3661792455331551356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648709383769272421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46dcb74cf4b291489ab4f768ed93fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &7460670818736072856
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5419,6 +5432,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   turretData: {fileID: 11400000, guid: 36b35b2f53e19d44eb08023a667d85cd, type: 2}
+  attackData: {fileID: 0}
+  turretDamageStat: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

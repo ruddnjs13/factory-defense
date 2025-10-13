@@ -1,0 +1,39 @@
+using Code.SHS.Extensions;
+using TMPro;
+using UnityEngine;
+
+namespace Code.SHS.Machines
+{
+    public class Portal : BaseMachine, IInputResource
+    {
+        [SerializeField] private DirectionEnum facingDirection;
+        [SerializeField] private TMP_Text resourceCountText;
+        public static int resourceCount = 0;
+
+        public void OnTick(float deltaTime)
+        {
+        }
+
+        public Vector2Int Position { get; }
+        public Vector2Int Size { get; }
+
+        public bool CanAcceptInputFrom(IOutputResource machine)
+        {
+            Vector2Int direction = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
+            Vector2Int anotherDirection = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
+            return machine.Position == Position + direction || machine.Position == Position + anotherDirection;
+        }
+
+        public bool TryReceiveResource(IOutputResource machine, Resource resource)
+        {
+            ReceiveResource(resource);
+            return true;
+        }
+
+        public void ReceiveResource(Resource resource)
+        {
+            resourceCount += 1;
+            resourceCountText.text = resourceCount.ToString();
+        }
+    }
+}
