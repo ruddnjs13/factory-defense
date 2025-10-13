@@ -9,19 +9,11 @@ namespace Code.SHS.Machines
         public override void OnInitialize(ComponentContainer componentContainer)
         {
             base.OnInitialize(componentContainer);
-            StartCoroutine(TransforCoroutine());
         }
 
-        public IEnumerator TransforCoroutine()
+        public override bool TryReceiveResource(IOutputResource machine, Resource resource)
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(1);
-                if (currentResource != null)
-                {
-                    ExtractResource();
-                }
-            }
+            return base.TryReceiveResource(machine, resource);
         }
     }
 }

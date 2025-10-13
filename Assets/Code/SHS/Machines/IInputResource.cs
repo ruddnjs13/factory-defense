@@ -1,7 +1,10 @@
 namespace Code.SHS.Machines
 {
-    public interface IInputResource
+    public interface IInputResource : IMachine
     {
-        public bool TryInsertResource(Resource resource, DirectionEnum inputDir);
+        public bool CanAcceptInputFrom(IOutputResource machine);
+        public bool TryReceiveResource(IOutputResource machine, Resource resource);
+        public void ReceiveResource(Resource resource);
+        
     }
 }

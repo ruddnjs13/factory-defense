@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace Code.SHS.Machines
 {
-    public interface IOutputResource
+    public interface IOutputResource : IMachine
     {
-        void ExtractResource();
+        void OutputItem();
     }
 }
