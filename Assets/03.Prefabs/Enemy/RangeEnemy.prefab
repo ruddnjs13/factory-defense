@@ -147,6 +147,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTrm: {fileID: 8097240512481622393}
   duration: 0.3
+  OnFeedbackComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3586143468086053996}
+        m_TargetAssemblyTypeName: Code.Enemies.FSMEnemy, Assembly-CSharp
+        m_MethodName: EntityDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2008674810442494300
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,10 +634,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2077226530096951697}
+        m_TargetAssemblyTypeName: Code.Feedbacks.BlinkFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2035596421457938076}
+        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <TargetTrm>k__BackingField: {fileID: 0}
   states:
   - {fileID: 11400000, guid: 134ba2171a9f47040927b2dc4f378b52, type: 2}
