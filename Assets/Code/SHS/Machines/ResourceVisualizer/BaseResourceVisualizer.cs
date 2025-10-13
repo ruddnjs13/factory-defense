@@ -4,12 +4,10 @@ using UnityEngine;
 
 namespace Code.SHS.Machines.ResourceVisualizer
 {
-    public class BaseResourceVisualizer : MonoBehaviour, IExcludeContainerComponent
+    public abstract class BaseResourceVisualizer : MonoBehaviour, IExcludeContainerComponent
     {
         private float _progress;
         private float _duration;
-        [SerializeField] private Vector3 _startPoint;
-        [SerializeField] private Vector3 _endPoint;
 
         private GameObject resourceObject = null;
         public ComponentContainer ComponentContainer { get; set; }
@@ -24,20 +22,21 @@ namespace Code.SHS.Machines.ResourceVisualizer
         }
 
 
-        private void StartTransport(Resource obj, float duration)
+        public virtual void StartTransport(Resource obj, float duration)
         {
             _progress = 0f;
             _duration = duration;
+            if (resourceObject != null)
+                DestroyImmediate(resourceObject);
             resourceObject = Instantiate(obj.ResourceSo.prefab, transform);
             gameObject.SetActive(true);
-            transform.localPosition = _startPoint;
         }
 
-        private void EndTransport(Resource obj)
+        public void EndTransport()
         {
             if (resourceObject != null)
             {
-                Destroy(resourceObject);
+                DestroyImmediate(resourceObject);
                 resourceObject = null;
             }
 
@@ -50,30 +49,12 @@ namespace Code.SHS.Machines.ResourceVisualizer
             if (_progress < 1f)
             {
                 _progress += Time.deltaTime / _duration;
-                transform.localPosition = Vector3.Lerp(_startPoint, _endPoint, _progress);
+                OnProgressChanged(_progress);
             }
         }
 
-        private void OnValidate()
-        {
-            if (_progress < 1f)
-            {
-                transform.localPosition = Vector3.Lerp(_startPoint, _endPoint, _progress);
-            }
-        }
+        protected abstract void OnProgressChanged(float progress);
 
-        private void OnDrawGizmosSelected()
-        {
-            if (transform.parent == null) return;
 
-            Gizmos.color = Color.green;
-            Vector3 worldStartPosition = transform.parent.TransformPoint(_startPoint);
-            Vector3 worldEndPosition = transform.parent.TransformPoint(_endPoint);
-            Gizmos.DrawSphere(worldStartPosition, 0.1f);
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(worldEndPosition, 0.1f);
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(worldStartPosition, worldEndPosition);
-        }
     }
 }
