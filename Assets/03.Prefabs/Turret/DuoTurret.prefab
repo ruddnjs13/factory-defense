@@ -5378,7 +5378,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -5431,6 +5431,8 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  <MachineSo>k__BackingField: {fileID: 0}
+  <Size>k__BackingField: {x: 0, y: 0}
   turretData: {fileID: 11400000, guid: 36b35b2f53e19d44eb08023a667d85cd, type: 2}
   attackData: {fileID: 0}
   turretDamageStat: {fileID: 0}
