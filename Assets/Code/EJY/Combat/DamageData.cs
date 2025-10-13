@@ -8,6 +8,7 @@ namespace Code.Combat
         None = 0, MELEE = 1, RANGE = 2, MAGIC = 4
     }
     
+    [Serializable]
     public struct DamageData
     {
         public float damage;

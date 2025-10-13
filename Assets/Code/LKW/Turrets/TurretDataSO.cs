@@ -9,6 +9,7 @@ namespace Code.LKW.Turrets
         public float range;
         public float reloadTimer;
         public float rotationSpeed;
+        public float bulletSpeed;
         public float shootAllowanceAngle;
         //public 
     }

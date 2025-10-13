@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91403014b80540929ca4d2d1b4660526, type: 3}
-  m_Name: DefaultTurretData
+  m_Script: {fileID: 11500000, guid: a010bf328032442aa5b9e78ffcc37627, type: 3}
+  m_Name: TurretDamageStat
   m_EditorClassIdentifier: 
-  range: 10
-  reloadTimer: 0.4
-  rotationSpeed: 180
-  bulletSpeed: 18
-  shootAllowanceAngle: 12
+  statName: TurretDamageStat
+  description: 
+  icon: {fileID: 0}
+  displayName: TurretDamageStat
+  baseValue: 10
+  minValue: 0
+  maxValue: 500
+  <IsPercent>k__BackingField: 0

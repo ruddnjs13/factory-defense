@@ -15,4 +15,5 @@ MonoBehaviour:
   range: 10
   reloadTimer: 0.2
   rotationSpeed: 180
+  bulletSpeed: 18
   shootAllowanceAngle: 15

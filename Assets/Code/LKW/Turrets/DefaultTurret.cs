@@ -1,4 +1,4 @@
-using Code.LKW.Combat;
+using Code.Combat;
 using DG.Tweening;
 using RuddnjsPool;
 using UnityEngine;
@@ -12,14 +12,16 @@ namespace Code.LKW.Turrets
         [SerializeField] private Transform shooter;
         [SerializeField] private PoolManagerSO poolManager;
         [SerializeField] private PoolingItemSO bulletItem;
+        
         protected override void Shoot()
         {
             Debug.Log("shoot");
             
             Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
             
-            bullet.transform.position = firePos.position;
-            bullet.InitProjectile(firePos.forward);
+            bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
+                ,attackData),firePos.position ,Quaternion.LookRotation(firePos.forward),firePos.forward *  turretData.bulletSpeed);
+            
             Recoil();
         }
 
