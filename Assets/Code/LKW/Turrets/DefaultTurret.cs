@@ -27,6 +27,7 @@ namespace Code.LKW.Turrets
                 Quaternion.Euler(firePos.forward), muzzleParticleItem , 0.4f );
             
             effectChannel.RaiseEvent(evt);
+            Recoil();
         }
 
         public void Recoil()

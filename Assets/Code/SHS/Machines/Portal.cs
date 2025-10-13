@@ -21,6 +21,10 @@ namespace Code.SHS.Machines
         {
             Vector2Int direction = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
             Vector2Int anotherDirection = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
+            Debug.Log(machine.Position);
+            Debug.Log(Position + direction
+            );
+            Debug.Log(Position + anotherDirection);
             return machine.Position == Position + direction || machine.Position == Position + anotherDirection;
         }
 

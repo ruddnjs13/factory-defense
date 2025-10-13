@@ -56,7 +56,6 @@ namespace Code.SHS.Machines
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
-            Debug.Log(TransportInterval);
             if (transferTimer >= TransportInterval)
                 OutputItem();
             transferTimer += deltaTime;
