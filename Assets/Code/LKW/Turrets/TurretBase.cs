@@ -1,19 +1,29 @@
 using System;
 using System.Collections.Generic;
+using Code.Combat;
+using Code.Core.StatSystem;
 using Code.EJY.Enemies;
+using Code.Entities;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Code.LKW.Turrets
 {
-    public abstract class TurretBase : MonoBehaviour
+    public abstract class TurretBase : Entity
     {
         [Header("Turret Settings")]
-        [SerializeField] private TurretDataSO turretData;
+        [Space]
+        [SerializeField] protected TurretDataSO turretData;
+        [SerializeField] protected AttackDataSO attackData;
+        [SerializeField] protected StatSO turretDamageStat;
         [SerializeField] private LayerMask targetLayer;
-
         [SerializeField] protected GameObject turretHead;
+        [Space]
+        [Space]
         
+        protected DamageCompo damageCompo;
+        protected EntityStatCompo entityStatCompo;
+
         private SphereCollider sphereCollider;
         
         private float _reloadTimer;
@@ -36,9 +46,12 @@ namespace Code.LKW.Turrets
         }
 
         #region Init
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             sphereCollider = GetComponent<SphereCollider>();
+            damageCompo = GetCompo<DamageCompo>();
+            entityStatCompo = GetCompo<EntityStatCompo>();
         }
 
         private void OnEnable()

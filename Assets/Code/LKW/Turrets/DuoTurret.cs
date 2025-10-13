@@ -1,4 +1,4 @@
-using Code.LKW.Combat;
+using Code.Combat;
 using DG.Tweening;
 using RuddnjsPool;
 using UnityEditor.Experimental.GraphView;
@@ -20,8 +20,10 @@ namespace Code.LKW.Turrets
         {
             Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
             
-            bullet.transform.position = firePos[_shootIdx].position;
-            bullet.InitProjectile(firePos[_shootIdx].forward);
+            bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
+                    , attackData),firePos[_shootIdx].position
+                , Quaternion.LookRotation(firePos[_shootIdx].forward)
+                , firePos[_shootIdx].forward *  turretData.bulletSpeed);
 
             Recoil();
             _shootIdx = (_shootIdx + 1) % 2;
