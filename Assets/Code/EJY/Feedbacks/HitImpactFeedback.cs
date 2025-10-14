@@ -33,15 +33,11 @@ namespace Code.Feedbacks
             _effect = poolManager.Pop(hitPoolItem.poolType) as PoolingEffect;
             
             Quaternion rotation = Quaternion.LookRotation(actionData.HitNormal * -1);
-            _effect.PlayVFX(actionData.HitPoint, rotation);
-
-            DOVirtual.DelayedCall(playDuration, StopFeedback);
+            _effect.PlayVFX(actionData.HitPoint, rotation, playDuration);
         }
 
         public override void StopFeedback()
         {
-            if (_effect == null) return;
-            poolManager.Push(_effect);
         }
     }
 }
