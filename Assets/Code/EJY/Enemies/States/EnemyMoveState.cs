@@ -7,11 +7,13 @@ namespace Code.EJY.Enemies.States
     public class EnemyMoveState : EnemyState
     {
         private EnemyAttackCompo _attackCompo;
+        private TargetDetector _detector;
         private NavMovement _movement;
 
         public EnemyMoveState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _attackCompo = entity.GetCompo<EnemyAttackCompo>();
+            _detector = entity.GetCompo<TargetDetector>();
             _movement = entity.GetCompo<NavMovement>();
         }
 
@@ -23,7 +25,7 @@ namespace Code.EJY.Enemies.States
 
         public override void Update()
         {
-            if (_attackCompo.InAttackRange)
+            if (_detector.InAttackRange)
                 _enemy.ChangeState("ATTACK");
         }
 
