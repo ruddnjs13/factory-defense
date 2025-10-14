@@ -20,7 +20,7 @@ public class NotifyValue<T>
         {
             T before = _value;
             _value = value;
-            if ((before == null && value != null) || !before.Equals(_value))
+            if ((before == null && value != null) || (before != null && !before.Equals(_value)))
                 OnValueChanged?.Invoke(before, _value);
         }
 

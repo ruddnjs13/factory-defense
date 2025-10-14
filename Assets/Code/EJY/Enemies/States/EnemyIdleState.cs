@@ -16,7 +16,7 @@ namespace Code.EJY.Enemies.States
 
         public override void Update()
         {
-            bool inRange = _detector.IsTargeting.Value && _detector.InAttackRange;
+            bool inRange = _detector.IsTargeting && _detector.InAttackRange;
             
             if (inRange && _attackCompo.CanAttack)
             {

@@ -15,15 +15,15 @@ namespace Code.EJY.Enemies
         private NavMovement _movement;
         private Collider[] _hits;
         
-        public NotifyValue<bool> IsTargeting { get; private set; } = new NotifyValue<bool>(false);
+        public bool IsTargeting { get; private set; }
 
-        public Transform CurrentTarget { get; private set; }
+        private NotifyValue<Transform> CurrentTarget { get; set; } = new();
         public bool InAttackRange { get; private set; }
 
         
-        private void HandleTargetingChanged(bool prev, bool next)
+        private void HandleTargetingChanged(Transform prev, Transform next)
         {
-            _movement.SetDestination(next ? CurrentTarget.position : _enemy.TargetTrm.position);
+            _movement.SetDestination(next != null ? CurrentTarget.Value.position : _enemy.TargetTrm.position);
         }
 
         public void Initialize(Entity entity)
@@ -31,7 +31,7 @@ namespace Code.EJY.Enemies
             _enemy = entity as Enemy;
             _movement = entity.GetCompo<NavMovement>();
             _hits = new Collider[1];
-            IsTargeting.OnValueChanged += HandleTargetingChanged;
+            CurrentTarget.OnValueChanged += HandleTargetingChanged;
         }
         
         private void FixedUpdate()
@@ -39,8 +39,8 @@ namespace Code.EJY.Enemies
             Array.Clear(_hits, 0, 1);
             Physics.OverlapSphereNonAlloc(_enemy.transform.position, detectRange, _hits, whatIsTarget);
             
-            CurrentTarget =_hits[0]?.transform;
-            IsTargeting.Value = CurrentTarget != null;
+            CurrentTarget.Value =_hits[0]?.transform;
+            IsTargeting = CurrentTarget != null;
             
             int amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, attackRange, _hits, whatIsTarget);
 
@@ -49,7 +49,7 @@ namespace Code.EJY.Enemies
         
         private void OnDestroy()
         {
-            IsTargeting.OnValueChanged -= HandleTargetingChanged;
+            CurrentTarget.OnValueChanged -= HandleTargetingChanged;
         }
 
         private void OnDrawGizmos()
