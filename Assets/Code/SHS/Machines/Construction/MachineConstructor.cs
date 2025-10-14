@@ -50,10 +50,19 @@ namespace Code.SHS.Machines.Construction
                 {
                     Vector3 position = Vector3Int.RoundToInt(hit.point) * new Vector3Int(1, 0, 1);
                     machinePreview.transform.position = position;
-                    if (isLeftClicking && WorldGrid.Instance.GetTile(position).Machine == null)
-                        Instantiate(machineSO.machinePrefab, position, machinePreview.transform.rotation);
+                    if (isLeftClicking)
+                        TryConstruct(position);
                 }
             }
+        }
+
+        private void TryConstruct(Vector3 position)
+        {
+            if (WorldGrid.Instance.GetTile(position).Machine != null) return;
+
+            if (Portal.resourceCount <= machineSO.cost) return;
+            Portal.resourceCount -= machineSO.cost;
+            Instantiate(machineSO.machinePrefab, position, machinePreview.transform.rotation);
         }
 
         private void LeftClickHandler(bool isPressed)
@@ -82,6 +91,7 @@ namespace Code.SHS.Machines.Construction
                 CancelConstruction();
             }
         }
+
         private void RotateHandler()
         {
             if (machinePreview != null)

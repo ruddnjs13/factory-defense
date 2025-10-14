@@ -3,6 +3,7 @@ using Chipmunk.ComponentContainers;
 using Chipmunk.GameEvents;
 using Code.Entities;
 using Code.SHS.Machines.Events;
+using Code.SHS.TickSystem;
 using Code.SHS.Worlds;
 using UnityEngine;
 

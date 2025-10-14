@@ -8,5 +8,6 @@ namespace Code.SHS.Machines
         public string machineName;
         public GameObject machineGhostPrefab;
         public GameObject machinePrefab;
+        public int cost = 20;
     }
 }

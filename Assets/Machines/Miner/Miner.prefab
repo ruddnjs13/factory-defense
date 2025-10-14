@@ -88,7 +88,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188409721084615019, guid: b1595c1b49ed109468d42e6efcca10c6, type: 3}
       propertyPath: _endPoint.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1188409721084615019, guid: b1595c1b49ed109468d42e6efcca10c6, type: 3}
       propertyPath: _startPoint.y
@@ -150,6 +150,17 @@ PrefabInstance:
       addedObject: {fileID: 546109652097536331}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1595c1b49ed109468d42e6efcca10c6, type: 3}
+--- !u!114 &1224301159686546090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1188409721084615019, guid: b1595c1b49ed109468d42e6efcca10c6, type: 3}
+  m_PrefabInstance: {fileID: 37017478121503681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be028a2e33504c8dbe70f89423cf51c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5881379062074589582 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5844924836753308239, guid: b1595c1b49ed109468d42e6efcca10c6, type: 3}
@@ -185,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0756018
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -271,11 +282,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94fd3c1f7d14fffacfda7a6a3be27fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   <MachineSo>k__BackingField: {fileID: 11400000, guid: f855dd91c4777f342a85a48a5282d6ce, type: 2}
-  <Position>k__BackingField: {x: 0, y: 0}
   <Size>k__BackingField: {x: 0, y: 0}
   inputDirection: 0
   outputDirection: 0
+  resourceVisualizer: {fileID: 1224301159686546090}
   <TransportInterval>k__BackingField: 2
   testResource: {fileID: 11400000, guid: d50fde1ceae424942abb206cdcfcbdfd, type: 2}
   mineInterval: 2
