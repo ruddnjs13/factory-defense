@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6b8b2216bf439ca60e5b8d3a22f15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 2304
   attackData: {fileID: 0}
   damageStat: {fileID: 11400000, guid: 73a5c8d399a4c3441bbbc98438dfbb27, type: 2}
   attackInterval: 0.5
+  attackRange: 1.5
+  detectRange: 3.5
   casters: []
