@@ -34,7 +34,7 @@ namespace Code.SHS.Machines
 
         public void ReceiveResource(Resource resource)
         {
-            resourceCount += 1;
+            resourceCount += resource.Amount;
         }
     }
 }

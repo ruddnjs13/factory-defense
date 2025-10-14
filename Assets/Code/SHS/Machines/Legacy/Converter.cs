@@ -6,7 +6,7 @@ namespace Code.SHS.Machines.Legacy
 
         public override void OutputItem()
         {
-            currentResource = new Resource(changeResource);
+            currentResource = new Resource(changeResource, 10);
             base.OutputItem();
         }
     }
