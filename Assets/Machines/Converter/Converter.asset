@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
+  m_Name: Converter
+  m_EditorClassIdentifier: 
+  machineName: Converter
+  machineGhostPrefab: {fileID: 8225756855958269821, guid: eac2a92df24ef784f8bc1e0708a28707, type: 3}
+  machinePrefab: {fileID: 4413235326097348105, guid: c8ad2e985b4f10142b541c7c5bc7fab5, type: 3}
+  cost: 25

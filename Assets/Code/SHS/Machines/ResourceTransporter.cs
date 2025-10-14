@@ -73,7 +73,7 @@ namespace Code.SHS.Machines
             transferTimer = 0f;
         }
 
-        public void OutputItem()
+        public virtual void OutputItem()
         {
             if (currentResource == null) return;
             transferTimer = 0f;
