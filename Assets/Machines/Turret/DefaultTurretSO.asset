@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DefaultTurretSO
   m_EditorClassIdentifier: 
   machineName: DefaultTurret
-  machineGhostPrefab: {fileID: 0}
-  machinePrefab: {fileID: 0}
+  machineGhostPrefab: {fileID: 5785638869718451386, guid: 9a4a6bb819813044ebec4f6513d66c9c, type: 3}
+  machinePrefab: {fileID: 8494490316000351532, guid: aa4c837762074574396fbb8ba6d934d0, type: 3}
+  cost: 20

@@ -12,12 +12,9 @@ namespace Code.SHS.Machines.ResourceVisualizer
         private GameObject resourceObject = null;
         public ComponentContainer ComponentContainer { get; set; }
 
-        private ITransporter transporter;
 
         public void OnInitialize(ComponentContainer componentContainer)
         {
-            Debug.Assert(transporter != null,
-                $"can not find transporter component in {componentContainer.gameObject.name}");
             gameObject.SetActive(false);
         }
 

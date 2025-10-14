@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Turret
   m_EditorClassIdentifier: 
   machines:
-  - {fileID: 11400000, guid: f855dd91c4777f342a85a48a5282d6ce, type: 2}
+  - {fileID: 11400000, guid: 1b952053007ebb549b50043beaf5f224, type: 2}
