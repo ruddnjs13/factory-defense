@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 
 namespace RuddnjsPool.RuddnjsLib.Pool.RunTime
 {
+    [Provide]
     public class PoolManagerMono : MonoBehaviour, IDependencyProvider
     {
         [SerializeField] private PoolManagerSO poolManager;
