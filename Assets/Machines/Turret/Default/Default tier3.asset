@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
-  m_Name: Triple Turret SO
+  m_Name: Default tier3
   m_EditorClassIdentifier: 
   machineName: DefaultTurret
   machineGhostPrefab: {fileID: 738169086696019639, guid: dd87cf6f0fe874e479c9d2fd04d9560d, type: 3}

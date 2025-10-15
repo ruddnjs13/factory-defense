@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
-  m_Name: Duo Turret SO
+  m_Name: Default tier2
   m_EditorClassIdentifier: 
   machineName: Duo Turret
   machineGhostPrefab: {fileID: 1169008375282370725, guid: fd51ef8fb1cb5e24ab4f6a721033142e, type: 3}

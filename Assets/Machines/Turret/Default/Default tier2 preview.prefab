@@ -4978,7 +4978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8587927052218569702}
   m_Layer: 0
-  m_Name: DuoTurret Preview
+  m_Name: Default tier2 preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4993,7 +4993,7 @@ Transform:
   m_GameObject: {fileID: 1169008375282370725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6811397, y: -0.3, z: -5.1385803}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.LKW.Turrets
 {
-    public class SingleTurret : TurretBase
+    public class DefaultTier1 : TurretBase
     {
         [SerializeField] private float recoilAmount;
         [SerializeField] private Transform firePos;
