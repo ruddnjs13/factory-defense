@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba28872a88b428292c1996f67fdf59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 15
   damageCaster: {fileID: 6092970893399747140}
   attackData: {fileID: 11400000, guid: d73d66ac4ac951c4db9a8a736129b03e, type: 2}
   rbCompo: {fileID: 1307001874844799860}
