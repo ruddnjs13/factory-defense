@@ -29,6 +29,8 @@ namespace Code.LKW.Turrets
         
         protected DamageCompo damageCompo;
         protected EntityStatCompo entityStatCompo;
+        protected EntityHealth entityHealth;
+        protected TurretRenderer turretRenderer;
 
         private SphereCollider sphereCollider;
         
@@ -58,12 +60,22 @@ namespace Code.LKW.Turrets
             sphereCollider = GetComponent<SphereCollider>();
             damageCompo = GetCompo<DamageCompo>();
             entityStatCompo = GetCompo<EntityStatCompo>();
+            entityHealth = GetCompo<EntityHealth>();
+            turretRenderer = GetCompo<TurretRenderer>();
         }
 
         private void OnEnable()
         {
             sphereCollider.radius = turretData.range;
+            entityHealth.onHealthChangedEvent += turretRenderer.ApplyDamagedVisual;
         }
+
+        public override void OnDestroy()
+        {
+            entityHealth.onHealthChangedEvent -= turretRenderer.ApplyDamagedVisual;
+            base.OnDestroy();
+        }
+
         #endregion
 
         #region Shooting Logic

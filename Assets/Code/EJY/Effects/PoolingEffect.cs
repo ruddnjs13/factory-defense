@@ -46,7 +46,8 @@ namespace Code.Effects
         public void PlayVFX(Vector3 hitPoint, Quaternion rotation, float duration)
         {
             _playableVFX.PlayVfx(hitPoint, rotation);
-            _delayTween = DOVirtual.DelayedCall(duration, () => _myPool.Push(this));
+            _delayTween = DOVirtual.DelayedCall(duration, () => _myPool.Push(this))
+                .SetLink(gameObject);
         }
     }
 }
