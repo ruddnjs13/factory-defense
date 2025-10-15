@@ -4923,7 +4923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2167546207892951497}
   m_Layer: 0
-  m_Name: Preview Turret
+  m_Name: Default Turret Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

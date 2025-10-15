@@ -42,7 +42,7 @@ namespace Code.LKW.Turrets
         {
             Tick();
         }
-        
+
         public virtual void Tick()
         {
             HandleReloadTimer();

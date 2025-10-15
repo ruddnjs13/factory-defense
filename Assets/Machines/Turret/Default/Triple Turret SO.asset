@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
-  m_Name: DuoTurretSO
+  m_Name: Triple Turret SO
   m_EditorClassIdentifier: 
-  machineName: Duo Turret
-  machineGhostPrefab: {fileID: 1169008375282370725, guid: fd51ef8fb1cb5e24ab4f6a721033142e, type: 3}
-  machinePrefab: {fileID: 6648709383769272421, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
+  machineName: DefaultTurret
+  machineGhostPrefab: {fileID: 738169086696019639, guid: dd87cf6f0fe874e479c9d2fd04d9560d, type: 3}
+  machinePrefab: {fileID: 164262275702242236, guid: ffe3330debb2972439c10e7f11fd5594, type: 3}
   cost: 20
