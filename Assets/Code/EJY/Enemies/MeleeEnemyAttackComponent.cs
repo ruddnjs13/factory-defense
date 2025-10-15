@@ -45,10 +45,8 @@ namespace Code.Enemies
             }
         }
 
-        protected override void FixedUpdate()
+        private void FixedUpdate()
         {
-            base.FixedUpdate();
-            
             if (_isActive)
             {
                 foreach (var caster in casters)

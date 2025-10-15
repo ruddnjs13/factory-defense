@@ -26,8 +26,7 @@ namespace Code.Managers
         private void HandlePlayPoolEffect(PlayPoolEffect evt)
         {
             PoolingEffect effect = _poolManager.Pop<PoolingEffect>(evt.targetItem);
-            effect.PlayVFX(evt.position, evt.rotation);
-            ReturnAfterDelay(effect, evt.duration);
+            effect.PlayVFX(evt.position, evt.rotation,evt.duration);
         }
 
         private async void ReturnAfterDelay(PoolingEffect effect, float evtDuration)
