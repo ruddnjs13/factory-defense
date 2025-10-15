@@ -22,6 +22,5 @@ namespace Code.Enemies
         }
 
         public void ChangeState(string newState) => _stateMachine.ChangeState(newState);
-        public void SetDead() => ChangeState("DEAD");
     }
 }
