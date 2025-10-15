@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91403014b80540929ca4d2d1b4660526, type: 3}
-  m_Name: DuoTurretData
+  m_Script: {fileID: 11500000, guid: 7171e79813316404694d15dcc81c24ce, type: 3}
+  m_Name: DestroyEffect
   m_EditorClassIdentifier: 
-  range: 10
-  reloadTimer: 0.2
-  rotationSpeed: 180
-  bulletSpeed: 18
-  shootAllowanceAngle: 15
+  typeName: DestroyEffect
