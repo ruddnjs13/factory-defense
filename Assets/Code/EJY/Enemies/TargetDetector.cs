@@ -37,18 +37,16 @@ namespace Code.EJY.Enemies
         
         private void FixedUpdate()
         {
-            if (CurrentTarget.Value == null)
+            if (!InAttackRange)
             {
-                // 인지
                 Array.Clear(_hits, 0, 1);
                 Physics.OverlapSphereNonAlloc(_enemy.transform.position, detectRange, _hits, whatIsTarget);
             
                 CurrentTarget.Value =_hits[0]?.transform;
-                IsTargeting = CurrentTarget != null;
+                IsTargeting = CurrentTarget.Value != null;
             
-                // 공격
                 int amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, attackRange, _hits, whatIsTarget);
-                InAttackRange = amount > 0;   
+                InAttackRange = amount > 0;
             }
         }
         
