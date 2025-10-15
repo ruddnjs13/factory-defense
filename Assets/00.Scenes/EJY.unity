@@ -828,7 +828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494490316000351532, guid: aa4c837762074574396fbb8ba6d934d0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16596,7 +16596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448701727635748224, guid: bfac48e0f4ff2b04d8fb703ab618fe9f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5258347900308904866, guid: bfac48e0f4ff2b04d8fb703ab618fe9f, type: 3}
       propertyPath: targetVisualTrm
@@ -46692,13 +46692,25 @@ PrefabInstance:
       propertyPath: <TargetTrm>k__BackingField
       value: 
       objectReference: {fileID: 69875674}
+    - target: {fileID: 5771908273905898336, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
+      propertyPath: statOverrides.Array.data[1].isUseOverride
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771908273905898336, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
+      propertyPath: statOverrides.Array.data[0].overrideBaseValue
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771908273905898336, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
+      propertyPath: statOverrides.Array.data[1].overrideBaseValue
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6437866447651954361, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
       propertyPath: m_Name
       value: RangeEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6437866447651954361, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8097240512481622393, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
       propertyPath: m_LocalPosition.x
