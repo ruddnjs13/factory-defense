@@ -1,4 +1,3 @@
-using Code.Core;
 using Code.Entities;
 using Code.Events;
 using Code.Sounds;
@@ -10,6 +9,7 @@ namespace Code.Combat
 {
     public class Projectile : MonoBehaviour, IPoolable
     {
+        [SerializeField] private float lifeTime = 15f;
         [SerializeField] private DamageCaster damageCaster;
         [SerializeField] private AttackDataSO attackData;
         [SerializeField] private Rigidbody rbCompo;
@@ -32,11 +32,19 @@ namespace Code.Combat
         private Entity _owner;
         private Pool _myPool;
         private DamageData _damageData;
+        private float _currentLifeTime = 0;
 
         public void SetUpPool(Pool pool) => _myPool = pool;
 
         public void ResetItem()
         {
+            _currentLifeTime = 0;
+        }
+
+        private void Update()
+        {
+            _currentLifeTime += Time.deltaTime;
+            if(_currentLifeTime >= lifeTime) _myPool.Push(this);
         }
 
         public void SetupProjectile(Entity owner, DamageData damageData, Vector3 position, Quaternion rotation,
