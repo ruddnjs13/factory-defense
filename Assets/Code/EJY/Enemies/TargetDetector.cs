@@ -17,7 +17,7 @@ namespace Code.EJY.Enemies
         
         public bool IsTargeting { get; private set; }
 
-        private NotifyValue<Transform> CurrentTarget { get; set; } = new();
+        public NotifyValue<Transform> CurrentTarget { get; set; } = new();
         public bool InAttackRange { get; private set; }
 
         
