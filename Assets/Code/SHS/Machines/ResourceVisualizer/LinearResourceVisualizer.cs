@@ -1,3 +1,4 @@
+using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 
 namespace Code.SHS.Machines.ResourceVisualizer
@@ -8,7 +9,7 @@ namespace Code.SHS.Machines.ResourceVisualizer
         [SerializeField] private Vector3 _endPoint;
 
 
-        public override void StartTransport(Resource obj, float duration)
+        public override void StartTransport(ShapeResource obj, float duration)
         {
             base.StartTransport(obj, duration);
             transform.localPosition = _startPoint;

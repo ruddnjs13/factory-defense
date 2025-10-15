@@ -12,5 +12,10 @@ namespace Code.SHS.Extensions
         {
             return new Vector2Int(v.x, v.z);
         }
+
+        public static Vector3Int ToInt(this Vector3 v)
+        {
+            return Vector3Int.RoundToInt(v);
+        }
     }
 }

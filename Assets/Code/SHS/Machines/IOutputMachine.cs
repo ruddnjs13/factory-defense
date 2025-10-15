@@ -1,0 +1,10 @@
+using Code.SHS.Machines.Ports;
+using UnityEngine;
+
+namespace Code.SHS.Machines
+{
+    public interface IOutputMachine : IMachine
+    {
+        void OnOutputComplete(OutputPort port);
+    }
+}
