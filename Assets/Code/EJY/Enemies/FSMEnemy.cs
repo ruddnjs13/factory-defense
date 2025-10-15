@@ -13,7 +13,7 @@ namespace Code.Enemies
         private void Start()
         {
             _stateMachine = new EntityStateMachine(this, states);
-            ChangeState("IDLE");
+            ChangeState("MOVE");
         }
 
         private void Update()
