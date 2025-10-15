@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.LKW.Turrets
 {
-    public class DefaultTurret : TurretBase
+    public class SingleTurret : TurretBase
     {
         [SerializeField] private float recoilAmount;
         [SerializeField] private Transform firePos;
@@ -35,6 +35,12 @@ namespace Code.LKW.Turrets
             shooter.transform.DOLocalMoveZ(-recoilAmount, 0.08f)
                 .SetEase(Ease.OutCirc)
                 .SetLoops(2, LoopType.Yoyo);
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            shooter.DOKill();
         }
     }
 }

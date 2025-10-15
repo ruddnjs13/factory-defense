@@ -6,7 +6,7 @@ using RuddnjsLib.Dependencies;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
 
-namespace Blade.Managers
+namespace Code.Managers
 {
     public class EffectManager : MonoBehaviour
     {
