@@ -32,7 +32,9 @@ namespace Code.SHS.Machines.Ports
         {
             Timer = 0f;
             Resource = shapeResource;
-            resourceVisualizer.StartTransport(shapeResource, Interval);
+            resourceVisualizer.StartTransport(shapeResource);
+            if (resourceVisualizer is TimerResourceVisualizer timerVisualizer)
+                timerVisualizer.SetDuration(Interval);
         }
 
         protected override void OnPortTransferComplete()

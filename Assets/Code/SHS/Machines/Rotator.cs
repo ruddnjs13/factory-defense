@@ -1,6 +1,7 @@
 using Chipmunk.ComponentContainers;
 using Code.SHS.Animations;
 using Code.SHS.Machines.Ports;
+using Code.SHS.Machines.ResourceVisualizer;
 using Code.SHS.Machines.ShapeResources;
 using Code.Units.Animations;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Code.SHS.Machines
         [SerializeField] private ParameterSO workParam;
         [SerializeField] private ParameterSO rotateParam;
         [SerializeField] private InputPort inputPort;
+        [SerializeField] private BaseResourceVisualizer resourceVisualizer;
         [SerializeField] private OutputPort outputPort;
         private ParameterAnimator parameterAnimator;
         private AnimatorTrigger animatorTrigger;
@@ -52,6 +54,7 @@ namespace Code.SHS.Machines
         {
             Resource = inputPort.Pop();
             parameterAnimator.SetParameter(workParam);
+            resourceVisualizer.StartTransport(Resource);
         }
 
         public void OnOutputComplete(OutputPort port)
@@ -79,7 +82,11 @@ namespace Code.SHS.Machines
             // Debug.Log(Quaternion.identity * Quaternion.Euler(0, clockwise ? -90 : 90, 0));
 
             if (outputPort.Output(Resource))
+            {
                 Resource = null;
+                
+                resourceVisualizer.EndTransport();
+            }
         }
     }
 }

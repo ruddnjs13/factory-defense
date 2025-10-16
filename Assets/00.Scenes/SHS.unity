@@ -493,7 +493,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 80
   field of view: 60.000004
   orthographic: 1
   orthographic size: 25
@@ -692,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5960273117963359183, guid: b962275bff2827044b370dfc6f2f6838, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5960273117963359183, guid: b962275bff2827044b370dfc6f2f6838, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3829,7 +3829,7 @@ MonoBehaviour:
     FieldOfView: 60.000004
     OrthographicSize: 25
     NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FarClipPlane: 80
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:

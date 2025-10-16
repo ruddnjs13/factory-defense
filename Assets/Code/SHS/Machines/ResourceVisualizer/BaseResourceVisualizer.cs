@@ -7,10 +7,7 @@ namespace Code.SHS.Machines.ResourceVisualizer
 {
     public abstract class BaseResourceVisualizer : MonoBehaviour, IExcludeContainerComponent
     {
-        private float _progress;
-        private float _duration;
-
-        private GameObject resourceObject = null;
+        protected GameObject resourceObject = null;
         public ComponentContainer ComponentContainer { get; set; }
 
 
@@ -20,10 +17,16 @@ namespace Code.SHS.Machines.ResourceVisualizer
         }
 
 
-        public virtual void StartTransport(ShapeResource obj, float duration)
+        public virtual void StartTransport(ShapeResource obj)
         {
-            _progress = 0f;
-            _duration = duration;
+            CreateObject(obj);
+
+            // resourceObject = Instantiate(obj.ResourceSo.prefab, transform);
+            gameObject.SetActive(true);
+        }
+
+        protected virtual void CreateObject(ShapeResource obj)
+        {
             if (resourceObject != null)
                 DestroyImmediate(resourceObject);
 
@@ -37,11 +40,9 @@ namespace Code.SHS.Machines.ResourceVisualizer
             }
 
             resourceObject.transform.SetParent(transform, false);
-            // resourceObject = Instantiate(obj.ResourceSo.prefab, transform);
-            gameObject.SetActive(true);
         }
 
-        public void EndTransport()
+        public virtual void EndTransport()
         {
             if (resourceObject != null)
             {
@@ -49,19 +50,7 @@ namespace Code.SHS.Machines.ResourceVisualizer
                 resourceObject = null;
             }
 
-            _progress = 1f;
             gameObject.SetActive(false);
         }
-
-        void Update()
-        {
-            if (_progress < 1f)
-            {
-                _progress += Time.deltaTime / _duration;
-                OnProgressChanged(_progress);
-            }
-        }
-
-        protected abstract void OnProgressChanged(float progress);
     }
 }

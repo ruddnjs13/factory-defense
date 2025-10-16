@@ -29,7 +29,9 @@ namespace Code.SHS.Machines.Ports
                 return false;
             Resource = shapeResource;
             Timer = 0f;
-            resourceVisualizer.StartTransport(shapeResource, Interval);
+            resourceVisualizer.StartTransport(shapeResource);
+            if (resourceVisualizer is TimerResourceVisualizer timerVisualizer)
+                timerVisualizer.SetDuration(Interval);
             return true;
         }
 

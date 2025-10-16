@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace Code.SHS.Machines.ResourceVisualizer
 {
-    public class LinearResourceVisualizer : BaseResourceVisualizer
+    public class LinearResourceVisualizer : TimerResourceVisualizer
     {
         [SerializeField] private Vector3 _startPoint;
         [SerializeField] private Vector3 _endPoint;
 
 
-        public override void StartTransport(ShapeResource obj, float duration)
+        public override void StartTransport(ShapeResource obj)
         {
-            base.StartTransport(obj, duration);
+            base.StartTransport(obj);
             transform.localPosition = _startPoint;
         }
 
