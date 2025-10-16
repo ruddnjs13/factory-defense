@@ -25,6 +25,8 @@ namespace Code.EJY.Enemies.States
             Quaternion targetRot = _movement.LookAtTarget(_detector.CurrentTarget.Value.position);
             while (Quaternion.Angle(_enemy.transform.rotation, targetRot) > ANGLETHRESHOLD)
             {
+                // 지금은 뭘 해도 한번에 돔 - 선한쌤한테 질문하기
+                // 한번에 말고 부드럽게 돌게 하고 싶어요. 우째요.
                 targetRot = _movement.LookAtTarget(_detector.CurrentTarget.Value.position);
             }
             base.Enter();

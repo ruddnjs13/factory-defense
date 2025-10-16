@@ -4,6 +4,7 @@ using Code.Core.StatSystem;
 using Code.Enemies;
 using Code.Entities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Code.EJY.Enemies
 {
@@ -22,6 +23,8 @@ namespace Code.EJY.Enemies
         protected float _lastAttackTime;
         
         public bool CanAttack => Time.time - _lastAttackTime > attackInterval;
+
+        public UnityEvent OnAttackEvent;
         
         public virtual void Initialize(Entity entity)
         {
