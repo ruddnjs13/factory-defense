@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4598d4c929e7848b24c4cab8d14c05, type: 3}
-  m_Name: Sphere Piece 2
+  m_Script: {fileID: 11500000, guid: 9ab635e2a0bc42378ae991cfe2b0f2e3, type: 3}
+  m_Name: IsClockWise Param
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8811204031165442890, guid: 1b10c3bf0e020574580827d025fbeaa5, type: 3}
-  localPosition: {x: -0.00000047683716, y: 0.27618682, z: 0}
+  <ParamName>k__BackingField: IsClockWise
+  <HashValue>k__BackingField: -1899143719

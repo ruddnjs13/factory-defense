@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machines:
   - {fileID: 11400000, guid: 5a31502a7f56d344995cf2f4de2672d5, type: 2}
+  - {fileID: 11400000, guid: a97b8099e5a94884cb77557d4f6058f7, type: 2}

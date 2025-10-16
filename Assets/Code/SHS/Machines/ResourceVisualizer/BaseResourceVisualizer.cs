@@ -29,10 +29,11 @@ namespace Code.SHS.Machines.ResourceVisualizer
 
             // 추후 풀링으로 변경
             resourceObject = new GameObject();
-            foreach (var VARIABLE in obj.ResourcePieces)
+            foreach (ShapePiece shapePiece in obj.ShapePieces)
             {
-                if (VARIABLE != null)
-                    Instantiate(VARIABLE.prefab, resourceObject.transform);
+                if (shapePiece.ShapePieceSo != null)
+                    Instantiate(shapePiece.ShapePieceSo.prefab, shapePiece.ShapePieceSo.localPosition,
+                        shapePiece.Rotation, resourceObject.transform);
             }
 
             resourceObject.transform.SetParent(transform, false);

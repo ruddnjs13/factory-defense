@@ -4,16 +4,19 @@ using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
 using Code.Units.Animations;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.XR;
 
 namespace Code.SHS.Machines
 {
     [RequireComponent(typeof(Animator), typeof(ParameterAnimator), typeof(AnimatorTrigger))]
-    public class Slicer : BaseMachine, IInputMachine, IOutputMachine, IHasResource
+    public class Rotator : BaseMachine, IInputMachine, IOutputMachine, IHasResource
     {
-        private static readonly bool[] SlicePieces = { false, false, true, true, false, false, true, true };
+        // private static readonly int[] SwapData_ClockWise = { 3, 1, 2, 4, 7, 5, 8, 6 };
+        private static readonly int[] RotationData_ClockWise = { 2, 4, 1, 3, 6, 8, 5, 7 };
+
+        private static readonly int[] RotationData_CounterClockWise = { 3, 1, 4, 2, 7, 5, 8, 6 };
+        [SerializeField] private bool clockwise = true;
         [SerializeField] private ParameterSO workParam;
+        [SerializeField] private ParameterSO rotateParam;
         [SerializeField] private InputPort inputPort;
         [SerializeField] private OutputPort outputPort;
         private ParameterAnimator parameterAnimator;
@@ -58,11 +61,22 @@ namespace Code.SHS.Machines
         private void HandleAnimationTrigger()
         {
             if (Resource == null) return;
+            ShapePiece[] beforePieces = new ShapePiece[8];
             for (int i = 0; i < 8; i++)
             {
-                // SlicePieces 배열 정보를 바탕으로 잘라서 남길 조각은 남기고, 버릴 조각은 null로 설정
-                Resource.ShapePieces[i].ShapePieceSo = SlicePieces[i] ? Resource.ShapePieces[i].ShapePieceSo : null;
+                beforePieces[i] = Resource.ShapePieces[i];
+                if (Resource.ShapePieces[i].ShapePieceSo != null)
+                {
+                    beforePieces[i].Rotation *= Quaternion.Euler(0, clockwise ? -90 : 90, 0);
+                }
             }
+
+            for (int i = 0; i < 8; i++)
+            {
+                Resource.ShapePieces[i] =
+                    beforePieces[clockwise ? RotationData_ClockWise[i] - 1 : RotationData_CounterClockWise[i] - 1];
+            }
+            // Debug.Log(Quaternion.identity * Quaternion.Euler(0, clockwise ? -90 : 90, 0));
 
             if (outputPort.Output(Resource))
                 Resource = null;

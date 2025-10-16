@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Chipmunk.ComponentContainers
 {
+    [DisallowMultipleComponent]
     public class ComponentContainer : MonoBehaviour
     {
         private Dictionary<Type, IContainerComponent> _components;
@@ -17,6 +18,18 @@ namespace Chipmunk.ComponentContainers
             AddComponentToDictionary();
             ComponentInitialize();
             AfterInitialize();
+        }
+
+        protected void Reset()
+        {
+#if UNITY_EDITOR
+
+            bool notFirst = true;
+            while (notFirst)
+            {
+                notFirst = UnityEditorInternal.ComponentUtility.MoveComponentUp(this);
+            }
+#endif
         }
 
         public void AddComponentToDictionary(IContainerComponent component)

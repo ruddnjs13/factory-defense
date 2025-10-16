@@ -62,14 +62,7 @@ namespace Code.SHS.TickSystem
 
             foreach (var tickCompo in tickables.ToArray())
             {
-                try
-                {
-                    tickCompo.OnTick(deltaTime);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e, tickCompo.gameObject);
-                }
+                tickCompo.OnTick(deltaTime);
 
                 if (tickCompo.gameObject == null)
                     UnregisterTick(tickCompo);

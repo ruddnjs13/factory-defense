@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Code.SHS.Machines.ShapeResources
 {
-    [CreateAssetMenu(fileName = "new Resource Piece", menuName = "Resource/Resource Piece", order = 0)]
-    public class ResourcePieceSo : ScriptableObject
+    [CreateAssetMenu(fileName = "new Shape Piece", menuName = "Resource/Shape Piece", order = 0)]
+    public class ShapePieceSo : ScriptableObject
     {
         public GameObject prefab;
         public Vector3 localPosition;

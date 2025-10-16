@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7962ae7ce72b66e40b89cb6700414445, type: 3}
   m_Name: Default Sphere
   m_EditorClassIdentifier: 
-  <ResourcePieces>k__BackingField:
+  <ShapePieces>k__BackingField:
   - {fileID: 11400000, guid: 82c4dcabcaa916744957b00e17e84106, type: 2}
   - {fileID: 11400000, guid: 28ba981cbfab3864dbf12e937a12286f, type: 2}
   - {fileID: 11400000, guid: 9f6ae6f1bbff68b4c8ab325d7901acf7, type: 2}

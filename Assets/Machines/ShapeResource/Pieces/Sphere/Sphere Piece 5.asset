@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cae5f416af49644eab9b6ea70a20845, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f4598d4c929e7848b24c4cab8d14c05, type: 3}
   m_Name: Sphere Piece 5
   m_EditorClassIdentifier: 
   prefab: {fileID: 6879637059397991628, guid: 49011f2d4d89f2a49a501d9d5fbcdfbe, type: 3}
+  localPosition: {x: -0.00000047683716, y: 0.27618682, z: 0}
