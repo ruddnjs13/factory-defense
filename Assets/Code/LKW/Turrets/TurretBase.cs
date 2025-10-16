@@ -1,19 +1,37 @@
 using System;
 using System.Collections.Generic;
+using Code.Combat;
+using Code.Core.StatSystem;
 using Code.EJY.Enemies;
+using Code.Entities;
+using Code.SHS.Machines;
+using Core.GameEvent;
+using RuddnjsPool;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Code.LKW.Turrets
 {
-    public abstract class TurretBase : MonoBehaviour
+    public abstract class TurretBase : BaseMachine
     {
         [Header("Turret Settings")]
-        [SerializeField] private TurretDataSO turretData;
+        [Space]
+        [SerializeField] protected TurretDataSO turretData;
+        [SerializeField] protected AttackDataSO attackData;
+        [SerializeField] protected StatSO turretDamageStat;
         [SerializeField] private LayerMask targetLayer;
-
         [SerializeField] protected GameObject turretHead;
+        [SerializeField] protected GameEventChannelSO effectChannel;
+        [SerializeField] protected PoolingItemSO muzzleParticleItem;
+        [Space]
+        [Space]
         
+        protected DamageCompo damageCompo;
+        protected EntityStatCompo entityStatCompo;
+        protected EntityHealth entityHealth;
+        protected TurretRenderer turretRenderer;
+
         private SphereCollider sphereCollider;
         
         private float _reloadTimer;
@@ -26,7 +44,7 @@ namespace Code.LKW.Turrets
         {
             Tick();
         }
-        
+
         public virtual void Tick()
         {
             HandleReloadTimer();
@@ -36,15 +54,28 @@ namespace Code.LKW.Turrets
         }
 
         #region Init
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             sphereCollider = GetComponent<SphereCollider>();
+            damageCompo = GetCompo<DamageCompo>();
+            entityStatCompo = GetCompo<EntityStatCompo>();
+            entityHealth = GetCompo<EntityHealth>();
+            turretRenderer = GetCompo<TurretRenderer>();
         }
 
         private void OnEnable()
         {
             sphereCollider.radius = turretData.range;
+            entityHealth.onHealthChangedEvent += turretRenderer.ApplyDamagedVisual;
         }
+
+        public override void OnDestroy()
+        {
+            entityHealth.onHealthChangedEvent -= turretRenderer.ApplyDamagedVisual;
+            base.OnDestroy();
+        }
+
         #endregion
 
         #region Shooting Logic

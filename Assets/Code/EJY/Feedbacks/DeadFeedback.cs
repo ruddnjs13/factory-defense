@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Code.Feedbacks
 {
@@ -7,11 +8,15 @@ namespace Code.Feedbacks
     {
         [SerializeField] private Transform targetTrm;
         [SerializeField] private float duration = 0.3f;
-        private Tween _deathTween;
+        
+        public UnityEvent OnFeedbackComplete;
         
         public override void CreateFeedback()
         {
-            _deathTween = targetTrm.DOScale(Vector3.zero, duration);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(targetTrm.DOScale(Vector3.zero, duration));
+            seq.AppendInterval(duration);
+            seq.OnComplete(() => OnFeedbackComplete?.Invoke());
         }
 
         public override void StopFeedback()

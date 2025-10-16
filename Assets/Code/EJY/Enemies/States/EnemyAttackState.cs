@@ -1,6 +1,7 @@
+using System.Collections;
 using Code.Enemies;
 using Code.Entities;
-using UnityEngine.AI;
+using UnityEngine;
 
 namespace Code.EJY.Enemies.States
 {
@@ -8,15 +9,26 @@ namespace Code.EJY.Enemies.States
     {
         private EnemyAttackCompo _attackCompo;
         private NavMovement _movement;
-        
+        private TargetDetector _detector;
+
+        private const float ANGLETHRESHOLD = 5f;
+
         public EnemyAttackState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _attackCompo = entity.GetCompo<EnemyAttackCompo>();
             _movement = entity.GetCompo<NavMovement>();
+            _detector = entity.GetCompo<TargetDetector>();
         }
 
         public override void Enter()
         {
+            Quaternion targetRot = _movement.LookAtTarget(_detector.CurrentTarget.Value.position);
+            while (Quaternion.Angle(_enemy.transform.rotation, targetRot) > ANGLETHRESHOLD)
+            {
+                // 지금은 뭘 해도 한번에 돔 - 선한쌤한테 질문하기
+                // 한번에 말고 부드럽게 돌게 하고 싶어요. 우째요.
+                targetRot = _movement.LookAtTarget(_detector.CurrentTarget.Value.position);
+            }
             base.Enter();
         }
 
