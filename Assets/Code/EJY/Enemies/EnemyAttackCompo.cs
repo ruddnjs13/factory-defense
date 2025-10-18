@@ -37,6 +37,12 @@ namespace Code.EJY.Enemies
 
         public virtual void AfterInitialize()
         {
+            _trigger.OnAttackTrigger += HandleOnAttack;
+        }
+
+        protected virtual void OnDestroy()
+        {
+            _trigger.OnAttackTrigger -= HandleOnAttack;
         }
 
         public virtual void Attack()
@@ -44,6 +50,6 @@ namespace Code.EJY.Enemies
             _lastAttackTime = Time.time;
         }
 
-        
+        private void HandleOnAttack() => OnAttackEvent?.Invoke();
     }
 }

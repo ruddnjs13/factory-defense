@@ -22,11 +22,13 @@ namespace Code.Enemies
         
         public override void AfterInitialize()
         {
+            base.AfterInitialize();
             _trigger.OnDamageToggleTrigger += SetDamageDataCaster;
         }
 
         private void OnDestroy()
         {
+            base.OnDestroy();
             _trigger.OnDamageToggleTrigger -= SetDamageDataCaster;
         }
         

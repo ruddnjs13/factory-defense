@@ -21,11 +21,13 @@ namespace Code.EJY.Enemies
 
         public override void AfterInitialize()
         {
+            base.AfterInitialize();
             _trigger.OnFireTrigger += FireBullet;
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             _trigger.OnFireTrigger -= FireBullet;
         }
 
