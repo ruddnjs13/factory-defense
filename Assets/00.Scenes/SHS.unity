@@ -233,6 +233,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conveyor Belt
       objectReference: {fileID: 0}
+    - target: {fileID: 3659761588034009671, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
+    - target: {fileID: 3659761588034009671, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -10,6 +10,7 @@ namespace Chipmunk.ComponentContainers
     {
         private Dictionary<Type, IContainerComponent> _components;
         private HashSet<IExcludeContainerComponent> _excludeComponents;
+        protected bool isInitialized;
 
         protected virtual void Awake()
         {
@@ -18,6 +19,7 @@ namespace Chipmunk.ComponentContainers
             AddComponentToDictionary();
             ComponentInitialize();
             AfterInitialize();
+            isInitialized = true;
         }
 
         protected void Reset()
@@ -47,7 +49,7 @@ namespace Chipmunk.ComponentContainers
             }
         }
 
-        private void AddComponentToDictionary()
+        protected void AddComponentToDictionary()
         {
             GetComponentsInChildren<IContainerComponent>(true)
                 .Where(component => component is not IExcludeContainerComponent).ToList()
@@ -56,16 +58,22 @@ namespace Chipmunk.ComponentContainers
                 .ForEach(comp => _excludeComponents.Add(comp));
         }
 
-        private void ComponentInitialize()
+        protected void ComponentInitialize()
         {
             _components.Values.ToList().ForEach(compo => compo.Initialize(this));
             _excludeComponents.ToList().ForEach(comp => comp.Initialize(this));
         }
 
-        private void AfterInitialize()
+        protected void AfterInitialize()
         {
             _components.Values.OfType<IAfterInitialze>().ToList().ForEach(compo => compo.AfterInitialze());
             _excludeComponents.OfType<IAfterInitialze>().ToList().ForEach(compo => compo.AfterInitialze());
+        }
+
+        protected void InitializeDictionaries()
+        {
+            _components = new Dictionary<Type, IContainerComponent>();
+            _excludeComponents = new HashSet<IExcludeContainerComponent>();
         }
 
         #region GetComponentRegion
