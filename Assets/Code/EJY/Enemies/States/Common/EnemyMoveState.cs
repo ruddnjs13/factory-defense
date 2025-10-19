@@ -6,9 +6,9 @@ namespace Code.EJY.Enemies.States
 {
     public class EnemyMoveState : EnemyState
     {
-        private EnemyAttackCompo _attackCompo;
-        private TargetDetector _detector;
-        private NavMovement _movement;
+        protected EnemyAttackCompo _attackCompo;
+        protected TargetDetector _detector;
+        protected NavMovement _movement;
 
         public EnemyMoveState(Entity entity, int animationHash) : base(entity, animationHash)
         {

@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle_BombReady
+  m_Name: Ready
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -95,7 +95,7 @@ AnimatorController:
   m_Name: BombEnemy
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IDLE
+  - m_Name: READY
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -202,7 +202,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IDLE
+    m_ConditionEvent: READY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
@@ -227,7 +227,7 @@ AnimatorTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IDLE
+    m_ConditionEvent: READY
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6201805292762621610}

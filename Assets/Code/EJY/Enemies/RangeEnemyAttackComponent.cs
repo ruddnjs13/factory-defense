@@ -10,7 +10,6 @@ namespace Code.EJY.Enemies
     {
         [SerializeField] private PoolingItemSO bulletPool;
         [SerializeField] private PoolingItemSO muzzlePool;
-        [SerializeField] private GameEventChannelSO effectChannel;
         [SerializeField] private Transform firePos;
         [SerializeField] private float bulletSpeed = 8f;
         [SerializeField] private float maxFireDelay = 0.8f;
@@ -22,13 +21,13 @@ namespace Code.EJY.Enemies
         public override void AfterInitialize()
         {
             base.AfterInitialize();
-            _trigger.OnFireTrigger += FireBullet;
+            _trigger.OnAttackTrigger += AttackBullet;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            _trigger.OnFireTrigger -= FireBullet;
+            _trigger.OnAttackTrigger -= AttackBullet;
         }
 
         public override void Attack()
@@ -37,7 +36,7 @@ namespace Code.EJY.Enemies
             attackInterval = Random.Range(minFireDelay, maxFireDelay);
         }
 
-        private void FireBullet()
+        private void AttackBullet()
         {
             effectChannel.RaiseEvent(EffectEvents.PlayPoolEffect.Initializer(firePos.position, firePos.rotation, muzzlePool, 1.5f));
             

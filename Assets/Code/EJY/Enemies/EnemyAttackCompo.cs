@@ -3,6 +3,7 @@ using Code.Combat;
 using Code.Core.StatSystem;
 using Code.Enemies;
 using Code.Entities;
+using Core.GameEvent;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ namespace Code.EJY.Enemies
 {
     public class EnemyAttackCompo : MonoBehaviour, IEntityComponent, IAfterInitialize
     {
+        [SerializeField] protected GameEventChannelSO effectChannel;
         [SerializeField] protected AttackDataSO attackData;
         [SerializeField] protected StatSO damageStat;
         [SerializeField] protected float attackInterval = 0.5f;
@@ -37,12 +39,12 @@ namespace Code.EJY.Enemies
 
         public virtual void AfterInitialize()
         {
-            _trigger.OnAttackTrigger += HandleOnAttack;
+            _trigger.OnAttackEventTrigger += HandleOnAttackEvent;
         }
 
         protected virtual void OnDestroy()
         {
-            _trigger.OnAttackTrigger -= HandleOnAttack;
+            _trigger.OnAttackEventTrigger -= HandleOnAttackEvent;
         }
 
         public virtual void Attack()
@@ -50,6 +52,6 @@ namespace Code.EJY.Enemies
             _lastAttackTime = Time.time;
         }
 
-        private void HandleOnAttack() => OnAttackEvent?.Invoke();
+        private void HandleOnAttackEvent() => OnAttackEvent?.Invoke();
     }
 }
