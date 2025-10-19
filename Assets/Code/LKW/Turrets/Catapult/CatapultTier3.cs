@@ -30,6 +30,8 @@ namespace Code.LKW.Turrets.Catapult
 
         private async void HandleFireTrigger()
         {
+            if(_target == null ) return;
+            
             Vector3 leftPos = firePos.position + firePos.right * -0.2f;
             Vector3 rightPos = firePos.position + firePos.right * 0.2f;
             

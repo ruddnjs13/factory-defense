@@ -61,6 +61,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultBullet Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1552339098034316, guid: c66ffffeb79eaca47bb27b2a68fbe43b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4389153839620792, guid: c66ffffeb79eaca47bb27b2a68fbe43b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25

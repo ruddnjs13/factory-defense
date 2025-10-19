@@ -18,8 +18,6 @@ namespace Code.LKW.Turrets.Combat
         {
             base.Update();
 
-            
-            
             if (_target != null && _isFire)
             {
                 if (CurrentLifeTime >= guidedDelay)
@@ -34,8 +32,8 @@ namespace Code.LKW.Turrets.Combat
                         rotationSpeed * Time.deltaTime * 100f
                     );
                 }
-                transform.position += transform.forward * (9f * Time.deltaTime);
             }
+            transform.position += transform.forward * (9f * Time.deltaTime);
         }
 
         public void SetTarget(Transform target, Vector3 defaultDir)
