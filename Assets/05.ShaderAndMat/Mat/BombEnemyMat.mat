@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyMat
+  m_Name: BombEnemyMat
   m_Shader: {fileID: -6465566751694194690, guid: 9200a77deff826744abdd759b6d82ad8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: be0c2b9741c6e5442bf7eb42f28367cd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5ffdb1ea43048ce459a79aba303643c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -47,15 +47,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlinkValue: 0
-    - _IsReady: 0
+    - _IsReady: 1
     - _Metallic: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.5
     m_Colors:
-    - _BlinkColor: {r: 25.416586, g: 25.416586, b: 25.416586, a: 0}
+    - _BlinkColor: {r: 14.259478, g: 14.259478, b: 14.259478, a: 0}
     - _MainTexColor: {r: 1, g: 1, b: 1, a: 0}
-    - _ReadyColor: {r: 1, g: 0, b: 0, a: 0}
+    - _ReadyColor: {r: 1367.1202, g: 18.056234, b: 18.056234, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5679368426205529637
