@@ -70,12 +70,35 @@ namespace Code.SHS.Machines.Construction
             if (previewInstances.ContainsKey(position))
                 return;
 
-            // 이미 기계가 있는 위치는 건너뜀
-            if (WorldGrid.Instance.GetTile(position).Machine != null)
+            // Size만큼의 모든 타일이 비어있는지 확인
+            if (!CanPlaceMachineAtPosition(position))
                 return;
 
             GameObject preview = Instantiate(machineSO.machineGhostPrefab, position, mainPreview.transform.rotation);
             previewInstances.Add(position, preview);
+        }
+
+        /// <summary>
+        /// 해당 위치에 Size만큼 기계를 배치할 수 있는지 확인
+        /// </summary>
+        private bool CanPlaceMachineAtPosition(Vector3 position)
+        {
+            Vector2Int basePos = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.z));
+            Vector2Int size = machineSO.size;
+
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
+                {
+                    Vector2Int tilePos = basePos + new Vector2Int(x, y);
+                    WorldTile tile = WorldGrid.Instance.GetTile(tilePos);
+                    if (tile.Machine != null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void LeftClickHandler(bool isPressed)
@@ -129,7 +152,8 @@ namespace Code.SHS.Machines.Construction
 
         private bool TryConstructSingle(Vector3 position, Quaternion rotation)
         {
-            if (WorldGrid.Instance.GetTile(position).Machine != null) 
+            // Size만큼의 모든 타일이 비어있는지 다시 확인
+            if (!CanPlaceMachineAtPosition(position))
                 return false;
 
             if (Portal.resourceCount < machineSO.cost) 

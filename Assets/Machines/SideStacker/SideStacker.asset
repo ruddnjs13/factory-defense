@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
-  m_Name: Rotator SO
+  m_Name: SideStacker
   m_EditorClassIdentifier: 
-  machineName: Rotator
-  machineGhostPrefab: {fileID: 6715399901352898762, guid: 5281bd72c8b628342b919656317c34b2, type: 3}
-  machinePrefab: {fileID: 1812515574136519828, guid: b962275bff2827044b370dfc6f2f6838, type: 3}
-  size: {x: 1, y: 1}
+  machineName: SideStacker
+  machineGhostPrefab: {fileID: 8694779061055595697, guid: 7be6e9220e5cdda47be8d068133efd7d, type: 3}
+  machinePrefab: {fileID: 893015123099149383, guid: 56b6c1b0cfc95694f9a08a727d2c7081, type: 3}
+  size: {x: 2, y: 1}
+  offset: {x: -1, y: 0}
   cost: 20

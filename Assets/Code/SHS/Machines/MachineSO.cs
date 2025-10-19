@@ -8,6 +8,8 @@ namespace Code.SHS.Machines
         public string machineName;
         public GameObject machineGhostPrefab;
         public GameObject machinePrefab;
+        public Vector2Int size = Vector2Int.one;
+        public Vector2Int offset = Vector2Int.zero;
         public int cost = 20;
     }
 }
