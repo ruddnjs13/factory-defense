@@ -10,26 +10,34 @@ namespace Code.Enemies
     {
         [SerializeField] private OverlapDamageCaster[] casters;
         private bool _isActive;
-        
+
+        private EntityVFX _entityVFX;
         private DamageData _currentDamageData;
-        
+
         public override void Initialize(Entity entity)
         {
-           base.Initialize(entity);
+            base.Initialize(entity);
+            _entityVFX = entity.GetCompo<EntityVFX>();
             casters = entity.GetComponentsInChildren<OverlapDamageCaster>();
             casters.ToList().ForEach(casters => casters.InitCaster(entity));
         }
-        
+
         public override void AfterInitialize()
         {
+            base.AfterInitialize();
+            _trigger.OnAttackVFXTrigger += HandleAttackVFX;
             _trigger.OnDamageToggleTrigger += SetDamageDataCaster;
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+            _trigger.OnAttackVFXTrigger -= HandleAttackVFX;
             _trigger.OnDamageToggleTrigger -= SetDamageDataCaster;
         }
-        
+
+        private void HandleAttackVFX() => _entityVFX.PlayVfx("Slash" ,Vector3.zero, Quaternion.identity);
+
         public void SetDamageDataCaster(bool isActive)
         {
             _isActive = isActive;
@@ -39,7 +47,7 @@ namespace Code.Enemies
                 {
                     caster.StartCasting();
                 }
-                
+
                 _currentDamageData = _damageCompo.CalculateDamage(
                     _statCompo.GetStat(damageStat), attackData);
             }
@@ -56,6 +64,5 @@ namespace Code.Enemies
                 }
             }
         }
-
     }
 }

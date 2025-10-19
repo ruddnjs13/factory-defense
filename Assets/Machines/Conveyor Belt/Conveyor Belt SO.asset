@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Conveyor Belt SO
   m_EditorClassIdentifier: 
   machineName: Conveyor Belt
-  machineGhostPrefab: {fileID: 4641661770810287768, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
+  machineGhostPrefab: {fileID: 7305400094980309083, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
   machinePrefab: {fileID: 3011476269277469586, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+  cost: 20

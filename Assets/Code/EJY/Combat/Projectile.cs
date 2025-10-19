@@ -82,7 +82,7 @@ namespace Code.Combat
             if (attackData.impulseForce > 0)
             {
                 ImpulseEvent impulseEvt =
-                    CameraEvents.ImpulseEvent.Init(attackData.impulseForce);
+                    CameraEvents.ImpulseEvent.Initializer(attackData.impulseForce);
                 cameraChannel.RaiseEvent(impulseEvt);
             }
 

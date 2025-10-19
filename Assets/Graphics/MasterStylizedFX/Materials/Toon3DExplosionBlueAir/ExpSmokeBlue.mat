@@ -149,7 +149,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FireColor: {r: 0, g: 11.155615, b: 11.984313, a: 1}
+    - _FireColor: {r: 11.984314, g: 0.6934649, b: 0, a: 1}
     - _FresnelColor: {r: 5.992157, g: 1.2627822, b: 0.09411748, a: 1}
     - _LimitUVRange: {r: 0, g: 1, b: 0, a: 1}
     - _MaskOffset: {r: 0, g: 0, b: 0, a: 0}
@@ -162,3 +162,4 @@ Material:
     - _StretchUVDes: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

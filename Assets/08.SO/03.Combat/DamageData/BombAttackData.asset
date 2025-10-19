@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52858a2fcdb241fb920c32a80f763b80, type: 3}
   m_Name: BombAttackData
   m_EditorClassIdentifier: 
-  damageType: 4
+  damageType: 1
   attackName: BombAttackData
   damageMultiplier: 1
   damageIncrease: 0
-  isPowerAttack: 1
+  isPowerAttack: 0
   impulseForce: 1.5

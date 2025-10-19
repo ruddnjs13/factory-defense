@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
+  m_Name: Rotator SO
+  m_EditorClassIdentifier: 
+  machineName: Rotator
+  machineGhostPrefab: {fileID: 6715399901352898762, guid: 5281bd72c8b628342b919656317c34b2, type: 3}
+  machinePrefab: {fileID: 1812515574136519828, guid: b962275bff2827044b370dfc6f2f6838, type: 3}
+  cost: 20

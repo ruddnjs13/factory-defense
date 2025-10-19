@@ -1,15 +1,13 @@
 using System;
 using Chipmunk.ComponentContainers;
+using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 
 namespace Code.SHS.Machines.ResourceVisualizer
 {
     public abstract class BaseResourceVisualizer : MonoBehaviour, IExcludeContainerComponent
     {
-        private float _progress;
-        private float _duration;
-
-        private GameObject resourceObject = null;
+        protected GameObject resourceObject = null;
         public ComponentContainer ComponentContainer { get; set; }
 
 
@@ -19,39 +17,40 @@ namespace Code.SHS.Machines.ResourceVisualizer
         }
 
 
-        public virtual void StartTransport(Resource obj, float duration)
+        public virtual void StartTransport(ShapeResource obj)
         {
-            _progress = 0f;
-            _duration = duration;
-            if (resourceObject != null)
-                DestroyImmediate(resourceObject);
-            resourceObject = Instantiate(obj.ResourceSo.prefab, transform);
+            CreateObject(obj);
+
+            // resourceObject = Instantiate(obj.ResourceSo.prefab, transform);
             gameObject.SetActive(true);
         }
 
-        public void EndTransport()
+        protected virtual void CreateObject(ShapeResource obj)
+        {
+            if (resourceObject != null)
+                DestroyImmediate(resourceObject);
+
+            // 추후 풀링으로 변경
+            resourceObject = new GameObject();
+            foreach (ShapePiece shapePiece in obj.ShapePieces)
+            {
+                if (shapePiece.ShapePieceSo != null)
+                    Instantiate(shapePiece.ShapePieceSo.prefab, shapePiece.ShapePieceSo.localPosition,
+                        shapePiece.Rotation, resourceObject.transform);
+            }
+
+            resourceObject.transform.SetParent(transform, false);
+        }
+
+        public virtual void EndTransport()
         {
             if (resourceObject != null)
             {
-                DestroyImmediate(resourceObject);
+                Destroy(resourceObject);
                 resourceObject = null;
             }
 
-            _progress = 1f;
             gameObject.SetActive(false);
         }
-
-        void Update()
-        {
-            if (_progress < 1f)
-            {
-                _progress += Time.deltaTime / _duration;
-                OnProgressChanged(_progress);
-            }
-        }
-
-        protected abstract void OnProgressChanged(float progress);
-
-
     }
 }

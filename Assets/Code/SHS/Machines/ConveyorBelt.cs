@@ -1,19 +1,42 @@
 using System.Collections;
 using Chipmunk.ComponentContainers;
+using Code.SHS.Machines.Ports;
+using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 
 namespace Code.SHS.Machines
 {
-    public class ConveyorBelt : ResourceTransporter
+    public class ConveyorBelt : BaseMachine, IInputMachine, IOutputMachine, IHasResource
     {
-        public override void OnInitialize(ComponentContainer componentContainer)
+        [SerializeField] private InputPort inputPort;
+        [SerializeField] private OutputPort outputPort;
+
+        public ShapeResource Resource { get; private set; }
+
+        public InputPort GetAvailableInputPort(OutputPort outputPort) =>
+            inputPort.CanAcceptInputFrom(outputPort) ? inputPort : null;
+
+        public bool CanAcceptResource()
         {
-            base.OnInitialize(componentContainer);
+            return Resource == null;
         }
 
-        public override bool TryReceiveResource(IOutputResource machine, Resource resource)
+        public override void OnTick(float deltaTime)
         {
-            return base.TryReceiveResource(machine, resource);
+            base.OnTick(deltaTime);
+            if (Resource != null)
+                outputPort.Output(Resource);
+        }
+
+        public void InputPortResourceTransferComplete(InputPort inputPort)
+        {
+            Resource = inputPort.Pop();
+            outputPort.Output(Resource);
+        }
+
+        public void OnOutputComplete(OutputPort port)
+        {
+            Resource = null;
         }
     }
 }

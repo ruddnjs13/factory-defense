@@ -1,61 +1,50 @@
 using Code.Combat;
-using Code.Patterns.PatternDatas;
-using RuddnjsLib.Dependencies;
+using Code.Events;
+using Core.GameEvent;
 using RuddnjsPool;
-using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.EJY.Enemies
 {
     public class RangeEnemyAttackComponent : EnemyAttackCompo
     {
         [SerializeField] private PoolingItemSO bulletPool;
-
-        [SerializeField] private RangePatternSO rangePattern;
+        [SerializeField] private PoolingItemSO muzzlePool;
         [SerializeField] private Transform firePos;
         [SerializeField] private float bulletSpeed = 8f;
+        [SerializeField] private float maxFireDelay = 0.8f;
+        [SerializeField] private float minFireDelay = 0.4f;
         [SerializeField] private PoolManagerSO poolManager;
 
         private DamageData _currentDamageData;
 
-        
-
         public override void AfterInitialize()
         {
-            _trigger.OnFireTrigger += FireBullet;
+            base.AfterInitialize();
+            _trigger.OnAttackTrigger += AttackBullet;
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
-            _trigger.OnFireTrigger -= FireBullet;
+            base.OnDestroy();
+            _trigger.OnAttackTrigger -= AttackBullet;
         }
 
-        private void FireBullet()
+        public override void Attack()
         {
-            Vector3 direction = firePos.forward;
-            if (rangePattern.bulletCount == 1)
-            {
-                Projectile projectile = poolManager.Pop(bulletPool.poolType) as Projectile;
+            base.Attack();
+            attackInterval = Random.Range(minFireDelay, maxFireDelay);
+        }
 
-                
-                projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
-                    , firePos.position, Quaternion.LookRotation(direction), direction * bulletSpeed);
-            }
-            else
-            {
-                float startRotation = -(rangePattern.fireAngle * (rangePattern.bulletCount - 1)) / 2;
-                for (int i = 0; i < rangePattern.bulletCount; ++i) 
-                {
-                    Projectile projectile = poolManager.Pop(bulletPool.poolType) as Projectile;
-                    float angle = startRotation + i * rangePattern.fireAngle;
-                    Quaternion rotation = Quaternion.Euler(0, angle, 0);
-                    Vector3 fireDirection = rotation * direction;
-                    Quaternion forwardRotation = Quaternion.LookRotation(fireDirection);
-                    projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
-                        , firePos.position, forwardRotation,fireDirection * bulletSpeed);
-                }
-            }
+        private void AttackBullet()
+        {
+            effectChannel.RaiseEvent(EffectEvents.PlayPoolEffect.Initializer(firePos.position, firePos.rotation, muzzlePool, 1.5f));
+            
+            Vector3 direction = (_detector.CurrentTarget.Value.position - firePos.position).normalized;
+            Projectile projectile = poolManager.Pop(bulletPool.poolType) as Projectile;
+
+            projectile.SetupProjectile(_enemy, _damageCompo.CalculateDamage(damageStat, attackData)
+                , firePos.position, Quaternion.LookRotation(direction), direction * bulletSpeed);
         }
     }
 }

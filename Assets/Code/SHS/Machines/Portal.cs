@@ -1,10 +1,12 @@
 using Code.SHS.Extensions;
+using Code.SHS.Machines.Ports;
+using Code.SHS.Machines.ShapeResources;
 using TMPro;
 using UnityEngine;
 
 namespace Code.SHS.Machines
 {
-    public class Portal : BaseMachine, IInputResource
+    public class Portal : BaseMachine, IInputMachine
     {
         [SerializeField] private DirectionEnum facingDirection;
         [SerializeField] private TMP_Text resourceCountText;
@@ -16,22 +18,19 @@ namespace Code.SHS.Machines
             resourceCountText.text = resourceCount.ToString();
         }
 
-        public bool CanAcceptInputFrom(IOutputResource machine)
+        public InputPort GetAvailableInputPort(OutputPort outputPort)
         {
-            Vector2Int direction = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
-            Vector2Int anotherDirection = Vector3Int.RoundToInt(Direction.GetDirection(facingDirection)).ToXZ();
-            return machine.Position == Position + direction || machine.Position == Position + anotherDirection;
+            throw new System.NotImplementedException();
         }
 
-        public bool TryReceiveResource(IOutputResource machine, Resource resource)
+        public bool CanAcceptResource()
         {
-            ReceiveResource(resource);
-            return true;
+            throw new System.NotImplementedException();
         }
 
-        public void ReceiveResource(Resource resource)
+        public void InputPortResourceTransferComplete(InputPort inputPort)
         {
-            resourceCount += resource.Amount;
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -36,9 +36,9 @@ namespace Code.Entities
         public void SetParam(int hash, float value, float dampTime)
         => animator.SetFloat(hash, value, dampTime, Time.deltaTime);
 
-        public void SetAnimatorOff()
+        public void SetAnimator(bool isOn)
         {
-            animator.enabled = false;
+            animator.enabled = isOn;
         }
     }
 }

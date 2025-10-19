@@ -9,7 +9,9 @@ namespace Code.Entities
         public event Action OnAttackVFXTrigger;
         public event Action<bool> OnManualRotationTrigger;
         public event Action<bool> OnDamageToggleTrigger;
-        public event Action OnFireTrigger;
+        public event Action BeforeAttackTrigger;
+        public event Action OnAttackTrigger;
+        public event Action OnAttackEventTrigger;
         private Entity _entity;
         
         public void Initialize(Entity entity)
@@ -23,6 +25,8 @@ namespace Code.Entities
         private void StopManualRotation() => OnManualRotationTrigger?.Invoke(false);
         private void StartDamageCast() => OnDamageToggleTrigger?.Invoke(true);
         private void StopDamageCast() => OnDamageToggleTrigger?.Invoke(false);
-        private void Fire() => OnFireTrigger?.Invoke();
+        private void BeforeAttack() => BeforeAttackTrigger?.Invoke();
+        private void Attack() => OnAttackTrigger?.Invoke();
+        private void OnAttackEvent() => OnAttackEventTrigger?.Invoke();
     }
 }

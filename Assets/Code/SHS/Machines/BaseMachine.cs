@@ -3,6 +3,7 @@ using Chipmunk.ComponentContainers;
 using Chipmunk.GameEvents;
 using Code.Entities;
 using Code.SHS.Machines.Events;
+using Code.SHS.Machines.ShapeResources;
 using Code.SHS.TickSystem;
 using Code.SHS.Worlds;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace Code.SHS.Machines
         public virtual void OnInitialize(ComponentContainer componentContainer)
         {
             TickManager.RegisterTick(this);
-            Position = Vector2Int.FloorToInt(new Vector2(transform.position.x, transform.position.z));
+            Position = Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z));
             WorldTile worldTile = WorldGrid.Instance.GetTile(Position);
             if (worldTile.Machine == null)
             {
@@ -56,7 +57,10 @@ namespace Code.SHS.Machines
 
         public virtual void OnDestroy()
         {
+            
+            TickManager.UnregisterTick(this);
             EventBus.Unsubscribe<MachineConstructEvent>(MachineConstructHandler);
+            if (WorldGrid.Instance == null) return;
             WorldTile worldTile = WorldGrid.Instance.GetTile(Position);
             if (worldTile.Machine == this)
             {

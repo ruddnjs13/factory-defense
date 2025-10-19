@@ -30,6 +30,14 @@ namespace Code.SHS.TickSystem
             }
         }
 
+        public static void UnregisterTick(ITick tick)
+        {
+            if (tickables.Contains(tick))
+            {
+                tickables.Remove(tick);
+            }
+        }
+
         void Start()
         {
             lastTickTime = Time.time;
@@ -42,7 +50,6 @@ namespace Code.SHS.TickSystem
             while (true)
             {
                 yield return new WaitForSeconds(tickInterval);
-
                 ExecuteTick();
             }
         }
@@ -52,10 +59,13 @@ namespace Code.SHS.TickSystem
             float currentTime = Time.time;
             deltaTime = currentTime - lastTickTime;
             lastTickTime = currentTime;
-            
+
             foreach (var tickCompo in tickables.ToArray())
             {
                 tickCompo.OnTick(deltaTime);
+
+                if (tickCompo.gameObject == null)
+                    UnregisterTick(tickCompo);
             }
         }
     }

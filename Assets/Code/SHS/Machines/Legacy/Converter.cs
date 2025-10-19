@@ -1,13 +1,10 @@
+using Code.SHS.Machines.ShapeResources;
+using UnityEngine.Serialization;
+
 namespace Code.SHS.Machines.Legacy
 {
-    public class Converter : ResourceTransporter
-    {
-        public ResourceSO changeResource;
-
-        public override void OutputItem()
-        {
-            currentResource = new Resource(changeResource, 10);
-            base.OutputItem();
-        }
-    }
+    // public class Converter
+    //     // : Transporter
+    // {
+    // }
 }

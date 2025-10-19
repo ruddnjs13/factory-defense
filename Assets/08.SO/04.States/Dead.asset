@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e6f16e2d484a3a829319acbf445a67, type: 3}
   m_Name: Dead
   m_EditorClassIdentifier: 
-  stateName: DAED
+  stateName: DEAD
   className: Code.EJY.Enemies.States.EnemyDeadState
-  animParamName: DAED
-  animationHash: -1193948856
+  animParamName: DEAD
+  animationHash: -609180528
