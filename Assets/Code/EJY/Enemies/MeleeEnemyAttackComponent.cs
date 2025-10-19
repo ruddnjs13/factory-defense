@@ -26,7 +26,7 @@ namespace Code.Enemies
             _trigger.OnDamageToggleTrigger += SetDamageDataCaster;
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             base.OnDestroy();
             _trigger.OnDamageToggleTrigger -= SetDamageDataCaster;

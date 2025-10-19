@@ -24,7 +24,7 @@ namespace Code.Feedbacks
             {
                 meshRenderer.material.SetFloat(_blinkHash, blinkIntensity);
             }
-            DOVirtual.DelayedCall(blinkDuration, StopFeedback);
+            DOVirtual.DelayedCall(blinkDuration, StopFeedback).SetLink(transform.root.gameObject);
         }
 
         public override void StopFeedback()

@@ -25,6 +25,7 @@ namespace Code.EJY.Enemies
         protected float _lastAttackTime;
         
         public bool CanAttack => Time.time - _lastAttackTime > attackInterval;
+        public float AttackInterval => attackInterval;
 
         public UnityEvent OnAttackEvent;
         

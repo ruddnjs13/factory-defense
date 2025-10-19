@@ -11,7 +11,7 @@ namespace Code.Events
     {
         public float impulsePower;
 
-        public ImpulseEvent Init(float power)
+        public ImpulseEvent Initializer(float power)
         {
             impulsePower = power;
             return this;
