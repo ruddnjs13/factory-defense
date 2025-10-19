@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
+  m_Name: Missile tier2
+  m_EditorClassIdentifier: 
+  machineName: Missile tier2
+  machineGhostPrefab: {fileID: 4805721769835382573, guid: 3894e5fbcd8a83a45963ca053f3bb229, type: 3}
+  machinePrefab: {fileID: 6844460683196612717, guid: 9abf2c7c1a82c2e4fb18c5c191e281c4, type: 3}
+  cost: 20

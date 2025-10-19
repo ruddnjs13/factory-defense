@@ -66,6 +66,7 @@ namespace Code.LKW.Turrets
 
         private void OnEnable()
         {
+            Debug.Log(turretData);
             sphereCollider.radius = turretData.range;
             entityHealth.onHealthChangedEvent += turretRenderer.ApplyDamagedVisual;
         }

@@ -8,7 +8,12 @@ namespace Code.LKW.Turrets
 {
     public class TurretRenderer : MonoBehaviour ,IEntityComponent
     {
+        public Action OnFireTrigger;
+        public Action OnReloadTrigger;
+        
         [SerializeField] private ParticleSystem[] damagedSmokeEffects;
+        [SerializeField] private Animator animator;
+
         public List<MeshRenderer> renderers;
         private Entity _entity;
         
@@ -42,13 +47,15 @@ namespace Code.LKW.Turrets
             
             foreach (var renderer in renderers)
             {
-
                 Color color = Color.Lerp(Color.white, Color.red, damagedProgress * 0.4f);
 
                 renderer.material.color = color;
             }
         }
 
-       
+        public void SetParam(int hash) => animator.SetTrigger(hash);
+
+        private void Fire() => OnFireTrigger?.Invoke();
+        private void FireReload() =>OnReloadTrigger?.Invoke();
     }
 }

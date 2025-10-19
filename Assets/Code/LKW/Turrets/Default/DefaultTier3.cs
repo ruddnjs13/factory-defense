@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using Code.Combat;
 using DG.Tweening;
 using RuddnjsPool;
@@ -14,20 +16,32 @@ namespace Code.LKW.Turrets
         [SerializeField] private PoolingItemSO bulletItem;
         
         private int _shootIdx = 0;
-        
+        private CancellationTokenSource _cts;
+
+        private void Awake()
+        {
+            _cts = new CancellationTokenSource();
+        }
+
         protected override async void Shoot()
         {
             _shootIdx = 0;
-            
             ShootProjectile();
             _shootIdx++;
 
-            await Awaitable.WaitForSecondsAsync(0.1f);
-            for (int i = 0; i < 2; i++)
+            try
             {
-                ShootProjectile();
-                await Awaitable.WaitForSecondsAsync(0.1f);
-                _shootIdx++;
+                await Awaitable.WaitForSecondsAsync(0.1f, _cts.Token);
+                for (int i = 0; i < 2; i++)
+                {
+                    ShootProjectile();
+                    await Awaitable.WaitForSecondsAsync(0.1f, _cts.Token);
+                    _shootIdx++;
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                // Turret이 파괴되거나 비활성화될 때 안전하게 중단됨
             }
         }
 
@@ -35,24 +49,29 @@ namespace Code.LKW.Turrets
         {
             Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
             
-            bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
-                    , attackData),firePos[_shootIdx].position
-                , Quaternion.LookRotation(firePos[_shootIdx].forward)
-                , firePos[_shootIdx].forward *  turretData.bulletSpeed);
+            bullet.SetupProjectile(this, 
+                damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat), attackData),
+                firePos[_shootIdx].position,
+                Quaternion.LookRotation(firePos[_shootIdx].forward),
+                firePos[_shootIdx].forward * turretData.bulletSpeed);
 
             Recoil();
         }
 
         private void Recoil()
         {
-            shooter[_shootIdx].transform.DOLocalMoveZ(-recoilAmount, 0.08f)
+            shooter[_shootIdx].DOLocalMoveZ(-recoilAmount, 0.08f)
                 .SetEase(Ease.OutCirc)
                 .SetLoops(2, LoopType.Yoyo);
         }
-        
+
         public override void OnDestroy()
         {
             base.OnDestroy();
+
+            _cts?.Cancel();
+            _cts?.Dispose();
+
             foreach (var s in shooter)
             {
                 s.DOKill();
