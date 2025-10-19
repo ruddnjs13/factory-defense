@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Chipmunk.GameEvents;
 using Chipmunk.Player;
+using Code.SHS.Machines.Construction.Previews;
 using Code.SHS.Machines.Events;
 using Code.SHS.Worlds;
 using UnityEngine;
@@ -12,10 +13,14 @@ namespace Code.SHS.Machines.Construction
     {
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private PlayerInputReader playerInput;
-        private MachineSO machineSO;
-        private GameObject mainPreview;
-        private Dictionary<Vector3, GameObject> previewInstances = new Dictionary<Vector3, GameObject>();
+        private ConstructPreview mainPreview;
+        private List<ConstructPreview> previewInstances = new();
+
+        public Dictionary<Vector2Int, ConstructPreview> previewByPosition { get; private set; } =
+            new Dictionary<Vector2Int, ConstructPreview>();
+
         private bool isLeftClicking = false;
+        private Vector2Int previousPosition = Vector2Int.zero;
 
         private void Awake()
         {
@@ -37,14 +42,13 @@ namespace Code.SHS.Machines.Construction
 
         private void OnMachineSelect(MachineSelectEvent evt)
         {
-            machineSO = evt.MachineSo;
             if (mainPreview != null)
-            {
-                Destroy(mainPreview);
-            }
-            ClearPreviews();
+                Destroy(mainPreview.gameObject);
 
-            mainPreview = Instantiate(machineSO.machineGhostPrefab);
+            MachineSO machine = evt.MachineSo;
+            mainPreview = Instantiate(machine.machinePreviewPrefab).GetComponent<ConstructPreview>();
+            mainPreview.Initialize(machine, this);
+            Debug.Assert(mainPreview != null, "ConstructPreview component not found on machinePreviewPrefab");
         }
 
         private void Update()
@@ -53,44 +57,69 @@ namespace Code.SHS.Machines.Construction
             {
                 if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
                 {
-                    Vector3 position = Vector3Int.RoundToInt(hit.point) * new Vector3Int(1, 0, 1);
-                    mainPreview.transform.position = position;
-                    
-                    if (isLeftClicking)
+                    Vector2Int position = new Vector2Int(Mathf.RoundToInt(hit.point.x), Mathf.RoundToInt(hit.point.z));
+                    if (position != previousPosition)
                     {
-                        AddPreviewAtPosition(position);
+                        if (isLeftClicking)
+                        {
+                            Vector2Int directionVector =
+                                (position - previousPosition);
+                            directionVector.Clamp(-Vector2Int.one, Vector2Int.one);
+                            DirectionEnum direction = Direction.GetDirection(directionVector);
+                            mainPreview.transform.rotation = Direction.GetQuaternionFromDirection(direction);
+                            AddPreviewAtPosition(previousPosition);
+                        }
+
+                        mainPreview.transform.position = new Vector3(position.x, 0f, position.y);
+                        previousPosition = position;
                     }
                 }
             }
         }
 
-        private void AddPreviewAtPosition(Vector3 position)
+        private void AddPreviewAtPosition(Vector2Int gridPosition)
         {
-            // 이미 해당 위치에 Preview가 있는지 확인
-            if (previewInstances.ContainsKey(position))
-                return;
+            Vector2Int size = mainPreview.MachineSO.size;
 
             // Size만큼의 모든 타일이 비어있는지 확인
-            if (!CanPlaceMachineAtPosition(position))
+            if (!CanPlaceMachineAtPosition(gridPosition))
                 return;
-
-            GameObject preview = Instantiate(machineSO.machineGhostPrefab, position, mainPreview.transform.rotation);
-            previewInstances.Add(position, preview);
-        }
-
-        /// <summary>
-        /// 해당 위치에 Size만큼 기계를 배치할 수 있는지 확인
-        /// </summary>
-        private bool CanPlaceMachineAtPosition(Vector3 position)
-        {
-            Vector2Int basePos = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.z));
-            Vector2Int size = machineSO.size;
 
             for (int x = 0; x < size.x; x++)
             {
                 for (int y = 0; y < size.y; y++)
                 {
-                    Vector2Int tilePos = basePos + new Vector2Int(x, y);
+                    Vector2Int tilePos = gridPosition + new Vector2Int(x, y) + mainPreview.MachineSO.offset;
+                    DestroyPreviewAt(tilePos);
+                }
+            }
+
+            ConstructPreview preview = Instantiate(mainPreview);
+            preview.Initialize(mainPreview.MachineSO, this);
+            previewInstances.Add(preview);
+
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
+                {
+                    Vector2Int tilePos = gridPosition + new Vector2Int(x, y) + mainPreview.MachineSO.offset;
+                    previewByPosition.Add(tilePos, preview);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 해당 위치에 Size만큼 기계를 배치할 수 있는지 확인
+        /// </summary>
+        private bool CanPlaceMachineAtPosition(Vector2Int gridPosition)
+        {
+            Vector2Int size = mainPreview.MachineSO.size;
+
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
+                {
+                    Vector2Int tilePos = gridPosition + new Vector2Int(x, y);
                     WorldTile tile = WorldGrid.Instance.GetTile(tilePos);
                     if (tile.Machine != null)
                     {
@@ -98,17 +127,15 @@ namespace Code.SHS.Machines.Construction
                     }
                 }
             }
+
             return true;
         }
 
-        private void LeftClickHandler(bool isPressed)
-        {
-            isLeftClicking = isPressed;
-        }
+        private void LeftClickHandler(bool isPressed) => isLeftClicking = isPressed;
 
         private void MiddleClickHandler(bool isPressed)
         {
-            if (isPressed && machineSO != null && previewInstances.Count > 0)
+            if (!isPressed)
             {
                 ConstructAll();
             }
@@ -116,70 +143,30 @@ namespace Code.SHS.Machines.Construction
 
         private void ConstructAll()
         {
-            int totalCost = machineSO.cost * previewInstances.Count;
-
-            // 비용 체크
-            if (Portal.resourceCount < totalCost)
+            foreach (ConstructPreview constructPreview in previewInstances)
             {
-                // 설치 가능한 만큼만 설치
-                int affordableCount = Portal.resourceCount / machineSO.cost;
-                if (affordableCount == 0)
-                {
-                    return;
-                }
-                
-                int count = 0;
-                foreach (var kvp in previewInstances)
-                {
-                    if (count >= affordableCount)
-                        break;
-                    
-                    TryConstructSingle(kvp.Key, kvp.Value.transform.rotation);
-                    count++;
-                }
-            }
-            else
-            {
-                // 모두 설치
-                foreach (var kvp in previewInstances)
-                {
-                    TryConstructSingle(kvp.Key, kvp.Value.transform.rotation);
-                }
+                constructPreview.Construct();
             }
 
             ClearPreviews();
         }
 
-        private bool TryConstructSingle(Vector3 position, Quaternion rotation)
-        {
-            // Size만큼의 모든 타일이 비어있는지 다시 확인
-            if (!CanPlaceMachineAtPosition(position))
-                return false;
-
-            if (Portal.resourceCount < machineSO.cost) 
-                return false;
-
-            Portal.resourceCount -= machineSO.cost;
-            Instantiate(machineSO.machinePrefab, position, rotation);
-            return true;
-        }
-
         private void ClearPreviews()
         {
-            foreach (var preview in previewInstances.Values)
+            foreach (var preview in previewInstances)
             {
                 if (preview != null)
-                    Destroy(preview);
+                    Destroy(preview.gameObject);
             }
+
             previewInstances.Clear();
+            previewByPosition.Clear();
         }
 
         private void RightClickHandler(bool isPressed)
         {
-            if (isPressed && machineSO != null)
-            {
+            if (isPressed)
                 CancelConstruction();
-            }
         }
 
         private void RotateHandler()
@@ -187,24 +174,36 @@ namespace Code.SHS.Machines.Construction
             if (mainPreview != null)
             {
                 mainPreview.transform.Rotate(Vector3.up, 90f);
-                
-                // 기존 Preview들도 회전
-                foreach (var preview in previewInstances.Values)
-                {
-                    if (preview != null)
-                        preview.transform.Rotate(Vector3.up, 90f);
-                }
             }
         }
 
         private void CancelConstruction()
         {
-            machineSO = null;
             if (mainPreview != null)
             {
-                Destroy(mainPreview);
+                Destroy(mainPreview.gameObject);
+                mainPreview = null;
             }
+
             ClearPreviews();
+        }
+
+        private void DestroyPreviewAt(Vector2Int gridPosition)
+        {
+            if (previewByPosition.TryGetValue(gridPosition, out ConstructPreview preview))
+            {
+                for (int x = 0; x < mainPreview.MachineSO.size.x; x++)
+                {
+                    for (int y = 0; y < mainPreview.MachineSO.size.y; y++)
+                    {
+                        Vector2Int tilePos = gridPosition + new Vector2Int(x, y) + mainPreview.MachineSO.offset;
+                        previewByPosition.Remove(tilePos);
+                    }
+                }
+
+                previewInstances.Remove(preview);
+                Destroy(preview.gameObject);
+            }
         }
     }
 }

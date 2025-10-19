@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SideStacker
   m_EditorClassIdentifier: 
   machineName: SideStacker
-  machineGhostPrefab: {fileID: 8694779061055595697, guid: 7be6e9220e5cdda47be8d068133efd7d, type: 3}
+  machinePreviewPrefab: {fileID: 8694779061055595697, guid: 7be6e9220e5cdda47be8d068133efd7d, type: 3}
   machinePrefab: {fileID: 893015123099149383, guid: 56b6c1b0cfc95694f9a08a727d2c7081, type: 3}
   size: {x: 2, y: 1}
   offset: {x: -1, y: 0}

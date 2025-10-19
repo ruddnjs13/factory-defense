@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Conveyor Belt
   m_EditorClassIdentifier: 
   machines:
-  - {fileID: 11400000, guid: 73ee9e3a36a5e0048b88e74bca402b49, type: 2}
+  - {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}

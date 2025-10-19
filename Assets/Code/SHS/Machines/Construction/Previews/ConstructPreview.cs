@@ -2,17 +2,21 @@ using UnityEngine;
 
 namespace Code.SHS.Machines.Construction.Previews
 {
-    public class ConstructPreview : MonoBehaviour, IMachine
+    public class ConstructPreview : MonoBehaviour
     {
-        public Vector2Int Position { get; private set; }
-        public Vector2Int Size { get; }
-        public void Initialize(Vector2Int position, DirectionEnum direction)
+        public MachineSO MachineSO { get; private set; }
+        private MachineConstructor constructor;
+
+        public virtual void Initialize(MachineSO machineSO, MachineConstructor constructor)
         {
-            Position = position;
+            MachineSO = machineSO;
+            this.constructor = constructor;
         }
 
-        public void OnTick(float deltaTime)
+        public virtual GameObject Construct()
         {
+            GameObject machine = Instantiate(MachineSO.machinePrefab, transform.position, transform.rotation);
+            return machine;
         }
     }
 }

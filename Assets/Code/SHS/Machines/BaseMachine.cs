@@ -20,6 +20,10 @@ namespace Code.SHS.Machines
 
         public virtual void OnInitialize(ComponentContainer componentContainer)
         {
+        }
+
+        private void Construct()
+        {
             Debug.Assert(MachineSo != null, "MachineSo is not assigned");
             TickManager.RegisterTick(this);
             Position = Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z));
@@ -76,7 +80,6 @@ namespace Code.SHS.Machines
                     WorldTile tile = WorldGrid.Instance.GetTile(tilePos);
                     tile.Machine = this;
                     WorldGrid.Instance.SetTile(tilePos, tile);
-                    Debug.Log(tilePos);
                 }
             }
         }

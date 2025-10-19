@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
+  m_Script: {fileID: 11500000, guid: cb4aa23bbfac467cad02743dd4371f20, type: 3}
   m_Name: Conveyor Belt SO
   m_EditorClassIdentifier: 
   machineName: Conveyor Belt
-  machineGhostPrefab: {fileID: 7305400094980309083, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
+  machinePreviewPrefab: {fileID: 7305400094980309083, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
   machinePrefab: {fileID: 3011476269277469586, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
   size: {x: 1, y: 1}
+  offset: {x: 0, y: 0}
   cost: 20
+  conveyorDataList:
+  - inputPositions:
+    - {x: 1, y: 0}
+    prefab: {fileID: 0}

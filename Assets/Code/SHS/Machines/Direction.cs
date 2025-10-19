@@ -75,6 +75,23 @@ namespace Code.SHS.Machines
 
             return direction;
         }
+
+        public static Quaternion GetQuaternionFromDirection(DirectionEnum direction)
+        {
+            switch (direction)
+            {
+                case DirectionEnum.Forward:
+                    return Quaternion.Euler(0f, 0f, 0f);
+                case DirectionEnum.Right:
+                    return Quaternion.Euler(0f, 90f, 0f);
+                case DirectionEnum.Back:
+                    return Quaternion.Euler(0f, 180f, 0f);
+                case DirectionEnum.Left:
+                    return Quaternion.Euler(0f, 270f, 0f);
+                default:
+                    return Quaternion.identity;
+            }
+        }
     }
 
 
