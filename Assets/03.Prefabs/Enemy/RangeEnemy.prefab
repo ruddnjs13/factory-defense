@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetVisualTrm: {fileID: 6092771786524507827}
-  blinkDuration: 0.15
+  blinkDuration: 0.6
   blinkIntensity: 0.15
 --- !u!1 &2010613730192603312
 GameObject:
@@ -2430,7 +2430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8097240512481622393
 Transform:
   m_ObjectHideFlags: 0
@@ -2510,6 +2510,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   <TargetTrm>k__BackingField: {fileID: 0}
+  <PoolType>k__BackingField: {fileID: 0}
   states:
   - {fileID: 11400000, guid: 134ba2171a9f47040927b2dc4f378b52, type: 2}
   - {fileID: 11400000, guid: 1681c6ae83eff9f4bbeb9aae7d21ac54, type: 2}
@@ -2941,12 +2942,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc9016859d74e0c968fa1d0b9fd5e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   attackData: {fileID: 11400000, guid: d73d66ac4ac951c4db9a8a736129b03e, type: 2}
   damageStat: {fileID: 11400000, guid: 73a5c8d399a4c3441bbbc98438dfbb27, type: 2}
   attackInterval: 0.5
+  OnAttackEvent:
+    m_PersistentCalls:
+      m_Calls: []
   bulletPool: {fileID: 11400000, guid: 1f24aff4caf160743838ab25934eb861, type: 2}
   muzzlePool: {fileID: 11400000, guid: 709a1d6d8c8a64e468511bb7d22b28a9, type: 2}
-  effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   firePos: {fileID: 1883501716008151565}
   bulletSpeed: 24
   maxFireDelay: 1
@@ -3278,8 +3282,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
+      propertyPath: statOverrides.Array.data[1].isUseOverride
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[0].overrideBaseValue
-      value: 1000
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
+      propertyPath: statOverrides.Array.data[1].overrideBaseValue
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
