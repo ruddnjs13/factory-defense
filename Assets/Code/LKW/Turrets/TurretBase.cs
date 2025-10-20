@@ -4,6 +4,7 @@ using Code.Combat;
 using Code.Core.StatSystem;
 using Code.EJY.Enemies;
 using Code.Entities;
+using Code.LKW.ETC;
 using Code.SHS.Machines;
 using Core.GameEvent;
 using RuddnjsPool;
@@ -25,6 +26,7 @@ namespace Code.LKW.Turrets
         [SerializeField] protected GameEventChannelSO effectChannel;
         [SerializeField] protected PoolingItemSO muzzleParticleItem;
         [SerializeField] private SphereCollider sphereCollider;
+        [SerializeField] private RoundDecal roundDecal;
         [Space]
         [Space]
         
@@ -61,6 +63,9 @@ namespace Code.LKW.Turrets
             entityStatCompo = GetCompo<EntityStatCompo>();
             entityHealth = GetCompo<EntityHealth>();
             turretRenderer = GetCompo<TurretRenderer>();
+            
+            roundDecal.SetDecalSize(turretData.range/2);
+            roundDecal.SetProjectionActive(true);
         }
 
         private void OnEnable()

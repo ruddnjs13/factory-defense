@@ -1028,7 +1028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1517462223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1419,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <TargetTrm>k__BackingField: {fileID: 0}
+  <PoolType>k__BackingField: {fileID: 0}
 --- !u!1001 &1403578050411432067
 PrefabInstance:
   m_ObjectHideFlags: 0
