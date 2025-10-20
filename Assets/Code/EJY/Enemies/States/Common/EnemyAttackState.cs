@@ -34,8 +34,9 @@ namespace Code.EJY.Enemies.States
             while (true)
             {
                 var target = _detector.CurrentTarget.Value.position;
+                target.y = 0;
                 _movement.LookAtTarget(target);
-
+                
                 float angle = Quaternion.Angle(
                     Quaternion.LookRotation(target - _enemy.transform.position),
                     _enemy.transform.rotation

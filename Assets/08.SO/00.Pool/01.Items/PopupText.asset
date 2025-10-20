@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839fcb1266e05ce4f9b82007201059f7, type: 3}
+  m_Name: PopupText
+  m_EditorClassIdentifier: 
+  poolType: {fileID: 11400000, guid: 6bb2dff2d219fcd498c1233124cdd5f5, type: 2}
+  prefab: {fileID: 8210749721554001971, guid: 980f97ed527404c43be1e71f2a8917d4, type: 3}
+  initCount: 5

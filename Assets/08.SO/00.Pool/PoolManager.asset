@@ -23,4 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ffb137d594d19a4ab107c34c159094e, type: 2}
   - {fileID: 11400000, guid: b845b7840001e5f459451127f76e0989, type: 2}
   - {fileID: 11400000, guid: 8711d11e3b6b6f748a12c727d2ed30bf, type: 2}
+  - {fileID: 11400000, guid: f9f5c8f0f8d46154f934e208287151d7, type: 2}
+  - {fileID: 11400000, guid: 21ebd57c886002e44a472f2b78ffc10e, type: 2}
   _rootTrm: {fileID: 0}

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Flame tier1
   m_EditorClassIdentifier: 
   machineName: Flame tier1
-  machineGhostPrefab: {fileID: 7037569685089701699, guid: 2de9959f39755b74a9108e89425f8f41, type: 3}
+  machinePreviewPrefab: {fileID: 7037569685089701699, guid: 2de9959f39755b74a9108e89425f8f41, type: 3}
   machinePrefab: {fileID: 1081168340355690814, guid: 48f239849f6fe5149a820a8e3ac91b39, type: 3}
+  size: {x: 1, y: 1}
+  offset: {x: 0, y: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   cost: 20

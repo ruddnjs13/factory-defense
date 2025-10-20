@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Missile tier1
   m_EditorClassIdentifier: 
   machineName: Missile tier1
-  machineGhostPrefab: {fileID: 869187408279613706, guid: b58b5e462fd307440b720a45a97f4ab6, type: 3}
+  machinePreviewPrefab: {fileID: 869187408279613706, guid: b58b5e462fd307440b720a45a97f4ab6, type: 3}
   machinePrefab: {fileID: 3709515045153949842, guid: 1cd0cc304d7fdd743abef37f54682e44, type: 3}
+  size: {x: 1, y: 1}
+  offset: {x: 0, y: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   cost: 20

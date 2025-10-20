@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Default tier2
   m_EditorClassIdentifier: 
   machineName: Default tier2
-  machineGhostPrefab: {fileID: 1169008375282370725, guid: fd51ef8fb1cb5e24ab4f6a721033142e, type: 3}
+  machinePreviewPrefab: {fileID: 1169008375282370725, guid: fd51ef8fb1cb5e24ab4f6a721033142e, type: 3}
   machinePrefab: {fileID: 6648709383769272421, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
+  size: {x: 1, y: 1}
+  offset: {x: 0, y: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   cost: 20

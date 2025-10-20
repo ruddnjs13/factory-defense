@@ -37,15 +37,53 @@ namespace Code.EJY.Enemies
 
         private void FixedUpdate()
         {
-            Array.Clear(_hits, 0, 1);
-            Physics.OverlapSphereNonAlloc(_enemy.transform.position, detectRange, _hits, whatIsTarget);
-
-            CurrentTarget.Value = _hits[0]?.transform;
-            IsTargeting = CurrentTarget.Value != null;
-
-            int amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, attackRange, _hits, whatIsTarget);
-            InAttackRange = amount > 0;
+            DetectAndCheckTarget();
         }
+        
+        void DetectAndCheckTarget()
+        {
+            if (!IsTargeting)
+            {
+                Array.Clear(_hits, 0, _hits.Length);
+
+                int detectCount = Physics.OverlapSphereNonAlloc(
+                    _enemy.transform.position,
+                    detectRange,
+                    _hits,
+                    whatIsTarget
+                );
+
+                if (detectCount > 0)
+                {
+                    CurrentTarget.Value = _hits[0]?.transform;
+                    IsTargeting = CurrentTarget.Value != null;
+                }
+            }
+            else
+            {
+                if (CurrentTarget.Value == null)
+                {
+                    IsTargeting = false;
+                    InAttackRange = false;
+                    return;
+                }
+
+                float distance = Vector3.Distance(
+                    _enemy.transform.position,
+                    CurrentTarget.Value.position
+                );
+
+                InAttackRange = distance <= attackRange;
+
+                if (distance > detectRange * 1.2f)
+                {
+                    IsTargeting = false;
+                    CurrentTarget.Value = null;
+                    InAttackRange = false;
+                }
+            }
+        }
+
 
         private void OnDestroy()
         {

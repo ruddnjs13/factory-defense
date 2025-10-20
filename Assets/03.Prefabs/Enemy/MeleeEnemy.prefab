@@ -10550,7 +10550,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4448701727635748224}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -35827,7 +35827,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: attackRange
-      value: 1.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: detectRange
@@ -36154,6 +36154,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
+--- !u!114 &1843569730576160139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3434191393472522852, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
+  m_PrefabInstance: {fileID: 3908313064608743407}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7126383403484e824859b31f45ce60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3437521319177599869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1840170608645375122, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
@@ -36224,9 +36235,17 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5818870105934291529, guid: 34ddd6cb9827642478651445800c0c19, type: 3}
+      propertyPath: casters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818870105934291529, guid: 34ddd6cb9827642478651445800c0c19, type: 3}
       propertyPath: whatIsTarget.m_Bits
       value: 2304
       objectReference: {fileID: 0}
+    - target: {fileID: 5818870105934291529, guid: 34ddd6cb9827642478651445800c0c19, type: 3}
+      propertyPath: 'casters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1843569730576160139}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
