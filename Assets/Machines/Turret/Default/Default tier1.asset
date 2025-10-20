@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
   m_Name: Default tier1
   m_EditorClassIdentifier: 
-  machineName: DefaultTurret
+  machineName: Default tier1
   machineGhostPrefab: {fileID: 5785638869718451386, guid: 9a4a6bb819813044ebec4f6513d66c9c, type: 3}
   machinePrefab: {fileID: 8494490316000351532, guid: aa4c837762074574396fbb8ba6d934d0, type: 3}
   cost: 20

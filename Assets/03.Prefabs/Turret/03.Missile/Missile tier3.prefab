@@ -20536,7 +20536,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -20621,6 +20621,7 @@ MonoBehaviour:
   turretHead: {fileID: 712628999010182276}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
+  sphereCollider: {fileID: 8392159517955762142}
   recoilAmount: 0.2
   firePos:
   - {fileID: 6476273515294104183}

@@ -5517,6 +5517,7 @@ MonoBehaviour:
   turretHead: {fileID: 2817039296680789062}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
+  sphereCollider: {fileID: 7460670818736072856}
   recoilAmount: 0.14
   firePos:
   - {fileID: 1636542362620729489}
@@ -5539,7 +5540,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -5590,6 +5591,7 @@ MonoBehaviour:
   - {fileID: 2306355091378796936}
   - {fileID: 4512143942707806585}
   - {fileID: 2762621328325437147}
+  animator: {fileID: 0}
   renderers:
   - {fileID: 6944264638130322251}
   - {fileID: 8487078133767694741}

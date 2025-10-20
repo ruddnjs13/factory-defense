@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6a1be90f5d283df4299a0618ce7b7ba2
+timeCreated: 1569738419
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 168792
+  packageName: Fatty Poly Turret Part3
+  packageVersion: 1.0
+  assetPath: Assets/FattyPolyTurretPart3/Materials/Palette256.mat
+  uploadId: 413681

@@ -8,7 +8,7 @@ namespace Code.SHS.Machines.ShapeResources
     {
         public GameObject prefab;
         public Vector3 localPosition;
-
+        public int resourceAmount = 1;
         private void OnValidate()
         {
             if (prefab != null)

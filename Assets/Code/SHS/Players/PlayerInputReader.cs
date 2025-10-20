@@ -10,6 +10,7 @@ namespace Chipmunk.Player
     {
         public Action<bool> OnLeftClickEvent;
         public Action<bool> OnRightClickEvent;
+        public Action<bool> OnMiddleClickEvent;
         public Action<int> OnNumberKeyEvent;
         public Action<float> OnWheelEvent;
         public Action OnRotateEvent;
@@ -59,6 +60,14 @@ namespace Chipmunk.Player
                 OnRightClickEvent?.Invoke(true);
             else if (context.canceled)
                 OnRightClickEvent?.Invoke(false);
+        }
+
+        public void OnMiddleClick(InputAction.CallbackContext context)
+        {
+            if (context.performed && UIPointerDetector.IsPointerInUI == false)
+                OnMiddleClickEvent?.Invoke(true);
+            else if (context.canceled)
+                OnMiddleClickEvent?.Invoke(false);
         }
 
         public void OnMouse(InputAction.CallbackContext context)

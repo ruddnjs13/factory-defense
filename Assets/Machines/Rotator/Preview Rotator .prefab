@@ -55,7 +55,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46451e2ee4daee34bb0a236a115790da, type: 2}
+  - {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -195,6 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630753026385125265}
+  - component: {fileID: 4723407694976387430}
   m_Layer: 0
   m_Name: 'Preview Rotator '
   m_TagString: Untagged
@@ -219,6 +220,19 @@ Transform:
   - {fileID: 1395930082055103726}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4723407694976387430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715399901352898762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15985768982e4519838ecba14f6d642c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MachineSO: {fileID: 11400000, guid: a97b8099e5a94884cb77557d4f6058f7, type: 2}
 --- !u!1 &8068563102275427508
 GameObject:
   m_ObjectHideFlags: 0

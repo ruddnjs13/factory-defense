@@ -9,10 +9,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
+  m_Script: {fileID: 11500000, guid: cb4aa23bbfac467cad02743dd4371f20, type: 3}
   m_Name: Conveyor Belt SO
   m_EditorClassIdentifier: 
   machineName: Conveyor Belt
-  machineGhostPrefab: {fileID: 7305400094980309083, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
+  machinePreviewPrefab: {fileID: 7305400094980309083, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
   machinePrefab: {fileID: 3011476269277469586, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+  size: {x: 1, y: 1}
+  offset: {x: 0, y: 0}
+  rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   cost: 20
+  conveyorDataList:
+  - inputDirections: 
+    outputDirections: 0000000001000000
+    mesh: {fileID: 5917397875176222528, guid: f5c7fead88b871148bf2a66fbad16b35, type: 3}
+    rotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
+    prefab: {fileID: 0}
+  - inputDirections: 
+    outputDirections: 0000000003000000
+    mesh: {fileID: -2723168255992769706, guid: 1073de069c9dae14ea17b5d4026f561a, type: 3}
+    rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    prefab: {fileID: 0}
+  - inputDirections: 
+    outputDirections: 03000000
+    mesh: {fileID: -804803376808891692, guid: 3e1c5b683f3e80e4793fae04efebf8fd, type: 3}
+    rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    prefab: {fileID: 862525644930042466, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+  - inputDirections: 
+    outputDirections: 01000000
+    mesh: {fileID: -6927139640666918808, guid: 703ee46cfe2dfc14bb2f167de6a128c7, type: 3}
+    rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    prefab: {fileID: 63057520035506579, guid: b640d968f7d596d4d95f52d8d028ec01, type: 3}

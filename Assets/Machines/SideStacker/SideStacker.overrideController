@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SideStacker
+  m_Controller: {fileID: 9100000, guid: 666c8ad421851164a8383fe8412f7bf1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: bafb954432a1ed040886b2e0d2110d1e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8436f2b4e2b8a324eb5fc3c756d7bdf2, type: 2}

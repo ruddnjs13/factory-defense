@@ -7,11 +7,10 @@ namespace Code.SHS.Machines.Ports
 {
     public class TwoWayDirectionOutputPort : DirectionOutputPort
     {
-
         protected override InputPort FindInputPort()
         {
             Vector2Int outputPosition =
-                Position + Direction.GetDirection(worldDirection.Opposite()).ToInt().ToXZ();
+                Position + worldDirection.Opposite().ToVector3().ToInt().ToXZ();
             InputPort inputPort = InputPort(outputPosition);
             if (inputPort != null && inputPort.CanAcceptInputFrom(this) && inputPort.CanAcceptResource())
                 return inputPort;
@@ -23,11 +22,11 @@ namespace Code.SHS.Machines.Ports
             base.SendResourceTo(inputPort);
             // inverseResourceVisualizer.EndTransport();
 
-            DirectionEnum direction = Direction.GetDirection(inputPort.Position - Position);
+            Direction direction = (inputPort.Position - Position).ToDirection();
             // if (direction == worldDirection.Opposite())
-                // inverseResourceVisualizer.EndTransportReverse();
+            // inverseResourceVisualizer.EndTransportReverse();
             // else
-                // resourceVisualizer.EndTransport();
+            // resourceVisualizer.EndTransport();
         }
     }
 }

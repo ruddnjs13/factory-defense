@@ -20,10 +20,11 @@ namespace Code.LKW.Turrets
         [SerializeField] protected TurretDataSO turretData;
         [SerializeField] protected AttackDataSO attackData;
         [SerializeField] protected StatSO turretDamageStat;
-        [SerializeField] private LayerMask targetLayer;
+        [SerializeField] protected LayerMask targetLayer;
         [SerializeField] protected GameObject turretHead;
         [SerializeField] protected GameEventChannelSO effectChannel;
         [SerializeField] protected PoolingItemSO muzzleParticleItem;
+        [SerializeField] private SphereCollider sphereCollider;
         [Space]
         [Space]
         
@@ -32,11 +33,10 @@ namespace Code.LKW.Turrets
         protected EntityHealth entityHealth;
         protected TurretRenderer turretRenderer;
 
-        private SphereCollider sphereCollider;
         
         private float _reloadTimer;
         protected Enemy _target;
-        private readonly List<Enemy> _targets = new List<Enemy>();
+        [SerializeField] protected List<Enemy> _targets = new List<Enemy>();
 
         private bool _isShootAngle = false;
          
@@ -57,7 +57,6 @@ namespace Code.LKW.Turrets
         protected override void Awake()
         {
             base.Awake();
-            sphereCollider = GetComponent<SphereCollider>();
             damageCompo = GetCompo<DamageCompo>();
             entityStatCompo = GetCompo<EntityStatCompo>();
             entityHealth = GetCompo<EntityHealth>();
@@ -87,7 +86,7 @@ namespace Code.LKW.Turrets
                 _reloadTimer -= Time.deltaTime;
         }
 
-        private void TryShoot()
+        protected virtual void TryShoot()
         {
             if (_target == null || _target.IsDead || !_isShootAngle ||_reloadTimer > 0f) return;            
 
