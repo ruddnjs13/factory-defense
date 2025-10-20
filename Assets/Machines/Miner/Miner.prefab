@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2126963977085476530}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 322974126760077762}
   m_SourcePrefab: {fileID: 100100000, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
 --- !u!4 &8396160380983838441 stripped
 Transform:
@@ -127,10 +130,31 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <MachineSo>k__BackingField: {fileID: 11400000, guid: f855dd91c4777f342a85a48a5282d6ce, type: 2}
-  <Size>k__BackingField: {x: 0, y: 0}
-  testShapeResource: {fileID: 11400000, guid: ed03958af4631ae4a9d7c0e7dd4aae40, type: 2}
+  mineShapeResource: {fileID: 0}
   mineInterval: 2
   outputPort: {fileID: 7981068515065922041}
+--- !u!95 &322974126760077762
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209570748454165587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: e6ee6b10541c68147bd4113ab421047b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8889065936876013669
 PrefabInstance:
   m_ObjectHideFlags: 0

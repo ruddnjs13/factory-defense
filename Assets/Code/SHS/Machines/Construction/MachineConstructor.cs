@@ -21,6 +21,7 @@ namespace Code.SHS.Machines.Construction
 
         private bool isLeftClicking = false;
         private Vector2Int previousPosition = Vector2Int.zero;
+        [SerializeField] private Transform containerTransform;
 
         private void Awake()
         {
@@ -77,6 +78,7 @@ namespace Code.SHS.Machines.Construction
                         }
 
                         mainPreview.transform.position = new Vector3(position.x, 0f, position.y);
+                        containerTransform.position = new Vector3(position.x, 0f, position.y);
                         previousPosition = position;
                     }
                 }
