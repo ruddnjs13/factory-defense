@@ -30,6 +30,9 @@ namespace Code.SHS.Machines.Construction
             playerInput.OnRightClickEvent += RightClickHandler;
             playerInput.OnRotateEvent += RotateHandler;
             playerInput.OnMiddleClickEvent += MiddleClickHandler;
+
+            containerTransform.SetParent(null);
+            containerTransform.transform.rotation = Quaternion.Euler(90, 0, 0);
         }
 
         private void OnDestroy()
