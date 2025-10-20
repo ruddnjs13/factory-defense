@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Portal SO
   m_EditorClassIdentifier: 
   machineName: Portal
-  machineGhostPrefab: {fileID: 6731376910232102334, guid: 1f25336a734fdd7448fdb1dbd8f43222, type: 3}
-  machinePrefab: {fileID: 982085761884965654, guid: 529f027f95a5103419a24b5d05c56177, type: 3}
+  machinePreviewPrefab: {fileID: 0}
+  machinePrefab: {fileID: 6487913121771127082, guid: 1f25336a734fdd7448fdb1dbd8f43222, type: 3}
+  size: {x: 3, y: 1}
+  offset: {x: -1, y: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  cost: 20

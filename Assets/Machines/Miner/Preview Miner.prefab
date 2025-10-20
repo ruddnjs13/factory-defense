@@ -72,6 +72,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2173100869683156079, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
+    - target: {fileID: 2173100869683156079, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -79,6 +87,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4464088383221007724}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9018280742319671799}
   m_SourcePrefab: {fileID: 100100000, guid: 742397a34c4e3f943b16c44867cf66de, type: 3}
 --- !u!1 &8436448482218265904 stripped
 GameObject:
@@ -97,3 +108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46dcb74cf4b291489ab4f768ed93fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-9018280742319671799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8436448482218265904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15985768982e4519838ecba14f6d642c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MachineSO: {fileID: 11400000, guid: f855dd91c4777f342a85a48a5282d6ce, type: 2}

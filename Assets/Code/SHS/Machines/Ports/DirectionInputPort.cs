@@ -7,22 +7,22 @@ namespace Code.SHS.Machines.Ports
     public class DirectionInputPort : InputPort
     {
         [FormerlySerializedAs("inputDirection")] [SerializeField]
-        private DirectionEnum direction;
+        private Direction direction;
 
-        protected DirectionEnum worldDirection;
+        protected Direction worldDirection;
 
         public override void OnInitialize(ComponentContainer componentContainer)
         {
             base.OnInitialize(componentContainer);
 
             float yRotation = transform.eulerAngles.y;
-            worldDirection = Direction.RotateDirection(direction, yRotation);
+            worldDirection = direction.Rotate(yRotation);
         }
 
         public override bool CanAcceptInputFrom(OutputPort outputPort)
         {
             Vector2Int directionVec = Position - outputPort.Position;
-            DirectionEnum direction = Direction.GetOpposite(Direction.GetDirection(directionVec));
+            Direction direction = directionVec.ToDirection().Opposite();
             if (direction != this.worldDirection)
                 return false;
             return true;
@@ -33,8 +33,8 @@ namespace Code.SHS.Machines.Ports
             Gizmos.color = Color.cyan;
 
             float yRotation = transform.eulerAngles.y;
-            worldDirection = Direction.RotateDirection(direction, yRotation);
-            Vector3 directionVector = Direction.GetDirection(worldDirection);
+            worldDirection = direction.Rotate(yRotation);
+            Vector3 directionVector = worldDirection.ToVector3();
             Vector3 position = transform.position + directionVector + new Vector3(0f, 0.5f, 0f);
             Gizmos.DrawWireCube(position, Vector3.one * 1f);
         }

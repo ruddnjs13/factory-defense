@@ -37,5 +37,23 @@ namespace Code.SHS.Machines.ShapeResources
         private ShapeResource()
         {
         }
+
+        public static ShapeResource Stack(ShapeResource leftResource, ShapeResource rightResource)
+        {
+            ShapeResource newResource = new ShapeResource();
+            for (int i = 0; i < 8; i++)
+            {
+                if (leftResource.ShapePieces[i].ShapePieceSo != null)
+                {
+                    newResource.ShapePieces[i] = leftResource.ShapePieces[i];
+                }
+                else if (rightResource.ShapePieces[i].ShapePieceSo != null)
+                {
+                    newResource.ShapePieces[i] = rightResource.ShapePieces[i];
+                }
+            }
+
+            return newResource;
+        }
     }
 }

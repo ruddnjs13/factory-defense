@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Miner
   m_EditorClassIdentifier: 
   machineName: 
-  machineGhostPrefab: {fileID: 8436448482218265904, guid: fa724a6c93b176f49b062d2ec442ddf2, type: 3}
+  machinePreviewPrefab: {fileID: 8436448482218265904, guid: fa724a6c93b176f49b062d2ec442ddf2, type: 3}
   machinePrefab: {fileID: 9209570748454165587, guid: 88cb98f487d27a5468a69e42dd2d3d78, type: 3}
+  size: {x: 1, y: 1}
+  offset: {x: 0, y: 0}
   cost: 20

@@ -4,6 +4,8 @@ namespace Code.SHS.Worlds
 {
     public struct WorldTile
     {
+        public GroundSO Ground;
+        
         public BaseMachine Machine;
     }
 }

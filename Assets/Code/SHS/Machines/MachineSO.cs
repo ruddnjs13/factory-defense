@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
@@ -6,8 +7,11 @@ namespace Code.SHS.Machines
     public class MachineSO : ScriptableObject
     {
         public string machineName;
-        public GameObject machineGhostPrefab;
+        public GameObject machinePreviewPrefab;
         public GameObject machinePrefab;
+        public Vector2Int size = Vector2Int.one;
+        public Vector2Int offset = Vector2Int.zero;
+        public Quaternion rotation;
         public int cost = 20;
     }
 }
