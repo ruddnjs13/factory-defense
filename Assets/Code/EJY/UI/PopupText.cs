@@ -1,7 +1,8 @@
-/*using System;
+using System;
 using System.Globalization;
+using Code.UI;
 using DG.Tweening;
-using GondrLib.ObjectPool.Runtime;
+using RuddnjsPool;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Blade.UI
     {
         [SerializeField] private TextMeshPro popUpText;
         [field: SerializeField] public PoolingItemSO PoolingType { get; private set; }
+        public PoolTypeSO PoolType { get; set; }
         public GameObject GameObject => gameObject;
 
         private Pool _myPool;
@@ -54,4 +56,4 @@ namespace Blade.UI
             });
         }
     }
-}*/
+}
