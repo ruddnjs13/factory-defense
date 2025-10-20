@@ -30,18 +30,19 @@ namespace Code.EJY.Enemies.States
 
         private IEnumerator RotateToTarget()
         {
-            Debug.Log("공격 상태 진입, 회전 시작");
             _animator.SetAnimator(false);
             while (true)
             {
                 var target = _detector.CurrentTarget.Value.position;
+                target.y = 0;
                 _movement.LookAtTarget(target);
-
+                
                 float angle = Quaternion.Angle(
                     Quaternion.LookRotation(target - _enemy.transform.position),
                     _enemy.transform.rotation
                 );
 
+                Debug.Log($"{angle}");
                 if (angle <= ANGLETHRESHOLD) break;
                 yield return null;
             }
