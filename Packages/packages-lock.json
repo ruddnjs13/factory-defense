@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.gustavopsantos.reflex": {
+      "version": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#13.0.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e644f1bb8ea190157aaea9c386f85cee4cd03bd9"
+    },
     "com.singularitygroup.hotreload": {
       "version": "file:com.singularitygroup.hotreload",
       "depth": 0,

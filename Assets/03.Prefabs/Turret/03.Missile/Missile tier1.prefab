@@ -316,6 +316,7 @@ MonoBehaviour:
   turretHead: {fileID: 4762677680584495346}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
+  sphereCollider: {fileID: 2263297027684117157}
   recoilAmount: 0.2
   firePos: {fileID: 3040869993976353400}
   shooter: {fileID: 6312736424721429583}

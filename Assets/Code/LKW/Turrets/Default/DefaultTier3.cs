@@ -20,6 +20,7 @@ namespace Code.LKW.Turrets
 
         private void Awake()
         {
+            base.Awake();
             _cts = new CancellationTokenSource();
         }
 
