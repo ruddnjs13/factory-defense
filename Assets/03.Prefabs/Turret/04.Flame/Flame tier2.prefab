@@ -674,8 +674,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  <MachineSo>k__BackingField: {fileID: 11400000, guid: 7fd29f9d493b50d4989742378d0a88b9, type: 2}
-  <Size>k__BackingField: {x: 0, y: 0}
+  <MachineSo>k__BackingField: {fileID: 11400000, guid: e8cc1a3d726408d4cbce90297a1ec4bf, type: 2}
   turretData: {fileID: 11400000, guid: 5532e018150131243b8ac7ac34ccab41, type: 2}
   attackData: {fileID: 11400000, guid: 33fd26877b79f934fb97f1ae7be14bb4, type: 2}
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91403014b80540929ca4d2d1b4660526, type: 3}
-  m_Name: Flame tier 1
+  m_Name: Flame tier 2
   m_EditorClassIdentifier: 
-  range: 12
+  range: 15
   reloadTimer: 3
-  rotationSpeed: 180
+  rotationSpeed: 200
   bulletSpeed: 18
   shootAllowanceAngle: 12

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9992359f916841e99f0f82be9694f1a6, type: 3}
-  m_Name: Flame tier2
+  m_Name: Flame tier3
   m_EditorClassIdentifier: 
-  machineName: Flame tier2
-  machinePreviewPrefab: {fileID: 5865223421556714738, guid: 1d72b61fd2175dd479c06ccd4d2cf166, type: 3}
-  machinePrefab: {fileID: 9031092180164996869, guid: 4335104b3d7b6c542a040efe8b35a897, type: 3}
+  machineName: Flame tier3
+  machinePreviewPrefab: {fileID: 4256863292755577711, guid: 2c7f772acef942f438448e9fe2ba3392, type: 3}
+  machinePrefab: {fileID: 1102975139319102931, guid: 6727fd1b96451ee41a8679a22b940527, type: 3}
   size: {x: 1, y: 1}
   offset: {x: 0, y: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
