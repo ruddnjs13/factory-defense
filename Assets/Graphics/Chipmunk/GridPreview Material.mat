@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_GridShader
+  m_Name: GridPreview Material
   m_Shader: {fileID: -6465566751694194690, guid: 6c8b453194aa5104bbca5e5e6b08a2b2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -47,8 +47,10 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Radius: 1
+    - _Scale: 0.25
     m_Colors:
     - _Color: {r: 0, g: 7.6049314, b: 11.984313, a: 0.27450982}
+    - _Offset: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3431833186959236525
