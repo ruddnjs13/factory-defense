@@ -5095,6 +5095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7322811443837823469}
+  - component: {fileID: 6570447481891480641}
   m_Layer: 0
   m_Name: Catapult tier1 Preview
   m_TagString: Untagged
@@ -5118,6 +5119,18 @@ Transform:
   - {fileID: 8073015831664542669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6570447481891480641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572958931361079090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15985768982e4519838ecba14f6d642c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4671680542296289128
 GameObject:
   m_ObjectHideFlags: 0

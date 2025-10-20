@@ -4348,6 +4348,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerInput: {fileID: 11400000, guid: f344367adbf16f6459fc6b7e0181451f, type: 2}
+  containerTransform: {fileID: 0}
 --- !u!4 &1836228758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8396160380983838441, guid: 88cb98f487d27a5468a69e42dd2d3d78, type: 3}
