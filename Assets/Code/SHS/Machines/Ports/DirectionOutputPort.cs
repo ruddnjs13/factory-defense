@@ -9,22 +9,22 @@ namespace Code.SHS.Machines.Ports
 {
     public class DirectionOutputPort : OutputPort
     {
-        [SerializeField] private DirectionEnum direction;
-        protected DirectionEnum worldDirection;
+        [SerializeField] private Direction direction;
+        protected Direction worldDirection;
 
         public override void OnInitialize(ComponentContainer componentContainer)
         {
             base.OnInitialize(componentContainer);
 
             float yRotation = transform.eulerAngles.y;
-            worldDirection = Direction.RotateDirection(direction, yRotation);
+            worldDirection = direction.Rotate(yRotation);
         }
 
 
         protected override InputPort FindInputPort()
         {
             Vector2Int outputPosition =
-                Position + Vector3Int.RoundToInt(Direction.GetDirection(worldDirection)).ToXZ();
+                Position + Vector3Int.RoundToInt(worldDirection.ToVector3()).ToXZ();
             InputPort inputPort = InputPort(outputPosition);
             if (inputPort != null && inputPort.CanAcceptInputFrom(this) && inputPort.CanAcceptResource())
                 return inputPort;
@@ -44,8 +44,8 @@ namespace Code.SHS.Machines.Ports
             Gizmos.color = Color.blue;
 
             float yRotation = transform.eulerAngles.y;
-            worldDirection = Direction.RotateDirection(this.direction, yRotation);
-            Vector3 directionVector = Direction.GetDirection(worldDirection);
+            worldDirection = direction.Rotate(yRotation);
+            Vector3 directionVector = worldDirection.ToVector3();
             Vector3 position = transform.position + directionVector + new Vector3(0f, 0.5f, 0f);
             Gizmos.DrawWireCube(position, Vector3.one * 1f);
         }
