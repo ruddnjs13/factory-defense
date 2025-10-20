@@ -45,6 +45,7 @@ namespace Code.EJY.Enemies.States
                 yield return null;
             }
             
+            Debug.Log("회전 끝");
             _animator.SetAnimator(true);
         }
 
