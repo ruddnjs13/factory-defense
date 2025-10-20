@@ -29,8 +29,9 @@ namespace Code.EJY.Enemies.States
                 _enemy.ChangeState("ATTACK");
         }
 
-        public override void Exit() 
+        public override void Exit()
         {
+            _movement.SetVelocity(Vector3.zero);
             _movement.SetStop(true);
             base.Exit();
         }
