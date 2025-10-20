@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace Code.EJY.ETC
 {
     public class MeshCombiner : MonoBehaviour
     {
-        [SerializeField] private Grid mapGrid;
-        
         private MeshFilter _meshFilter;
         
         private void Awake()
@@ -34,7 +31,7 @@ namespace Code.EJY.ETC
                 if(meshFilters[i].sharedMesh == null) continue;
                 
                 combine[i].mesh = meshFilters[i].sharedMesh;
-                combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+                combine[i].transform = transform.worldToLocalMatrix * meshFilters[i].transform.localToWorldMatrix;
                 
                 //수집이 완료된 게임오브젝트는 액티브를 꺼준다.
                 meshFilters[i].gameObject.SetActive(false);
