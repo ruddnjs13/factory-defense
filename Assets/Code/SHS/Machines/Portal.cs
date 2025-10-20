@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using Chipmunk.GameEvents;
+using Chipmunk.Player.Events;
 using Code.SHS.Extensions;
 using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
@@ -8,29 +12,46 @@ namespace Code.SHS.Machines
 {
     public class Portal : BaseMachine, IInputMachine
     {
-        [SerializeField] private Direction facingDirection;
-        [SerializeField] private TMP_Text resourceCountText;
-        public static int resourceCount = 1000;
-
-        public override void Update()
-        {
-            base.Update();
-            resourceCountText.text = resourceCount.ToString();
-        }
+        [SerializeField] private CompositeInputPort compositeInputPort;
+        [SerializeField] private List<ShapeResourceSO> allShapeResourceSo;
 
         public InputPort GetAvailableInputPort(OutputPort outputPort)
         {
-            throw new System.NotImplementedException();
+            return compositeInputPort.GetAvailablePort(outputPort);
         }
 
         public bool CanAcceptResource()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public void InputPortResourceTransferComplete(InputPort inputPort)
         {
-            throw new System.NotImplementedException();
+            ShapeResource resource = inputPort.Pop();
+            int shapeTier = 0;
+            foreach (ShapeResourceSO shapeResourceSo in allShapeResourceSo)
+            {
+                if (IsContainPiece(resource, shapeResourceSo))
+                    shapeTier++;
+            }
+
+            int amount = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                amount += resource.ShapePieces[i].ShapePieceSo.resourceAmount;
+            }
+
+            EventBus.Raise(new ResourceEvent(amount * shapeTier));
+        }
+
+        private bool IsContainPiece(ShapeResource resource, ShapeResourceSO shapeResourceSo)
+        {
+            if (resource.ShapePieces.All(piece => shapeResourceSo.ShapePieces.Contains(piece.ShapePieceSo)))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

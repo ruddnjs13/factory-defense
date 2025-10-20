@@ -23,7 +23,7 @@ namespace Code.SHS.Machines
             Construct();
         }
 
-        private void Construct()
+        protected virtual void Construct()
         {
             Debug.Assert(MachineSo != null, "MachineSo is not assigned");
             TickManager.RegisterTick(this);
@@ -110,10 +110,6 @@ namespace Code.SHS.Machines
         }
 
         public virtual void OnTick(float deltaTime)
-        {
-        }
-
-        public virtual void Update()
         {
         }
 

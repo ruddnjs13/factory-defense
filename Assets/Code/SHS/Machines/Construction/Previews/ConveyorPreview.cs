@@ -22,7 +22,6 @@ namespace Code.SHS.Machines.Construction.Previews
             base.SetNextDirection(nextDirection);
             directions.Add(nextDirection);
             Mesh mesh = meshFilter.mesh;
-            Debug.Log(nextDirection);
             foreach (ConveyorData conveyorData in conveyorSO.conveyorDataList)
             {
                 if (isValidData(conveyorData))
