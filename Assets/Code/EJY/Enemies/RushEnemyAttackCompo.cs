@@ -25,7 +25,7 @@ namespace Code.EJY.Enemies
         {
             cameraChannel?.RaiseEvent(CameraEvents.ImpulseEvent.Initializer(attackData.impulseForce));
             effectChannel?.RaiseEvent(EffectEvents.PlayPoolEffect
-                .Initializer(rushCaster.transform.position,rushCaster.transform.rotation ,explosionEffectPool, effectPlayDuration));
+                .Initializer(rushCaster.transform.position,Quaternion.identity , explosionEffectPool, effectPlayDuration));
 
             DamageData damageData = _damageCompo.CalculateDamage(damageStat, rushAttackData);
             
