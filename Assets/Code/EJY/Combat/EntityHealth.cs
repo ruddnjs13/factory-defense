@@ -1,6 +1,9 @@
+using System.Globalization;
 using Chipmunk.ComponentContainers;
 using Code.Core.StatSystem;
 using Code.Entities;
+using Code.Events;
+using Code.UI;
 using Core.GameEvent;
 using UnityEngine;
 
@@ -12,6 +15,8 @@ namespace Code.Combat
         private ActionData _actionData;
         private EntityStatCompo _statCompo;
         [SerializeField] private StatSO hpStat;
+        [SerializeField] private TextInfoSO damageTextInfo;
+        [SerializeField] private GameEventChannelSO textChannel;
         [SerializeField] private float maxHealth;
         [SerializeField] private float currentHealth;
 
@@ -61,6 +66,15 @@ namespace Code.Combat
             _actionData.DamageData = damageData;
 
             currentHealth = Mathf.Clamp(currentHealth - damageData.damage, 0, maxHealth);
+
+            if (textChannel != null && damageTextInfo != null)
+            {
+                Vector3 showPos = hitPoint;
+                showPos.y += 5f;
+                showPos += Random.onUnitSphere;
+                textChannel.RaiseEvent(TextEvents.PopupTextEvent
+                    .Initializer(damageData.damage.ToString("#,#"), damageTextInfo.nameHash, showPos, 0.6f));
+            }
             
             onHealthChangedEvent?.Invoke(currentHealth, maxHealth);
             

@@ -1,15 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Blade.UI;
 using Code.Events;
 using Code.UI;
 using Core.GameEvent;
-using Reflex.Attributes;
+using RuddnjsLib.Dependencies;
 using RuddnjsPool;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
 
-namespace Blade.Managers
+namespace Code.EJY.Manager
 {
     public class TextManager : MonoBehaviour
     {

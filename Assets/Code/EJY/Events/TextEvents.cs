@@ -16,7 +16,7 @@ namespace Code.Events
         public Vector3 position;
         public float showDuration;
 
-        public PopupTextEvent Init(string text, int typeHash, Vector3 position, float showDuration)
+        public PopupTextEvent Initializer(string text, int typeHash, Vector3 position, float showDuration)
         {
             this.text = text;
             textTypeHash = typeHash;

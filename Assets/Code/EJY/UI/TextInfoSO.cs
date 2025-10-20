@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace Code.UI
@@ -7,6 +8,7 @@ namespace Code.UI
     {
         public string textName;
         [ColorUsage(true, true)] public Color textColor;
+        public TMP_FontAsset font;
 
         public int nameHash;
         public float fontSize;
