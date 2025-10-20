@@ -44,7 +44,7 @@ namespace Code.EJY.Enemies
             IsTargeting = CurrentTarget.Value != null;
 
             int amount = Physics.OverlapSphereNonAlloc(_enemy.transform.position, attackRange, _hits, whatIsTarget);
-            InAttackRange = amount > 0;
+            InAttackRange = amount > 0 && _hits[0]?.transform == CurrentTarget.Value;
         }
 
         private void OnDestroy()
