@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.EJY.Enemies
 {
-    public class RangeEnemyAttackComponent : EnemyAttackCompo
+    public class RangeEnemyAttackCompo : EnemyAttackCompo
     {
         [SerializeField] private PoolingItemSO bulletPool;
         [SerializeField] private PoolingItemSO muzzlePool;
