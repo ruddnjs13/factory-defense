@@ -30,6 +30,7 @@ namespace Code.EJY.Enemies.States
 
         private IEnumerator RotateToTarget()
         {
+            Debug.Log("공격 상태 진입, 회전 시작");
             _animator.SetAnimator(false);
             while (true)
             {
@@ -45,6 +46,7 @@ namespace Code.EJY.Enemies.States
                 yield return null;
             }
             
+            Debug.Log("회전 끝");
             _animator.SetAnimator(true);
         }
 
