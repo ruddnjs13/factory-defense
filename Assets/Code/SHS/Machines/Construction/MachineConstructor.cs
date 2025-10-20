@@ -23,6 +23,7 @@ namespace Code.SHS.Machines.Construction
         private bool removeMode = false;
         private Vector2Int previousPosition = Vector2Int.zero;
         [SerializeField] private Transform containerTransform;
+        [SerializeField] private Transform destroyRegion;
 
         private void Awake()
         {
@@ -35,6 +36,9 @@ namespace Code.SHS.Machines.Construction
             containerTransform.SetParent(null);
             containerTransform.transform.rotation = Quaternion.Euler(90, 0, 0);
             containerTransform.gameObject.SetActive(false);
+            destroyRegion.SetParent(null);
+            destroyRegion.transform.rotation = Quaternion.Euler(0, 0, 0);
+            destroyRegion.gameObject.SetActive(false);
         }
 
         private void OnDestroy()
@@ -88,6 +92,27 @@ namespace Code.SHS.Machines.Construction
                         containerTransform.position = new Vector3(position.x, 0f, position.y);
                         previousPosition = position;
                     }
+                }
+            }
+
+            if (removeMode)
+            {
+                if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
+                {
+                    Vector2Int position =
+                        new Vector2Int(Mathf.RoundToInt(hit.point.x), Mathf.RoundToInt(hit.point.z));
+
+                    Vector3 middlePoint = new Vector3(
+                        (previousPosition.x + position.x) / 2f,
+                        0f,
+                        (previousPosition.y + position.y) / 2f);
+                    destroyRegion.position = middlePoint;
+                    Vector3 scale = new Vector3(
+                        Math.Abs(previousPosition.x - position.x) + 1f,
+                        1f,
+                        Math.Abs(previousPosition.y - position.y) + 1f);
+                    destroyRegion.localScale = scale;
+                    destroyRegion.gameObject.SetActive(true);
                 }
             }
         }
@@ -169,6 +194,7 @@ namespace Code.SHS.Machines.Construction
                     AddPreviewAtPosition(previousPosition, Direction.None);
                 if (removeMode)
                 {
+                    destroyRegion.gameObject.SetActive(false);
                     removeMode = false;
 
                     if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
@@ -185,6 +211,7 @@ namespace Code.SHS.Machines.Construction
                             for (int y = minY; y <= maxY; y++)
                             {
                                 Vector2Int tilePos = new Vector2Int(x, y);
+                                DestroyPreviewAt(tilePos);
                                 // DestroyPreviewAt(tilePos);
                                 Destroy(WorldGrid.Instance.GetTile(tilePos).Machine?.gameObject);
                             }
