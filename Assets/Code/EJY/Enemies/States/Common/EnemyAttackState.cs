@@ -42,12 +42,10 @@ namespace Code.EJY.Enemies.States
                     _enemy.transform.rotation
                 );
 
-                Debug.Log($"{angle}");
                 if (angle <= ANGLETHRESHOLD) break;
                 yield return null;
             }
             
-            Debug.Log("회전 끝");
             _animator.SetAnimator(true);
         }
 
