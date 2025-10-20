@@ -7,10 +7,12 @@ namespace Code.EJY.Enemies.States
     {
         private readonly float RUSH_DISTANCE = 8f;
         private bool _isConfirm = false;
-        private readonly int RUSH_HASH = Animator.StringToHash("RUSH"); 
+        private readonly int RUSH_HASH = Animator.StringToHash("RUSH");
+        private RushEnemyAttackCompo _rushAttackCompo;
         
         public RushMoveState(Entity entity, int animationHash) : base(entity, animationHash)
         {
+            _rushAttackCompo = _attackCompo as RushEnemyAttackCompo;
         }
 
         public override void Enter()
@@ -43,6 +45,7 @@ namespace Code.EJY.Enemies.States
         {
             if (_isConfirm)
             {
+                _rushAttackCompo.RushEnd();
                 _movement.SpeedMultiplier = 1f;
                 _entityAnimator.SetParam(RUSH_HASH, false);
             }

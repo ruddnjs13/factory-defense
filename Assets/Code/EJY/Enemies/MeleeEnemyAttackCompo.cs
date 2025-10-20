@@ -18,8 +18,7 @@ namespace Code.Enemies
         {
             base.Initialize(entity);
             _entityVFX = entity.GetCompo<EntityVFX>();
-            casters = entity.GetComponentsInChildren<OverlapDamageCaster>();
-            casters.ToList().ForEach(casters => casters.InitCaster(entity));
+            casters.ToList().ForEach(caster => caster.InitCaster(entity));
         }
 
         public override void AfterInitialize()
