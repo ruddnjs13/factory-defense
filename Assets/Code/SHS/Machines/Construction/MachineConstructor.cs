@@ -20,8 +20,10 @@ namespace Code.SHS.Machines.Construction
             new Dictionary<Vector2Int, ConstructPreview>();
 
         private bool isLeftClicking = false;
+        private bool removeMode = false;
         private Vector2Int previousPosition = Vector2Int.zero;
         [SerializeField] private Transform containerTransform;
+        [SerializeField] private Transform destroyRegion;
 
         private void Awake()
         {
@@ -30,6 +32,13 @@ namespace Code.SHS.Machines.Construction
             playerInput.OnRightClickEvent += RightClickHandler;
             playerInput.OnRotateEvent += RotateHandler;
             playerInput.OnMiddleClickEvent += MiddleClickHandler;
+
+            containerTransform.SetParent(null);
+            containerTransform.transform.rotation = Quaternion.Euler(90, 0, 0);
+            containerTransform.gameObject.SetActive(false);
+            destroyRegion.SetParent(null);
+            destroyRegion.transform.rotation = Quaternion.Euler(0, 0, 0);
+            destroyRegion.gameObject.SetActive(false);
         }
 
         private void OnDestroy()
@@ -51,11 +60,13 @@ namespace Code.SHS.Machines.Construction
                 .GetComponent<ConstructPreview>();
             mainPreview.Initialize(machine, this);
             Debug.Assert(mainPreview != null, "ConstructPreview component not found on machinePreviewPrefab");
+
+            containerTransform.gameObject.SetActive(true);
         }
 
         private void Update()
         {
-            if (mainPreview != null)
+            if (mainPreview != null && removeMode == false)
             {
                 if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
                 {
@@ -81,6 +92,27 @@ namespace Code.SHS.Machines.Construction
                         containerTransform.position = new Vector3(position.x, 0f, position.y);
                         previousPosition = position;
                     }
+                }
+            }
+
+            if (removeMode)
+            {
+                if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
+                {
+                    Vector2Int position =
+                        new Vector2Int(Mathf.RoundToInt(hit.point.x), Mathf.RoundToInt(hit.point.z));
+
+                    Vector3 middlePoint = new Vector3(
+                        (previousPosition.x + position.x) / 2f,
+                        0f,
+                        (previousPosition.y + position.y) / 2f);
+                    destroyRegion.position = middlePoint;
+                    Vector3 scale = new Vector3(
+                        Math.Abs(previousPosition.x - position.x) + 1f,
+                        1f,
+                        Math.Abs(previousPosition.y - position.y) + 1f);
+                    destroyRegion.localScale = scale;
+                    destroyRegion.gameObject.SetActive(true);
                 }
             }
         }
@@ -143,10 +175,49 @@ namespace Code.SHS.Machines.Construction
         private void LeftClickHandler(bool isPressed)
         {
             isLeftClicking = isPressed;
-            if (isPressed == false)
+            if (isPressed)
             {
-                if (mainPreview != null)
+                if (playerInput.ShiftKeyPressed)
+                {
+                    if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
+                    {
+                        previousPosition =
+                            new Vector2Int(Mathf.RoundToInt(hit.point.x), Mathf.RoundToInt(hit.point.z));
+
+                        removeMode = true;
+                    }
+                }
+            }
+            else
+            {
+                if (mainPreview != null && removeMode == false)
                     AddPreviewAtPosition(previousPosition, Direction.None);
+                if (removeMode)
+                {
+                    destroyRegion.gameObject.SetActive(false);
+                    removeMode = false;
+
+                    if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
+                    {
+                        Vector2Int position =
+                            new Vector2Int(Mathf.RoundToInt(hit.point.x), Mathf.RoundToInt(hit.point.z));
+                        int minX = Math.Min(previousPosition.x, position.x);
+                        int maxX = Math.Max(previousPosition.x, position.x);
+                        int minY = Math.Min(previousPosition.y, position.y);
+                        int maxY = Math.Max(previousPosition.y, position.y);
+                        ;
+                        for (int x = minX; x <= maxX; x++)
+                        {
+                            for (int y = minY; y <= maxY; y++)
+                            {
+                                Vector2Int tilePos = new Vector2Int(x, y);
+                                DestroyPreviewAt(tilePos);
+                                // DestroyPreviewAt(tilePos);
+                                Destroy(WorldGrid.Instance.GetTile(tilePos).Machine?.gameObject);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -160,6 +231,7 @@ namespace Code.SHS.Machines.Construction
 
         private void ConstructAll()
         {
+            containerTransform.gameObject.SetActive(false);
             foreach (ConstructPreview constructPreview in previewInstances)
             {
                 constructPreview.Construct();
@@ -170,6 +242,7 @@ namespace Code.SHS.Machines.Construction
 
         private void ClearPreviews()
         {
+            containerTransform.gameObject.SetActive(false);
             foreach (var preview in previewInstances)
             {
                 if (preview != null)
