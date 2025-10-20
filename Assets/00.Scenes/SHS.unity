@@ -189,6 +189,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1526406430812409485, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -804803376808891692, guid: 3e1c5b683f3e80e4793fae04efebf8fd, type: 3}
+    - target: {fileID: 2458386012747803220, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -233,14 +241,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conveyor Belt
       objectReference: {fileID: 0}
-    - target: {fileID: 3659761588034009671, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
-    - target: {fileID: 3659761588034009671, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b02536457785fbf4db61e430d0fab2c0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4795,6 +4795,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 529f027f95a5103419a24b5d05c56177, type: 3}
+--- !u!1001 &7428739392790364499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50557939240931544, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 862525644930042466, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
+      propertyPath: m_Name
+      value: Conveyor Belt Left
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4756dbd8af0e64948bdd777ff1785fca, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4824,3 +4881,4 @@ SceneRoots:
   - {fileID: 99331683}
   - {fileID: 286739044}
   - {fileID: 3321940972689831308}
+  - {fileID: 7428739392790364499}

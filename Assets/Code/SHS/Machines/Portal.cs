@@ -8,7 +8,7 @@ namespace Code.SHS.Machines
 {
     public class Portal : BaseMachine, IInputMachine
     {
-        [SerializeField] private DirectionEnum facingDirection;
+        [SerializeField] private Direction facingDirection;
         [SerializeField] private TMP_Text resourceCountText;
         public static int resourceCount = 1000;
 

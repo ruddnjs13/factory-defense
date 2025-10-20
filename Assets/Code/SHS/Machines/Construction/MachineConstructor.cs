@@ -46,7 +46,8 @@ namespace Code.SHS.Machines.Construction
                 Destroy(mainPreview.gameObject);
 
             MachineSO machine = evt.MachineSo;
-            mainPreview = Instantiate(machine.machinePreviewPrefab).GetComponent<ConstructPreview>();
+            mainPreview = Instantiate(machine.machinePreviewPrefab, Vector3.zero, machine.rotation)
+                .GetComponent<ConstructPreview>();
             mainPreview.Initialize(machine, this);
             Debug.Assert(mainPreview != null, "ConstructPreview component not found on machinePreviewPrefab");
         }
@@ -65,9 +66,14 @@ namespace Code.SHS.Machines.Construction
                             Vector2Int directionVector =
                                 (position - previousPosition);
                             directionVector.Clamp(-Vector2Int.one, Vector2Int.one);
-                            DirectionEnum direction = Direction.GetDirection(directionVector);
-                            mainPreview.transform.rotation = Direction.GetQuaternionFromDirection(direction);
-                            AddPreviewAtPosition(previousPosition);
+                            Direction direction = directionVector.ToDirection();
+                            Quaternion rotation = direction.ToQuaternion();
+
+                            // 월드 좌표계 direction을 mainPreview의 로컬 좌표계로 변환
+                            Direction localDirection = direction.ToLocalDirection(mainPreview.transform.rotation)
+                                .Rotate(mainPreview.MachineSO.rotation.eulerAngles.y);
+                            AddPreviewAtPosition(previousPosition, localDirection);
+                            mainPreview.transform.rotation = rotation * mainPreview.MachineSO.rotation;
                         }
 
                         mainPreview.transform.position = new Vector3(position.x, 0f, position.y);
@@ -77,7 +83,7 @@ namespace Code.SHS.Machines.Construction
             }
         }
 
-        private void AddPreviewAtPosition(Vector2Int gridPosition)
+        private void AddPreviewAtPosition(Vector2Int gridPosition, Direction nextDirection)
         {
             Vector2Int size = mainPreview.MachineSO.size;
 
@@ -96,6 +102,7 @@ namespace Code.SHS.Machines.Construction
 
             ConstructPreview preview = Instantiate(mainPreview);
             preview.Initialize(mainPreview.MachineSO, this);
+            preview.SetNextDirection(nextDirection);
             previewInstances.Add(preview);
 
             for (int x = 0; x < size.x; x++)
@@ -131,7 +138,15 @@ namespace Code.SHS.Machines.Construction
             return true;
         }
 
-        private void LeftClickHandler(bool isPressed) => isLeftClicking = isPressed;
+        private void LeftClickHandler(bool isPressed)
+        {
+            isLeftClicking = isPressed;
+            if (isPressed == false)
+            {
+                if (mainPreview != null)
+                    AddPreviewAtPosition(previousPosition, Direction.None);
+            }
+        }
 
         private void MiddleClickHandler(bool isPressed)
         {

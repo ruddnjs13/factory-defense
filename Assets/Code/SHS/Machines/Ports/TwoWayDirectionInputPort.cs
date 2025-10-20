@@ -7,8 +7,8 @@ namespace Code.SHS.Machines.Ports
         public override bool CanAcceptInputFrom(OutputPort outputPort)
         {
             Vector2Int directionVec = Position - outputPort.Position;
-            DirectionEnum direction = Direction.GetOpposite(Direction.GetDirection(directionVec));
-            if (direction == this.worldDirection || direction == Direction.GetOpposite(this.worldDirection))
+            Direction direction = directionVec.ToDirection().Opposite();
+            if (direction == this.worldDirection || direction == this.worldDirection.Opposite())
                 return true;
             return false;
         }

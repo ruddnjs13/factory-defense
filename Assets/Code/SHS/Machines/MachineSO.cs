@@ -11,6 +11,7 @@ namespace Code.SHS.Machines
         public GameObject machinePrefab;
         public Vector2Int size = Vector2Int.one;
         public Vector2Int offset = Vector2Int.zero;
+        public Quaternion rotation;
         public int cost = 20;
     }
 }

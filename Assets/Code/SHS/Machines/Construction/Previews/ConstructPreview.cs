@@ -13,6 +13,11 @@ namespace Code.SHS.Machines.Construction.Previews
             this.constructor = constructor;
         }
 
+        public virtual void SetNextDirection(Direction nextDirection)
+        {
+            
+        }
+
         public virtual GameObject Construct()
         {
             GameObject machine = Instantiate(MachineSO.machinePrefab, transform.position, transform.rotation);

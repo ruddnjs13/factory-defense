@@ -20,6 +20,7 @@ namespace Code.SHS.Machines
 
         public virtual void OnInitialize(ComponentContainer componentContainer)
         {
+            Construct();
         }
 
         private void Construct()
