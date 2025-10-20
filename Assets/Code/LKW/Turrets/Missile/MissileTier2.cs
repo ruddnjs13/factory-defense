@@ -1,13 +1,15 @@
 using System;
 using System.Threading;
 using Code.Combat;
+using Code.Events;
+using Code.LKW.Turrets.Combat;
 using DG.Tweening;
 using RuddnjsPool;
 using UnityEngine;
 
 namespace Code.LKW.Turrets
 {
-    public class DefaultTier3 : TurretBase
+    public class MissileTier2 : TurretBase
     {
         [SerializeField] private float recoilAmount;
         [SerializeField] private Transform[] firePos;
@@ -18,21 +20,20 @@ namespace Code.LKW.Turrets
         private int _shootIdx = 0;
         private CancellationTokenSource _cts;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _cts = new CancellationTokenSource();
         }
 
         protected override async void Shoot()
         {
             _shootIdx = 0;
-            ShootProjectile();
-            _shootIdx++;
 
             try
             {
                 await Awaitable.WaitForSecondsAsync(0.1f, _cts.Token);
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < shooter.Length; i++)
                 {
                     ShootProjectile();
                     await Awaitable.WaitForSecondsAsync(0.1f, _cts.Token);
@@ -47,13 +48,18 @@ namespace Code.LKW.Turrets
 
         private void ShootProjectile()
         {
-            Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
+            MissileBullet bullet = poolManager.Pop(bulletItem.poolType) as MissileBullet;
             
-            bullet.SetupProjectile(this, 
-                damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat), attackData),
-                firePos[_shootIdx].position,
-                Quaternion.LookRotation(firePos[_shootIdx].forward),
-                firePos[_shootIdx].forward * turretData.bulletSpeed);
+            bullet.SetTarget(_target.transform, firePos[_shootIdx].forward);
+            bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
+                ,attackData),firePos[_shootIdx].position ,Quaternion.LookRotation(firePos[_shootIdx].forward)
+                ,firePos[_shootIdx].forward *  turretData.bulletSpeed);
+            
+            var evt = EffectEvents.PlayPoolEffect.Initializer(firePos[_shootIdx].position,
+                Quaternion.Euler(firePos[_shootIdx].forward), muzzleParticleItem , 0.4f );
+            
+            effectChannel.RaiseEvent(evt);
+            Recoil();
 
             Recoil();
         }

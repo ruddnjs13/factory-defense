@@ -10,18 +10,18 @@ namespace Code.Combat
     public class Projectile : MonoBehaviour, IPoolable
     {
         [SerializeField] private float lifeTime = 15f;
-        [SerializeField] private DamageCaster damageCaster;
+        [SerializeField] protected DamageCaster damageCaster;
         [SerializeField] private AttackDataSO attackData;
-        [SerializeField] private Rigidbody rbCompo;
+        [SerializeField] protected Rigidbody rbCompo;
         [SerializeField] private PoolingItemSO impactItem;
         [SerializeField] private GameEventChannelSO effectChannel;
         [SerializeField] private GameEventChannelSO cameraChannel;
         [SerializeField] private GameEventChannelSO soundChannel;
 
         [Space] [Header("Explosion Settings")] [SerializeField]
-        private bool isExplosive;
+        protected bool isExplosive;
 
-        [SerializeField] private DamageCaster explosionCaster;
+        [SerializeField] protected DamageCaster explosionCaster;
         [SerializeField] private SoundSO explosionSound;
 
 
@@ -29,25 +29,25 @@ namespace Code.Combat
         public PoolTypeSO PoolType { get; set; }
         public GameObject GameObject => gameObject;
 
-        private Entity _owner;
+        protected Entity _owner;
         private Pool _myPool;
-        private DamageData _damageData;
-        private float _currentLifeTime = 0;
+        protected DamageData _damageData;
+        protected float CurrentLifeTime = 0;
 
         public void SetUpPool(Pool pool) => _myPool = pool;
 
         public void ResetItem()
         {
-            _currentLifeTime = 0;
+            CurrentLifeTime = 0;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
-            _currentLifeTime += Time.deltaTime;
-            if(_currentLifeTime >= lifeTime) _myPool.Push(this);
+            CurrentLifeTime += Time.deltaTime;
+            if(CurrentLifeTime >= lifeTime) _myPool.Push(this);
         }
 
-        public void SetupProjectile(Entity owner, DamageData damageData, Vector3 position, Quaternion rotation,
+        public virtual void SetupProjectile(Entity owner, DamageData damageData, Vector3 position, Quaternion rotation,
             Vector3 velocity)
         {
             _owner = owner;
