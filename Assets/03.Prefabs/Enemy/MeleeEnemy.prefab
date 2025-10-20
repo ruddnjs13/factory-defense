@@ -10550,7 +10550,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4448701727635748224}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -35827,7 +35827,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: attackRange
-      value: 1.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: detectRange
