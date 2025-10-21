@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cf38edf57e4d9fa41da6dd789c3d7a, type: 3}
   m_Name: Range
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3586143468086053996, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
+  enemyPoolItem: {fileID: 11400000, guid: 09ce46d457facc24986c92d0f8c3f3c3, type: 2}
+  weight: 0

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cf38edf57e4d9fa41da6dd789c3d7a, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7663118893658095606, guid: bfac48e0f4ff2b04d8fb703ab618fe9f, type: 3}
+  enemyPoolItem: {fileID: 11400000, guid: e8b0c5de7432b1840a6999d8249f3468, type: 2}
+  weight: 0

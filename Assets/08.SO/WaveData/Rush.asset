@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cf38edf57e4d9fa41da6dd789c3d7a, type: 3}
   m_Name: Rush
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4797192283459754012, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+  enemyPoolItem: {fileID: 11400000, guid: 7b8fea187158e0d45bc942ae363368a4, type: 2}
+  weight: 0

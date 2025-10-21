@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cf38edf57e4d9fa41da6dd789c3d7a, type: 3}
   m_Name: Bomb
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4381608751968326410, guid: 014e995455317d248ab29e7058996f6d, type: 3}
+  enemyPoolItem: {fileID: 11400000, guid: d7d1267927e12c041b569a06367df998, type: 2}
+  weight: 0
