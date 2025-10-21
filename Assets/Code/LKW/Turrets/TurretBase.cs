@@ -33,6 +33,7 @@ namespace Code.LKW.Turrets
         protected DamageCompo damageCompo;
         protected EntityHealth entityHealth;
         protected TurretRenderer turretRenderer;
+        protected EntityStatCompo EntityStatCompo;
 
         
         private float _reloadTimer;
