@@ -38,7 +38,8 @@ namespace Code.SHS.Machines
             int amount = 0;
             for (int i = 0; i < 8; i++)
             {
-                amount += resource.ShapePieces[i].ShapePieceSo.resourceAmount;
+                if (resource.ShapePieces[i].ShapePieceSo != null)
+                    amount += resource.ShapePieces[i].ShapePieceSo.resourceAmount;
             }
 
             EventBus.Raise(new ResourceEvent(amount * shapeTier));
