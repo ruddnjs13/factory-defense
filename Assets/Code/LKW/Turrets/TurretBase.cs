@@ -64,7 +64,7 @@ namespace Code.LKW.Turrets
             entityHealth = GetCompo<EntityHealth>();
             turretRenderer = GetCompo<TurretRenderer>();
             
-            roundDecal.SetDecalSize(turretData.range/2);
+            roundDecal.SetDecalSize(turretData.range / 2);
             roundDecal.SetProjectionActive(true);
         }
 

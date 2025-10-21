@@ -1,9 +1,5 @@
-using System;
-using Chipmunk.GameEvents;
 using Chipmunk.Player;
-using Code.LKW.GameEvents;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.LKW.Building
 {
@@ -11,8 +7,8 @@ namespace Code.LKW.Building
     {
         [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private LayerMask selectableLayer;
-        
-        [field:SerializeField] public ISelectable Selectable { get; set; }
+
+        private ISelectable _selectable;
 
         private void OnEnable()
         {
@@ -23,11 +19,19 @@ namespace Code.LKW.Building
         {
             if (inputReader.MousePositionRaycast(out RaycastHit hit, selectableLayer))
             {
-                Selectable = hit.collider.gameObject.GetComponent<ISelectable>();
+                _selectable  = hit.collider.gameObject.GetComponent<ISelectable>();
 
-                if (Selectable != null)
+                if (_selectable != null)
                 {
-                    EventBus<BuildingSelectedEvent>.Raise(new BuildingSelectedEvent(Selectable));
+                    _selectable.Select();
+                }
+            }
+            else
+            {
+                if (_selectable != null)
+                {
+                    _selectable.DeSelect();
+                    _selectable = null;
                 }
             }
         }
