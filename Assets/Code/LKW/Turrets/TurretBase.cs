@@ -31,9 +31,9 @@ namespace Code.LKW.Turrets
         [Space]
         
         protected DamageCompo damageCompo;
-        protected EntityStatCompo entityStatCompo;
         protected EntityHealth entityHealth;
         protected TurretRenderer turretRenderer;
+        protected EntityStatCompo EntityStatCompo;
 
         
         private float _reloadTimer;
@@ -60,11 +60,11 @@ namespace Code.LKW.Turrets
         {
             base.Awake();
             damageCompo = GetCompo<DamageCompo>();
-            entityStatCompo = GetCompo<EntityStatCompo>();
+            EntityStatCompo = GetCompo<EntityStatCompo>();
             entityHealth = GetCompo<EntityHealth>();
             turretRenderer = GetCompo<TurretRenderer>();
             
-            roundDecal.SetDecalSize(turretData.range/2);
+            roundDecal.SetDecalSize(turretData.range / 2);
             roundDecal.SetProjectionActive(true);
         }
 

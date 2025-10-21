@@ -12,7 +12,7 @@ namespace Code.LKW.Turrets.Flame
 
         private void Start()
         {
-            damageTrigger.InitTrigger(damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat),
+            damageTrigger.InitTrigger(damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat),
             attackData,
             attackData.damageMultiplier),
             attackData,
