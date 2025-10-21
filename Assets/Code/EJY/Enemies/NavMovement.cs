@@ -46,10 +46,8 @@ namespace Code.Enemies
         {
             _enemy = entity as Enemy;
             _statCompo = entity.GetCompo<EntityStatCompo>();
-            
-            SetDestination(_enemy.TargetTrm.position);
         }
-
+        
         public void AfterInitialize()
         {
             agent.speed = _statCompo.SubscribeStat(moveSpeedStat, HandleMoveSpeedChange, 2f);

@@ -38,7 +38,8 @@ namespace Code.EJY.Enemies.Wave
                 
                     
                     FSMEnemy enemy = _poolManager.Pop<FSMEnemy>(data[idx].enemyPoolItem);
-                    enemy.SetTarget(targetTrm);
+                    enemy.transform.position = spawnTrm.position;
+                    enemy.Init(targetTrm);
                     
                     yield return new WaitForSeconds(0.5f);
                 }

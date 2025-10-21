@@ -20,6 +20,7 @@ namespace Code.EJY.Enemies.States
         public override void Enter()
         {
             base.Enter();
+            _movement.SetDestination(_enemy.TargetTrm.position);
             _movement.SetPriority(_movement.OnMovePriority);
             _movement.SetStop(false);
         }

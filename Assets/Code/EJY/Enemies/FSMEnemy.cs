@@ -12,12 +12,13 @@ namespace Code.Enemies
 
         protected override void Awake()
         {
-        }
-
-        private void Start()
-        {
             base.Awake();
             _stateMachine = new EntityStateMachine(this, states);
+        }
+
+        public override void Init(Transform targetTrm)
+        {
+            base.Init(targetTrm);
             ChangeState("MOVE");
         }
 
