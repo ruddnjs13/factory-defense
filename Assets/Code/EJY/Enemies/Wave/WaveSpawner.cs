@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using Code.Enemies;
+using RuddnjsLib.Dependencies;
+using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,6 +15,8 @@ namespace Code.EJY.Enemies.Wave
         [SerializeField] private Transform spawnTrm, targetTrm;
         [SerializeField] private WaveDataSO[] data;
 
+        [Inject] private PoolManagerMono _poolManager; 
+        
         private int _enemyCnt;
 
         private void Start()
@@ -32,7 +36,8 @@ namespace Code.EJY.Enemies.Wave
                 {
                     int idx = Random.Range(0, data.Length);
                 
-                    FSMEnemy enemy = Instantiate(data[idx].enemyPrefab, spawnTrm.position, Quaternion.identity, transform);
+                    
+                    FSMEnemy enemy = _poolManager.Pop<FSMEnemy>(data[idx].enemyPoolItem);
                     enemy.SetTarget(targetTrm);
                     
                     yield return new WaitForSeconds(0.5f);

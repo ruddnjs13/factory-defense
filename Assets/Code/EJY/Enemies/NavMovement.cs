@@ -13,6 +13,9 @@ namespace Code.Enemies
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private float stopOffset = 0.05f; //거리에 대한 오프셋
         [SerializeField] private float rotateSpeed = 10f;
+        [field: SerializeField] public int OnUnMovePriority { get; private set; } = 20;
+        [field: SerializeField] public int OnMovePriority { get; private set; } = 50;
+        
         private Enemy _enemy;
         private EntityStatCompo _statCompo;
         private Transform _lookAtTrm;
@@ -104,5 +107,6 @@ namespace Code.Enemies
         public void SetVelocity(Vector3 velocity) => agent.velocity = velocity;
         public void SetSpeed(float speed) => agent.speed = speed;
         public void SetDestination(Vector3 destination) => agent.SetDestination(destination);
+        public void SetPriority(int priority) => agent.avoidancePriority = priority;
     }
 }

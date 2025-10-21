@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839fcb1266e05ce4f9b82007201059f7, type: 3}
+  m_Name: RushEnemy
+  m_EditorClassIdentifier: 
+  poolType: {fileID: 11400000, guid: 6edce5be9a953fd41ae87eeed89c9e49, type: 2}
+  prefab: {fileID: 960925267548433967, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+  initCount: 3

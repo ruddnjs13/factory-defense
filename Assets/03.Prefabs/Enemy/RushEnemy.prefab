@@ -45670,6 +45670,8 @@ MonoBehaviour:
   agent: {fileID: 2073969653171921233}
   stopOffset: 0.05
   rotateSpeed: 10
+  <OnUnMovePriority>k__BackingField: 20
+  <OnMovePriority>k__BackingField: 50
 --- !u!1 &8201558863448799956
 GameObject:
   m_ObjectHideFlags: 0
