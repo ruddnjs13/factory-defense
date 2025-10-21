@@ -32,6 +32,8 @@ namespace Code.LKW.Turrets.Catapult
 
         private void HandleFireTrigger()
         {
+            if(_target == null) return;
+            
             Vector3 shootVelocity = CalculateVelocity(
                 firePos.position, 
                 _target.transform.position,
