@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2209153119135904021, guid: f49e0dc36a31dd44d9887b4504c90d2d, type: 3}
     - target: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_Name
       value: Conveyor Belt

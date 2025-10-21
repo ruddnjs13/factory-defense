@@ -54,7 +54,7 @@ namespace Code.SHS.Machines
             resourceVisualizer.StartTransport(Resource);
         }
 
-        public void OnOutputComplete(OutputPort port)
+        public void OnOutputPortComplete(OutputPort port)
         {
         }
 
