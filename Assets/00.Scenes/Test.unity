@@ -994,6 +994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Default tier2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6648709383769272421, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6988910358074824127, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.006733
@@ -2139,6 +2143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Missile tier2
       objectReference: {fileID: 0}
+    - target: {fileID: 6844460683196612717, guid: 9abf2c7c1a82c2e4fb18c5c191e281c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2292,6 +2300,10 @@ PrefabInstance:
     - target: {fileID: 6648709383769272421, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
       propertyPath: m_Name
       value: Default tier2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648709383769272421, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6988910358074824127, guid: aaa1ebdbe698d394e830b38ed0cfda7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3646,6 +3658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Default tier3
       objectReference: {fileID: 0}
+    - target: {fileID: 164262275702242236, guid: ffe3330debb2972439c10e7f11fd5594, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2779065895606499060, guid: ffe3330debb2972439c10e7f11fd5594, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.38154626
@@ -4349,6 +4365,7 @@ MonoBehaviour:
     m_Bits: 1024
   playerInput: {fileID: 11400000, guid: f344367adbf16f6459fc6b7e0181451f, type: 2}
   containerTransform: {fileID: 0}
+  destroyRegion: {fileID: 0}
 --- !u!4 &1836228758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8396160380983838441, guid: 88cb98f487d27a5468a69e42dd2d3d78, type: 3}
@@ -5079,7 +5096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5363910297457102516, guid: b9023497fa673a84385d695b21bc8a12, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037589195453868161, guid: b9023497fa673a84385d695b21bc8a12, type: 3}
       propertyPath: m_LocalScale.y
