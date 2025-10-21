@@ -21,6 +21,11 @@ namespace Chipmunk.Player
             EventBus<ResourceEvent>.OnEvent -= ResourceEventHandler;
         }
 
+        public bool HasEnoughResource(int cost)
+        {
+            return Amount >= cost;
+        }
+
         private void ResourceEventHandler(ResourceEvent evt)
         {
             Amount += evt.Amount;
