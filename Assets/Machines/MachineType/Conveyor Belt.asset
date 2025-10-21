@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1750f3729fcd9aa40ad7d5a9a7bd8b96, type: 3}
   m_Name: Conveyor Belt
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 09f48b351d6fa4d4ebd56d0f29f344aa, type: 3}
   machines:
   - {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}

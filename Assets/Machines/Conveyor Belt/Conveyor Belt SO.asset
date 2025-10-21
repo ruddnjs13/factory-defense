@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Conveyor Belt SO
   m_EditorClassIdentifier: 
   machineName: Conveyor Belt
+  <Icon>k__BackingField: {fileID: 21300000, guid: 09f48b351d6fa4d4ebd56d0f29f344aa, type: 3}
   machinePreviewPrefab: {fileID: 7305400094980309083, guid: 2bc3a5c4eb85cf24aa273b3d54fab659, type: 3}
   machinePrefab: {fileID: 3011476269277469586, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
   size: {x: 1, y: 1}
