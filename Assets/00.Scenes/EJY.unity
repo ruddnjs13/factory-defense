@@ -1537,13 +1537,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 764377097235199316, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 764377097235199316, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 960925267548433967, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
       propertyPath: m_Name
       value: RushEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 960925267548433967, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1671861939078632171, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1585,14 +1589,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2228975716988161955, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
-      propertyPath: textChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: c8634678c97cc494693965510dca0a58, type: 2}
-    - target: {fileID: 2228975716988161955, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
-      propertyPath: damageTextInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: c6e1539ba4ff07b43a726762400c8140, type: 2}
+    - target: {fileID: 1699183982502178457, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699183982502178457, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069851525366447208, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069851525366447208, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4797192283459754012, guid: 9447c982f3b441a45b55d462e3c577ad, type: 3}
       propertyPath: <TargetTrm>k__BackingField
       value: 

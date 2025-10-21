@@ -5,14 +5,17 @@ namespace Code.EJY.Enemies.States
 {
     public class RushMoveState : EnemyMoveState
     {
+        private const string RUSH_VFX_NAME = "Rush";
         private readonly float RUSH_DISTANCE = 8f;
-        private bool _isConfirm = false;
         private readonly int RUSH_HASH = Animator.StringToHash("RUSH");
+        private bool _isConfirm = false;
         private RushEnemyAttackCompo _rushAttackCompo;
+        private EntityVFX _entityVFX;
         
         public RushMoveState(Entity entity, int animationHash) : base(entity, animationHash)
         {
             _rushAttackCompo = _attackCompo as RushEnemyAttackCompo;
+            _entityVFX = _enemy.GetCompo<EntityVFX>();
         }
 
         public override void Enter()
@@ -26,6 +29,7 @@ namespace Code.EJY.Enemies.States
             {
                 _movement.SpeedMultiplier = 2f;
                 _isConfirm = true;
+                _entityVFX.PlayVfx(RUSH_VFX_NAME,Vector3.zero, Quaternion.identity);
             }
             else
             {
@@ -48,6 +52,7 @@ namespace Code.EJY.Enemies.States
                 _rushAttackCompo.RushEnd();
                 _movement.SpeedMultiplier = 1f;
                 _entityAnimator.SetParam(RUSH_HASH, false);
+                _entityVFX.StopVfx(RUSH_VFX_NAME);
             }
             
             base.Exit();
