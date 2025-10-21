@@ -47,7 +47,7 @@ namespace Code.SHS.Machines
 
         private bool IsContainPiece(ShapeResource resource, ShapeResourceSO shapeResourceSo)
         {
-            if (resource.ShapePieces.All(piece => shapeResourceSo.ShapePieces.Contains(piece.ShapePieceSo)))
+            if (resource.ShapePieces.Any(piece => shapeResourceSo.ShapePieces.Contains(piece.ShapePieceSo)))
             {
                 return true;
             }
