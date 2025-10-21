@@ -17,6 +17,11 @@ namespace Code.EJY.Enemies
             _myPool = pool;
         }
 
+        public virtual void Init(Transform targetTrm)
+        {
+            SetTarget(targetTrm);
+        }
+
         public void ResetItem()
         {
             

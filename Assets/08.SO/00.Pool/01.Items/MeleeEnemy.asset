@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61cf38edf57e4d9fa41da6dd789c3d7a, type: 3}
-  m_Name: Rush
+  m_Script: {fileID: 11500000, guid: 839fcb1266e05ce4f9b82007201059f7, type: 3}
+  m_Name: MeleeEnemy
   m_EditorClassIdentifier: 
-  enemyPoolItem: {fileID: 11400000, guid: 7b8fea187158e0d45bc942ae363368a4, type: 2}
-  weight: 0
+  poolType: {fileID: 11400000, guid: 44454d7b9bb44ef4f9ed07f88e998e9f, type: 2}
+  prefab: {fileID: 4448701727635748224, guid: bfac48e0f4ff2b04d8fb703ab618fe9f, type: 3}
+  initCount: 3

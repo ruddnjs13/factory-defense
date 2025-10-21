@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61cf38edf57e4d9fa41da6dd789c3d7a, type: 3}
-  m_Name: Rush
+  m_Script: {fileID: 11500000, guid: 839fcb1266e05ce4f9b82007201059f7, type: 3}
+  m_Name: RangeEnemy
   m_EditorClassIdentifier: 
-  enemyPoolItem: {fileID: 11400000, guid: 7b8fea187158e0d45bc942ae363368a4, type: 2}
-  weight: 0
+  poolType: {fileID: 11400000, guid: a7fdf996d67fa7940a7678495dc90c3e, type: 2}
+  prefab: {fileID: 6437866447651954361, guid: 76c7b7ace35a0234d9730e7dddf866cf, type: 3}
+  initCount: 3
