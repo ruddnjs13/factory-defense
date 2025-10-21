@@ -31,7 +31,6 @@ namespace Code.LKW.Turrets
         [Space]
         
         protected DamageCompo damageCompo;
-        protected EntityStatCompo entityStatCompo;
         protected EntityHealth entityHealth;
         protected TurretRenderer turretRenderer;
 
@@ -60,7 +59,7 @@ namespace Code.LKW.Turrets
         {
             base.Awake();
             damageCompo = GetCompo<DamageCompo>();
-            entityStatCompo = GetCompo<EntityStatCompo>();
+            EntityStatCompo = GetCompo<EntityStatCompo>();
             entityHealth = GetCompo<EntityHealth>();
             turretRenderer = GetCompo<TurretRenderer>();
             

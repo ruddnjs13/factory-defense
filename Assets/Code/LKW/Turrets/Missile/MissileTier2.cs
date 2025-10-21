@@ -51,7 +51,7 @@ namespace Code.LKW.Turrets
             MissileBullet bullet = poolManager.Pop(bulletItem.poolType) as MissileBullet;
             
             bullet.SetTarget(_target.transform, firePos[_shootIdx].forward);
-            bullet.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
+            bullet.SetupProjectile(this,damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat)
                 ,attackData),firePos[_shootIdx].position ,Quaternion.LookRotation(firePos[_shootIdx].forward)
                 ,firePos[_shootIdx].forward *  turretData.bulletSpeed);
             

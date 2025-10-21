@@ -40,7 +40,7 @@ namespace Code.LKW.Turrets.Catapult
                 45);
             
             Projectile bombProjectile = poolManager.Pop(bulletItem.poolType) as Projectile;
-            bombProjectile.SetupProjectile(this,damageCompo.CalculateDamage(entityStatCompo.GetStat(turretDamageStat)
+            bombProjectile.SetupProjectile(this,damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat)
                 ,attackData),firePos.position ,Quaternion.LookRotation(firePos.forward),shootVelocity *  turretData.bulletSpeed);
         }
         
