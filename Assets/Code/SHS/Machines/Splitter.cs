@@ -32,7 +32,7 @@ namespace Code.SHS.Machines
             outputPort.Output(Resource);
         }
 
-        public void OnOutputComplete(OutputPort port)
+        public void OnOutputPortComplete(OutputPort port)
         {
         }
     }

@@ -1,33 +1,50 @@
 using Chipmunk.ComponentContainers;
-using Code.SHS.Extensions;
-using Code.SHS.Machines.Events;
+using Code.SHS.Animations;
 using Code.SHS.Machines.Ports;
+using Code.SHS.Machines.ResourceVisualizer;
 using Code.SHS.Machines.ShapeResources;
 using Code.SHS.Worlds;
+using Code.Units.Animations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
+    /// <summary>
+    /// 자원 지형에서 자원을 채굴하는 기계
+    /// </summary>
+    [RequireComponent(typeof(Animator), typeof(ParameterAnimator), typeof(AnimatorTrigger))]
     public class Miner : BaseMachine, IOutputMachine, IHasResource
     {
-        [SerializeField] private ShapeResourceSO mineShapeResource;
-        [SerializeField] private float mineInterval = 2f;
+        [SerializeField] private ParameterSO activateParam;
+        [SerializeField] private ParameterSO closeParam;
         [SerializeField] private OutputPort outputPort;
-        private float mineTimer;
+        [SerializeField] private AnimatableResourceVisualizer resourceVisualizer;
+
+        private ShapeResourceSO mineShapeResource;
+        private ParameterAnimator parameterAnimator;
+        private AnimatorTrigger animatorTrigger;
+        private bool canOutput;
 
         public ShapeResource Resource { get; private set; }
+
+        #region Unity Lifecycle & Initialization
 
         public override void OnInitialize(ComponentContainer componentContainer)
         {
             base.OnInitialize(componentContainer);
+            parameterAnimator = this.Get<ParameterAnimator>();
+            animatorTrigger = this.Get<AnimatorTrigger>();
+            animatorTrigger.OnAnimationTrigger += OnMineResource;
+            animatorTrigger.OnAnimationEnd += OnMineComplete;
         }
 
         protected override void Construct()
         {
             base.Construct();
             if (WorldGrid.Instance.GetTile(Position).Ground is ResourceGroundSO resourceGround)
+            {
                 mineShapeResource = resourceGround.ResourceSO;
+            }
             else
             {
                 Debug.LogError("Miner must be placed on ResourceGround");
@@ -35,30 +52,75 @@ namespace Code.SHS.Machines
             }
         }
 
+        #endregion
+
+        #region Tick & Logic
+
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
-            if (mineTimer >= mineInterval)
-                MineResource();
-            mineTimer += deltaTime;
+
+            // 자원이 없으면 채굴 애니메이션 시작
+            if (Resource == null)
+            {
+                parameterAnimator.SetParameter(activateParam);
+                return;
+            }
+
+            // 출력 가능 상태이고 자원이 있으면 출력 시도
+            if (canOutput)
+            {
+                TryOutputResource();
+            }
         }
 
-        public void OnOutputComplete(OutputPort port)
+        #endregion
+
+        #region Output Interface
+
+        public void OnOutputPortComplete(OutputPort port)
         {
             Resource = null;
+            canOutput = false;
+            parameterAnimator.SetParameter(closeParam);
         }
 
-        protected override void MachineConstructHandler(MachineConstructEvent evt)
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// 자원 출력 시도
+        /// </summary>
+        private void TryOutputResource()
         {
-            base.MachineConstructHandler(evt);
+            if (!outputPort.CanOutput() || Resource == null) return;
+
+            if (outputPort.Output(Resource))
+            {
+                canOutput = false;
+                resourceVisualizer.EndTransport();
+            }
         }
 
-        private void MineResource()
+        /// <summary>
+        /// 애니메이션 트리거 시점에 자원 생성
+        /// </summary>
+        private void OnMineResource()
         {
-            if (Resource != null) return;
-            mineTimer -= mineInterval;
             Resource = ShapeResource.Create(mineShapeResource);
-            outputPort.Output(Resource);
+            resourceVisualizer.StartTransport(Resource);
         }
+
+        /// <summary>
+        /// 채굴 애니메이션 종료 시 출력 가능 상태로 전환
+        /// </summary>
+        private void OnMineComplete()
+        {
+            canOutput = true;
+            TryOutputResource();
+        }
+
+        #endregion
     }
 }
