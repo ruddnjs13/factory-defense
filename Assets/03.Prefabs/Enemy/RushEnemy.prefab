@@ -615,6 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
+  damageTextInfo: {fileID: 0}
+  textChannel: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
 --- !u!136 &4421242615795555432

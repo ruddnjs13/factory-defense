@@ -10,8 +10,13 @@ namespace Code.Enemies
         [SerializeField] private StateDataSO[] states;
         private EntityStateMachine _stateMachine;
 
+        protected override void Awake()
+        {
+        }
+
         private void Start()
         {
+            base.Awake();
             _stateMachine = new EntityStateMachine(this, states);
             ChangeState("MOVE");
         }

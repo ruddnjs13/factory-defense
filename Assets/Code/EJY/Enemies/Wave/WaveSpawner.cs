@@ -1,0 +1,43 @@
+using System;
+using System.Collections;
+using Code.Enemies;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+namespace Code.EJY.Enemies.Wave
+{
+    public class WaveSpawner : MonoBehaviour
+    {
+        [SerializeField] private float timeBetweenWaves = 30f;
+        [SerializeField] private int maxEnemyCnt = 8, minEnemyCnt = 3;
+        [SerializeField] private Transform spawnTrm, targetTrm;
+        [SerializeField] private WaveDataSO[] data;
+
+        private int _enemyCnt;
+
+        private void Start()
+        {
+            StartCoroutine(WaveCoroutine());
+        }
+
+        private IEnumerator WaveCoroutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(timeBetweenWaves);
+            
+                _enemyCnt = Random.Range(minEnemyCnt, maxEnemyCnt);
+
+                for (int i = 0; i < _enemyCnt; ++i)
+                {
+                    int idx = Random.Range(0, data.Length);
+                
+                    FSMEnemy enemy = Instantiate(data[idx].enemyPrefab, spawnTrm.position, Quaternion.identity, transform);
+                    enemy.SetTarget(targetTrm);
+                    
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ using DG.Tweening;
 using RuddnjsPool;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace Blade.UI
 {
@@ -16,6 +17,7 @@ namespace Blade.UI
         public GameObject GameObject => gameObject;
 
         private Pool _myPool;
+        private TextInfoSO _textInfo;
 
         public void SetUpPool(Pool pool) => _myPool = pool;
 
@@ -25,15 +27,11 @@ namespace Blade.UI
             popUpText.alpha = 1;
         }
 
-        private void LateUpdate()
-        {
-            Transform mainCamTrm = Camera.main.transform;
-            Vector3 camDirection = (transform.position - mainCamTrm.position).normalized;
-            transform.forward = camDirection;
-        }
-
         public void ShowPopupText(string text, TextInfoSO textInfo, Vector3 position, float showDuration)
         {
+            _textInfo = textInfo;
+            popUpText.font = textInfo.font;
+            
             popUpText.SetText(text);
             popUpText.color = textInfo.textColor;
             popUpText.fontSize = textInfo.fontSize;
@@ -49,7 +47,6 @@ namespace Blade.UI
             seq.AppendInterval(showDuration);
             seq.Append(transform.DOScale(0.3f,fadeTime));
             seq.Join(popUpText.DOFade(0, fadeTime));
-            seq.Join(transform.DOLocalMoveY(position.y + 2f, fadeTime));
             seq.AppendCallback(() =>
             {
                 _myPool.Push(this);
