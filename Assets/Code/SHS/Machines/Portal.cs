@@ -38,7 +38,8 @@ namespace Code.SHS.Machines
             int amount = 0;
             for (int i = 0; i < 8; i++)
             {
-                amount += resource.ShapePieces[i].ShapePieceSo.resourceAmount;
+                if (resource.ShapePieces[i].ShapePieceSo != null)
+                    amount += resource.ShapePieces[i].ShapePieceSo.resourceAmount;
             }
 
             EventBus.Raise(new ResourceEvent(amount * shapeTier));
@@ -46,7 +47,7 @@ namespace Code.SHS.Machines
 
         private bool IsContainPiece(ShapeResource resource, ShapeResourceSO shapeResourceSo)
         {
-            if (resource.ShapePieces.All(piece => shapeResourceSo.ShapePieces.Contains(piece.ShapePieceSo)))
+            if (resource.ShapePieces.Any(piece => shapeResourceSo.ShapePieces.Contains(piece.ShapePieceSo)))
             {
                 return true;
             }

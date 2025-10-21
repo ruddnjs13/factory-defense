@@ -234,7 +234,7 @@ namespace Code.SHS.Machines.Construction
             containerTransform.gameObject.SetActive(false);
             foreach (ConstructPreview constructPreview in previewInstances)
             {
-                constructPreview.Construct();
+                constructPreview.TryConstruct();
             }
 
             ClearPreviews();
