@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1274b1150c4c38838c23029b8ecba7, type: 3}
   m_Name: Default Tier3
   m_EditorClassIdentifier: 
+  buildingName: Default Turret 3
   maxHealth: 250
   isCombatBuilding: 1
   damage: 10
   range: 14
-  description: "\uB450\uAC1C\uC600\uB358 \uCD1D\uC5F4\uC774 \uC138\uAC1C\uB85C \uB298\uC5B4\uB0AC\uB2E4
-    \uB9E4\uC6B0 \uAC15\uB825\uD558\uB2E4 \uC774\uC608"
+  iconSprite: {fileID: 21300000, guid: 8cc852fbe75fe4af0852a6e1c1e01849, type: 3}
+  description: 'very very strong and owesome triple turret '
