@@ -19,12 +19,13 @@ namespace Code.LKW.Building
         {
             if (inputReader.MousePositionRaycast(out RaycastHit hit, selectableLayer))
             {
+                if (_selectable != null)
+                    _selectable.DeSelect();
+                
                 _selectable  = hit.collider.gameObject.GetComponent<ISelectable>();
 
                 if (_selectable != null)
-                {
                     _selectable.Select();
-                }
             }
             else
             {
