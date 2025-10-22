@@ -672,7 +672,7 @@ Transform:
   - {fileID: 4643004440494560833}
   - {fileID: 4832521981677754462}
   m_Father: {fileID: 2890722040340621671}
-  m_LocalEulerAnglesHint: {x: 19.543913, y: 13.999019, z: -76.99708}
+  m_LocalEulerAnglesHint: {x: 20.067131, y: 19.391415, z: -79.476974}
 --- !u!1 &1255191773438101558
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +705,7 @@ Transform:
   - {fileID: 3081891729802585197}
   - {fileID: 6960118544918181123}
   m_Father: {fileID: 259596837970040050}
-  m_LocalEulerAnglesHint: {x: -40.022625, y: -2.3829198, z: -88.328285}
+  m_LocalEulerAnglesHint: {x: 24.470327, y: -33.717613, z: -91.96938}
 --- !u!1 &1310891822562602393
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +923,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976951593790398277}
-  - component: {fileID: 2035596421457938076}
   m_Layer: 0
   m_Name: DeadFeedback
   m_TagString: Untagged
@@ -946,35 +945,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8097240512481622393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2035596421457938076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592495351052035393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTrm: {fileID: 8097240512481622393}
-  duration: 0.3
-  OnFeedbackComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3586143468086053996}
-        m_TargetAssemblyTypeName: Code.Enemies.FSMEnemy, Assembly-CSharp
-        m_MethodName: EntityDestroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1865785814349851936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1087,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8282517735416461865}
-  m_LocalEulerAnglesHint: {x: 0.009693034, y: -1.9408982, z: -0.5460663}
+  m_LocalEulerAnglesHint: {x: 0.00969443, y: -1.9408965, z: -0.5460663}
 --- !u!1 &2672885333490433042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1216,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8103696857716090844}
-  m_LocalEulerAnglesHint: {x: 47.630863, y: -8.884617, z: 115.83309}
+  m_LocalEulerAnglesHint: {x: -0.8813263, y: 0.13234207, z: -145.80833}
 --- !u!1 &3709960356580491273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,7 +1920,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5208007264958884221}
-  m_LocalEulerAnglesHint: {x: -1.3123167, y: 0.7367684, z: 115.90868}
+  m_LocalEulerAnglesHint: {x: -1.3123165, y: 0.7367675, z: 68.17009}
 --- !u!1 &5511352450406008577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,7 +1951,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9133009280063237371}
-  m_LocalEulerAnglesHint: {x: -87.157104, y: 103.9068, z: -13.31789}
+  m_LocalEulerAnglesHint: {x: -87.157104, y: 103.9068, z: -13.317891}
 --- !u!1 &5591611779013550618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,7 +2254,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3684129794837329426}
-  m_LocalEulerAnglesHint: {x: -0.009693064, y: 1.9409299, z: -1.3816533}
+  m_LocalEulerAnglesHint: {x: -0.009694471, y: 1.9409286, z: -1.3816535}
 --- !u!1 &6071511236871999094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2380,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6170275128015115659}
-  m_LocalEulerAnglesHint: {x: 1.3122874, y: -0.7367434, z: 114.154915}
+  m_LocalEulerAnglesHint: {x: 1.3122878, y: -0.7367446, z: 14.222289}
 --- !u!1 &6437866447651954361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,18 +2455,6 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2035596421457938076}
-        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
-        m_MethodName: CreateFeedback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3586143468086053996}
         m_TargetAssemblyTypeName: Code.Enemies.FSMEnemy, Assembly-CSharp
         m_MethodName: SetDead
@@ -2511,6 +2469,9 @@ MonoBehaviour:
         m_CallState: 2
   <TargetTrm>k__BackingField: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 0}
+  deadBombItem: {fileID: 11400000, guid: f225b615950e82d4ca0f95221e915694, type: 2}
+  effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
+  deadBombTrmPosition: {fileID: 6690260378767577095}
   states:
   - {fileID: 11400000, guid: 134ba2171a9f47040927b2dc4f378b52, type: 2}
   - {fileID: 11400000, guid: 1681c6ae83eff9f4bbeb9aae7d21ac54, type: 2}
@@ -2551,6 +2512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
+  damageTextInfo: {fileID: 0}
+  textChannel: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
 --- !u!136 &3904084044172097048
@@ -2608,7 +2571,7 @@ Transform:
   - {fileID: 7486768045104405485}
   - {fileID: 3437662263455194997}
   m_Father: {fileID: 8103696857716090844}
-  m_LocalEulerAnglesHint: {x: 46.204838, y: -16.649889, z: 20.461426}
+  m_LocalEulerAnglesHint: {x: 16.478487, y: -8.960964, z: -63.48564}
 --- !u!1 &6729874650445293917
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,7 +3015,7 @@ Transform:
   - {fileID: 1123326494985500841}
   - {fileID: 3806071614324619188}
   m_Father: {fileID: 5862322930059905633}
-  m_LocalEulerAnglesHint: {x: -63.591812, y: 66.811325, z: 17.889036}
+  m_LocalEulerAnglesHint: {x: -63.591812, y: 66.811325, z: 17.889034}
 --- !u!1 &8614861866100456399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,7 +3078,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9133009280063237371}
-  m_LocalEulerAnglesHint: {x: -0.6546137, y: 0.6047699, z: 47.264668}
+  m_LocalEulerAnglesHint: {x: -0.6546123, y: 0.604771, z: 47.264668}
 --- !u!1 &9179313698463329480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,7 +3109,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 901712113875219296}
-  m_LocalEulerAnglesHint: {x: 81.64938, y: 2.8440993, z: 89.99995}
+  m_LocalEulerAnglesHint: {x: 81.64938, y: 2.8440986, z: 89.99995}
 --- !u!1001 &271502152236946078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3279,11 +3242,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 37efd8fce43c509438e54d047d2e54eb, type: 2}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[0].isUseOverride
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[1].isUseOverride
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[0].overrideBaseValue

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Chipmunk.GameEvents;
 using Chipmunk.Player;
+using Chipmunk.UI;
 using Code.SHS.Machines.Construction.Previews;
 using Code.SHS.Machines.Events;
 using Code.SHS.Worlds;
@@ -102,6 +103,7 @@ namespace Code.SHS.Machines.Construction
         private void OnLeftClick(bool isPressed)
         {
             isLeftClicking = isPressed;
+            if (UIPointerDetector.IsPointerInUI) return;
 
             if (isPressed)
             {

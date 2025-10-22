@@ -15,6 +15,10 @@ namespace Code.EJY.ETC
             _meshFilter.mesh = new Mesh();
 
             CombineMesh();
+            
+            gameObject.AddComponent<BoxCollider>();
+            //var meshCollider = gameObject.AddComponent<MeshCollider>();
+            //meshCollider.me
         }
 
         private void CombineMesh()

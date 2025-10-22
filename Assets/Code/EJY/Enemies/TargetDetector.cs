@@ -90,7 +90,7 @@ namespace Code.EJY.Enemies
             CurrentTarget.OnValueChanged -= HandleTargetingChanged;
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, attackRange);

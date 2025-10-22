@@ -7,6 +7,7 @@ namespace Code.SHS.Machines
     public class MachineSO : ScriptableObject
     {
         public string machineName;
+        [field: SerializeField] public Sprite Icon { get; private set; }
         public GameObject machinePreviewPrefab;
         public GameObject machinePrefab;
         public Vector2Int size = Vector2Int.one;
