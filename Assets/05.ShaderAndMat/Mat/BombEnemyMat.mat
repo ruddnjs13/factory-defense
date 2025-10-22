@@ -47,7 +47,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlinkValue: 0
-    - _IsReady: 1
+    - _IsReady: 0
     - _Metallic: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
