@@ -180,7 +180,7 @@ namespace Code.SHS.Machines.Construction
                 .Rotate(mainPreview.MachineSO.rotation.eulerAngles.y);
 
             AddPreviewAtPosition(fromPosition, localDirection);
-            mainPreview.transform.rotation = worldRotation * mainPreview.MachineSO.rotation;
+            // mainPreview.transform.rotation = worldRotation * mainPreview.MachineSO.rotation;
         }
 
         private void AddPreviewAtPosition(Vector2Int gridPosition, Direction nextDirection)

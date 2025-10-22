@@ -38,7 +38,7 @@ namespace Chipmunk.UI
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab) && buttonContainer.gameObject.activeSelf)
             {
                 if (currentButton == null)
                 {

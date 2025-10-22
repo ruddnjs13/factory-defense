@@ -3,18 +3,27 @@ using Chipmunk.ComponentContainers;
 using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
     public class ConveyorBelt : BaseMachine, IInputMachine, IOutputMachine, IHasResource
     {
-        [SerializeField] private InputPort inputPort;
-        [SerializeField] private OutputPort outputPort;
+        [SerializeField] private InputPort[] inputPorts;
+        [SerializeField] private OutputPort[] outputPorts;
 
         public ShapeResource Resource { get; private set; }
 
-        public InputPort GetAvailableInputPort(OutputPort outputPort) =>
-            inputPort.CanAcceptInputFrom(outputPort) ? inputPort : null;
+        public InputPort GetAvailableInputPort(OutputPort outputPort)
+        {
+            foreach (InputPort inputPort in inputPorts)
+            {
+                if (inputPort.CanAcceptInputFrom(outputPort))
+                    return inputPort;
+            }
+
+            return null;
+        }
 
         public bool CanAcceptResource()
         {
@@ -24,14 +33,23 @@ namespace Code.SHS.Machines
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
+            TryOutput();
+        }
+
+        private void TryOutput()
+        {
             if (Resource != null)
-                outputPort.Output(Resource);
+                foreach (OutputPort outputPort in outputPorts)
+                {
+                    if (outputPort.Output(Resource))
+                        break;
+                }
         }
 
         public void InputPortResourceTransferComplete(InputPort inputPort)
         {
             Resource = inputPort.Pop();
-            outputPort.Output(Resource);
+            TryOutput();
         }
 
         public void OnOutputPortComplete(OutputPort port)

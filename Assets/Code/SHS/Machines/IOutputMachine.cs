@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.SHS.Machines
 {
-    public interface IOutputMachine : IMachine
+    public interface IOutputMachine
     {
         void OnOutputPortComplete(OutputPort port);
     }

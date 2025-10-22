@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1055435977703796804}
+  iconImage: {fileID: 992255791376801733}
 --- !u!114 &1055435977703796804
 MonoBehaviour:
   m_ObjectHideFlags: 0
