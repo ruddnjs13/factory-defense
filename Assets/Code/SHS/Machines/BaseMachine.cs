@@ -1,26 +1,37 @@
-using System;
 using Chipmunk.ComponentContainers;
 using Chipmunk.GameEvents;
 using Code.Entities;
+using Code.LKW.Building;
+using Code.LKW.GameEvents;
 using Code.SHS.Machines.Events;
-using Code.SHS.Machines.ShapeResources;
 using Code.SHS.TickSystem;
 using Code.SHS.Worlds;
+using EPOOutline;
 using UnityEngine;
 
 namespace Code.SHS.Machines
 {
-    [RequireComponent(typeof(ComponentContainer))]
-    public abstract class BaseMachine : Entity, IContainerComponent, IMachine
+    [RequireComponent(typeof(ComponentContainer), typeof(Outlinable))]
+    public abstract class BaseMachine : Entity, IContainerComponent, IMachine, ISelectable
     {
         [field: SerializeField] public MachineSO MachineSo { get; private set; }
         public ComponentContainer ComponentContainer { get; set; }
         public Vector2Int Position { get; private set; }
         [field: SerializeField] public Vector2Int Size => MachineSo.size;
 
+        [field:SerializeField] public BuildingInfoSO BuildingInfo { get; private set; }
+        private Outlinable _outlineable;
+
         public virtual void OnInitialize(ComponentContainer componentContainer)
         {
             Construct();
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _outlineable = GetComponent<Outlinable>();
+            _outlineable.enabled = false;
         }
 
         protected virtual void Construct()
@@ -126,5 +137,20 @@ namespace Code.SHS.Machines
             // Size만큼의 모든 타일 해제
             ClearTiles(Position, Size);
         }
+
+        #region Selectable
+        
+        public virtual void Select()
+        {
+            EventBus<BuildingSelectedEvent>.Raise(new BuildingSelectedEvent(this));
+            _outlineable.enabled = true;
+        }
+
+        public virtual void DeSelect()
+        {
+            EventBus<BuildingDeselectEvent>.Raise(new BuildingDeselectEvent());
+            _outlineable.enabled = false;
+        }
+        #endregion
     }
 }

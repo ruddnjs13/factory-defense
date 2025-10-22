@@ -5,6 +5,6 @@ namespace Code.SHS.Machines
 {
     public interface IOutputMachine : IMachine
     {
-        void OnOutputComplete(OutputPort port);
+        void OnOutputPortComplete(OutputPort port);
     }
 }

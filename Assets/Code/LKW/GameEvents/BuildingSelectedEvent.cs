@@ -11,5 +11,6 @@ namespace Code.LKW.GameEvents
         {
             Selectable = selectable;
         }
+        
     }
 }

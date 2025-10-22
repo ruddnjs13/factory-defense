@@ -53,7 +53,7 @@ namespace Code.SHS.Machines.Ports
 
             inputPort.ReceiveResource(Resource);
             Resource = null;
-            OutputMachine.OnOutputComplete(this);
+            OutputMachine.OnOutputPortComplete(this);
             resourceVisualizer.EndTransport();
         }
     }

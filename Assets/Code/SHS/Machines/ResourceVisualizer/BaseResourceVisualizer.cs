@@ -28,7 +28,7 @@ namespace Code.SHS.Machines.ResourceVisualizer
         protected virtual void CreateObject(ShapeResource obj)
         {
             if (resourceObject != null)
-                DestroyImmediate(resourceObject);
+                Destroy(resourceObject);
 
             // 추후 풀링으로 변경
             resourceObject = new GameObject();
@@ -40,6 +40,7 @@ namespace Code.SHS.Machines.ResourceVisualizer
             }
 
             resourceObject.transform.SetParent(transform, false);
+            resourceObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         public virtual void EndTransport()

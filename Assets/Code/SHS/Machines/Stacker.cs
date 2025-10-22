@@ -64,7 +64,7 @@ namespace Code.SHS.Machines
             isProcessing = false;
         }
 
-        public void OnOutputComplete(OutputPort port)
+        public void OnOutputPortComplete(OutputPort port)
         {
         }
     }

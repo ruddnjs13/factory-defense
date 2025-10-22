@@ -27,7 +27,7 @@ namespace Code.SHS.Machines.ResourceVisualizer
             {
                 if (pieceObjects[i] != null)
                 {
-                    DestroyImmediate(pieceObjects[i]);
+                    Destroy(pieceObjects[i]);
                     pieceObjects[i] = null;
                 }
 

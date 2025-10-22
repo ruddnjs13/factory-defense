@@ -55,6 +55,18 @@ namespace Code.LKW.Turrets
             TryShoot();
         }
 
+        public override void Select()
+        {
+            base.Select();
+            roundDecal.SetProjectionActive(true);
+        }
+
+        public override void DeSelect()
+        {
+            base.DeSelect();
+            roundDecal.SetProjectionActive(false);
+        }
+
         #region Init
         protected override void Awake()
         {
@@ -64,8 +76,8 @@ namespace Code.LKW.Turrets
             entityHealth = GetCompo<EntityHealth>();
             turretRenderer = GetCompo<TurretRenderer>();
             
-            roundDecal.SetDecalSize(turretData.range/2);
-            roundDecal.SetProjectionActive(true);
+            roundDecal.SetDecalSize(turretData.range / 2);
+            roundDecal.SetProjectionActive(false);
         }
 
         private void OnEnable()
