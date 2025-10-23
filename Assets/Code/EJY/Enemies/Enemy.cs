@@ -21,6 +21,7 @@ namespace Code.EJY.Enemies
         private Pool _myPool;
         private EntityAnimatorTrigger _trigger;
         private int _deadBodyLayer;
+        private int _enemyLayer;
         
         protected override void Awake()
         {
@@ -28,6 +29,7 @@ namespace Code.EJY.Enemies
             _trigger = GetCompo<EntityAnimatorTrigger>();
             _trigger.OnDeadTrigger += OnDeadInAnimation;
             _deadBodyLayer = LayerMask.NameToLayer("DeadBody");
+            _enemyLayer = LayerMask.NameToLayer("Enemy");
         }
 
         public void SetUpPool(Pool pool)
@@ -35,8 +37,9 @@ namespace Code.EJY.Enemies
             _myPool = pool;
         }
 
-        public virtual void Init(Transform targetTrm)   
+        public virtual void Init(Transform targetTrm)
         {
+            gameObject.layer = _enemyLayer;
             SetTarget(targetTrm);
         }
 
