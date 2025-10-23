@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Tier1
   m_EditorClassIdentifier: 
   buildingName: Default Turret 1
-  maxHealth: 200
+  maxHealth: 150
   isCombatBuilding: 1
   damage: 10
   range: 8

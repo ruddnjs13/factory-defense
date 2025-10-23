@@ -37,7 +37,7 @@ namespace Code.LKW.Turrets
                 {
                     ShootProjectile();
                     await Awaitable.WaitForSecondsAsync(0.1f, _cts.Token);
-                    _shootIdx++;
+                    _shootIdx = (_shootIdx + 1) % 3;
                 }
             }
             catch (OperationCanceledException)
@@ -63,20 +63,14 @@ namespace Code.LKW.Turrets
         {
             shooter[_shootIdx].DOLocalMoveZ(-recoilAmount, 0.08f)
                 .SetEase(Ease.OutCirc)
-                .SetLoops(2, LoopType.Yoyo);
+                .SetLoops(2, LoopType.Yoyo)
+                .SetLink(gameObject);
         }
 
         public override void OnDestroy()
         {
-            base.OnDestroy();
-
             _cts?.Cancel();
             _cts?.Dispose();
-
-            foreach (var s in shooter)
-            {
-                s.DOKill();
-            }
         }
     }
 }
