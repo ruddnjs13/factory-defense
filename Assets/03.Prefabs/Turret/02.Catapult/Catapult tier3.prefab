@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2085666944814314416}
   - component: {fileID: 3873824498315430627}
   - component: {fileID: 5374843209675591293}
-  m_Layer: 0
+  - component: {fileID: 3917134111223414622}
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +69,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
+  damageTextInfo: {fileID: 11400000, guid: c6e1539ba4ff07b43a726762400c8140, type: 2}
+  textChannel: {fileID: 11400000, guid: c8634678c97cc494693965510dca0a58, type: 2}
   maxHealth: 0
   currentHealth: 0
+--- !u!114 &3917134111223414622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40540681779589625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbdf8bc37b84c72b9a2f518b6810138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 3364210496389697723}
 --- !u!1 &444579093976551677
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +97,7 @@ GameObject:
   - component: {fileID: 8947961775076488770}
   - component: {fileID: 2770125703044699373}
   - component: {fileID: 7047000955083966293}
+  - component: {fileID: 1865306480330914507}
   m_Layer: 0
   m_Name: Bullet03 (1)
   m_TagString: Untagged
@@ -156,6 +173,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1865306480330914507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444579093976551677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &726855448062320150
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,6 +5125,7 @@ GameObject:
   - component: {fileID: 7280333586593946536}
   - component: {fileID: 7858163122960776394}
   - component: {fileID: 8721864016090335182}
+  - component: {fileID: 6794734686475297762}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -5171,6 +5201,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6794734686475297762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276216361010100531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3387976943056210574
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,6 +5312,7 @@ GameObject:
   - component: {fileID: 3425644380890192275}
   - component: {fileID: 8719297956884337328}
   - component: {fileID: 9168597131105870262}
+  - component: {fileID: 4863031103558095427}
   m_Layer: 0
   m_Name: CatapultB_Stand00
   m_TagString: Untagged
@@ -5345,6 +5388,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4863031103558095427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453138687667129638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5059896280247548213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5360,6 +5415,7 @@ GameObject:
   - component: {fileID: 1945231828997000209}
   - component: {fileID: 172515574429828074}
   - component: {fileID: 5827201522502989863}
+  - component: {fileID: 5764286568677107423}
   m_Layer: 0
   m_Name: Catapult tier3
   m_TagString: Untagged
@@ -5444,9 +5500,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7168923830707226463}
-        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
-        m_MethodName: CreateFeedback
+      - m_Target: {fileID: 3364210496389697723}
+        m_TargetAssemblyTypeName: Code.LKW.Turrets.Catapult.CatapultTier3, Assembly-CSharp
+        m_MethodName: EntityDestroy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5469,12 +5525,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   <MachineSo>k__BackingField: {fileID: 11400000, guid: ed693e479ab35a240a9278b8c505395a, type: 2}
+  <BuildingInfo>k__BackingField: {fileID: 11400000, guid: 49faac246e1894a4986d2f96971fd836, type: 2}
   turretData: {fileID: 11400000, guid: ef75bdc3e8071f542833ca4f69910f9f, type: 2}
   attackData: {fileID: 11400000, guid: 0cb3f8d703b8e504981418b79cf2763c, type: 2}
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   turretHead: {fileID: 7695750481709930951}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
@@ -5574,6 +5631,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5764286568677107423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059896280247548213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 7456664899043103839}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 7047000955083966293}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1073917827130099931}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 9168597131105870262}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 8721864016090335182}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &6315511740858514965
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,6 +5804,7 @@ GameObject:
   - component: {fileID: 1679004911487674951}
   - component: {fileID: 6493595725709293354}
   - component: {fileID: 1073917827130099931}
+  - component: {fileID: 3622016211298171643}
   m_Layer: 0
   m_Name: Bullet03 (2)
   m_TagString: Untagged
@@ -5726,6 +5880,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3622016211298171643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264444921908292876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7401407333364491134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5836,6 +6002,7 @@ GameObject:
   - component: {fileID: 6103275670029640452}
   - component: {fileID: 4871246771323565237}
   - component: {fileID: 7456664899043103839}
+  - component: {fileID: 8927405914397953776}
   m_Layer: 0
   m_Name: CatapultB_Arm01
   m_TagString: Untagged
@@ -5911,6 +6078,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8927405914397953776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197285121128386639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8217259762175409384
 GameObject:
   m_ObjectHideFlags: 0
@@ -11103,17 +11282,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c41cce00641e48efb4025cb26faa774f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7168923830707226463 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2236614817578204550, guid: 502887ea23d3de44a85459c8400462df, type: 3}
-  m_PrefabInstance: {fileID: 8968689333938469593}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8769016344952724084 stripped

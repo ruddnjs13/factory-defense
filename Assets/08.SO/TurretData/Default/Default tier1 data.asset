@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91403014b80540929ca4d2d1b4660526, type: 3}
   m_Name: Default tier1 data
   m_EditorClassIdentifier: 
-  range: 15
+  range: 8
   reloadTimer: 0.4
   rotationSpeed: 180
   bulletSpeed: 18
   shootAllowanceAngle: 12
+  upgradeIndex: 1
+  upgradeCost: 100
