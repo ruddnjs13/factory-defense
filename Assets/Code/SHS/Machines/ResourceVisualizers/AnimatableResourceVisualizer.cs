@@ -2,9 +2,9 @@ using System;
 using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 
-namespace Code.SHS.Machines.ResourceVisualizer
+namespace Code.SHS.Machines.ResourceVisualizers
 {
-    public class AnimatableResourceVisualizer : BaseResourceVisualizer
+    public class AnimatableResourceVisualizer : ResourceVisualizer
     {
         [SerializeField] private Transform[] piecePositions = new Transform[8];
         private readonly GameObject[] pieceObjects = new GameObject[8];

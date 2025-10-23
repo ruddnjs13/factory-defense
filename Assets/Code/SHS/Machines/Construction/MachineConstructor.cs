@@ -238,7 +238,7 @@ namespace Code.SHS.Machines.Construction
                 for (int y = 0; y < size.y; y++)
                 {
                     Vector2Int tilePos = gridPosition + new Vector2Int(x, y);
-                    WorldTile tile = WorldGrid.Instance.GetTile(tilePos);
+                    GridTile tile = WorldGrid.Instance.GetTile(tilePos);
 
                     if (tile.Machine != null)
                         return false;
@@ -362,7 +362,7 @@ namespace Code.SHS.Machines.Construction
                     Vector2Int tilePos = new Vector2Int(x, y);
                     DestroyPreviewAt(tilePos);
 
-                    WorldTile tile = WorldGrid.Instance.GetTile(tilePos);
+                    GridTile tile = WorldGrid.Instance.GetTile(tilePos);
                     if (tile.Machine != null)
                     {
                         Destroy(tile.Machine.gameObject);

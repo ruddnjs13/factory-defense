@@ -47,15 +47,17 @@ namespace Code.SHS.Machines.Construction.Previews
             return true;
         }
 
-        public override GameObject Construct()
+        public override BaseMachine CreateInstance()
         {
             if (conveyorData != null)
             {
-                GameObject machine = Instantiate(conveyorData.prefab, transform.position, transform.rotation);
+                Debug.Assert(conveyorData.prefab != null, "Conveyor prefab is not assigned in ConveyorData.");
+                BaseMachine machine = Instantiate(conveyorData.prefab, transform.position, transform.rotation)
+                    .GetComponent<BaseMachine>();
                 return machine;
             }
 
-            return base.Construct();
+            return base.CreateInstance();
         }
     }
 }

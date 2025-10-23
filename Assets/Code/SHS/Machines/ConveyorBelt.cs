@@ -1,6 +1,7 @@
 using System.Collections;
 using Chipmunk.ComponentContainers;
 using Code.SHS.Machines.Ports;
+using Code.SHS.Machines.ResourceVisualizers;
 using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ namespace Code.SHS.Machines
         [SerializeField] private InputPort[] inputPorts;
         [SerializeField] private OutputPort[] outputPorts;
 
+        [SerializeField] private ResourceVisualizer resourceVisualizer;
         public ShapeResource Resource { get; private set; }
 
         public InputPort GetAvailableInputPort(OutputPort outputPort)
@@ -30,6 +32,17 @@ namespace Code.SHS.Machines
             return Resource == null;
         }
 
+        private bool IsAnyOutputPortCanAccept()
+        {
+            foreach (OutputPort outputPort in outputPorts)
+            {
+                if (outputPort.CanOutput())
+                    return true;
+            }
+
+            return false;
+        }
+
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
@@ -39,22 +52,32 @@ namespace Code.SHS.Machines
         private void TryOutput()
         {
             if (Resource != null)
+            {
                 foreach (OutputPort outputPort in outputPorts)
                 {
                     if (outputPort.Output(Resource))
+                    {
+                        Resource = null;
+                        resourceVisualizer.EndTransport();
                         break;
+                    }
                 }
+            }
         }
 
         public void InputPortResourceTransferComplete(InputPort inputPort)
         {
-            Resource = inputPort.Pop();
+            if (Resource == null)
+            {
+                Resource = inputPort.Pop();
+                resourceVisualizer.StartTransport(Resource);
+            }
+            
             TryOutput();
         }
 
         public void OnOutputPortComplete(OutputPort port)
         {
-            Resource = null;
         }
     }
 }

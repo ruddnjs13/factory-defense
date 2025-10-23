@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -804803376808891692, guid: 3e1c5b683f3e80e4793fae04efebf8fd, type: 3}
+    - target: {fileID: 1845748971271107053, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: localDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458386012747803220, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458386012747803220, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458386012747803220, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -56,16 +72,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conveyor Belt Left
       objectReference: {fileID: 0}
+    - target: {fileID: 6914391791834766085, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914391791834766085, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: _startPoint.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: _startPoint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7274075774343157567, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274075774343157567, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: localDirection
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

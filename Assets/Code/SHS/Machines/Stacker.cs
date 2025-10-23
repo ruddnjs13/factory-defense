@@ -13,8 +13,8 @@ namespace Code.SHS.Machines
     {
         // [SerializeField] private CompositeInputPort inputPort;
         //이건 나중에 수정할거임
-        [SerializeField] private InputPort leftInputPort;
-        [SerializeField] private InputPort rightInputPort;
+        [FormerlySerializedAs("leftBaseInputPort")] [SerializeField] private InputPort leftInputPort;
+        [FormerlySerializedAs("rightBaseInputPort")] [SerializeField] private InputPort rightInputPort;
         [SerializeField] private OutputPort outputPort;
         [SerializeField] private ParameterSO activeParameter;
         [SerializeField] private ParameterAnimator parameterAnimator;

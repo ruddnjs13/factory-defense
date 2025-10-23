@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.SHS.Machines.ResourceVisualizer
+namespace Code.SHS.Machines.ResourceVisualizers
 {
     public class ShapeResourceVisual : MonoBehaviour
     {

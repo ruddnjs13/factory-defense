@@ -1,10 +1,11 @@
 using Chipmunk.ComponentContainers;
 using Code.SHS.Animations;
 using Code.SHS.Machines.Ports;
-using Code.SHS.Machines.ResourceVisualizer;
+using Code.SHS.Machines.ResourceVisualizers;
 using Code.SHS.Machines.ShapeResources;
 using Code.Units.Animations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
@@ -18,8 +19,8 @@ namespace Code.SHS.Machines
         [SerializeField] private bool clockwise = true;
         [SerializeField] private ParameterSO workParam;
         [SerializeField] private ParameterSO rotateParam;
-        [SerializeField] private InputPort inputPort;
-        [SerializeField] private BaseResourceVisualizer resourceVisualizer;
+        [FormerlySerializedAs("baseInputPort")] [SerializeField] private InputPort inputPort;
+        [SerializeField] private ResourceVisualizers.ResourceVisualizer resourceVisualizer;
         [SerializeField] private OutputPort outputPort;
         private ParameterAnimator parameterAnimator;
         private AnimatorTrigger animatorTrigger;

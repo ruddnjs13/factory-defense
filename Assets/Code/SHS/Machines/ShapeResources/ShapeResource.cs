@@ -20,17 +20,8 @@ namespace Code.SHS.Machines.ShapeResources
             for (int i = 0; i < 8; i++)
             {
                 shapeResource.ShapePieces[i] = new(so.ShapePieces[i]);
-                // if (so.ShapePieces[i] != null)
-                // {
-                //     shapeResource.ShapePieces[i].ShapePieceSo = so.ShapePieces[i];
-                // }
-                // else
-                // {
-                //     shapeResource.ShapePieces[i].ShapePieceSo = null;
-                // }
             }
 
-            // Debug.LogError("ShapeResource Created");
             return shapeResource;
         }
 

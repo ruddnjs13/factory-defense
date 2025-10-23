@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2191752130287331592}
   - component: {fileID: 2603448881869278920}
   - component: {fileID: 3009210902388134470}
+  - component: {fileID: 189384949665880622}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
@@ -119,13 +120,98 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <MachineSo>k__BackingField: {fileID: 11400000, guid: a97b8099e5a94884cb77557d4f6058f7, type: 2}
-  <Size>k__BackingField: {x: 0, y: 0}
+  buildingInfo: {fileID: 0}
   clockwise: 1
   workParam: {fileID: 11400000, guid: ec16ba325954c774a9884908d9670d53, type: 2}
   rotateParam: {fileID: 11400000, guid: 2aa9d3138e7666f4fb92da320d09f3e5, type: 2}
   inputPort: {fileID: 6508022507588572043}
   resourceVisualizer: {fileID: 9060072638120598339}
   outputPort: {fileID: 8120350486621838181}
+--- !u!114 &189384949665880622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812515574136519828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 238680847794080295}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 8131192730312779740}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1436756871009669867}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 7088543906520207512}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &2266606228217845000
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6289816659011905712}
   - component: {fileID: 238680847794080295}
+  - component: {fileID: 6868351407160521194}
   m_Layer: 0
   m_Name: Rotator_Mesh
   m_TagString: Untagged
@@ -310,6 +397,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.8551859, z: 0.00000011920929}
     m_Extent: {x: 1.1200421, y: 0.85518605, z: 0.80902267}
   m_DirtyAABB: 0
+--- !u!114 &6868351407160521194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088624892577287942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7308061453723710407
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,8 +529,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1976591843295353474, guid: 4223f379875a3c2419d57c10960aa2af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4992191140658115948}
   m_SourcePrefab: {fileID: 100100000, guid: 4223f379875a3c2419d57c10960aa2af, type: 3}
+--- !u!1 &644189239349457726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1976591843295353474, guid: 4223f379875a3c2419d57c10960aa2af, type: 3}
+  m_PrefabInstance: {fileID: 1413810858324158908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4992191140658115948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644189239349457726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &1436756871009669867 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 31173075221510999, guid: 4223f379875a3c2419d57c10960aa2af, type: 3}
+  m_PrefabInstance: {fileID: 1413810858324158908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4907632846216906551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6306648537363656331, guid: 4223f379875a3c2419d57c10960aa2af, type: 3}
@@ -496,9 +620,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1112126565523065431, guid: 87fdc699a01563b4288fe4e5b9bc14cd, type: 3}
+      propertyPath: localDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497925754301115314, guid: 87fdc699a01563b4288fe4e5b9bc14cd, type: 3}
+      propertyPath: _endPoint.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497925754301115314, guid: 87fdc699a01563b4288fe4e5b9bc14cd, type: 3}
+      propertyPath: _startPoint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5320387386608541244, guid: 87fdc699a01563b4288fe4e5b9bc14cd, type: 3}
       propertyPath: m_Name
       value: Direction Input Port
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207929631896602774, guid: 87fdc699a01563b4288fe4e5b9bc14cd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -518,9 +658,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84e4481d9b7442f9f07329e3a21d49f, type: 3}
+  m_Script: {fileID: 11500000, guid: d5c1eb1ec1a0406ab7c2cc328167ac62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &8131192730312779740 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2731994407491304960, guid: 87fdc699a01563b4288fe4e5b9bc14cd, type: 3}
+  m_PrefabInstance: {fileID: 6142402764683565532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7291180902502748921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +674,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5960273117963359183}
     m_Modifications:
+    - target: {fileID: 1302162368347625427, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+      propertyPath: _endPoint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302162368347625427, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+      propertyPath: _startPoint.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557750523200407964, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+      propertyPath: localDirection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3357523729952638374, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -569,6 +726,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012720799241909495, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7997111684118646712, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
       propertyPath: m_Name
       value: Direction Output Port
@@ -583,6 +744,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3357523729952638374, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
   m_PrefabInstance: {fileID: 7291180902502748921}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &7088543906520207512 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 536187045096997473, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+  m_PrefabInstance: {fileID: 7291180902502748921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8120350486621838181 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1557750523200407964, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
@@ -591,6 +757,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c44af61a10dc4105828901c15b6bf8e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 000c67420dd14807b3758cd47031734c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

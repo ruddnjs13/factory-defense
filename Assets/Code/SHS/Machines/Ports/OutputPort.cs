@@ -1,26 +1,50 @@
 using Chipmunk.ComponentContainers;
-using Code.SHS.Machines.ResourceVisualizer;
+using Chipmunk.GameEvents;
+using Code.SHS.Machines.Events;
+using Code.SHS.Machines.ResourceVisualizers;
 using Code.SHS.Machines.ShapeResources;
+using Code.SHS.Worlds;
 using UnityEngine;
 
 namespace Code.SHS.Machines.Ports
 {
-    public abstract class OutputPort : BasePort
+    public class OutputPort : BasePort
     {
-        [SerializeField] protected BaseResourceVisualizer resourceVisualizer;
+        [SerializeField] protected ResourceVisualizers.ResourceVisualizer resourceVisualizer;
 
         protected IOutputMachine OutputMachine { get; private set; }
+        private InputPort linkedInputPort;
 
         public override void OnInitialize(ComponentContainer componentContainer)
         {
             base.OnInitialize(componentContainer);
             OutputMachine = Machine as IOutputMachine;
             Debug.Assert(OutputMachine != null, $"can not find IOutputMachine in {Machine.gameObject.name}");
+            EventBus<MachineConstructEvent>.OnEvent += OnMachineConstructed;
+            GetLinkedInputPort();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            EventBus<MachineConstructEvent>.OnEvent -= OnMachineConstructed;
+        }
+
+        private void OnMachineConstructed(MachineConstructEvent evt)
+        {
+            GetLinkedInputPort();
+        }
+
+        private void GetLinkedInputPort()
+        {
+            IInputMachine inputMachine =
+                WorldGrid.Instance.GetTile(Position + Direction.ToVector2Int()).Machine as IInputMachine;
+            linkedInputPort = inputMachine?.GetAvailableInputPort(this);
         }
 
         public bool CanOutput()
         {
-            return Resource == null;
+            return Resource == null && linkedInputPort != null && linkedInputPort.CanAcceptResource();
         }
 
         public virtual bool Output(ShapeResource shapeResource)
@@ -39,16 +63,13 @@ namespace Code.SHS.Machines.Ports
         {
             if (Resource == null) return;
             Timer = 0f;
-            InputPort port = FindInputPort();
-            if (port != null)
-                SendResourceTo(port);
+            if (linkedInputPort != null)
+                SendResourceTo(linkedInputPort);
         }
 
-        protected abstract InputPort FindInputPort();
-
-        public virtual void SendResourceTo(InputPort inputPort)
+        protected virtual void SendResourceTo(InputPort inputPort)
         {
-            if (inputPort.CanAcceptInputFrom(this) == false || inputPort.CanAcceptResource() == false)
+            if (inputPort.CanAcceptResource() == false)
                 return;
 
             inputPort.ReceiveResource(Resource);

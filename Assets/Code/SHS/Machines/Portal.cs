@@ -7,17 +7,24 @@ using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
     public class Portal : BaseMachine, IInputMachine
     {
-        [SerializeField] private CompositeInputPort compositeInputPort;
+        [SerializeField] private InputPort[] inputPorts;
         [SerializeField] private List<ShapeResourceSO> allShapeResourceSo;
 
         public InputPort GetAvailableInputPort(OutputPort outputPort)
         {
-            return compositeInputPort.GetAvailablePort(outputPort);
+            foreach (InputPort inputPort in inputPorts)
+            {
+                if (inputPort.CanAcceptInputFrom(outputPort))
+                    return inputPort;
+            }
+
+            return null;
         }
 
         public bool CanAcceptResource()

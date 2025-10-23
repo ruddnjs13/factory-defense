@@ -1,11 +1,11 @@
+using Code.SHS.Machines.Construction;
 using Code.SHS.TickSystem;
+using Code.SHS.Worlds;
 using UnityEngine;
 
 namespace Code.SHS.Machines
 {
-    public interface IMachine : ITick
+    public interface IMachine : IInstallable
     {
-        public Vector2Int Position { get; }
-        public Vector2Int Size { get; }
     }
 }

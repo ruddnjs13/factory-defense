@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using Chipmunk.GameEvents;
+using Code.SHS.Machines;
+using Code.SHS.Machines.Events;
 using UnityEngine;
 
 namespace Code.SHS.Worlds
 {
     public class WorldGrid : MonoSingleton<WorldGrid>
     {
-        private Dictionary<Vector2Int, WorldTile> tiles = new Dictionary<Vector2Int, WorldTile>();
+        private Dictionary<Vector2Int, GridTile> tiles = new Dictionary<Vector2Int, GridTile>();
 
-        public WorldTile GetTile(Vector2Int pos)
+        public GridTile GetTile(Vector2Int pos)
         {
             if (tiles.TryGetValue(pos, out var tile))
             {
@@ -18,13 +21,27 @@ namespace Code.SHS.Worlds
             return default;
         }
 
-        public void SetTile(Vector2Int pos, WorldTile tile)
+        public void SetTile(Vector2Int pos, GridTile tile)
         {
             tiles[pos] = tile;
         }
 
-        public WorldTile GetTile(Vector3 pos)
+        public GridTile GetTile(Vector3 pos)
             => GetTile(Vector2Int.RoundToInt(new Vector2(pos.x, pos.z)));
+        public void InstallMachineAt(Vector2Int pos, BaseMachine machine)
+        {
+            for (int x = 0; x < machine.Size.x; x++)
+            {
+                for (int y = 0; y < machine.Size.y; y++)
+                {
+                    Vector2Int tilePos = pos + new Vector2Int(x, y) + machine.MachineSo.offset;
+                    GridTile tile = GetTile(tilePos);
+                    tile.Machine = machine;
+                    SetTile(tilePos, tile);
+                }
+            }
+            EventBus.Raise(new MachineConstructEvent(machine));
+        }
 
         private void OnDrawGizmosSelected()
         {

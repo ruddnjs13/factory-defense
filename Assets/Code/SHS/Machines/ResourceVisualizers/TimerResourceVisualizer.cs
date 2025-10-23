@@ -1,9 +1,9 @@
 using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 
-namespace Code.SHS.Machines.ResourceVisualizer
+namespace Code.SHS.Machines.ResourceVisualizers
 {
-    public abstract class TimerResourceVisualizer : BaseResourceVisualizer
+    public abstract class TimerResourceVisualizer : ResourceVisualizer
     {
         private float _progress;
         private float _duration;

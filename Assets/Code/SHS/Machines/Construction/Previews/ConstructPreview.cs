@@ -1,6 +1,8 @@
 using Chipmunk.GameEvents;
 using Chipmunk.Player;
 using Chipmunk.Player.Events;
+using Code.SHS.Machines.Events;
+using Code.SHS.Worlds;
 using UnityEngine;
 
 namespace Code.SHS.Machines.Construction.Previews
@@ -20,9 +22,32 @@ namespace Code.SHS.Machines.Construction.Previews
         {
         }
 
-        public virtual GameObject Construct()
+        /// <summary>
+        /// 해당 위치에 Size만큼 기계를 배치할 수 있는지 확인
+        /// </summary>
+        protected bool CanPlaceMachine(Vector2Int position)
         {
-            GameObject machine = Instantiate(MachineSO.machinePrefab, transform.position, transform.rotation);
+            for (int x = 0; x < MachineSO.size.x; x++)
+            {
+                for (int y = 0; y < MachineSO.size.y; y++)
+                {
+                    Vector2Int tilePos = position + new Vector2Int(x, y) + MachineSO.offset;
+                    GridTile tile = WorldGrid.Instance.GetTile(tilePos);
+                    if (tile.Machine != null)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public virtual BaseMachine CreateInstance()
+        {
+            Debug.Assert(MachineSO.machinePrefab != null, "Machine prefab is not assigned in MachineSO.");
+            BaseMachine machine = Instantiate(MachineSO.machinePrefab, transform.position, transform.rotation)
+                .GetComponent<BaseMachine>();
             return machine;
         }
 
@@ -34,8 +59,20 @@ namespace Code.SHS.Machines.Construction.Previews
                 return;
             }
 
-            Construct();
-            EventBus.Raise(new ResourceEvent(-MachineSO.cost));
+            Vector2Int position = Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z));
+            if (!CanPlaceMachine(position))
+            {
+                Debug.LogError(
+                    $"Cannot place machine at {transform.position}. One or more tiles are already occupied.");
+                return;
+            }
+
+            BaseMachine machineInstance = CreateInstance();
+            WorldGrid.Instance.InstallMachineAt(position, machineInstance);
+            if (machineInstance != null)
+            {
+                EventBus.Raise(new ResourceEvent(-MachineSO.cost));
+            }
         }
     }
 }
