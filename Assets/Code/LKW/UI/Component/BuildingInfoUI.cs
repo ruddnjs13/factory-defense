@@ -14,17 +14,25 @@ namespace Code.LKW.UI.Component
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI damageText;
         [SerializeField] private TextMeshProUGUI rangeText;
+        [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private TextMeshProUGUI descriptionText;
         [SerializeField] private GameObject statContainer;
         [SerializeField] private Image icon;
+        [SerializeField] private RectTransform fill;
 
+        private EntityHealth entityHealth;
         
         public void EnableFor(ISelectable selectable)
         {
             if (selectable is BaseMachine machine)
             {
                 BuildingInfoSO buildingInfo = machine.BuildingInfo;
-                float currentHealth = machine.GetCompo<EntityHealth>().CurrentHealth;
+
+                entityHealth = machine.GetCompo<EntityHealth>();
+                
+                float currentHealth = entityHealth.CurrentHealth;
+
+                entityHealth.onHealthChangedEvent += HandleHealthChanged;
                 
                 if (machine.BuildingInfo.isCombatBuilding)
                 {
@@ -50,12 +58,22 @@ namespace Code.LKW.UI.Component
                 }
             }
         }
-
+        
         public void Disable()
         {
             buildingInfoPanel.SetActive(false);
+            entityHealth.onHealthChangedEvent -= HandleHealthChanged;
+            entityHealth = null;
 
         }
+
+        private void HandleHealthChanged(float current, float max)
+        {
+            healthText.text = $"{current}/{max}";
+            fill.localScale = new Vector2(current / max,1);
+        }
+
+       
 
 
         public void SetBuildingUI(string buildingName, float maxHealth, float currentHealth
@@ -65,7 +83,10 @@ namespace Code.LKW.UI.Component
             statContainer.SetActive(false);
             nameText.text = buildingName;
             descriptionText.text = description;
+            healthText.text = $"{currentHealth}/{maxHealth}";
             icon.sprite = iconSprite;
+            
+            fill.localScale = new Vector2(currentHealth / maxHealth,1);
         }
         
         public void SetBuildingUI(string buildingName, float maxHealth, float currentHealth
@@ -76,8 +97,10 @@ namespace Code.LKW.UI.Component
             nameText.text = buildingName;
             damageText.text = damage.ToString();
             rangeText.text = range.ToString();
+            healthText.text = $"{currentHealth}/{maxHealth}";
             descriptionText.text = description;
             icon.sprite = iconSprite;
+            fill.localScale = new Vector2(currentHealth / maxHealth,1);
         }
     }
 }

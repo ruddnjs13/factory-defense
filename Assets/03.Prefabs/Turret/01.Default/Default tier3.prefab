@@ -173,13 +173,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 6ebd078542478be4fbc583e60e0ddd14, type: 2}
-  <BuildingInfo>k__BackingField: {fileID: 0}
+  <BuildingInfo>k__BackingField: {fileID: 11400000, guid: b61da3666192ee945b25931a80a2d08f, type: 2}
   turretData: {fileID: 11400000, guid: 44ebc13f4394cd645abab52e82a13b92, type: 2}
   attackData: {fileID: 11400000, guid: 0ce41afebbb061048a17bdb55b341717, type: 2}
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   turretHead: {fileID: 5679275028427302650}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
@@ -15508,7 +15508,7 @@ MonoBehaviour:
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 100
+    overrideBaseValue: 200
   - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
     isUseOverride: 1
     overrideBaseValue: 10
