@@ -16,12 +16,8 @@ namespace Code.SHS.Machines.Construction.Previews
         {
             MachineSO = machineSO;
             this.constructor = constructor;
+            
         }
-
-        public virtual void SetNextDirection(Direction nextDirection)
-        {
-        }
-
         /// <summary>
         /// 해당 위치에 Size만큼 기계를 배치할 수 있는지 확인
         /// </summary>

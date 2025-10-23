@@ -40,7 +40,7 @@ namespace Code.SHS.Worlds
                     SetTile(tilePos, tile);
                 }
             }
-            EventBus.Raise(new MachineConstructEvent(machine));
+            EventBus.Raise(new MachineConstructedEvent(machine));
         }
 
         private void OnDrawGizmosSelected()

@@ -41,7 +41,7 @@ namespace Code.SHS.Machines
             TickManager.RegisterTick(this);
             Position = Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z));
 
-            EventBus.Subscribe<MachineConstructEvent>(MachineConstructHandler);
+            EventBus.Subscribe<MachineConstructedEvent>(MachineConstructHandler);
         }
 
         /// <summary>
@@ -68,14 +68,14 @@ namespace Code.SHS.Machines
         {
         }
 
-        protected virtual void MachineConstructHandler(MachineConstructEvent evt)
+        protected virtual void MachineConstructHandler(MachineConstructedEvent evt)
         {
         }
 
         public virtual void OnDestroy()
         {
             TickManager.UnregisterTick(this);
-            EventBus.Unsubscribe<MachineConstructEvent>(MachineConstructHandler);
+            EventBus.Unsubscribe<MachineConstructedEvent>(MachineConstructHandler);
             if (WorldGrid.Instance == null) return;
 
             // Size만큼의 모든 타일 해제

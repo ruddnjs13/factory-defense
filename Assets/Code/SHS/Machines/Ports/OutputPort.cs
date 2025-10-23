@@ -20,17 +20,17 @@ namespace Code.SHS.Machines.Ports
             base.OnInitialize(componentContainer);
             OutputMachine = Machine as IOutputMachine;
             Debug.Assert(OutputMachine != null, $"can not find IOutputMachine in {Machine.gameObject.name}");
-            EventBus<MachineConstructEvent>.OnEvent += OnMachineConstructed;
+            EventBus<MachineConstructedEvent>.OnEvent += OnMachineConstructed;
             GetLinkedInputPort();
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            EventBus<MachineConstructEvent>.OnEvent -= OnMachineConstructed;
+            EventBus<MachineConstructedEvent>.OnEvent -= OnMachineConstructed;
         }
 
-        private void OnMachineConstructed(MachineConstructEvent evt)
+        private void OnMachineConstructed(MachineConstructedEvent evt)
         {
             GetLinkedInputPort();
         }

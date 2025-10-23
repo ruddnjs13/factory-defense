@@ -30,6 +30,7 @@ namespace Code.SHS.Machines.Construction
 
         private bool isLeftClicking;
         private bool isRemoveMode;
+        private Direction previousDirection = Direction.None;
         private Vector2Int currentGridPosition;
 
         private void Awake()
@@ -153,7 +154,7 @@ namespace Code.SHS.Machines.Construction
                 PlacePreviewBetweenPositions(currentGridPosition, newPosition);
             }
 
-            UpdatePreviewPosition(newPosition);
+            SetMainPreviewPosition(newPosition);
             currentGridPosition = newPosition;
         }
 
@@ -171,16 +172,31 @@ namespace Code.SHS.Machines.Construction
             directionVector.Clamp(-Vector2Int.one, Vector2Int.one);
             Direction worldDirection = directionVector.ToDirection();
 
+
             if (worldDirection == Direction.None)
                 return;
 
             Quaternion worldRotation = worldDirection.ToQuaternion();
-            Direction localDirection = worldDirection
-                .ToLocalDirection(mainPreview.transform.rotation)
-                .Rotate(mainPreview.MachineSO.rotation.eulerAngles.y);
+            // Direction localDirection = worldDirection
+            //     .ToLocalDirection(mainPreview.transform.rotation)
+            //     .Rotate(mainPreview.MachineSO.rotation.eulerAngles.y);
+            ConstructPreview existingPreview = null;
+            if (previewByPosition.TryGetValue(toPosition, out existingPreview))
+                if (existingPreview is ConveyorPreview conveyorPreview)
+                    conveyorPreview.AddInputDirection(worldDirection);
 
-            AddPreviewAtPosition(fromPosition, localDirection);
-            // mainPreview.transform.rotation = worldRotation * mainPreview.MachineSO.rotation;
+            if (previewByPosition.TryGetValue(fromPosition, out existingPreview))
+            {
+                if (existingPreview is ConveyorPreview conveyorPreview)
+                    conveyorPreview.AddOutputDirection(worldDirection);
+            }
+            else
+            {
+                AddPreviewAtPosition(fromPosition, worldDirection);
+            }
+
+
+            mainPreview.transform.rotation = worldRotation * mainPreview.MachineSO.rotation;
         }
 
         private void AddPreviewAtPosition(Vector2Int gridPosition, Direction nextDirection)
@@ -193,7 +209,8 @@ namespace Code.SHS.Machines.Construction
             ConstructPreview preview = Instantiate(mainPreview, mainPreview.transform.position,
                 mainPreview.transform.rotation, null);
             preview.Initialize(mainPreview.MachineSO, this);
-            preview.SetNextDirection(nextDirection);
+            if (preview is ConveyorPreview conveyorPreview)
+                conveyorPreview.AddOutputDirection(nextDirection);
             previewInstances.Add(preview);
 
             RegisterPreviewAtPosition(gridPosition, preview);
@@ -386,7 +403,7 @@ namespace Code.SHS.Machines.Construction
             return false;
         }
 
-        private void UpdatePreviewPosition(Vector2Int gridPosition)
+        private void SetMainPreviewPosition(Vector2Int gridPosition)
         {
             Vector3 worldPosition = new Vector3(gridPosition.x, GROUND_HEIGHT, gridPosition.y);
             previewContainer.position = worldPosition;
