@@ -21,11 +21,11 @@ MonoBehaviour:
   rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   cost: 20
   conveyorDataList:
-  - inputDirections: 
-    outputDirections: 0000000001000000
+  - inputDirections: 0200000001000000
+    outputDirections: 00000000
     mesh: {fileID: 5917397875176222528, guid: f5c7fead88b871148bf2a66fbad16b35, type: 3}
     rotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
-    prefab: {fileID: 0}
+    prefab: {fileID: 63057520035506579, guid: 64f0d5fb3cfaa1641850fcf22935a902, type: 3}
   - inputDirections: 
     outputDirections: 0000000003000000
     mesh: {fileID: -2723168255992769706, guid: 1073de069c9dae14ea17b5d4026f561a, type: 3}

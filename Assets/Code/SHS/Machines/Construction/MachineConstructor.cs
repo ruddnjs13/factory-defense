@@ -154,6 +154,16 @@ namespace Code.SHS.Machines.Construction
                 PlacePreviewBetweenPositions(currentGridPosition, newPosition);
             }
 
+            if (previewByPosition.TryGetValue(newPosition, out ConstructPreview existingPreview) &&
+                existingPreview is ConveyorPreview conveyorPreview)
+            {
+                mainPreview.gameObject.SetActive(false);
+            }
+            else
+            {
+                mainPreview.gameObject.SetActive(true);
+            }
+
             SetMainPreviewPosition(newPosition);
             currentGridPosition = newPosition;
         }
@@ -183,7 +193,8 @@ namespace Code.SHS.Machines.Construction
             ConstructPreview existingPreview = null;
             if (previewByPosition.TryGetValue(toPosition, out existingPreview))
                 if (existingPreview is ConveyorPreview conveyorPreview)
-                    conveyorPreview.AddInputDirection(worldDirection);
+                    // conveyorPreview.AddInputDirection(worldDirection);
+                    conveyorPreview.AddInputDirection(worldDirection.Opposite());
 
             if (previewByPosition.TryGetValue(fromPosition, out existingPreview))
             {
@@ -208,6 +219,7 @@ namespace Code.SHS.Machines.Construction
 
             ConstructPreview preview = Instantiate(mainPreview, mainPreview.transform.position,
                 mainPreview.transform.rotation, null);
+            preview.gameObject.SetActive(true);
             preview.Initialize(mainPreview.MachineSO, this);
             if (preview is ConveyorPreview conveyorPreview)
                 conveyorPreview.AddOutputDirection(nextDirection);
@@ -350,6 +362,14 @@ namespace Code.SHS.Machines.Construction
             }
             else if (mainPreview != null)
             {
+                // if (previewByPosition.TryGetValue(currentGridPosition, out ConstructPreview existingPreview))
+                                    // {
+                                    //     if (existingPreview is ConveyorPreview conveyorPreview)
+                                    //     {
+                                    //         conveyorPreview.AddInputDirection(worldDirection.Opposite());
+                                    //     }
+                                    // }
+
                 AddPreviewAtPosition(currentGridPosition, Direction.None);
             }
         }

@@ -20,20 +20,8 @@ namespace Code.SHS.Machines.Construction.Previews
             inputDirections.Clear();
         }
 
-        public void AddOutputDirection(Direction direction)
-        {
-            float transformY = transform.rotation.eulerAngles.y;
-            float baseY = conveyorSO.rotation.eulerAngles.y;
-            direction = direction.Rotate(baseY - transformY);
-
-            inputDirections.Remove(direction);
-            outputDirections.Add(direction);
-            UpdateConveyorPreview();
-        }
-
         public void AddInputDirection(Direction direction)
         {
-            // 월드 -> 로컬 변환 동일 적용
             float transformY = transform.rotation.eulerAngles.y;
             float baseY = conveyorSO.rotation.eulerAngles.y;
             direction = direction.Rotate(baseY - transformY);
@@ -41,6 +29,27 @@ namespace Code.SHS.Machines.Construction.Previews
             outputDirections.Remove(direction);
             inputDirections.Add(direction);
             UpdateConveyorPreview();
+        }
+
+        public void AddOutputDirection(Direction direction)
+        {
+            float transformY = transform.rotation.eulerAngles.y;
+            float baseY = conveyorSO.rotation.eulerAngles.y;
+            direction = direction.Rotate(baseY - transformY);
+
+            if (direction == Direction.Back)
+            {
+                transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 180, 0);
+                inputDirections.Remove(direction);
+                outputDirections.Remove(direction);
+                UpdateConveyorPreview();
+            }
+            else
+            {
+                inputDirections.Remove(direction);
+                outputDirections.Add(direction);
+                UpdateConveyorPreview();
+            }
         }
 
         private void UpdateConveyorPreview()

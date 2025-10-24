@@ -464,7 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
-    isUseOverride: 0
+    isUseOverride: 1
     overrideBaseValue: 1000
   - stat: {fileID: 11400000, guid: 73a5c8d399a4c3441bbbc98438dfbb27, type: 2}
     isUseOverride: 0
@@ -549,6 +549,18 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 6290708865451117363}
+        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4797192283459754012}
         m_TargetAssemblyTypeName: Code.Enemies.FSMEnemy, Assembly-CSharp
         m_MethodName: SetDead
@@ -563,9 +575,9 @@ MonoBehaviour:
         m_CallState: 2
   <TargetTrm>k__BackingField: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 0}
-  deadBombItem: {fileID: 11400000, guid: f225b615950e82d4ca0f95221e915694, type: 2}
-  effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
-  deadBombTrmPosition: {fileID: 5943483577467756788}
+  deadBombItem: {fileID: 0}
+  effectChannel: {fileID: 0}
+  deadBombTrmPosition: {fileID: 0}
   states:
   - {fileID: 11400000, guid: 134ba2171a9f47040927b2dc4f378b52, type: 2}
   - {fileID: 11400000, guid: 1681c6ae83eff9f4bbeb9aae7d21ac54, type: 2}
@@ -60523,6 +60535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5372221053933393783}
+  - component: {fileID: 6290708865451117363}
   m_Layer: 0
   m_Name: DeadFeedback
   m_TagString: Untagged
@@ -60545,6 +60558,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1671861939078632171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6290708865451117363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169289271924743894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTrm: {fileID: 1671861939078632171}
+  duration: 0.3
+  OnFeedbackComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4797192283459754012}
+        m_TargetAssemblyTypeName: Code.Enemies.FSMEnemy, Assembly-CSharp
+        m_MethodName: EntityDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9171170650506795377
 GameObject:
   m_ObjectHideFlags: 0

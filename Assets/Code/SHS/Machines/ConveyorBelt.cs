@@ -31,18 +31,6 @@ namespace Code.SHS.Machines
         {
             return Resource == null;
         }
-
-        private bool IsAnyOutputPortCanAccept()
-        {
-            foreach (OutputPort outputPort in outputPorts)
-            {
-                if (outputPort.CanOutput())
-                    return true;
-            }
-
-            return false;
-        }
-
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
