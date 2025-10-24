@@ -19,8 +19,8 @@ namespace Code.SHS.Machines
         public Vector2Int Position { get; private set; }
         public Vector2Int Size => MachineSo.size;
 
-        [SerializeField] private BuildingInfoSO buildingInfo;
-        private Outlinable _outlinable;
+        [field:SerializeField] public BuildingInfoSO BuildingInfo { get; private set; }
+        private Outlinable _outlineable;
 
         public virtual void OnInitialize(ComponentContainer componentContainer)
         {
@@ -31,8 +31,8 @@ namespace Code.SHS.Machines
         protected override void Awake()
         {
             base.Awake();
-            _outlinable = GetComponent<Outlinable>();
-            _outlinable.enabled = false;
+            _outlineable = GetComponent<Outlinable>();
+            _outlineable.enabled = false;
         }
 
         protected virtual void Initialize()
@@ -87,13 +87,13 @@ namespace Code.SHS.Machines
         public virtual void Select()
         {
             EventBus<BuildingSelectedEvent>.Raise(new BuildingSelectedEvent(this));
-            _outlinable.enabled = true;
+            _outlineable.enabled = true;
         }
 
         public virtual void DeSelect()
         {
             EventBus<BuildingDeselectEvent>.Raise(new BuildingDeselectEvent());
-            _outlinable.enabled = false;
+            _outlineable.enabled = false;
         }
 
         #endregion

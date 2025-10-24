@@ -1,4 +1,7 @@
+using System;
 using Code.Entities;
+using Code.Events;
+using Core.GameEvent;
 using RuddnjsPool;
 using UnityEngine;
 
@@ -8,10 +11,27 @@ namespace Code.EJY.Enemies
     {
         [field: SerializeField] public Transform TargetTrm { get; private set; }
         [field: SerializeField] public PoolTypeSO PoolType { get; set; }
+        [SerializeField] private PoolingItemSO deadBombItem;
+        [SerializeField] private GameEventChannelSO effectChannel;
+        [SerializeField] private Transform deadBombTrmPosition;
         
         public void SetTarget(Transform targetTrm) => TargetTrm = targetTrm;
         public GameObject GameObject => gameObject;
+        
         private Pool _myPool;
+        private EntityAnimatorTrigger _trigger;
+        private int _deadBodyLayer;
+        private int _enemyLayer;
+        
+        protected override void Awake()
+        {
+            base.Awake();
+            _trigger = GetCompo<EntityAnimatorTrigger>();
+            _trigger.OnDeadTrigger += OnDeadInAnimation;
+            _deadBodyLayer = LayerMask.NameToLayer("DeadBody");
+            _enemyLayer = LayerMask.NameToLayer("Enemy");
+        }
+
         public void SetUpPool(Pool pool)
         {
             _myPool = pool;
@@ -19,7 +39,13 @@ namespace Code.EJY.Enemies
 
         public virtual void Init(Transform targetTrm)
         {
+            gameObject.layer = _enemyLayer;
             SetTarget(targetTrm);
+        }
+
+        private void OnDestroy()
+        {
+            _trigger.OnDeadTrigger -= OnDeadInAnimation;
         }
 
         public void ResetItem()
@@ -27,6 +53,16 @@ namespace Code.EJY.Enemies
             
         }
 
-        public void PushEnemyInPool() => _myPool.Push(this);
+        private void OnDeadInAnimation()
+        {
+            effectChannel.RaiseEvent(EffectEvents.PlayPoolEffect.Initializer(deadBombTrmPosition.position, Quaternion.identity, deadBombItem, 10f));
+            _myPool.Push(this);
+        }
+
+        public virtual void SetDead()
+        {
+            gameObject.layer = _deadBodyLayer;
+
+        }
     }
 }

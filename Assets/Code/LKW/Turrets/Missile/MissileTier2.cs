@@ -68,20 +68,15 @@ namespace Code.LKW.Turrets
         {
             shooter[_shootIdx].DOLocalMoveZ(-recoilAmount, 0.08f)
                 .SetEase(Ease.OutCirc)
-                .SetLoops(2, LoopType.Yoyo);
+                .SetLoops(2, LoopType.Yoyo)
+                .SetLink(gameObject);
         }
 
         public override void OnDestroy()
         {
-            base.OnDestroy();
-
             _cts?.Cancel();
             _cts?.Dispose();
 
-            foreach (var s in shooter)
-            {
-                s.DOKill();
-            }
         }
     }
 }

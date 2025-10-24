@@ -41,7 +41,7 @@ namespace Code.Combat
                 
                 _hitObjects.Add(target.root);
                 
-                Vector3 normal = (_owner.transform.position - target.position).normalized;
+                Vector3 normal = (transform.position - target.position).normalized;
                 ApplyDamageAndKnockBack(target, damageData, transform.position, normal, attackData);
             }
 

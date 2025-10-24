@@ -11,6 +11,11 @@ namespace Code.LKW.Turrets
         public float rotationSpeed;
         public float bulletSpeed;
         public float shootAllowanceAngle;
+
+        [Space]
+        [Header("Upgrade")]
+        public int upgradeIndex;
+        public int upgradeCost;
         //public 
     }
 }

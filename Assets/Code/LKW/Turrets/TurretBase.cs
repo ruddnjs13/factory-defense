@@ -38,13 +38,23 @@ namespace Code.LKW.Turrets
         
         private float _reloadTimer;
         protected Enemy _target;
+        
         [SerializeField] protected List<Enemy> _targets = new List<Enemy>();
 
         private bool _isShootAngle = false;
-         
+
+        public int UpgradeIndex { get; set; }
+        public int UpgradeCost { get; set; }
+
         private void Update()
         {
             Tick();
+        }
+
+        private void Start()
+        {
+            UpgradeIndex = turretData.upgradeIndex;
+            UpgradeCost = turretData.upgradeCost;
         }
 
         public virtual void Tick()
@@ -53,6 +63,18 @@ namespace Code.LKW.Turrets
             FindTarget();
             RotateShooter();
             TryShoot();
+        }
+
+        public override void Select()
+        {
+            base.Select();
+            roundDecal.SetProjectionActive(true);
+        }
+
+        public override void DeSelect()
+        {
+            base.DeSelect();
+            roundDecal.SetProjectionActive(false);
         }
 
         #region Init
@@ -65,7 +87,7 @@ namespace Code.LKW.Turrets
             turretRenderer = GetCompo<TurretRenderer>();
             
             roundDecal.SetDecalSize(turretData.range / 2);
-            roundDecal.SetProjectionActive(true);
+            roundDecal.SetProjectionActive(false);
         }
 
         private void OnEnable()

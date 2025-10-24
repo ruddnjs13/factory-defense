@@ -12,6 +12,8 @@ namespace Code.Entities
         public event Action BeforeAttackTrigger;
         public event Action OnAttackTrigger;
         public event Action OnAttackEventTrigger;
+        public event Action OnDeadTrigger;
+        
         private Entity _entity;
         
         public void Initialize(Entity entity)
@@ -28,5 +30,6 @@ namespace Code.Entities
         private void BeforeAttack() => BeforeAttackTrigger?.Invoke();
         private void Attack() => OnAttackTrigger?.Invoke();
         private void OnAttackEvent() => OnAttackEventTrigger?.Invoke();
+        private void OnDead() => OnDeadTrigger?.Invoke();
     }
 }

@@ -11,6 +11,7 @@ namespace Code.Feedbacks
         [SerializeField] private float blinkIntensity = 0.15f;
 
         private readonly int _blinkHash = Shader.PropertyToID("_BlinkValue");
+        private readonly int _isReadyHash =  Shader.PropertyToID("_IsReady");
         private SkinnedMeshRenderer[] _meshRenderers;
 
         private void Awake()
@@ -20,6 +21,9 @@ namespace Code.Feedbacks
 
         public override void CreateFeedback() 
         {
+            if(_isReadyHash == 1)
+                return;
+            
             foreach (var meshRenderer in _meshRenderers)
             {
                 meshRenderer.material.SetFloat(_blinkHash, blinkIntensity);

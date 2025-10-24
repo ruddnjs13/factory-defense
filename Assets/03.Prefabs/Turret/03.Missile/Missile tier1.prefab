@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4938370642366566404}
   - component: {fileID: 8580831349628605130}
   - component: {fileID: 4053688010551089912}
+  - component: {fileID: 3865140085000094514}
   m_Layer: 0
   m_Name: MissileB_Cap00
   m_TagString: Untagged
@@ -118,6 +119,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3865140085000094514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227132381580676306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3622493490144566459
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +189,7 @@ GameObject:
   - component: {fileID: 1160070964274937721}
   - component: {fileID: 1310120081517273511}
   - component: {fileID: 864725705470756988}
+  - component: {fileID: 3872237740317966176}
   m_Layer: 0
   m_Name: Missile tier1
   m_TagString: Untagged
@@ -270,18 +284,6 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4369529103470226839}
-        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
-        m_MethodName: CreateFeedback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 312566712601453261}
         m_TargetAssemblyTypeName: Code.LKW.FeedbackS.BuildingDestroyFeedback, Assembly-CSharp
         m_MethodName: CreateFeedback
@@ -306,13 +308,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1160070964274937721}
+        m_TargetAssemblyTypeName: Code.LKW.Turrets.Missile.MissileTier1, Assembly-CSharp
+        m_MethodName: EntityDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 0de957cd4ffae8f44b22d55775333a27, type: 2}
+  <BuildingInfo>k__BackingField: {fileID: 11400000, guid: c6bf834b4012c59458b0445892468f5f, type: 2}
   turretData: {fileID: 11400000, guid: 0b792d1638f01304baeb3149c85e7719, type: 2}
   attackData: {fileID: 11400000, guid: 14f839d58bcab74498440380b10e4a63, type: 2}
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   turretHead: {fileID: 4762677680584495346}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
@@ -374,6 +389,102 @@ MonoBehaviour:
   - {fileID: 7054771253071388682}
   - {fileID: 4053688010551089912}
   - {fileID: 1019898109131222370}
+--- !u!114 &3872237740317966176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709515045153949842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 8095238423707611279}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 4357327144961121535}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 7054771253071388682}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 4053688010551089912}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1019898109131222370}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &4762677680584495346
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +531,8 @@ GameObject:
   - component: {fileID: 8095238423707611279}
   - component: {fileID: 2313137718558719385}
   - component: {fileID: 8058221464043467719}
+  - component: {fileID: 2151186911325855752}
+  - component: {fileID: 3420649853661297013}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -529,8 +642,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
+  damageTextInfo: {fileID: 11400000, guid: c6e1539ba4ff07b43a726762400c8140, type: 2}
+  textChannel: {fileID: 11400000, guid: c8634678c97cc494693965510dca0a58, type: 2}
   maxHealth: 0
   currentHealth: 0
+--- !u!114 &2151186911325855752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684126217445305475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3420649853661297013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684126217445305475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbdf8bc37b84c72b9a2f518b6810138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 1160070964274937721}
 --- !u!1 &7720794495583119700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5469,6 +5609,7 @@ GameObject:
   - component: {fileID: 5293146676425614487}
   - component: {fileID: 6970697731051718936}
   - component: {fileID: 1019898109131222370}
+  - component: {fileID: 2587408204139093210}
   m_Layer: 0
   m_Name: MissileB_Stand00
   m_TagString: Untagged
@@ -5544,6 +5685,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2587408204139093210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432624403212029727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8570717058070888664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5555,6 +5708,7 @@ GameObject:
   - component: {fileID: 7861107128587222225}
   - component: {fileID: 7554987123700043137}
   - component: {fileID: 7054771253071388682}
+  - component: {fileID: 6185530867013979487}
   m_Layer: 0
   m_Name: MissileB_Radar00
   m_TagString: Untagged
@@ -5630,6 +5784,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6185530867013979487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570717058070888664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8587939793022666406
 GameObject:
   m_ObjectHideFlags: 0
@@ -5677,7 +5843,7 @@ MonoBehaviour:
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 100
+    overrideBaseValue: 160
   - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
     isUseOverride: 1
     overrideBaseValue: 10
@@ -5692,6 +5858,7 @@ GameObject:
   - component: {fileID: 6312736424721429583}
   - component: {fileID: 1327059588656984682}
   - component: {fileID: 4357327144961121535}
+  - component: {fileID: 5895206322809114436}
   m_Layer: 0
   m_Name: MissileB_Barrel02
   m_TagString: Untagged
@@ -5768,6 +5935,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5895206322809114436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9097868097456714801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2210695712514414963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5938,17 +6117,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416269096112152749, guid: 502887ea23d3de44a85459c8400462df, type: 3}
   m_PrefabInstance: {fileID: 2569764017388998673}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4369529103470226839 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2236614817578204550, guid: 502887ea23d3de44a85459c8400462df, type: 3}
-  m_PrefabInstance: {fileID: 2569764017388998673}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3540749721365781922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6040,7 +6208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6048,7 +6216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalRotation.w

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9057889711318436033}
   - component: {fileID: 4894245317290780364}
   - component: {fileID: 3558094834376014219}
+  - component: {fileID: 189263241949059225}
   m_Layer: 0
   m_Name: Flame tier1
   m_TagString: Untagged
@@ -99,9 +100,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8644589894456172789}
-        m_TargetAssemblyTypeName: Code.Feedbacks.DeadFeedback, Assembly-CSharp
-        m_MethodName: CreateFeedback
+      - m_Target: {fileID: 8616136873172687954}
+        m_TargetAssemblyTypeName: Code.LKW.Turrets.Flame.FlameTier1, Assembly-CSharp
+        m_MethodName: EntityDestroy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -124,6 +125,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 7fd29f9d493b50d4989742378d0a88b9, type: 2}
+  <BuildingInfo>k__BackingField: {fileID: 11400000, guid: 8655523421243324f8fe94187cc82e9c, type: 2}
   turretData: {fileID: 11400000, guid: 5532e018150131243b8ac7ac34ccab41, type: 2}
   attackData: {fileID: 11400000, guid: 33fd26877b79f934fb97f1ae7be14bb4, type: 2}
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
@@ -207,6 +209,80 @@ MonoBehaviour:
   - {fileID: 2807660815610271212}
   - {fileID: 9200035968497946846}
   - {fileID: 5549511345055793138}
+--- !u!114 &189263241949059225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081168340355690814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 2807660815610271212}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 9200035968497946846}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 5549511345055793138}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &1402685011690252892
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +294,7 @@ GameObject:
   - component: {fileID: 8300256785938946272}
   - component: {fileID: 6845651054466400235}
   - component: {fileID: 5549511345055793138}
+  - component: {fileID: -5521867052658612243}
   m_Layer: 0
   m_Name: FlamerB_Stand00
   m_TagString: Untagged
@@ -293,6 +370,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5521867052658612243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402685011690252892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3840623828200505952
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +437,7 @@ GameObject:
   - component: {fileID: 7126112411537043093}
   - component: {fileID: 6728879575822597883}
   - component: {fileID: 9200035968497946846}
+  - component: {fileID: 2457376035952952946}
   m_Layer: 0
   m_Name: FlamerB_Barrel00
   m_TagString: Untagged
@@ -424,6 +514,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2457376035952952946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957977451961499000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4615406448786924723
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060b45dff407474a8cec8b12cf003387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxSize: {x: 1, y: 0.91, z: 4.6}
+  boxSize: {x: 1, y: 0.91, z: 3.9}
   damageTickDelay: 0.4
   boxOffset: 2.4
   targetLayer:
@@ -615,6 +717,8 @@ GameObject:
   - component: {fileID: 2807660815610271212}
   - component: {fileID: 2726452170864667578}
   - component: {fileID: 5014901633881910173}
+  - component: {fileID: 8120746531560255412}
+  - component: {fileID: 785908734319527611}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -724,8 +828,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
+  damageTextInfo: {fileID: 11400000, guid: c6e1539ba4ff07b43a726762400c8140, type: 2}
+  textChannel: {fileID: 11400000, guid: c8634678c97cc494693965510dca0a58, type: 2}
   maxHealth: 0
   currentHealth: 0
+--- !u!114 &8120746531560255412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491465747138617703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &785908734319527611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491465747138617703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbdf8bc37b84c72b9a2f518b6810138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 8616136873172687954}
 --- !u!1 &8958625238389848551
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalPosition.y
@@ -858,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880755411644680380, guid: 1d63ed18dea88434584fc5b3928aa583, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1079,17 +1210,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416269096112152749, guid: 502887ea23d3de44a85459c8400462df, type: 3}
   m_PrefabInstance: {fileID: 7565429339645435251}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8644589894456172789 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2236614817578204550, guid: 502887ea23d3de44a85459c8400462df, type: 3}
-  m_PrefabInstance: {fileID: 7565429339645435251}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da03b2a9ec924db184660ddcc8f4a01d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8814270513952788682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1176,7 +1296,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198672386278833100, guid: 5444340a0720fc341b5a7e7a3fa1e3f4, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 25
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 198672386278833100, guid: 5444340a0720fc341b5a7e7a3fa1e3f4, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 198672386278833100, guid: 5444340a0720fc341b5a7e7a3fa1e3f4, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 198672386278833100, guid: 5444340a0720fc341b5a7e7a3fa1e3f4, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
