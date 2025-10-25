@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Code.Enemies;
 using RuddnjsLib.Dependencies;
@@ -10,38 +9,46 @@ namespace Code.EJY.Enemies.Wave
 {
     public class WaveSpawner : MonoBehaviour
     {
-        [SerializeField] private float timeBetweenWaves = 30f;
-        [SerializeField] private int maxEnemyCnt = 8, minEnemyCnt = 3;
+        [SerializeField] private float spawnTimeBetweenWaves = 120f, spawnTerm = 0.5f;
         [SerializeField] private Transform spawnTrm, targetTrm;
-        [SerializeField] private WaveDataSO[] data;
+        [SerializeField] private StageWaveDataSO spawnData;
 
-        [Inject] private PoolManagerMono _poolManager; 
-        
-        private int _enemyCnt;
+        [Inject] private PoolManagerMono _poolManager;
 
-        private void Start()
+        private float _currentTime = 0f;
+
+        public int TotalWave => spawnData.stageSpawnData.Count;
+        public int CurrentWave { get; private set; } = 0;
+
+        private void Update()
         {
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= spawnTimeBetweenWaves)
+            {
+                ProcessWave();
+            }
+        }
+
+        private void ProcessWave()
+        {
+            _currentTime = 0f;
             StartCoroutine(WaveCoroutine());
+            CurrentWave++;
         }
 
         private IEnumerator WaveCoroutine()
         {
-            while (true)
+            // 현재 웨이브의 데이터 리스트를 전부 순회
+            foreach (var data in spawnData.stageSpawnData[CurrentWave].dataList)
             {
-                yield return new WaitForSeconds(timeBetweenWaves);
-            
-                _enemyCnt = Random.Range(minEnemyCnt, maxEnemyCnt);
-
-                for (int i = 0; i < _enemyCnt; ++i)
+                for (int i = 0; i < data.spawnCnt; i++)
                 {
-                    int idx = Random.Range(0, data.Length);
-                
-                    
-                    FSMEnemy enemy = _poolManager.Pop<FSMEnemy>(data[idx].enemyPoolItem);
+                    FSMEnemy enemy =
+                        _poolManager.Pop<FSMEnemy>(data.enemyPoolItem);
                     enemy.transform.position = spawnTrm.position;
                     enemy.Init(targetTrm);
-                    
-                    yield return new WaitForSeconds(0.5f);
+
+                    yield return new WaitForSeconds(spawnTerm);
                 }
             }
         }
