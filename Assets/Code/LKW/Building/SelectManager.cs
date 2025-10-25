@@ -7,6 +7,7 @@ namespace Code.LKW.Building
     {
         [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private LayerMask selectableLayer;
+        [SerializeField] private LayerMask floorLayer;
 
         private ISelectable _selectable;
 
@@ -27,7 +28,7 @@ namespace Code.LKW.Building
                 if (_selectable != null)
                     _selectable.Select();
             }
-            else
+            else if(hit.collider.gameObject.layer == floorLayer)
             {
                 if (_selectable != null)
                 {

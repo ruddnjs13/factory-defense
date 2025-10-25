@@ -11,18 +11,18 @@ namespace Code.Combat
     {
         [SerializeField] private float lifeTime = 15f;
         [SerializeField] protected DamageCaster damageCaster;
-        [SerializeField] private AttackDataSO attackData;
+        [SerializeField] protected AttackDataSO attackData;
         [SerializeField] protected Rigidbody rbCompo;
-        [SerializeField] private PoolingItemSO impactItem;
-        [SerializeField] private GameEventChannelSO effectChannel;
-        [SerializeField] private GameEventChannelSO cameraChannel;
-        [SerializeField] private GameEventChannelSO soundChannel;
+        [SerializeField] protected PoolingItemSO impactItem;
+        [SerializeField] protected GameEventChannelSO effectChannel;
+        [SerializeField] protected GameEventChannelSO cameraChannel;
+        [SerializeField] protected GameEventChannelSO soundChannel;
 
         [Space] [Header("Explosion Settings")] [SerializeField]
         protected bool isExplosive;
 
         [SerializeField] protected DamageCaster explosionCaster;
-        [SerializeField] private SoundSO explosionSound;
+        [SerializeField] protected SoundSO explosionSound;
 
 
         [field: SerializeField] public PoolingItemSO PoolingType { get; private set; }
@@ -30,7 +30,7 @@ namespace Code.Combat
         public GameObject GameObject => gameObject;
 
         protected Entity _owner;
-        private Pool _myPool;
+        protected Pool _myPool;
         protected DamageData _damageData;
         protected float CurrentLifeTime = 0;
 
@@ -64,7 +64,7 @@ namespace Code.Combat
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             bool isHit = damageCaster.CastDamage(_damageData, transform.position, transform.forward, attackData);
 
