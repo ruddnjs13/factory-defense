@@ -66,9 +66,9 @@ namespace Code.SHS.Machines
 
             // We used the left/right resources to form the stacked resource; return them to the pool
             if (leftResource != null)
-                leftResource.Release();
+                leftResource.Push();
             if (rightResource != null)
-                rightResource.Release();
+                rightResource.Push();
         }
 
         public void OnOutputPortComplete(OutputPort port)

@@ -50,6 +50,10 @@ namespace Code.SHS.Machines
             }
 
             EventBus.Raise(new ResourceEvent(amount * shapeTier));
+
+            // We've consumed this resource; return it to the pool to avoid leaking pooled instances
+            if (resource != null)
+                resource.Push();
         }
 
         private bool IsContainPiece(ShapeResource resource, ShapeResourceSO shapeResourceSo)

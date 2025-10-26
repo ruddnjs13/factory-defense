@@ -1,46 +1,84 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Code.SHS.Machines.ShapeResources
 {
     public class ShapeResource
     {
-        [field: SerializeField] public ShapePiece[] ShapePieces { get; set; } = new ShapePiece[8];
+        public ShapePiece[] ShapePieces { get; set; } = new ShapePiece[8];
+
+        private static readonly Stack<ShapeResource> shape_pool = new Stack<ShapeResource>(64);
+        private const int MaxPoolSize = 256;
 
         public static ShapeResource Create(ShapePiece[] ResourcePieces)
         {
-            ShapeResource shapeResource = new ShapeResource();
-            shapeResource.ShapePieces = ResourcePieces;
-            return shapeResource;
-        }
-
-        public static ShapeResource Create(ShapeResourceSO so)
-        {
-            ShapeResource shapeResource = new ShapeResource();
+            var shapeResource = Pop();
 
             for (int i = 0; i < 8; i++)
             {
-                shapeResource.ShapePieces[i] = new(so.ShapePieces[i]);
+                shapeResource.ShapePieces[i] = (ResourcePieces != null && i < ResourcePieces.Length) ? ResourcePieces[i] : default(ShapePiece);
             }
 
             return shapeResource;
         }
 
+        public static ShapeResource Create(ShapeResourceSO so)
+        {
+            var shapeResource = Pop();
+
+            for (int i = 0; i < 8; i++)
+            {
+                shapeResource.ShapePieces[i] = new ShapePiece(so.ShapePieces[i]);
+            }
+
+            return shapeResource;
+        }
+
+        private static ShapeResource Pop()
+        {
+            if (shape_pool.Count > 0)
+            {
+                return shape_pool.Pop();
+            }
+
+            return new ShapeResource();
+        }
+
+        public void Push()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                ShapePieces[i] = default(ShapePiece);
+            }
+
+            if (shape_pool.Count < MaxPoolSize)
+            {
+                shape_pool.Push(this);
+            }
+        }
+
         private ShapeResource()
         {
+            if (ShapePieces == null) ShapePieces = new ShapePiece[8];
         }
 
         public static ShapeResource Stack(ShapeResource leftResource, ShapeResource rightResource)
         {
-            ShapeResource newResource = new ShapeResource();
+            var newResource = Pop();
+
             for (int i = 0; i < 8; i++)
             {
-                if (leftResource.ShapePieces[i].ShapePieceSo != null)
+                if (leftResource != null && leftResource.ShapePieces[i].ShapePieceSo != null)
                 {
                     newResource.ShapePieces[i] = leftResource.ShapePieces[i];
                 }
-                else if (rightResource.ShapePieces[i].ShapePieceSo != null)
+                else if (rightResource != null && rightResource.ShapePieces[i].ShapePieceSo != null)
                 {
                     newResource.ShapePieces[i] = rightResource.ShapePieces[i];
+                }
+                else
+                {
+                    newResource.ShapePieces[i] = default(ShapePiece);
                 }
             }
 
