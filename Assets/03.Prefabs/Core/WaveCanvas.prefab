@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 25
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1 Wave
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 530df87dd522d457791fe57157d9eeb6, type: 2}
-  m_sharedMaterial: {fileID: -6806164723919233190, guid: 530df87dd522d457791fe57157d9eeb6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 697f4ed4bbcfda34db49c3b2dada5364, type: 2}
+  m_sharedMaterial: {fileID: 8147324316546701109, guid: 697f4ed4bbcfda34db49c3b2dada5364, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -446,8 +446,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '00 : 00'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 530df87dd522d457791fe57157d9eeb6, type: 2}
-  m_sharedMaterial: {fileID: -6806164723919233190, guid: 530df87dd522d457791fe57157d9eeb6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 697f4ed4bbcfda34db49c3b2dada5364, type: 2}
+  m_sharedMaterial: {fileID: 8147324316546701109, guid: 697f4ed4bbcfda34db49c3b2dada5364, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -471,8 +471,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -618,8 +618,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Enemy Cnt : 10'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 530df87dd522d457791fe57157d9eeb6, type: 2}
-  m_sharedMaterial: {fileID: -6806164723919233190, guid: 530df87dd522d457791fe57157d9eeb6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 697f4ed4bbcfda34db49c3b2dada5364, type: 2}
+  m_sharedMaterial: {fileID: 8147324316546701109, guid: 697f4ed4bbcfda34db49c3b2dada5364, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -643,8 +643,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

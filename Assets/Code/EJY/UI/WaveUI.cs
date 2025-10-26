@@ -85,7 +85,7 @@ namespace Code.EJY.UI
             }
 
             _sb.Clear();
-            _sb.Append(min.ToString("D2")).Append(":").Append(sec.ToString("D2"));
+            _sb.Append("다음 웨이브까지 : ").Append(min.ToString("D2")).Append(":").Append(sec.ToString("D2"));
             timerText.text = _sb.ToString();
         }
     }
