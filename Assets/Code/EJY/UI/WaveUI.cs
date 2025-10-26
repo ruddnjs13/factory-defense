@@ -42,8 +42,8 @@ namespace Code.EJY.UI
 
         private void HandleWaveInfo(WaveInfoEvent evt)
         {
-            waveText.text = $"{evt.currentWave} Wave";
-            enemyCntText.text = $"{evt.enemyCnt} Enemy";
+            waveText.text = $"웨이브 {evt.currentWave}";
+            enemyCntText.text = $"적 개체 수 : {evt.enemyCnt}";
         }
 
         private void HandleWaveTimer(WaveTimerEvent evt)
