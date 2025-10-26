@@ -99,3 +99,13 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 .idea/.idea.factory-defense/.idea/indexLayout.xml
+
+# ===============================
+# Custom Ignore Rules (User Custom)
+# ===============================
+
+# TMP Font Material auto-adjustment 무시
+Assets/09.Font/*.mat
+
+# TMP Font Asset diff 감지 방지
+Assets/09.Font/*.asset -diff -merge
