@@ -42,7 +42,8 @@ namespace Code.SHS.Machines
         }
 
         public bool CanAcceptResource()
-            => outputPort.CanOutput();
+            => true;
+            // => outputPort.CanOutput();
 
         public void InputPortResourceTransferComplete(InputPort inputPort)
         {
@@ -62,6 +63,12 @@ namespace Code.SHS.Machines
 
             outputPort.Output(stackedResource);
             isProcessing = false;
+
+            // We used the left/right resources to form the stacked resource; return them to the pool
+            if (leftResource != null)
+                leftResource.Release();
+            if (rightResource != null)
+                rightResource.Release();
         }
 
         public void OnOutputPortComplete(OutputPort port)

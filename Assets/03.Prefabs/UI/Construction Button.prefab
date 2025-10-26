@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1055435977703796804}
   iconImage: {fileID: 992255791376801733}
+  backgroundImage: {fileID: 337983155245471888}
+  selectedColor: {r: 0.2784314, g: 0.36862746, b: 0.4745098, a: 1}
 --- !u!114 &1055435977703796804
 MonoBehaviour:
   m_ObjectHideFlags: 0

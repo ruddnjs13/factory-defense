@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045907aba757442a8e77924ceda4cc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cannotPlaceMaterial: {fileID: 2100000, guid: 9cf0ee453d2f61a4ca824b580cfe81bb, type: 2}
   meshFilter: {fileID: 6450832072848659780}
 --- !u!4 &7938207882973567713 stripped
 Transform:

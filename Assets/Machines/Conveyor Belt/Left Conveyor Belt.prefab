@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2458386012747803220, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2458386012747803220, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011476269277469586, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_Name
-      value: Conveyor Belt Left
+      value: Left Conveyor Belt
       objectReference: {fileID: 0}
     - target: {fileID: 6914391791834766085, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.z
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _startPoint.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _startPoint.z

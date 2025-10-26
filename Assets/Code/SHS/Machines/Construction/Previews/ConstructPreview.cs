@@ -1,3 +1,4 @@
+using System;
 using Chipmunk.GameEvents;
 using Chipmunk.Player;
 using Chipmunk.Player.Events;
@@ -11,13 +12,30 @@ namespace Code.SHS.Machines.Construction.Previews
     {
         public MachineSO MachineSO { get; private set; }
         private MachineConstructor constructor;
+        private Material previewMaterial;
+        [SerializeField] private Material cannotPlaceMaterial;
+        private MeshRenderer[] meshRenderers;
+
+        private void Awake()
+        {
+            meshRenderers = GetComponentsInChildren<MeshRenderer>();
+            // previewMaterial = meshRenderers[0].material;
+        }
 
         public virtual void Initialize(MachineSO machineSO, MachineConstructor constructor)
         {
             MachineSO = machineSO;
             this.constructor = constructor;
-            
+            // Material targetMaterial = CanPlaceMachine(
+            //     Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z)))
+            //     ? previewMaterial
+            //     : cannotPlaceMaterial;
+            // foreach (MeshRenderer meshRenderer in meshRenderers)
+            // {
+            //     meshRenderer.material = previewMaterial;
+            // }
         }
+
         /// <summary>
         /// 해당 위치에 Size만큼 기계를 배치할 수 있는지 확인
         /// </summary>

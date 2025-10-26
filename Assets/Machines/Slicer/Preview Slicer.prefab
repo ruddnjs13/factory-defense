@@ -101,4 +101,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15985768982e4519838ecba14f6d642c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MachineSO: {fileID: 11400000, guid: 5a31502a7f56d344995cf2f4de2672d5, type: 2}
+  cannotPlaceMaterial: {fileID: 2100000, guid: 9cf0ee453d2f61a4ca824b580cfe81bb, type: 2}
