@@ -32,15 +32,12 @@ namespace Code.LKW.Turrets
 
         public void Recoil()
         {
+            shooter.DOKill();
+
             shooter.transform.DOLocalMoveZ(-recoilAmount, 0.08f)
                 .SetEase(Ease.OutCirc)
-                .SetLoops(2, LoopType.Yoyo);
-        }
-
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            shooter.DOKill();
+                .SetLoops(2, LoopType.Yoyo)
+                .SetLink(shooter.gameObject);
         }
     }
 }

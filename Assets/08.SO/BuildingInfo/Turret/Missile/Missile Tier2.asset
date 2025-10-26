@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e1274b1150c4c38838c23029b8ecba7, type: 3}
-  m_Name: Default Tier3
+  m_Name: Missile Tier2
   m_EditorClassIdentifier: 
-  buildingName: Default Turret 3
-  maxHealth: 200
+  buildingName: Missile Tier2
+  maxHealth: 180
   isCombatBuilding: 1
-  damage: 10
-  range: 14
-  iconSprite: {fileID: 21300000, guid: 8cc852fbe75fe4af0852a6e1c1e01849, type: 3}
+  damage: 25
+  range: 25
+  iconSprite: {fileID: 21300000, guid: 14ebd7a27a3914778a89ba81abb3d498, type: 3}
   description: 'very very strong and owesome triple turret '

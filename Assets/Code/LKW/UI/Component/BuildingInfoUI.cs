@@ -1,5 +1,6 @@
 using Code.Combat;
 using Code.LKW.Building;
+using Code.LKW.Turrets;
 using Code.SHS.Machines;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Code.LKW.UI.Component
     
     public class BuildingInfoUI : MonoBehaviour ,IUIElement<ISelectable>
     {
+        [Header("Building Info")]
         [SerializeField] private GameObject buildingInfoPanel;
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI damageText;
@@ -20,6 +22,12 @@ namespace Code.LKW.UI.Component
         [SerializeField] private Image icon;
         [SerializeField] private RectTransform fill;
 
+        [Space]
+        [Header("Upgrade Info")]
+        [SerializeField] private GameObject upgradePanel;
+        [SerializeField] private TextMeshProUGUI upgradeCostText;
+        
+        
         private EntityHealth entityHealth;
         
         public void EnableFor(ISelectable selectable)
@@ -45,9 +53,18 @@ namespace Code.LKW.UI.Component
                         buildingInfo.description,
                         buildingInfo.iconSprite
                         );
+                    if (machine is TurretBase turret)
+                    {
+                        if (turret.UpgradeIndex <= 1)
+                        {
+                            upgradePanel.SetActive(true);
+                            upgradeCostText.SetText(turret.UpgradeCost.ToString());
+                        }
+                    }
                 }
                 else
                 {
+                    upgradePanel.SetActive(false);
                     SetBuildingUI(
                         buildingInfo.buildingName,
                         buildingInfo.maxHealth,
@@ -62,13 +79,22 @@ namespace Code.LKW.UI.Component
         public void Disable()
         {
             buildingInfoPanel.SetActive(false);
-            entityHealth.onHealthChangedEvent -= HandleHealthChanged;
-            entityHealth = null;
-
+            upgradePanel.SetActive(false);
+            if (entityHealth != null)
+            {
+                entityHealth.onHealthChangedEvent -= HandleHealthChanged;
+                entityHealth = null;
+            }
         }
 
         private void HandleHealthChanged(float current, float max)
         {
+            if (current <= 0)
+            {
+                Disable();
+                return;
+            }
+            
             healthText.text = $"{current}/{max}";
             fill.localScale = new Vector2(current / max,1);
         }
