@@ -372,8 +372,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4765411341519230164}
         m_TargetAssemblyTypeName: Code.LKW.Turrets.Lightning.LightningTier1, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_MethodName: EntityDestroy
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -15,7 +15,7 @@ MonoBehaviour:
   statName: CameraRotation
   description: 
   icon: {fileID: 0}
-  baseValue: 1
+  baseValue: 0.5
   minValue: -20
   maxValue: 20
   <IsPercent>k__BackingField: 0
