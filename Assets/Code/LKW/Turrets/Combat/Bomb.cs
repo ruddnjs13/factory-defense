@@ -10,5 +10,10 @@ namespace Code.LKW.Turrets.Combat
             base.Update();
             transform.Rotate(transform.right, -5);
         }
+
+        protected override void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+        }
     }
 }
