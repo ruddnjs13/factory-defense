@@ -35960,6 +35960,10 @@ PrefabInstance:
       propertyPath: statOverrides.Array.data[0].overrideBaseValue
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
+      propertyPath: statOverrides.Array.data[1].overrideBaseValue
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
