@@ -21,9 +21,9 @@ namespace Code.SHS.Worlds
                 for (int z = -1; z <= 1; z++)
                 {
                     Vector2Int position = gridPosition + new Vector2Int(x, z);
-                    WorldTile worldTile = WorldGrid.Instance.GetTile(position);
-                    worldTile.Ground = groundSO;
-                    WorldGrid.Instance.SetTile(position, worldTile);
+                    GridTile gridTile = WorldGrid.Instance.GetTile(position);
+                    gridTile.Ground = groundSO;
+                    WorldGrid.Instance.SetTile(position, gridTile);
                 }
             }
         }

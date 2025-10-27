@@ -1,4 +1,3 @@
-using System;
 using Chipmunk.GameEvents;
 using Code.SHS.Machines;
 using Code.SHS.Machines.Events;
@@ -10,13 +9,36 @@ namespace Chipmunk.UI
     public class ConstructionButton : MonoBehaviour
     {
         [SerializeField] private Button button;
+        [SerializeField] private Image iconImage;
+        [SerializeField] private Image backgroundImage;
+        [SerializeField] private Color selectedColor = new Color(0.8f, 0.8f, 0.8f);
         private MachineSO machineSo;
+        private Color defaultColor;
 
-        public void Enable(MachineSO machineSo)
+        public void Enable(MachineSO machineSoArg)
         {
-            this.machineSo = machineSo;
+            this.machineSo = machineSoArg;
             button.interactable = true;
+            iconImage.sprite = machineSo.Icon;
             button.onClick.AddListener(OnClickHandler);
+        }
+
+        private void Awake()
+        {
+            if (backgroundImage == null)
+                backgroundImage = GetComponent<Image>();
+            if (backgroundImage != null)
+                defaultColor = backgroundImage.color;
+        }
+
+        private void OnEnable()
+        {
+            EventBus.Subscribe<MachineSelectEvent>(OnMachineSelected);
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Unsubscribe<MachineSelectEvent>(OnMachineSelected);
         }
 
         private void OnDestroy()
@@ -28,10 +50,25 @@ namespace Chipmunk.UI
         {
             Select();
         }
+
         public void Select()
         {
             EventBus.Raise(new MachineSelectEvent(machineSo));
         }
 
+        private void OnMachineSelected(MachineSelectEvent evt)
+        {
+            // If this button has not been initialized with a MachineSO yet, ignore
+            if (backgroundImage == null) return;
+
+            if (evt.MachineSo == machineSo)
+            {
+                backgroundImage.color = selectedColor;
+            }
+            else
+            {
+                backgroundImage.color = defaultColor;
+            }
+        }
     }
 }

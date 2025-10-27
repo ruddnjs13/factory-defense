@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1750f3729fcd9aa40ad7d5a9a7bd8b96, type: 3}
   m_Name: Miner
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 0}
   machines:
   - {fileID: 11400000, guid: f855dd91c4777f342a85a48a5282d6ce, type: 2}
-  - {fileID: 11400000, guid: ef2357c9601b3fb4090effbfb6957438, type: 2}
   - {fileID: 11400000, guid: dc94769345f157b41b1174b203bcbd61, type: 2}

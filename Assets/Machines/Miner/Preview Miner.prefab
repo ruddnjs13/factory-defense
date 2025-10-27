@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15985768982e4519838ecba14f6d642c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MachineSO: {fileID: 11400000, guid: f855dd91c4777f342a85a48a5282d6ce, type: 2}
+  cannotPlaceMaterial: {fileID: 2100000, guid: 9cf0ee453d2f61a4ca824b580cfe81bb, type: 2}
