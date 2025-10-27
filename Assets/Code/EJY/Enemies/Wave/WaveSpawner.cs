@@ -1,49 +1,98 @@
 using System;
 using System.Collections;
 using Code.Enemies;
+using Code.Events;
+using Core.GameEvent;
 using RuddnjsLib.Dependencies;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Code.EJY.Enemies.Wave
 {
     public class WaveSpawner : MonoBehaviour
     {
-        [SerializeField] private float timeBetweenWaves = 30f;
-        [SerializeField] private int maxEnemyCnt = 8, minEnemyCnt = 3;
+        [SerializeField] private float spawnTimeBetweenWaves = 120f, spawnTerm = 0.5f;
         [SerializeField] private Transform spawnTrm, targetTrm;
-        [SerializeField] private WaveDataSO[] data;
+        [SerializeField] private StageWaveDataSO spawnData;
+        [SerializeField] private GameEventChannelSO uiChannel;
 
-        [Inject] private PoolManagerMono _poolManager; 
+        [Inject] private PoolManagerMono _poolManager;
+
+        private float _currentTime = 0f;
+        private int _currentWaveTotalEnemyCnt = 0;
+        private int _deadEnemyCnt = 0;
+        private bool _inProgress = false;
         
-        private int _enemyCnt;
+        public int TotalWave => spawnData.stageSpawnData.Count;
+        public int CurrentWave { get; private set; } = 0;
+
+        private void Awake()
+        {
+            _currentTime = spawnTimeBetweenWaves;
+        }
 
         private void Start()
         {
+            uiChannel.RaiseEvent(UIEvents.WaveInfoEvent.Initializer(GetWaveTotalEnemyCnt(), CurrentWave + 1));
+        }
+
+        private void Update()
+        {
+            // 웨이브 진행 중이ㅁ
+            if(_inProgress) return;
+            
+            _currentTime -= Time.deltaTime;
+            uiChannel.RaiseEvent(UIEvents.WaveTimerEvent.Initializer(_currentTime));
+            if (_currentTime <= 0)
+            {
+                ProcessWave();
+            }
+        }
+
+        private void ProcessWave()
+        {
+            _inProgress = true;
+            _currentTime = spawnTimeBetweenWaves;
+            _currentWaveTotalEnemyCnt = GetWaveTotalEnemyCnt();
+
+            _deadEnemyCnt = 0;
             StartCoroutine(WaveCoroutine());
+            CurrentWave++;
+        }
+
+        private int GetWaveTotalEnemyCnt()
+        {
+            int total = 0;
+            
+            foreach (var data in spawnData.stageSpawnData[CurrentWave].dataList)
+                total += data.spawnCnt;
+            
+            return total;
         }
 
         private IEnumerator WaveCoroutine()
         {
-            while (true)
+            // 현재 웨이브의 데이터 리스트를 전부 순회
+            foreach (var data in spawnData.stageSpawnData[CurrentWave].dataList)
             {
-                yield return new WaitForSeconds(timeBetweenWaves);
-            
-                _enemyCnt = Random.Range(minEnemyCnt, maxEnemyCnt);
-
-                for (int i = 0; i < _enemyCnt; ++i)
+                for (int i = 0; i < data.spawnCnt; i++)
                 {
-                    int idx = Random.Range(0, data.Length);
-                
-                    
-                    FSMEnemy enemy = _poolManager.Pop<FSMEnemy>(data[idx].enemyPoolItem);
+                    FSMEnemy enemy =
+                        _poolManager.Pop<FSMEnemy>(data.enemyPoolItem);
                     enemy.transform.position = spawnTrm.position;
-                    enemy.Init(targetTrm);
-                    
-                    yield return new WaitForSeconds(0.5f);
+                    enemy.Init(targetTrm,CheckInProgress);
+
+                    yield return new WaitForSeconds(spawnTerm);
                 }
             }
+        }
+
+        private void CheckInProgress()
+        {
+            _deadEnemyCnt++;
+            _inProgress = _currentWaveTotalEnemyCnt != _deadEnemyCnt;
+            if(_inProgress)
+                uiChannel.RaiseEvent(UIEvents.WaveInfoEvent.Initializer(GetWaveTotalEnemyCnt(), CurrentWave + 1));
         }
     }
 }

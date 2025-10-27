@@ -1,3 +1,4 @@
+using System;
 using Code.Enemies;
 using Code.FSM;
 using Code.EJY.Enemies;
@@ -16,9 +17,9 @@ namespace Code.Enemies
             _stateMachine = new EntityStateMachine(this, states);
         }
 
-        public override void Init(Transform targetTrm)
+        public override void Init(Transform targetTrm, Action action)
         {
-            base.Init(targetTrm);
+            base.Init(targetTrm, action);
             ChangeState("MOVE");
         }
 

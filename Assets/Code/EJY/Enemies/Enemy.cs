@@ -12,14 +12,15 @@ namespace Code.EJY.Enemies
         [field: SerializeField] public Transform TargetTrm { get; private set; }
         [field: SerializeField] public PoolTypeSO PoolType { get; set; }
         [SerializeField] private PoolingItemSO deadBombItem;
-        [SerializeField] private GameEventChannelSO effectChannel;
         [SerializeField] private Transform deadBombTrmPosition;
+        
+        [SerializeField] protected GameEventChannelSO effectChannel;
+        protected EntityAnimatorTrigger _trigger;
         
         public void SetTarget(Transform targetTrm) => TargetTrm = targetTrm;
         public GameObject GameObject => gameObject;
         
         private Pool _myPool;
-        private EntityAnimatorTrigger _trigger;
         private int _deadBodyLayer;
         private int _enemyLayer;
         
@@ -37,11 +38,21 @@ namespace Code.EJY.Enemies
             _myPool = pool;
         }
 
-        public virtual void Init(Transform targetTrm)
+        public virtual void Init(Transform targetTrm, Action action)
         {
             gameObject.layer = _enemyLayer;
+            
+            void addOnInitAction()
+            {
+                action?.Invoke();
+                _trigger.OnDeadTrigger -= addOnInitAction;
+            }
+            
+            _trigger.OnDeadTrigger += addOnInitAction;
             SetTarget(targetTrm);
         }
+
+       
 
         private void OnDestroy()
         {
