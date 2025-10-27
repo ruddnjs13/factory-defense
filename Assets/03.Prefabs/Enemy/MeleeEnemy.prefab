@@ -35912,19 +35912,19 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 37efd8fce43c509438e54d047d2e54eb, type: 2}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[0].isUseOverride
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[1].isUseOverride
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[0].overrideBaseValue
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[1].overrideBaseValue
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

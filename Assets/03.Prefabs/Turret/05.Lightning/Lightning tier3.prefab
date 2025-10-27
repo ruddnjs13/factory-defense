@@ -372,8 +372,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4765411341519230164}
         m_TargetAssemblyTypeName: Code.LKW.Turrets.Lightning.LightningTier1, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_MethodName: EntityDestroy
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -408,11 +408,11 @@ MonoBehaviour:
   sphereCollider: {fileID: 7314420665836697798}
   roundDecal: {fileID: 2153255079313582185}
   _targets: []
-  recoilAmount: 1.2
+  recoilAmount: 0.4
   firePos: {fileID: 5809793358582079608}
   shooter: {fileID: 5831789830869678971}
   poolManager: {fileID: 11400000, guid: 20d4958a93554864f90e604391087170, type: 2}
-  bulletItem: {fileID: 11400000, guid: d309fe6e3df97664cb1f459306a429bc, type: 2}
+  bulletItem: {fileID: 11400000, guid: 66762b609130d9e44b7bcd878b94bfe7, type: 2}
 --- !u!1 &5527951477548880075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5702,7 +5702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbdf8bc37b84c72b9a2f518b6810138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 0}
+  turret: {fileID: 4765411341519230164}
 --- !u!1001 &95853488099738421
 PrefabInstance:
   m_ObjectHideFlags: 0

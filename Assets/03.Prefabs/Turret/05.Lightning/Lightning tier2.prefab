@@ -332,11 +332,11 @@ MonoBehaviour:
   sphereCollider: {fileID: 6301942620991416375}
   roundDecal: {fileID: 8955328248088275642}
   _targets: []
-  recoilAmount: 1.2
+  recoilAmount: 0.4
   firePos: {fileID: 5088545461537808865}
   shooter: {fileID: 6347771576732950736}
   poolManager: {fileID: 11400000, guid: 20d4958a93554864f90e604391087170, type: 2}
-  bulletItem: {fileID: 11400000, guid: d309fe6e3df97664cb1f459306a429bc, type: 2}
+  bulletItem: {fileID: 11400000, guid: 66762b609130d9e44b7bcd878b94bfe7, type: 2}
 --- !u!1 &2200001683180113032
 GameObject:
   m_ObjectHideFlags: 0

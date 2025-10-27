@@ -1,15 +1,15 @@
 using System;
 using Chipmunk.ComponentContainers;
-using Code.SHS.Machines.ResourceVisualizer;
+using Code.SHS.Machines.ResourceVisualizers;
 using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines.Ports
 {
-    public abstract class InputPort : BasePort
+    public class InputPort : BasePort
     {
-        [SerializeField] private BaseResourceVisualizer resourceVisualizer;
+        [SerializeField] private ResourceVisualizers.ResourceVisualizer resourceVisualizer;
 
         protected IInputMachine InputMachine { get; private set; }
 
@@ -17,16 +17,17 @@ namespace Code.SHS.Machines.Ports
         {
             base.OnInitialize(componentContainer);
             InputMachine = Machine as IInputMachine;
-            Debug.Assert(InputMachine != null, $"can not find IInputMachine in {Machine.gameObject.name}");
         }
 
-        public abstract bool CanAcceptInputFrom(OutputPort outputPort);
+        public virtual bool CanAcceptInputFrom(OutputPort outputPort)
+        {
+            return outputPort.Position == (Position + Direction.ToVector2Int());
+        }
 
         public virtual bool CanAcceptResource()
         {
             return Resource == null && InputMachine.CanAcceptResource();
         }
-
 
         public virtual void ReceiveResource(ShapeResource shapeResource)
         {

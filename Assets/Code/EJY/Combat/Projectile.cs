@@ -36,7 +36,7 @@ namespace Code.Combat
 
         public void SetUpPool(Pool pool) => _myPool = pool;
 
-        public void ResetItem()
+        public virtual void ResetItem()
         {
             CurrentLifeTime = 0;
         }

@@ -8,26 +8,59 @@ namespace Code.SHS.Machines.Construction.Previews
         private ConveyorSO conveyorSO;
 
         [SerializeField] private MeshFilter meshFilter;
-        private HashSet<Direction> directions = new HashSet<Direction>();
+        private HashSet<Direction> outputDirections = new HashSet<Direction>();
+        private HashSet<Direction> inputDirections = new HashSet<Direction>();
         private ConveyorData conveyorData;
 
         public override void Initialize(MachineSO machineSO, MachineConstructor constructor)
         {
             base.Initialize(machineSO, constructor);
             conveyorSO = (ConveyorSO)machineSO;
+            outputDirections.Clear();
+            inputDirections.Clear();
         }
 
-        public override void SetNextDirection(Direction nextDirection)
+        public void AddInputDirection(Direction direction)
         {
-            base.SetNextDirection(nextDirection);
-            directions.Add(nextDirection);
-            Mesh mesh = meshFilter.mesh;
-            foreach (ConveyorData conveyorData in conveyorSO.conveyorDataList)
+            float transformY = transform.rotation.eulerAngles.y;
+            float baseY = conveyorSO.rotation.eulerAngles.y;
+            direction = direction.Rotate(baseY - transformY);
+
+            outputDirections.Remove(direction);
+            inputDirections.Add(direction);
+            UpdateConveyorPreview();
+        }
+
+        public void AddOutputDirection(Direction direction)
+        {
+            float transformY = transform.rotation.eulerAngles.y;
+            float baseY = conveyorSO.rotation.eulerAngles.y;
+            direction = direction.Rotate(baseY - transformY);
+
+            if (direction == Direction.Back)
             {
-                if (isValidData(conveyorData))
+                transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 180, 0);
+                inputDirections.Remove(direction);
+                outputDirections.Remove(direction);
+                UpdateConveyorPreview();
+            }
+            else
+            {
+                inputDirections.Remove(direction);
+                outputDirections.Add(direction);
+                UpdateConveyorPreview();
+            }
+        }
+
+        private void UpdateConveyorPreview()
+        {
+            Mesh mesh = meshFilter.mesh;
+            foreach (ConveyorData data in conveyorSO.conveyorDataList)
+            {
+                if (isValidData(data))
                 {
-                    mesh = conveyorData.mesh;
-                    this.conveyorData = conveyorData;
+                    mesh = data.mesh;
+                    this.conveyorData = data;
                 }
             }
 
@@ -38,7 +71,15 @@ namespace Code.SHS.Machines.Construction.Previews
         {
             foreach (Direction direction in data.OutputDirections)
             {
-                if (directions.Contains(direction) == false)
+                if (outputDirections.Contains(direction) == false)
+                {
+                    return false;
+                }
+            }
+
+            foreach (Direction direction in data.InputDirections)
+            {
+                if (inputDirections.Contains(direction) == false)
                 {
                     return false;
                 }
@@ -47,15 +88,17 @@ namespace Code.SHS.Machines.Construction.Previews
             return true;
         }
 
-        public override GameObject Construct()
+        public override BaseMachine CreateInstance()
         {
             if (conveyorData != null)
             {
-                GameObject machine = Instantiate(conveyorData.prefab, transform.position, transform.rotation);
+                Debug.Assert(conveyorData.prefab != null, "Conveyor prefab is not assigned in ConveyorData.");
+                BaseMachine machine = Instantiate(conveyorData.prefab, transform.position, transform.rotation)
+                    .GetComponent<BaseMachine>();
                 return machine;
             }
 
-            return base.Construct();
+            return base.CreateInstance();
         }
     }
 }

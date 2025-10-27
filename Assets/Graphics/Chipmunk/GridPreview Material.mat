@@ -42,14 +42,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _InnerRadius: 0.1
+    - _InnerRadius: 0
     - _OutterRadius: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Radius: 1
     - _Scale: 0.25
     m_Colors:
-    - _Color: {r: 0, g: 7.6049314, b: 11.984313, a: 0.27450982}
+    - _Color: {r: 0, g: 15.686279, b: 23.96863, a: 0.078431375}
     - _Offset: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

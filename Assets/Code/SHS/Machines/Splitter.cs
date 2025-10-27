@@ -1,12 +1,13 @@
 using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
     public class Splitter : BaseMachine, IInputMachine, IOutputMachine, IHasResource
     {
-        [SerializeField] private InputPort inputPort;
+        [FormerlySerializedAs("baseInputPort")] [SerializeField] private InputPort inputPort;
         [SerializeField] private OutputPort outputPort;
 
         public ShapeResource Resource { get; private set; }

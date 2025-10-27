@@ -17,7 +17,7 @@ namespace Code.LKW.Turrets.Lightning
         
         protected override void Shoot()
         {
-            Projectile bullet = poolManager.Pop(bulletItem.poolType) as Projectile;
+            ChainLightning bullet = poolManager.Pop(bulletItem.poolType) as ChainLightning;
             
             bullet.SetupProjectile(this,damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat)
                 ,attackData),firePos.position ,Quaternion.LookRotation(firePos.forward),firePos.forward *  turretData.bulletSpeed);

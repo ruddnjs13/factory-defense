@@ -13,8 +13,8 @@ namespace Code.SHS.Machines
     {
         // [SerializeField] private CompositeInputPort inputPort;
         //이건 나중에 수정할거임
-        [SerializeField] private InputPort leftInputPort;
-        [SerializeField] private InputPort rightInputPort;
+        [FormerlySerializedAs("leftBaseInputPort")] [SerializeField] private InputPort leftInputPort;
+        [FormerlySerializedAs("rightBaseInputPort")] [SerializeField] private InputPort rightInputPort;
         [SerializeField] private OutputPort outputPort;
         [SerializeField] private ParameterSO activeParameter;
         [SerializeField] private ParameterAnimator parameterAnimator;
@@ -42,7 +42,8 @@ namespace Code.SHS.Machines
         }
 
         public bool CanAcceptResource()
-            => outputPort.CanOutput();
+            => true;
+            // => outputPort.CanOutput();
 
         public void InputPortResourceTransferComplete(InputPort inputPort)
         {
@@ -62,6 +63,12 @@ namespace Code.SHS.Machines
 
             outputPort.Output(stackedResource);
             isProcessing = false;
+
+            // We used the left/right resources to form the stacked resource; return them to the pool
+            if (leftResource != null)
+                leftResource.Push();
+            if (rightResource != null)
+                rightResource.Push();
         }
 
         public void OnOutputPortComplete(OutputPort port)

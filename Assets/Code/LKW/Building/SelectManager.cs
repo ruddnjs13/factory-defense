@@ -1,5 +1,7 @@
 using Chipmunk.Player;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Code.LKW.Building
 {
@@ -18,23 +20,30 @@ namespace Code.LKW.Building
 
         private void HandleLeftButtonClick(bool evt)
         {
-            if (inputReader.MousePositionRaycast(out RaycastHit hit, selectableLayer))
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+            
+            if (inputReader.MousePositionRaycast(out RaycastHit hit, selectableLayer | floorLayer))
             {
-                if (_selectable != null)
-                    _selectable.DeSelect();
-                
-                _selectable  = hit.collider.gameObject.GetComponent<ISelectable>();
-
-                if (_selectable != null)
-                    _selectable.Select();
-            }
-            else if(hit.collider.gameObject.layer == floorLayer)
-            {
-                if (_selectable != null)
+                if (((1 << hit.collider.gameObject.layer) & selectableLayer ) > 0)
                 {
-                    _selectable.DeSelect();
-                    _selectable = null;
+                    if (_selectable != null)
+                        _selectable.DeSelect();
+                
+                    _selectable  = hit.collider.gameObject.GetComponent<ISelectable>();
+
+                    if (_selectable != null)
+                        _selectable.Select();
                 }
+                else if (((1 << hit.collider.gameObject.layer) & floorLayer) > 0)
+                {
+                    if (_selectable != null)
+                    {
+                        _selectable.DeSelect();
+                        _selectable = null;
+                    }
+                }
+                
             }
         }
     }
