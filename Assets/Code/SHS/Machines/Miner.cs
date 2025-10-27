@@ -1,7 +1,7 @@
 using Chipmunk.ComponentContainers;
 using Code.SHS.Animations;
 using Code.SHS.Machines.Ports;
-using Code.SHS.Machines.ResourceVisualizer;
+using Code.SHS.Machines.ResourceVisualizers;
 using Code.SHS.Machines.ShapeResources;
 using Code.SHS.Worlds;
 using Code.Units.Animations;
@@ -36,11 +36,7 @@ namespace Code.SHS.Machines
             animatorTrigger = this.Get<AnimatorTrigger>();
             animatorTrigger.OnAnimationTrigger += OnMineResource;
             animatorTrigger.OnAnimationEnd += OnMineComplete;
-        }
 
-        protected override void Construct()
-        {
-            base.Construct();
             if (WorldGrid.Instance.GetTile(Position).Ground is ResourceGroundSO resourceGround)
             {
                 mineShapeResource = resourceGround.ResourceSO;

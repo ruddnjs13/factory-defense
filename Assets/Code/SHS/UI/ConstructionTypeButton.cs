@@ -15,6 +15,10 @@ namespace Chipmunk.UI
         private List<ConstructionButton> buttons = new List<ConstructionButton>();
         private ConstructionButton currentButton;
 
+        private Image backgroundImage;
+        private Color defaultColor;
+        [SerializeField] private Color selectedColor;
+
         private void Awake()
         {
             iconImage.sprite = constructionType.Icon;
@@ -24,21 +28,29 @@ namespace Chipmunk.UI
                 button.Enable(machineSo);
                 buttons.Add(button);
             }
+
+            backgroundImage = GetComponent<Image>();
+            defaultColor = backgroundImage.color;
         }
 
         public void Enable()
         {
             buttonContainer.gameObject.SetActive(true);
+            backgroundImage.color = selectedColor;
+            
+            currentButton = buttons[0];
+            currentButton.Select();
         }
 
         public void Disable()
         {
             buttonContainer.gameObject.SetActive(false);
+            backgroundImage.color = defaultColor;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab) && buttonContainer.gameObject.activeSelf)
             {
                 if (currentButton == null)
                 {
@@ -48,7 +60,6 @@ namespace Chipmunk.UI
                 else
                 {
                     int currentIndex = buttons.IndexOf(currentButton);
-                    // currentButton.Deselect();
                     currentIndex = (currentIndex + 1) % buttons.Count;
                     currentButton = buttons[currentIndex];
                     currentButton.Select();

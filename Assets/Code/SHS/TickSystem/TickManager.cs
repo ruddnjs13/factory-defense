@@ -11,7 +11,10 @@ namespace Code.SHS.TickSystem
         public static float DeltaTime => deltaTime;
         public static float deltaTime { get; private set; }
         public static readonly float tickInterval = 0.1f;
-        private float lastTickTime;
+        public static float Interpolation { get; private set; }
+        
+        private float accumulator;
+        private float lastTime;
         private static List<ITick> tickables = new List<ITick>();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -40,32 +43,39 @@ namespace Code.SHS.TickSystem
 
         void Start()
         {
-            lastTickTime = Time.time;
-            StartCoroutine(TickCoroutine());
+            lastTime = Time.realtimeSinceStartup;
         }
 
-
-        private IEnumerator TickCoroutine()
+        void Update()
         {
-            while (true)
+            float currentTime = Time.realtimeSinceStartup;
+            float frameDelta = currentTime - lastTime;
+            lastTime = currentTime;
+
+            accumulator += frameDelta;
+
+            while (accumulator >= tickInterval)
             {
-                yield return new WaitForSeconds(tickInterval);
-                ExecuteTick();
+                ExecuteTick(tickInterval);
+                accumulator -= tickInterval;
             }
+
+            Interpolation = Mathf.Clamp01(accumulator / tickInterval);
         }
 
-        private void ExecuteTick()
+        private void ExecuteTick(float dt)
         {
-            float currentTime = Time.time;
-            deltaTime = currentTime - lastTickTime;
-            lastTickTime = currentTime;
+            deltaTime = dt;
 
             foreach (var tickCompo in tickables.ToArray())
             {
-                tickCompo.OnTick(deltaTime);
-
-                if (tickCompo.gameObject == null)
+                if (tickCompo == null || (tickCompo is UnityEngine.Object obj && obj == null))
+                {
                     UnregisterTick(tickCompo);
+                    continue;
+                }
+
+                tickCompo.OnTick(dt);
             }
         }
     }
