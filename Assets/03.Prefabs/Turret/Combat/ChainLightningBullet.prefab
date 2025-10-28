@@ -4842,7 +4842,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
-  chainRadius: 2
+  chainRadius: 4
   maxChains: 3
   chainDelay: 0.1
   projectile: {fileID: 2111414510493599265}
@@ -4865,7 +4865,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.28
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!120 &2063129388412604263
 LineRenderer:
@@ -5018,7 +5018,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80999994, y: 0.80999994, z: 0.54}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.36666673}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4453030332208181294}

@@ -576,8 +576,8 @@ MonoBehaviour:
   <TargetTrm>k__BackingField: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 0}
   deadBombItem: {fileID: 0}
-  effectChannel: {fileID: 0}
   deadBombTrmPosition: {fileID: 0}
+  effectChannel: {fileID: 0}
   states:
   - {fileID: 11400000, guid: 134ba2171a9f47040927b2dc4f378b52, type: 2}
   - {fileID: 11400000, guid: 1681c6ae83eff9f4bbeb9aae7d21ac54, type: 2}
