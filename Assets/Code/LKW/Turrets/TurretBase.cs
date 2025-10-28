@@ -100,6 +100,7 @@ namespace Code.LKW.Turrets
         public override void OnDestroy()
         {
             entityHealth.onHealthChangedEvent -= turretRenderer.ApplyDamagedVisual;
+            
             base.OnDestroy();
         }
 

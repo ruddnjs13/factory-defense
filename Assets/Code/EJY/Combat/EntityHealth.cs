@@ -48,6 +48,7 @@ namespace Code.Combat
         private void OnDestroy()
         {
             _statCompo.UnSubscribeStat(hpStat, HandleMaxHPChange);
+            onHealthChangedEvent?.Invoke(0,maxHealth);
         }
 
         private void HandleMaxHPChange(StatSO stat, float currentValue, float previousValue)

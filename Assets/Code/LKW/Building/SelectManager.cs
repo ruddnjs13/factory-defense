@@ -37,7 +37,7 @@ namespace Code.LKW.Building
                 }
                 else if (((1 << hit.collider.gameObject.layer) & floorLayer) > 0)
                 {
-                    if (_selectable != null)
+                    if (_selectable != null && (_selectable as MonoBehaviour) != null)
                     {
                         _selectable.DeSelect();
                         _selectable = null;
