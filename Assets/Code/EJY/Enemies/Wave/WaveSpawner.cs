@@ -39,7 +39,7 @@ namespace Code.EJY.Enemies.Wave
         private void Update()
         {
             // 웨이브 진행 중이ㅁ
-            if(_inProgress) return;
+            if(_inProgress && CurrentWave == spawnData.stageSpawnData.Count) return;
             
             _currentTime -= Time.deltaTime;
             uiChannel.RaiseEvent(UIEvents.WaveTimerEvent.Initializer(_currentTime));
