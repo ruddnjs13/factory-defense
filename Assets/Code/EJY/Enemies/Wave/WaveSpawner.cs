@@ -21,25 +21,32 @@ namespace Code.EJY.Enemies.Wave
         private float _currentTime = 0f;
         private int _currentWaveTotalEnemyCnt = 0;
         private int _deadEnemyCnt = 0;
-        private bool _inProgress = false;
+        private NotifyValue<bool> _inProgress = new();
         
         public int TotalWave => spawnData.stageSpawnData.Count;
         public int CurrentWave { get; private set; } = 0;
 
         private void Awake()
         {
-            _currentTime = spawnTimeBetweenWaves;
+            _inProgress.OnValueChanged += HandleProgressChange;
         }
+
 
         private void Start()
         {
+            _currentTime = spawnTimeBetweenWaves;
             uiChannel.RaiseEvent(UIEvents.WaveInfoEvent.Initializer(GetWaveTotalEnemyCnt(), CurrentWave + 1));
+        }
+
+        private void OnDestroy()
+        {
+            _inProgress.OnValueChanged -= HandleProgressChange;
         }
 
         private void Update()
         {
-            // 웨이브 진행 중이ㅁ
-            if(_inProgress && CurrentWave == spawnData.stageSpawnData.Count) return;
+            // 웨이브 진행 중이면 리턴
+            if(_inProgress.Value || CurrentWave == spawnData.stageSpawnData.Count) return;
             
             _currentTime -= Time.deltaTime;
             uiChannel.RaiseEvent(UIEvents.WaveTimerEvent.Initializer(_currentTime));
@@ -51,15 +58,21 @@ namespace Code.EJY.Enemies.Wave
 
         public void ProcessWave()
         {
-            _inProgress = true;
+            _inProgress.Value = true;
             _currentTime = spawnTimeBetweenWaves;
             _currentWaveTotalEnemyCnt = GetWaveTotalEnemyCnt();
+            uiChannel.RaiseEvent(UIEvents.WaveTimerEvent.Initializer(0));
 
             _deadEnemyCnt = 0;
             StartCoroutine(WaveCoroutine());
             CurrentWave++;
         }
 
+        private void HandleProgressChange(bool prev, bool next)
+        {
+            uiChannel.RaiseEvent(UIEvents.ChangeWaveProgress.Initializer(next));
+        }
+        
         private int GetWaveTotalEnemyCnt()
         {
             int total = 0;
@@ -90,8 +103,8 @@ namespace Code.EJY.Enemies.Wave
         private void CheckInProgress()
         {
             _deadEnemyCnt++;
-            _inProgress = _currentWaveTotalEnemyCnt != _deadEnemyCnt;
-            if(_inProgress)
+            _inProgress.Value = _currentWaveTotalEnemyCnt != _deadEnemyCnt;
+            if(_inProgress.Value)
                 uiChannel.RaiseEvent(UIEvents.WaveInfoEvent.Initializer(GetWaveTotalEnemyCnt(), CurrentWave + 1));
         }
     }

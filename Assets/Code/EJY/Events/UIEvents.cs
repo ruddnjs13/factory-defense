@@ -6,6 +6,7 @@ namespace Code.Events
     {
         public static WaveTimerEvent WaveTimerEvent = new WaveTimerEvent();
         public static WaveInfoEvent WaveInfoEvent = new WaveInfoEvent();
+        public static ChangeWaveProgress ChangeWaveProgress = new ChangeWaveProgress();
     }
 
     public class WaveTimerEvent : GameEvent
@@ -28,6 +29,17 @@ namespace Code.Events
         {
             this.enemyCnt = enemyCnt;
             this.currentWave = currentWave;
+            return this;
+        }
+    }
+
+    public class ChangeWaveProgress : GameEvent
+    {
+        public bool inProgress;
+
+        public ChangeWaveProgress Initializer(bool inProgress)
+        {
+            this.inProgress = inProgress;
             return this;
         }
     }

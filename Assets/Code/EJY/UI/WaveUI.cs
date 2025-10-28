@@ -4,6 +4,7 @@ using Core.GameEvent;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.EJY.UI
 {
@@ -13,6 +14,7 @@ namespace Code.EJY.UI
         [SerializeField] private TextMeshProUGUI waveText;
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private TextMeshProUGUI enemyCntText;
+        [SerializeField] private CanvasGroup skipButtonGroup;
 
         [Header("Timer Polishing")] [SerializeField]
         private Color warningColor = Color.red;
@@ -32,12 +34,15 @@ namespace Code.EJY.UI
             _sb = new StringBuilder();
             uiChannel.AddListener<WaveTimerEvent>(HandleWaveTimer);
             uiChannel.AddListener<WaveInfoEvent>(HandleWaveInfo);
+            uiChannel.AddListener<ChangeWaveProgress>(HandleChangeWaveProgress);
         }
+
 
         private void OnDestroy()
         {
             uiChannel.RemoveListener<WaveTimerEvent>(HandleWaveTimer);
             uiChannel.RemoveListener<WaveInfoEvent>(HandleWaveInfo);
+            uiChannel.RemoveListener<ChangeWaveProgress>(HandleChangeWaveProgress);
         }
 
         private void HandleWaveInfo(WaveInfoEvent evt)
@@ -66,7 +71,7 @@ namespace Code.EJY.UI
             {
                 timerText.DOColor(warningColor, colorChangeDuration);
 
-                if (_seq == null || !_seq.IsActive())
+                if ((_seq == null || !_seq.IsActive()) && sec != 0)
                 {
                     _seq = DOTween.Sequence();
                     _seq.Append(timerText.transform.DOShakePosition(timerShakeDuration, timerShakePower, 100))
@@ -87,6 +92,13 @@ namespace Code.EJY.UI
             _sb.Clear();
             _sb.Append("다음 웨이브까지 : ").Append(min.ToString("D2")).Append(":").Append(sec.ToString("D2"));
             timerText.text = _sb.ToString();
+        }
+        
+        private void HandleChangeWaveProgress(ChangeWaveProgress evt)
+        {
+            float alpha = evt.inProgress ? 0.1f : 1;
+            skipButtonGroup.alpha = alpha;
+            skipButtonGroup.interactable = !evt.inProgress;
         }
     }
 }
