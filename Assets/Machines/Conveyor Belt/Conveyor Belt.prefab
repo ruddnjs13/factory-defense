@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -273,7 +273,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}
-  buildingInfo: {fileID: 0}
+  <BuildingInfo>k__BackingField: {fileID: 0}
   inputPorts:
   - {fileID: 1845748971271107053}
   outputPorts:
@@ -403,6 +403,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1557750523200407964, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
       propertyPath: localDirection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557750523200407964, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+      propertyPath: <LocalDirection>k__BackingField
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3357523729952638374, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}

@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -102,6 +102,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274075774343157567, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: localDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274075774343157567, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
+      propertyPath: <LocalDirection>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

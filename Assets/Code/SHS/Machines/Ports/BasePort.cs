@@ -14,17 +14,18 @@ namespace Code.SHS.Machines.Ports
         public BaseMachine Machine { get; protected set; }
         public Vector2Int Position { get; protected set; }
         [field: SerializeField] public float Interval { get; private set; } = 1f;
-        [SerializeField] private Direction localDirection;
+        [field: SerializeField] public Direction LocalDirection { get; private set; }
         protected Direction Direction { get; private set; }
 
         public float Timer { get; protected set; } = 0f;
         public ComponentContainer ComponentContainer { get; set; }
+
         public virtual void OnInitialize(ComponentContainer componentContainer)
         {
             Position = Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z));
 
             float yRotation = transform.eulerAngles.y;
-            Direction = localDirection.Rotate(yRotation);
+            Direction = LocalDirection.Rotate(yRotation);
             Machine = this.Get<BaseMachine>(true);
             Debug.Assert(Machine != null, $"can not find machine component in {componentContainer.gameObject.name}");
             TickManager.RegisterTick(this);
@@ -50,7 +51,7 @@ namespace Code.SHS.Machines.Ports
         private void OnDrawGizmosSelected()
         {
             Vector3 startPos = transform.position + Vector3.up * 0.1f;
-            Vector3 directionVector = localDirection.Rotate(transform.eulerAngles.y).ToVector3();
+            Vector3 directionVector = LocalDirection.Rotate(transform.eulerAngles.y).ToVector3();
             Gizmos.color = Color.white;
             Gizmos.DrawLine(startPos, startPos + directionVector);
             Gizmos.DrawSphere(startPos + directionVector, 0.1f);
