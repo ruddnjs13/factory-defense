@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineSOList:
   - {fileID: 11400000, guid: d0f38bf3412c8a2449c69b29ab86a6ef, type: 2}
-  - {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}
+  - {fileID: 11400000, guid: 76280bcb01145f943aa690bd9aa2dec6, type: 2}
   - {fileID: 11400000, guid: 3199c2a2f4c240c4f987bd25f8a4e7d5, type: 2}
   - {fileID: 11400000, guid: 5efa59f0c89c3f548bc0011506e9ea31, type: 2}
+  - {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}

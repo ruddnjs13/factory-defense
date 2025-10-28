@@ -194,11 +194,12 @@ namespace Code.SHS.Machines.Construction.Previews
             // float adjustedRotation = candidateMachine.rotation.eulerAngles.y;
             float adjustedRotation = candidateMachine.rotation.eulerAngles.y +
                                      (transform.rotation.eulerAngles.y - MachineSO.rotation.eulerAngles.y);
-
+            // Debug.Log($"Checking machine {candidateMachine.name} at rotation {adjustedRotation}", this);
             if (candidateMachine.inputPorts.Count > 1)
             {
                 foreach (var port in candidateMachine.inputPorts)
                 {
+                    // Debug.Log($"{port.FacingDirection} : {port.GetRotatedPortData(adjustedRotation).FacingDirection}");
                     if (!availableWorldInputPorts.Contains(
                             port.GetRotatedPortData(adjustedRotation)))
                     {
@@ -209,6 +210,7 @@ namespace Code.SHS.Machines.Construction.Previews
 
             foreach (var port in candidateMachine.outputPorts)
             {
+                // Debug.Log(port.GetRotatedPortData(adjustedRotation).FacingDirection);
                 if (!availableWorldOutputPorts.Contains(
                         port.GetRotatedPortData(adjustedRotation)))
                     return false;
@@ -219,7 +221,7 @@ namespace Code.SHS.Machines.Construction.Previews
 
         private void OnDrawGizmosSelected()
         {
-            Debug.Log("OnDrawGizmosSelected");
+            // Debug.Log("OnDrawGizmosSelected");
             foreach (PortData portData in availableWorldOutputPorts)
             {
                 Vector3 localPos = new Vector3(portData.LocalPosition.x, 0.1f, portData.LocalPosition.y);
@@ -229,7 +231,7 @@ namespace Code.SHS.Machines.Construction.Previews
                     directionVector2Int.y);
                 Gizmos.color = Color.red;
                 Gizmos.DrawRay(worldPos, directionVector);
-                Debug.Log("output " + portData.FacingDirection);
+                // Debug.Log("output " + portData.FacingDirection);
             }
 
             foreach (PortData portData in availableWorldInputPorts)
@@ -241,12 +243,20 @@ namespace Code.SHS.Machines.Construction.Previews
                     directionVector2Int.y);
                 Gizmos.color = Color.green;
                 Gizmos.DrawRay(worldPos, directionVector);
-                Debug.Log("input " + portData.FacingDirection);
+                // Debug.Log("input " + portData.FacingDirection);
             }
         }
 
         public void AddOutputDirection(Direction nextDirection)
         {
+            if (availableWorldOutputPorts.Count == 0)
+            {
+                Direction currentFancing =
+                    Direction.Forward.Rotate(transform.rotation.eulerAngles.y - MachineSO.rotation.eulerAngles.y);
+                if (nextDirection.Opposite() == currentFancing)
+                    transform.Rotate(0, 180, 0);
+            }
+
             availableWorldOutputPorts.Add(new PortData
             {
                 FacingDirection = nextDirection
