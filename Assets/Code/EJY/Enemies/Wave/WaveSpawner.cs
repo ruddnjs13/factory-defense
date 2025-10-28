@@ -49,7 +49,7 @@ namespace Code.EJY.Enemies.Wave
             }
         }
 
-        private void ProcessWave()
+        public void ProcessWave()
         {
             _inProgress = true;
             _currentTime = spawnTimeBetweenWaves;
