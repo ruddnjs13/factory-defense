@@ -92,7 +92,7 @@ PrefabInstance:
       addedObject: {fileID: 1125164313913004950}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3152083331016975527}
+      addedObject: {fileID: 8387574770335338396}
   m_SourcePrefab: {fileID: 100100000, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
 --- !u!33 &6450832072848659780 stripped
 MeshFilter:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46dcb74cf4b291489ab4f768ed93fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3152083331016975527
+--- !u!114 &8387574770335338396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,11 +125,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7305400094980309083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045907aba757442a8e77924ceda4cc06, type: 3}
+  m_Script: {fileID: 11500000, guid: 358d6bdf3e0f33840914b6f2b41d6e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cannotPlaceMaterial: {fileID: 2100000, guid: 9cf0ee453d2f61a4ca824b580cfe81bb, type: 2}
   meshFilter: {fileID: 6450832072848659780}
+  selectConstructSO: {fileID: 11400000, guid: aab97175dcd83d043a73d342e5cb4c15, type: 2}
 --- !u!4 &7938207882973567713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
