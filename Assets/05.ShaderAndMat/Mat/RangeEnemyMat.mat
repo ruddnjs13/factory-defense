@@ -47,13 +47,17 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlinkValue: 0
+    - _IsHit: 0
+    - _IsReady: 0
     - _Metallic: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.5
     m_Colors:
     - _BlinkColor: {r: 14.259478, g: 14.259478, b: 14.259478, a: 0}
+    - _EmissionColor: {r: 2.670157, g: 2.670157, b: 2.670157, a: 0}
     - _MainTexColor: {r: 1, g: 0, b: 0, a: 0}
+    - _ReadyColor: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5679368426205529637

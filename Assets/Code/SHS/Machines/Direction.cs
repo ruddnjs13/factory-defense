@@ -162,11 +162,11 @@ namespace Code.SHS.Machines
             // 월드 방향 벡터를 로컬 좌표계로 변환
             Vector3 worldVector = worldDirection.ToVector3();
             Vector3 localVector = Quaternion.Inverse(localRotation) * worldVector;
-            
+
             // 가장 가까운 방향 찾기
             float maxDot = -1f;
             Direction closestDirection = Direction.Forward;
-            
+
             for (int i = 0; i < 4; i++)
             {
                 Direction dir = (Direction)i;
@@ -177,7 +177,7 @@ namespace Code.SHS.Machines
                     closestDirection = dir;
                 }
             }
-            
+
             return closestDirection;
         }
 
