@@ -15,7 +15,10 @@ namespace Code.SHS.Machines
     {
         private static readonly bool[] SlicePieces = { false, false, true, true, false, false, true, true };
         [SerializeField] private ParameterSO workParam;
-        [FormerlySerializedAs("baseInputPort")] [SerializeField] private InputPort inputPort;
+
+        [FormerlySerializedAs("baseInputPort")] [SerializeField]
+        private InputPort inputPort;
+
         [SerializeField] private ResourceVisualizers.ResourceVisualizer resourceVisualizer;
         [SerializeField] private OutputPort outputPort;
         private ParameterAnimator parameterAnimator;
@@ -35,8 +38,11 @@ namespace Code.SHS.Machines
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
-            // if (Resource != null && outputPort.Output(Resource))
-            // Resource = null;
+            if (Resource != null && outputPort.Output(Resource))
+            {
+                resourceVisualizer.EndTransport();
+                Resource = null;
+            }
         }
 
         public InputPort GetAvailableInputPort(OutputPort outputPort) =>

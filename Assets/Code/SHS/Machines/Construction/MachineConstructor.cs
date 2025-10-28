@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Chipmunk.GameEvents;
 using Chipmunk.Player;
 using Chipmunk.UI;
+using Code.SHS.Extensions;
 using Code.SHS.Machines.Construction.Previews;
 using Code.SHS.Machines.Events;
 using Code.SHS.Worlds;
@@ -26,11 +26,10 @@ namespace Code.SHS.Machines.Construction
 
         private ConstructPreview mainPreview;
         private readonly List<ConstructPreview> previewInstances = new();
-        private readonly Dictionary<Vector2Int, ConstructPreview> previewByPosition = new();
+        public Dictionary<Vector2Int, ConstructPreview> PreviewByPosition { get; } = new();
 
         private bool isLeftClicking;
         private bool isRemoveMode;
-        private Direction previousDirection = Direction.None;
         private Vector2Int currentGridPosition;
 
         private void Awake()
@@ -59,7 +58,7 @@ namespace Code.SHS.Machines.Construction
         private void InitializeTransforms()
         {
             previewContainer.SetParent(null);
-            previewContainer.rotation = Quaternion.Euler(0, 0, 0);
+            previewContainer.rotation = Quaternion.identity;
             previewContainer.gameObject.SetActive(false);
 
             destroyRegion.SetParent(null);
@@ -88,7 +87,9 @@ namespace Code.SHS.Machines.Construction
         private void OnMachineSelect(MachineSelectEvent evt)
         {
             if (mainPreview != null)
+            {
                 Destroy(mainPreview.gameObject);
+            }
 
             MachineSO machine = evt.MachineSo;
             mainPreview = Instantiate(machine.machinePreviewPrefab, previewContainer.position, machine.rotation,
@@ -97,22 +98,49 @@ namespace Code.SHS.Machines.Construction
 
             Debug.Assert(mainPreview != null, "ConstructPreview component not found on machinePreviewPrefab");
 
-            mainPreview.Initialize(machine, this);
+            Vector2Int startGridPosition = previewContainer.position.ToInt().ToXZ();
+            mainPreview.Initialize(machine, this, startGridPosition);
             previewContainer.gameObject.SetActive(true);
         }
 
         private void OnLeftClick(bool isPressed)
         {
             isLeftClicking = isPressed;
-            if (UIPointerDetector.IsPointerInUI) return;
+            if (UIPointerDetector.IsPointerInUI)
+                return;
 
             if (isPressed)
             {
-                HandleLeftClickPressed();
+                PressLeftClick();
             }
             else
             {
-                HandleLeftClickReleased();
+                ReleaseLeftClick();
+            }
+        }
+
+        private void PressLeftClick()
+        {
+            if (playerInput.ShiftKeyPressed && TryGetMouseGridPosition(out Vector2Int position))
+            {
+                currentGridPosition = position;
+                isRemoveMode = true;
+            }
+        }
+
+        private void ReleaseLeftClick()
+        {
+            if (isRemoveMode)
+            {
+                ExecuteRemoveMode();
+            }
+            else if (mainPreview != null)
+            {
+                {
+                    mainPreview.gameObject.SetActive(true);
+                    if (PreviewByPosition.TryGetValue(currentGridPosition, out ConstructPreview preview) == false)
+                        AddPreviewAtPosition(currentGridPosition, Direction.None);
+                }
             }
         }
 
@@ -137,7 +165,6 @@ namespace Code.SHS.Machines.Construction
             if (!isPressed)
             {
                 ConstructAll();
-                CancelConstruction();
             }
         }
 
@@ -154,17 +181,8 @@ namespace Code.SHS.Machines.Construction
                 PlacePreviewBetweenPositions(currentGridPosition, newPosition);
             }
 
-            if (previewByPosition.TryGetValue(newPosition, out ConstructPreview existingPreview) &&
-                existingPreview is ConveyorPreview conveyorPreview)
-            {
-                mainPreview.gameObject.SetActive(false);
-            }
-            else
-            {
-                mainPreview.gameObject.SetActive(true);
-            }
 
-            SetMainPreviewPosition(newPosition);
+            mainPreview.UpdatePosition(newPosition);
             currentGridPosition = newPosition;
         }
 
@@ -182,32 +200,28 @@ namespace Code.SHS.Machines.Construction
             directionVector.Clamp(-Vector2Int.one, Vector2Int.one);
             Direction worldDirection = directionVector.ToDirection();
 
-
             if (worldDirection == Direction.None)
                 return;
 
-            Quaternion worldRotation = worldDirection.ToQuaternion();
-            // Direction localDirection = worldDirection
-            //     .ToLocalDirection(mainPreview.transform.rotation)
-            //     .Rotate(mainPreview.MachineSO.rotation.eulerAngles.y);
-            ConstructPreview existingPreview = null;
-            if (previewByPosition.TryGetValue(toPosition, out existingPreview))
-                if (existingPreview is ConveyorPreview conveyorPreview)
-                    // conveyorPreview.AddInputDirection(worldDirection);
-                    conveyorPreview.AddInputDirection(worldDirection.Opposite());
-
-            if (previewByPosition.TryGetValue(fromPosition, out existingPreview))
+            if (PreviewByPosition.TryGetValue(fromPosition, out ConstructPreview existingPreview))
             {
-                if (existingPreview is ConveyorPreview conveyorPreview)
+                if (existingPreview is SelectorConstructPreview conveyorPreview)
+                {
                     conveyorPreview.AddOutputDirection(worldDirection);
+                }
             }
             else
             {
+                mainPreview.gameObject.SetActive(true);
                 AddPreviewAtPosition(fromPosition, worldDirection);
             }
 
-
-            mainPreview.transform.rotation = worldRotation * mainPreview.MachineSO.rotation;
+            if (PreviewByPosition.TryGetValue(toPosition, out existingPreview) &&
+                existingPreview is SelectorConstructPreview toConveyorPreview)
+            {
+                mainPreview.gameObject.SetActive(false);
+                toConveyorPreview.AddInputDirection(worldDirection.Opposite());
+            }
         }
 
         private void AddPreviewAtPosition(Vector2Int gridPosition, Direction nextDirection)
@@ -216,35 +230,57 @@ namespace Code.SHS.Machines.Construction
                 return;
 
             RemoveOverlappingPreviews(gridPosition);
+            MachineSO machineSO = mainPreview.MachineSO;
 
-            ConstructPreview preview = Instantiate(mainPreview, mainPreview.transform.position,
-                mainPreview.transform.rotation, null);
+            mainPreview.transform.SetParent(null);
+            ConstructPreview preview = mainPreview;
+            mainPreview = Instantiate(preview, preview.transform.position, preview.transform.rotation,
+                previewContainer);
+            mainPreview.name = preview.name;
+            mainPreview.Initialize(machineSO, this, gridPosition);
+
+            if (mainPreview is SelectorConstructPreview mainSelectorPreview)
+            {
+                mainSelectorPreview.AddInputDirection(nextDirection.Opposite());
+            }
+
+            if (preview is SelectorConstructPreview selectorPreview)
+            {
+                selectorPreview.AddOutputDirection(nextDirection);
+            }
+
             preview.gameObject.SetActive(true);
-            preview.Initialize(mainPreview.MachineSO, this);
-            if (preview is ConveyorPreview conveyorPreview)
-                conveyorPreview.AddOutputDirection(nextDirection);
             previewInstances.Add(preview);
-
             RegisterPreviewAtPosition(gridPosition, preview);
         }
 
         private void RemoveOverlappingPreviews(Vector2Int gridPosition)
         {
-            Vector2Int size = mainPreview.MachineSO.size;
-            Vector2Int offset = mainPreview.MachineSO.offset;
-
-            for (int x = 0; x < size.x; x++)
-            {
-                for (int y = 0; y < size.y; y++)
-                {
-                    Vector2Int tilePos = gridPosition + new Vector2Int(x, y) + offset;
-                    DestroyPreviewAt(tilePos);
-                }
-            }
+            IterateTiles(gridPosition, DestroyPreviewAt);
         }
 
         private void RegisterPreviewAtPosition(Vector2Int gridPosition, ConstructPreview preview)
         {
+            IterateTiles(gridPosition, tilePos => PreviewByPosition[tilePos] = preview);
+        }
+
+        private bool CanPlaceMachineAtPosition(Vector2Int gridPosition)
+        {
+            bool canPlace = true;
+            IterateTiles(gridPosition, tilePos =>
+            {
+                GridTile tile = WorldGrid.Instance.GetTile(tilePos);
+                if (tile.Machine != null)
+                {
+                    canPlace = false;
+                }
+            });
+
+            return canPlace;
+        }
+
+        private void IterateTiles(Vector2Int gridPosition, System.Action<Vector2Int> action)
+        {
             Vector2Int size = mainPreview.MachineSO.size;
             Vector2Int offset = mainPreview.MachineSO.offset;
 
@@ -253,28 +289,9 @@ namespace Code.SHS.Machines.Construction
                 for (int y = 0; y < size.y; y++)
                 {
                     Vector2Int tilePos = gridPosition + new Vector2Int(x, y) + offset;
-                    previewByPosition[tilePos] = preview;
+                    action?.Invoke(tilePos);
                 }
             }
-        }
-
-        private bool CanPlaceMachineAtPosition(Vector2Int gridPosition)
-        {
-            Vector2Int size = mainPreview.MachineSO.size;
-
-            for (int x = 0; x < size.x; x++)
-            {
-                for (int y = 0; y < size.y; y++)
-                {
-                    Vector2Int tilePos = gridPosition + new Vector2Int(x, y);
-                    GridTile tile = WorldGrid.Instance.GetTile(tilePos);
-
-                    if (tile.Machine != null)
-                        return false;
-                }
-            }
-
-            return true;
         }
 
         private void ConstructAll()
@@ -287,21 +304,41 @@ namespace Code.SHS.Machines.Construction
                 }
             }
 
-            ClearPreviews();
+            CancelConstruction();
         }
 
-        private void ClearPreviews()
+        private void ExecuteRemoveMode()
         {
-            foreach (ConstructPreview preview in previewInstances)
+            if (!TryGetMouseGridPosition(out Vector2Int position))
+                return;
+
+            IterateTiles(position, DestroyPreviewAt);
+            isRemoveMode = false;
+            mainPreview.gameObject.SetActive(false);
+        }
+
+        private void DestroyPreviewAt(Vector2Int gridPosition)
+        {
+            if (PreviewByPosition.TryGetValue(gridPosition, out ConstructPreview preview))
             {
-                if (preview != null)
-                {
-                    Destroy(preview.gameObject);
-                }
+                preview.gameObject.SetActive(false);
+                PreviewByPosition.Remove(gridPosition);
+            }
+        }
+
+
+        private bool TryGetMouseGridPosition(out Vector2Int gridPosition)
+        {
+            gridPosition = default;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, layerMask))
+            {
+                gridPosition = hit.point.ToInt().ToXZ();
+                return true;
             }
 
-            previewInstances.Clear();
-            previewByPosition.Clear();
+            return false;
         }
 
         private void CancelConstruction()
@@ -312,122 +349,20 @@ namespace Code.SHS.Machines.Construction
                 mainPreview = null;
             }
 
-            previewContainer.gameObject.SetActive(false);
-
-            ClearPreviews();
-        }
-
-        private void DestroyPreviewAt(Vector2Int gridPosition)
-        {
-            if (!previewByPosition.TryGetValue(gridPosition, out ConstructPreview preview))
-                return;
-
-            UnregisterPreview(preview);
-            previewInstances.Remove(preview);
-            Destroy(preview.gameObject);
-        }
-
-        private void UnregisterPreview(ConstructPreview preview)
-        {
-            List<Vector2Int> positionsToRemove = new List<Vector2Int>();
-
-            foreach (var kvp in previewByPosition)
-            {
-                if (kvp.Value == preview)
-                {
-                    positionsToRemove.Add(kvp.Key);
-                }
-            }
-
-            foreach (Vector2Int pos in positionsToRemove)
-            {
-                previewByPosition.Remove(pos);
-            }
-        }
-
-        private void HandleLeftClickPressed()
-        {
-            if (playerInput.ShiftKeyPressed && TryGetMouseGridPosition(out Vector2Int position))
-            {
-                currentGridPosition = position;
-                isRemoveMode = true;
-            }
-        }
-
-        private void HandleLeftClickReleased()
-        {
-            if (isRemoveMode)
-            {
-                ExecuteRemoveMode();
-            }
-            else if (mainPreview != null)
-            {
-                // if (previewByPosition.TryGetValue(currentGridPosition, out ConstructPreview existingPreview))
-                                    // {
-                                    //     if (existingPreview is ConveyorPreview conveyorPreview)
-                                    //     {
-                                    //         conveyorPreview.AddInputDirection(worldDirection.Opposite());
-                                    //     }
-                                    // }
-
-                AddPreviewAtPosition(currentGridPosition, Direction.None);
-            }
-        }
-
-        private void ExecuteRemoveMode()
-        {
-            destroyRegion.gameObject.SetActive(false);
             isRemoveMode = false;
 
-            if (!TryGetMouseGridPosition(out Vector2Int endPosition))
-                return;
-
-            RemoveMachinesInArea(currentGridPosition, endPosition);
-        }
-
-        private void RemoveMachinesInArea(Vector2Int startPos, Vector2Int endPos)
-        {
-            int minX = Math.Min(startPos.x, endPos.x);
-            int maxX = Math.Max(startPos.x, endPos.x);
-            int minY = Math.Min(startPos.y, endPos.y);
-            int maxY = Math.Max(startPos.y, endPos.y);
-
-            for (int x = minX; x <= maxX; x++)
+            foreach (ConstructPreview preview in previewInstances)
             {
-                for (int y = minY; y <= maxY; y++)
+                if (preview != null)
                 {
-                    Vector2Int tilePos = new Vector2Int(x, y);
-                    DestroyPreviewAt(tilePos);
-
-                    GridTile tile = WorldGrid.Instance.GetTile(tilePos);
-                    if (tile.Machine != null)
-                    {
-                        Destroy(tile.Machine.gameObject);
-                    }
+                    Destroy(preview.gameObject);
                 }
             }
+
+            previewInstances.Clear();
+            PreviewByPosition.Clear();
         }
 
-        private bool TryGetMouseGridPosition(out Vector2Int gridPosition)
-        {
-            if (playerInput.MousePositionRaycast(out RaycastHit hit, layerMask))
-            {
-                gridPosition = new Vector2Int(
-                    Mathf.RoundToInt(hit.point.x),
-                    Mathf.RoundToInt(hit.point.z)
-                );
-                return true;
-            }
-
-            gridPosition = Vector2Int.zero;
-            return false;
-        }
-
-        private void SetMainPreviewPosition(Vector2Int gridPosition)
-        {
-            Vector3 worldPosition = new Vector3(gridPosition.x, GROUND_HEIGHT, gridPosition.y);
-            previewContainer.position = worldPosition;
-        }
 
         private void UpdateDestroyRegion(Vector2Int startPos, Vector2Int endPos)
         {
@@ -446,6 +381,15 @@ namespace Code.SHS.Machines.Construction
             destroyRegion.position = centerPosition;
             destroyRegion.localScale = scale;
             destroyRegion.gameObject.SetActive(true);
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (mainPreview != null)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireCube(mainPreview.transform.position, Vector3.one);
+            }
         }
     }
 }

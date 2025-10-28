@@ -1,6 +1,8 @@
+using System;
 using RuddnjsPool;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 namespace Code.Sounds
 {
@@ -19,6 +21,11 @@ namespace Code.Sounds
         public void SetUpPool(Pool pool)
         {
             _myPool = pool;
+        }
+
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void ResetItem()
