@@ -11,23 +11,25 @@ namespace Code.Feedbacks
         [SerializeField] private float blinkIntensity = 0.15f;
 
         private readonly int _blinkHash = Shader.PropertyToID("_BlinkValue");
-        private readonly int _isReadyHash =  Shader.PropertyToID("_IsReady");
+        private readonly int _isReadyHash = Shader.PropertyToID("_IsReady");
+        private readonly int _isHitHash = Shader.PropertyToID("_IsHit");
         private SkinnedMeshRenderer[] _meshRenderers;
 
         private void Awake()
         {
-             _meshRenderers = targetVisualTrm.GetComponentsInChildren<SkinnedMeshRenderer>();
+            _meshRenderers = targetVisualTrm.GetComponentsInChildren<SkinnedMeshRenderer>();
         }
 
-        public override void CreateFeedback() 
+        public override void CreateFeedback()
         {
-            if(_isReadyHash == 1)
-                return;
-            
             foreach (var meshRenderer in _meshRenderers)
             {
+                if (meshRenderer.material.GetInt(_isReadyHash) == 1)
+                    return;
+                meshRenderer.material.SetInt(_isHitHash, 1);
                 meshRenderer.material.SetFloat(_blinkHash, blinkIntensity);
             }
+
             DOVirtual.DelayedCall(blinkDuration, StopFeedback).SetLink(transform.root.gameObject);
         }
 
@@ -36,6 +38,7 @@ namespace Code.Feedbacks
             foreach (var meshRenderer in _meshRenderers)
             {
                 meshRenderer.material.SetFloat(_blinkHash, 0);
+                meshRenderer.material.SetInt(_isHitHash, 0);
             }
         }
     }
