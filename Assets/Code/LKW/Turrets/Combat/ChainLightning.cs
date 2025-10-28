@@ -33,8 +33,10 @@ namespace Code.Combat
             _lineRenderer.enabled = false;
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+            
             if (!_lineRenderer.enabled || _chainTargets.Count == 0)
                 return;
 

@@ -325,7 +325,7 @@ MonoBehaviour:
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   turretHead: {fileID: 6993082804157513329}
   effectChannel: {fileID: 11400000, guid: f3d5b94d5ee19904da374340f7d3f5be, type: 2}
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
@@ -5521,7 +5521,7 @@ Transform:
   m_GameObject: {fileID: 5241398268520757857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

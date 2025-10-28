@@ -33,7 +33,7 @@ namespace Code.LKW.Turrets.Combat
                     );
                 }
             }
-            transform.position += transform.forward * (9f * Time.deltaTime);
+            transform.position += transform.forward * (8f * Time.deltaTime);
         }
 
         public void SetTarget(Transform target, Vector3 defaultDir)

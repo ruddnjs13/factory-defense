@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1441bde0b5d4e91a5a96e736f994e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 20
+  lifeTime: 8
   damageCaster: {fileID: 9221074340900929686}
   attackData: {fileID: 11400000, guid: 0ce41afebbb061048a17bdb55b341717, type: 2}
   rbCompo: {fileID: 4427114128041080013}
@@ -112,8 +112,8 @@ MonoBehaviour:
   explosionCaster: {fileID: 5277511012189768042}
   explosionSound: {fileID: 0}
   <PoolingType>k__BackingField: {fileID: 11400000, guid: b845b7840001e5f459451127f76e0989, type: 2}
-  guidedDelay: 0.4
-  rotationSpeed: 2.5
+  guidedDelay: 0.6
+  rotationSpeed: 3.2
 --- !u!1 &411549863704594026
 GameObject:
   m_ObjectHideFlags: 0
