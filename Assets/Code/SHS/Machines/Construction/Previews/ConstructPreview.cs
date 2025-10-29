@@ -94,11 +94,9 @@ namespace Code.SHS.Machines.Construction.Previews
             }
 
             BaseMachine machineInstance = CreateInstance();
-            WorldGrid.Instance.InstallMachineAt(position, machineInstance);
             if (machineInstance != null)
-            {
                 EventBus.Raise(new ResourceEvent(-MachineSO.cost));
-            }
+            WorldGrid.Instance.InstallMachineAt(position, machineInstance);
         }
     }
 }
