@@ -9,8 +9,11 @@ namespace Code.Enemies
     public class MeleeEnemyAttackCompo : EnemyAttackCompo
     {
         [SerializeField] private OverlapDamageCaster[] casters;
-        private bool _isActive;
+        [SerializeField] private bool isMultipleAttack;
+        [SerializeField] private int attackCnt;
 
+        private int _currentAttackCnt = 0;
+        private bool _isActive;
         private EntityVFX _entityVFX;
         private DamageData _currentDamageData;
 
@@ -35,7 +38,11 @@ namespace Code.Enemies
             _trigger.OnDamageToggleTrigger -= SetDamageDataCaster;
         }
 
-        private void HandleAttackVFX() => _entityVFX.PlayVfx("Slash" ,Vector3.zero, Quaternion.identity);
+        private void HandleAttackVFX()
+        {
+            _entityVFX.PlayVfx(isMultipleAttack ? $"Slash{_currentAttackCnt++ % attackCnt}" : "Slash", Vector3.zero,
+                Quaternion.identity);
+        }
 
         public void SetDamageDataCaster(bool isActive)
         {
