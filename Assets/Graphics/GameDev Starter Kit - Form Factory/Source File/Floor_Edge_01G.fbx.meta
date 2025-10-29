@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d393bedcdca3ff34ba8591689b560389
+guid: 11ea2793ef9ef994cbb3ca24a11c1009
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -16,6 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -105,3 +107,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.1.0
+  assetPath: Assets/Graphics/GameDev Starter Kit - Form Factory/Source File/Floor_Edge_01G.fbx
+  uploadId: 809354

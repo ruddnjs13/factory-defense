@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Chipmunk.GameEvents;
@@ -5,6 +6,7 @@ using Chipmunk.Player.Events;
 using Code.SHS.Extensions;
 using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
+using Code.SHS.Worlds;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,6 +17,15 @@ namespace Code.SHS.Machines
     {
         [SerializeField] private InputPort[] inputPorts;
         [SerializeField] private List<ShapeResourceSO> allShapeResourceSo;
+        protected override void Awake()
+        {
+            base.Awake();
+        }
+
+        private void Start()
+        {
+            WorldGrid.Instance.InstallMachineAt(Position, this);
+        }
 
         public InputPort GetAvailableInputPort(OutputPort outputPort)
         {

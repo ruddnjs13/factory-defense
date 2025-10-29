@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7962ae7ce72b66e40b89cb6700414445, type: 3}
+  m_Name: Cube Shape
+  m_EditorClassIdentifier: 
+  <ShapePieces>k__BackingField:
+  - {fileID: 11400000, guid: 643e863969133104dbc5928aa003c4d5, type: 2}
+  - {fileID: 11400000, guid: ab6907612d39bb94f95e386c13219930, type: 2}
+  - {fileID: 11400000, guid: fe4843cb589ab4c45b1074d4eda0e5dd, type: 2}
+  - {fileID: 11400000, guid: 3a9b49e892d7a884ab4c64a90579b377, type: 2}
+  - {fileID: 11400000, guid: 8cc81788aa8ea394d9b9c39fbcc199c6, type: 2}
+  - {fileID: 11400000, guid: 17d1d73fcf7eb954e8678c85038b9a88, type: 2}
+  - {fileID: 11400000, guid: 404abbb6324ff88439a80307aefd88cf, type: 2}
+  - {fileID: 11400000, guid: 500d061c9e6acec4cb84827c81de83bf, type: 2}

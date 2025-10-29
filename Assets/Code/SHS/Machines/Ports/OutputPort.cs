@@ -40,6 +40,7 @@ namespace Code.SHS.Machines.Ports
             IInputMachine inputMachine =
                 WorldGrid.Instance.GetTile(Position + Direction.ToVector2Int()).Machine as IInputMachine;
             linkedInputPort = inputMachine?.GetAvailableInputPort(this);
+            Debug.Log($"OutputPort at {Position} linked to InputPort at {inputMachine}");
         }
 
         public bool CanOutput()
