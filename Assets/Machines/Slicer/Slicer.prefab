@@ -194,7 +194,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 5a31502a7f56d344995cf2f4de2672d5, type: 2}
-  buildingInfo: {fileID: 0}
+  <BuildingInfo>k__BackingField: {fileID: 0}
   workParam: {fileID: 11400000, guid: ec16ba325954c774a9884908d9670d53, type: 2}
   inputPort: {fileID: 2289672761544599979}
   resourceVisualizer: {fileID: 9015172053841208041}
@@ -494,6 +494,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1557750523200407964, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
       propertyPath: localDirection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557750523200407964, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}
+      propertyPath: <LocalDirection>k__BackingField
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3357523729952638374, guid: 6f8d5c1df8095214a8c259b1a7b82951, type: 3}

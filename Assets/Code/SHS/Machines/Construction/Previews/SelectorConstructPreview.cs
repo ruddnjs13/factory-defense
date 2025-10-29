@@ -194,7 +194,7 @@ namespace Code.SHS.Machines.Construction.Previews
             // float adjustedRotation = candidateMachine.rotation.eulerAngles.y;
             float adjustedRotation = candidateMachine.rotation.eulerAngles.y +
                                      (transform.rotation.eulerAngles.y - MachineSO.rotation.eulerAngles.y);
-            // Debug.Log($"Checking machine {candidateMachine.name} at rotation {adjustedRotation}", this);
+            // Debug.Log($"Checking machine {candidateMachine.name} at rotation {adjustedRotation} \n {candidateMachine.inputPorts.Count}input, {candidateMachine.outputPorts.Count}output ", this);
             if (candidateMachine.inputPorts.Count > 1)
             {
                 foreach (var port in candidateMachine.inputPorts)
