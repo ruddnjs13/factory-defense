@@ -67,6 +67,11 @@ namespace Code.EJY.Enemies
         private void OnDeadInAnimation()
         {
             effectChannel.RaiseEvent(EffectEvents.PlayPoolEffect.Initializer(deadBombTrmPosition.position, Quaternion.identity, deadBombItem, 10f));
+            PushInPool();
+        }
+
+        public void PushInPool()
+        {
             _myPool.Push(this);
         }
 
