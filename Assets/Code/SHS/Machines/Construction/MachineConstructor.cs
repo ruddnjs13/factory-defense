@@ -110,13 +110,9 @@ namespace Code.SHS.Machines.Construction
                 return;
 
             if (isPressed)
-            {
                 PressLeftClick();
-            }
             else
-            {
                 ReleaseLeftClick();
-            }
         }
 
         private void PressLeftClick()
@@ -132,9 +128,18 @@ namespace Code.SHS.Machines.Construction
         {
             if (isRemoveMode)
             {
-                ExecuteRemoveMode();
+                if (TryGetMouseGridPosition(out Vector2Int endPos))
+                {
+                    DeleteMachinesInRegion(currentGridPosition, endPos);
+                }
+
+                mainPreview?.gameObject.SetActive(false);
+                destroyRegion.gameObject.SetActive(false);
+                isRemoveMode = false;
+
+                // CancelConstruction();
             }
-            else if (mainPreview != null)
+            if (mainPreview != null)
             {
                 {
                     mainPreview.gameObject.SetActive(true);
@@ -307,16 +312,6 @@ namespace Code.SHS.Machines.Construction
             CancelConstruction();
         }
 
-        private void ExecuteRemoveMode()
-        {
-            if (!TryGetMouseGridPosition(out Vector2Int position))
-                return;
-
-            IterateTiles(position, DestroyPreviewAt);
-            isRemoveMode = false;
-            mainPreview.gameObject.SetActive(false);
-        }
-
         private void DestroyPreviewAt(Vector2Int gridPosition)
         {
             if (PreviewByPosition.TryGetValue(gridPosition, out ConstructPreview preview))
@@ -381,6 +376,39 @@ namespace Code.SHS.Machines.Construction
             destroyRegion.position = centerPosition;
             destroyRegion.localScale = scale;
             destroyRegion.gameObject.SetActive(true);
+        }
+
+        private void DeleteMachinesInRegion(Vector2Int startPos, Vector2Int endPos)
+        {
+            if (WorldGrid.Instance == null) return;
+
+            int minX = Mathf.Min(startPos.x, endPos.x);
+            int maxX = Mathf.Max(startPos.x, endPos.x);
+            int minY = Mathf.Min(startPos.y, endPos.y);
+            int maxY = Mathf.Max(startPos.y, endPos.y);
+
+            var machinesToDestroy = new HashSet<BaseMachine>();
+
+            for (int x = minX; x <= maxX; x++)
+            {
+                for (int y = minY; y <= maxY; y++)
+                {
+                    Vector2Int tilePos = new Vector2Int(x, y);
+                    GridTile tile = WorldGrid.Instance.GetTile(tilePos);
+                    if (tile.Machine != null)
+                    {
+                        machinesToDestroy.Add(tile.Machine as BaseMachine);
+                    }
+                }
+            }
+
+            foreach (var machine in machinesToDestroy)
+            {
+                if (machine != null)
+                {
+                    Destroy(machine.gameObject);
+                }
+            }
         }
 
         private void OnDrawGizmos()

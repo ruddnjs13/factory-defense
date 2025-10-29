@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Conveyor Selector
   m_EditorClassIdentifier: 
   machineSOList:
+  - {fileID: 11400000, guid: 865f52f3806a8134e8cc84ba462d43c9, type: 2}
+  - {fileID: 11400000, guid: 952d6afb36da0cc499624b53ffed9a09, type: 2}
+  - {fileID: 11400000, guid: f98755c6ab5841b48821c4d16f2d3578, type: 2}
+  - {fileID: 11400000, guid: a2d929a09cfb96743bd26b5e4d04ea5b, type: 2}
   - {fileID: 11400000, guid: d0f38bf3412c8a2449c69b29ab86a6ef, type: 2}
+  - {fileID: 11400000, guid: af3be548c214e284a85e0e83ff114a00, type: 2}
   - {fileID: 11400000, guid: 76280bcb01145f943aa690bd9aa2dec6, type: 2}
+  - {fileID: 11400000, guid: f51f03f7d1848de4fbd12a1540f8b574, type: 2}
   - {fileID: 11400000, guid: 3199c2a2f4c240c4f987bd25f8a4e7d5, type: 2}
   - {fileID: 11400000, guid: 5efa59f0c89c3f548bc0011506e9ea31, type: 2}
   - {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}
