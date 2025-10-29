@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.z
