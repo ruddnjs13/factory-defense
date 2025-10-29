@@ -10,6 +10,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 301599
   packageName: GameDev Starter Kit - Form Factory
-  packageVersion: v1.0.0
-  assetPath: Assets/AssetHunts!/GameDev Starter Kit - Form Factory/Animation/Expander_Expand_Form.anim
-  uploadId: 749417
+  packageVersion: v1.1.0
+  assetPath: Assets/Graphics/GameDev Starter Kit - Form Factory/Animation/Expander_Expand_Form.anim
+  uploadId: 809354

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c3c3a23f7fb63643829250a8137b76b
+guid: 09b80b380e853e142b44d09084cf01f3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -16,6 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -105,3 +107,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.1.0
+  assetPath: Assets/Graphics/GameDev Starter Kit - Form Factory/Source File/Floor_Edge_Corner_01.fbx
+  uploadId: 809354
