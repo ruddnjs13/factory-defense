@@ -1,4 +1,5 @@
 using Chipmunk.Player;
+using Chipmunk.UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,7 +21,7 @@ namespace Code.LKW.Building
 
         private void HandleLeftButtonClick(bool evt)
         {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            if (UIPointerDetector.IsPointerInUI)
                 return;
             
             if (inputReader.MousePositionRaycast(out RaycastHit hit, selectableLayer | floorLayer))
