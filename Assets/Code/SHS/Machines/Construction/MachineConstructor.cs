@@ -139,6 +139,7 @@ namespace Code.SHS.Machines.Construction
 
                 // CancelConstruction();
             }
+
             if (mainPreview != null)
             {
                 {
@@ -186,7 +187,7 @@ namespace Code.SHS.Machines.Construction
                 PlacePreviewBetweenPositions(currentGridPosition, newPosition);
             }
 
-
+            previewContainer.position = new Vector3(newPosition.x, 0, newPosition.y);
             mainPreview.UpdatePosition(newPosition);
             currentGridPosition = newPosition;
         }
@@ -356,6 +357,7 @@ namespace Code.SHS.Machines.Construction
 
             previewInstances.Clear();
             PreviewByPosition.Clear();
+            previewContainer.gameObject.SetActive(false);
         }
 
 

@@ -6,7 +6,6 @@ using Code.SHS.Machines.ShapeResources;
 using Code.Units.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.XR;
 
 namespace Code.SHS.Machines
 {
@@ -19,13 +18,15 @@ namespace Code.SHS.Machines
         [FormerlySerializedAs("baseInputPort")] [SerializeField]
         private InputPort inputPort;
 
-        [SerializeField] private ResourceVisualizers.ResourceVisualizer resourceVisualizer;
+        [SerializeField] private ResourceVisualizer resourceVisualizer;
         [SerializeField] private OutputPort outputPort;
         private ParameterAnimator parameterAnimator;
         private AnimatorTrigger animatorTrigger;
-
+        
         public ShapeResource Resource { get; private set; }
 
+        private bool isProcessing = false;
+        
         public override void OnInitialize(ComponentContainer componentContainer)
         {
             base.OnInitialize(componentContainer);
@@ -38,24 +39,26 @@ namespace Code.SHS.Machines
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
-            if (Resource != null && outputPort.Output(Resource))
+            if (!isProcessing && Resource != null && outputPort.Output(Resource))
             {
                 resourceVisualizer.EndTransport();
                 Resource = null;
             }
         }
 
-        public InputPort GetAvailableInputPort(OutputPort outputPort) =>
-            inputPort.CanAcceptInputFrom(outputPort) ? inputPort : null;
+        public InputPort GetAvailableInputPort(OutputPort fromPort) =>
+            inputPort.CanAcceptInputFrom(fromPort) ? inputPort : null;
 
         public bool CanAcceptResource()
         {
             return Resource == null;
         }
 
-        public void InputPortResourceTransferComplete(InputPort inputPort)
+        public void InputPortResourceTransferComplete(InputPort fromPort)
         {
-            Resource = inputPort.Pop();
+            Resource = fromPort.Pop();
+            // 리소스가 들어오면 작업(커팅)을 시작하도록 플래그 설정
+            isProcessing = true;
             parameterAnimator.SetParameter(workParam);
             resourceVisualizer.StartTransport(Resource);
         }
@@ -67,15 +70,17 @@ namespace Code.SHS.Machines
         private void HandleAnimationTrigger()
         {
             if (Resource == null) return;
+
             for (int i = 0; i < 8; i++)
             {
-                // SlicePieces 배열 정보를 바탕으로 잘라서 남길 조각은 남기고, 버릴 조각은 null로 설정
                 Resource.ShapePieces[i].ShapePieceSo = SlicePieces[i] ? Resource.ShapePieces[i].ShapePieceSo : null;
             }
 
-            resourceVisualizer.EndTransport();
+            isProcessing = false;
+
             if (outputPort.Output(Resource))
             {
+                resourceVisualizer.EndTransport();
                 Resource = null;
             }
             else
