@@ -50,7 +50,7 @@ namespace Code.SHS.Machines
 
         public bool CanAcceptResource()
         {
-            return Resource == null && outputPort.CanOutput();
+            return Resource == null;
         }
 
         public void InputPortResourceTransferComplete(InputPort inputPort)

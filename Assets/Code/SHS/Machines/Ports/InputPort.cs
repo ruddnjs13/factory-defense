@@ -21,6 +21,9 @@ namespace Code.SHS.Machines.Ports
 
         public virtual bool CanAcceptInputFrom(OutputPort outputPort)
         {
+            Debug.Log("Checking input port acceptance");
+            Debug.Log("Output port position: " + outputPort.Position);
+            Debug.Log("Input port position + direction: " + (Position + Direction.ToVector2Int()));
             return outputPort.Position == (Position + Direction.ToVector2Int());
         }
 

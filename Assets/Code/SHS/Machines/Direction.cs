@@ -130,7 +130,8 @@ namespace Code.SHS.Machines
         /// </summary>
         /// <param name="direction">기준 방향</param>
         /// <returns>반대 방향</returns>
-        public static Direction Opposite(this Direction direction) => (Direction)(((int)direction + 2) % 4);
+        public static Direction Opposite(this Direction direction) =>
+            direction == Direction.None ? direction : (Direction)(((int)direction + 2) % 4);
 
         /// <summary>
         /// Y축 회전값을 기준으로 방향을 시계방향으로 회전시킵니다.
