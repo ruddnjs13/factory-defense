@@ -30,6 +30,6 @@ namespace Code.Entities
         private void BeforeAttack() => BeforeAttackTrigger?.Invoke();
         private void Attack() => OnAttackTrigger?.Invoke();
         private void OnAttackEvent() => OnAttackEventTrigger?.Invoke();
-        private void OnDead() => OnDeadTrigger?.Invoke();
+        public void OnDead() => OnDeadTrigger?.Invoke();
     }
 }

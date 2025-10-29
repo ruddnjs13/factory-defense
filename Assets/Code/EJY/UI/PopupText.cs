@@ -1,13 +1,9 @@
-using System;
-using System.Globalization;
-using Code.UI;
 using DG.Tweening;
 using RuddnjsPool;
 using TMPro;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
-namespace Blade.UI
+namespace Code.UI
 {
     public class PopupText : MonoBehaviour, IPoolable
     {
