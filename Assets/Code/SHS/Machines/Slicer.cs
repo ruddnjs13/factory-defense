@@ -73,10 +73,14 @@ namespace Code.SHS.Machines
                 Resource.ShapePieces[i].ShapePieceSo = SlicePieces[i] ? Resource.ShapePieces[i].ShapePieceSo : null;
             }
 
+            resourceVisualizer.EndTransport();
             if (outputPort.Output(Resource))
             {
-                resourceVisualizer.EndTransport();
                 Resource = null;
+            }
+            else
+            {
+                resourceVisualizer.StartTransport(Resource);
             }
         }
     }

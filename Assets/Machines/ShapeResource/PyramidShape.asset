@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7962ae7ce72b66e40b89cb6700414445, type: 3}
+  m_Name: PyramidShape
+  m_EditorClassIdentifier: 
+  <ShapePieces>k__BackingField:
+  - {fileID: 11400000, guid: c7deb59464cf49b4aa9a3f0054001bed, type: 2}
+  - {fileID: 11400000, guid: 33be06bef3a0cfd4199e662f4c2ef014, type: 2}
+  - {fileID: 11400000, guid: cf459ac083b621f43ae43bee97d53559, type: 2}
+  - {fileID: 11400000, guid: 4387ca4d47116844bae7add9fc97de0f, type: 2}
+  - {fileID: 11400000, guid: eb92eaf0cac9025458042d87ebb75bf0, type: 2}
+  - {fileID: 11400000, guid: 85df8708b0d91ef4ebbcec5ff49b8333, type: 2}
+  - {fileID: 11400000, guid: 511b2ac09b455ef46a4d10fea0ae935c, type: 2}
+  - {fileID: 11400000, guid: 4de20c7ae4a282e4d9252af8b78a77c3, type: 2}
