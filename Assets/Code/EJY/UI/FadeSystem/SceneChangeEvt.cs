@@ -18,8 +18,8 @@ namespace Code.UI.FadeSystem
             sceneChannel.RemoveListener<ChangeSceneEvent>(HandleChangeSceneEvent);
         }
 
-        public void SceneChange(string targetSceneName) => sceneChannel.RaiseEvent(SceneEvents.FadeEvent.Init(true, targetSceneName));
-        public void SendFadeOutEvent() => sceneChannel.RaiseEvent(SceneEvents.FadeEvent.Init(false, string.Empty));
+        public void SceneChange(string targetSceneName) => sceneChannel.RaiseEvent(SceneEvents.FadeEvent.Initializer(true, targetSceneName));
+        public void SendFadeOutEvent() => sceneChannel.RaiseEvent(SceneEvents.FadeEvent.Initializer(false, string.Empty));
 
         private void HandleChangeSceneEvent(ChangeSceneEvent evt)
         {

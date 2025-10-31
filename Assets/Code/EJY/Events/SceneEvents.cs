@@ -13,7 +13,7 @@ namespace Code.Events
         public bool isFadeIn;
         public string sceneName;
 
-        public FadeEvent Init(bool isFadeIn, string sceneName)
+        public FadeEvent Initializer(bool isFadeIn, string sceneName)
         {
             this.isFadeIn = isFadeIn;
             this.sceneName = sceneName;

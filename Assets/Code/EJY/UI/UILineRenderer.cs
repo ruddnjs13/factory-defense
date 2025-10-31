@@ -7,7 +7,7 @@ namespace Code.UI
     public class UILineRenderer : MaskableGraphic
     {
         [SerializeField] private float thickness = 5f;
-        [SerializeField] private float segmentLength = 10f; // 필요시 점선 구현용
+        [SerializeField] private float segmentLength = 10f;
         public Color lineColor = Color.white;
 
         [field: SerializeField] 
@@ -19,10 +19,9 @@ namespace Code.UI
             if (Points == null || Points.Length < 2)
                 return;
 
-            // ✅ offset 제거 (Overlay 모드에서는 불필요)
             Vector3 offset = Vector3.zero;
 
-            float globalDistance = 0f; // 점선 패턴 이어짐 유지용 (segmentLength 사용 시)
+            float globalDistance = 0f;
 
             for (int i = 0; i < Points.Length - 1; i++)
             {
@@ -36,7 +35,6 @@ namespace Code.UI
 
                 while (localPos < distance)
                 {
-                    // 점선 패턴 계산
                     float patternPos = (globalDistance + localPos) % segmentLength;
                     float remain = Mathf.Min(segmentLength - patternPos, distance - localPos);
 
@@ -68,7 +66,6 @@ namespace Code.UI
             Vector2 normal = new Vector2(-dir.y, dir.x);
             Vector2 halfThickness = normal * (thickness * 0.5f);
 
-            // ✅ offset 제거
             Vector3 v1 = point1 - (Vector3)halfThickness - offset;
             Vector3 v2 = point1 + (Vector3)halfThickness - offset;
             Vector3 v3 = point2 - (Vector3)halfThickness - offset;
