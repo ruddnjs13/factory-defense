@@ -104,6 +104,13 @@ namespace Code.EJY.Enemies.Wave
         {
             _deadEnemyCnt++;
             _inProgress.Value = _currentWaveTotalEnemyCnt != _deadEnemyCnt;
+
+            if (CurrentWave == spawnData.stageSpawnData.Count)
+            {
+                Debug.Log("스테이지 클리어");
+                uiChannel.RaiseEvent(UIEvents.StageClearEvent);
+            }
+            
             if(_inProgress.Value)
                 uiChannel.RaiseEvent(UIEvents.WaveInfoEvent.Initializer(GetWaveTotalEnemyCnt(), CurrentWave + 1));
         }

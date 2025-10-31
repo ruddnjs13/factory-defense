@@ -10,6 +10,7 @@ namespace Code.Events
         public static WaveInfoEvent WaveInfoEvent = new WaveInfoEvent();
         public static ChangeWaveProgress ChangeWaveProgress = new ChangeWaveProgress();
         public static SelectStageEvent SelectStageEvent = new SelectStageEvent();
+        public static StageClearEvent StageClearEvent = new StageClearEvent();
     }
 
     public class WaveTimerEvent : GameEvent
@@ -58,5 +59,10 @@ namespace Code.Events
             this.data = data;
             return this;
         }
+    }
+
+    public class StageClearEvent : GameEvent
+    {
+        
     }
 }
