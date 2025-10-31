@@ -15,7 +15,7 @@ namespace Code.LKW.UI
         protected bool IsOpen = false;
         protected bool IsMoving = false;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             RectTrm = GetComponent<RectTransform>();
         }
