@@ -757,8 +757,8 @@
     "m_ObjectId": "1284757217d14179a114f43aa9d5d173",
     "m_Title": "UV",
     "m_Position": {
-        "x": -4072.800048828125,
-        "y": 12.000007629394532
+        "x": -4072.799560546875,
+        "y": 11.999942779541016
     }
 }
 
@@ -3235,7 +3235,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.0,
+    "m_Value": 0.8100000023841858,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -3772,7 +3772,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.0,
+    "m_Value": 3.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
