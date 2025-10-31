@@ -1,81 +1,82 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.LKW.UI
 {
     public abstract class AbstractPanelUI : MonoBehaviour
     {
         [field: SerializeField] public PanelDataSO PanelData { get; private set; }
-        [SerializeField] protected float panelHeight = 720f;
+        [SerializeField] protected float moveAmount = 720f;
 
-        protected RectTransform _rectTrm;
+        protected RectTransform RectTrm;
 
-        private bool _isOpen = false;
-        private bool _isMoving = false;
+        protected bool IsOpen = false;
+        protected bool IsMoving = false;
 
         private void Awake()
         {
-            _rectTrm = GetComponent<RectTransform>();
+            RectTrm = GetComponent<RectTransform>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
-            _rectTrm.anchoredPosition = new Vector2(_rectTrm.anchoredPosition.x, -panelHeight);
+            RectTrm.anchoredPosition = new Vector2(RectTrm.anchoredPosition.x, -moveAmount);
         }
 
 
         public virtual void OpenPanel(bool isTween)
         {
-            if (_isOpen || _isMoving)
+            if (IsOpen || IsMoving)
                 return;
 
-            _isMoving = true;
-            _rectTrm.DOKill(false);
+            IsMoving = true;
+            RectTrm.DOKill(false);
 
             if (isTween)
             {
-                _rectTrm.anchoredPosition = new Vector2(_rectTrm.anchoredPosition.x, -panelHeight);
+                RectTrm.anchoredPosition = new Vector2(RectTrm.anchoredPosition.x, -moveAmount);
 
-                _rectTrm.DOAnchorPosY(0, 0.3f)
+                RectTrm.DOAnchorPosY(0, 0.3f)
                     .SetUpdate(true)
                     .OnComplete(() =>
                     {
-                        _isOpen = true;
-                        _isMoving = false;
+                        IsOpen = true;
+                        IsMoving = false;
                     });
             }
             else
             {
-                _rectTrm.anchoredPosition = new Vector2(_rectTrm.anchoredPosition.x, 0);
-                _isOpen = true;
-                _isMoving = false;
+                RectTrm.anchoredPosition = new Vector2(RectTrm.anchoredPosition.x, 0);
+                IsOpen = true;
+                IsMoving = false;
             }
         }
 
         public virtual void ClosePanel(bool isTween)
         {
-            if (!_isOpen || _isMoving)
+            if (!IsOpen || IsMoving)
                 return;
 
-            _isMoving = true;
-            _rectTrm.DOKill(false);
+            IsMoving = true;
+            RectTrm.DOKill(false);
 
             if (isTween)
             {
-                _rectTrm.DOAnchorPosY(-panelHeight, 0.3f)
+                RectTrm.DOAnchorPosY(-moveAmount, 0.3f)
                     .SetUpdate(true)
                     .OnComplete(() =>
                     {
-                        _isOpen = false;
-                        _isMoving = false;
+                        IsOpen = false;
+                        IsMoving = false;
                     });
             }
             else
             {
-                _rectTrm.anchoredPosition = new Vector2(_rectTrm.anchoredPosition.x, -panelHeight);
-                _isOpen = false;
-                _isMoving = false;
+                RectTrm.anchoredPosition = new Vector2(RectTrm.anchoredPosition.x, -moveAmount);
+                IsOpen = false;
+                IsMoving = false;
             }
         }
     }

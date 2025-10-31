@@ -6,6 +6,8 @@ namespace Code.LKW.UI
 {
     public class MenuCanvasUI : MonoBehaviour
     {
+        [SerializeField] private  LeftPanel leftPanel;
+        
         private Dictionary<PanelDataSO, MenuButtonUI> _menuButtons = new Dictionary<PanelDataSO, MenuButtonUI>();
         private Dictionary<PanelDataSO, AbstractPanelUI> _menuPanels;
 
@@ -44,11 +46,19 @@ namespace Code.LKW.UI
             {
                 btn.SetActive(btn.TargetPanel == panelData);
             }
+
+            _activePanel?.ClosePanel(true);
             
-            _activePanel?.ClosePanel(panelData);
             _activePanel = _menuPanels.GetValueOrDefault(panelData);
             Debug.Assert(_activePanel != default, $"To Target panel exist : {panelData.PanelName}");
             _activePanel.OpenPanel(true);
+        }
+
+        public void HandleSettingButtonClick()
+        {
+            if(_activePanel != null)
+                _activePanel.ClosePanel(true);
+            leftPanel.HandleButtonClick();
         }
     }
 }
