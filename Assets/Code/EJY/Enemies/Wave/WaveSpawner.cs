@@ -91,7 +91,7 @@ namespace Code.EJY.Enemies.Wave
                 for (int i = 0; i < data.spawnCnt; i++)
                 {
                     FSMEnemy enemy =
-                        _poolManager.Pop<FSMEnemy>(data.enemyPoolItem);
+                        _poolManager.Pop<FSMEnemy>(data.enemyData.enemyPoolItem);
                     enemy.transform.position = spawnTrm.position;
                     enemy.Init(targetTrm,CheckInProgress);
 

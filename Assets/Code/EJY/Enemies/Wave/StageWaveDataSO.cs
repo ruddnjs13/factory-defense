@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RuddnjsPool;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.EJY.Enemies.Wave
 {
@@ -16,7 +17,7 @@ namespace Code.EJY.Enemies.Wave
     // 몹 한 종류당 데이터
     public struct SpawnData
     {
-        public PoolingItemSO enemyPoolItem;
+        [FormerlySerializedAs("enemyPoolItem")] public EnemyData enemyData;
         public int spawnCnt;
     }
 
