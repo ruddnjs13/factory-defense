@@ -4,7 +4,6 @@ using Code.SHS.Machines;
 using Unity.VisualScripting;
 using UnityEngine;
 using EventBus = Chipmunk.GameEvents.EventBus;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Code.Managers
 {
