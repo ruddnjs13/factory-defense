@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines
 {
+    [RequireComponent(typeof(MaterialInstancer))]
     public class ConveyorBelt : BaseMachine, IInputMachine, IOutputMachine, IHasResource
     {
         [SerializeField] private InputPort[] inputPorts;
@@ -31,6 +32,7 @@ namespace Code.SHS.Machines
         {
             return Resource == null;
         }
+
         public override void OnTick(float deltaTime)
         {
             base.OnTick(deltaTime);
@@ -60,7 +62,7 @@ namespace Code.SHS.Machines
                 Resource = inputPort.Pop();
                 resourceVisualizer.StartTransport(Resource);
             }
-            
+
             TryOutput();
         }
 

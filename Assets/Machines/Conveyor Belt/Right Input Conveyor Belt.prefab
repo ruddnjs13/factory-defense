@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1526406430812409485, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5917397875176222528, guid: f5c7fead88b871148bf2a66fbad16b35, type: 3}
+      objectReference: {fileID: 4300000, guid: a6581f194dac2ff49807bba0f04bacc8, type: 2}
     - target: {fileID: 2486331255356719400, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011476269277469586, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: m_Name
-      value: Right Input Straight Conveyor Belt
+      value: Right Input Conveyor Belt
       objectReference: {fileID: 0}
     - target: {fileID: 7169376006284265840, guid: 69bedf8069f4e124e8d7d686378de74b, type: 3}
       propertyPath: _endPoint.x
