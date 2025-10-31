@@ -1,4 +1,6 @@
+using Code.SceneSystem;
 using Core.GameEvent;
+using UnityEngine;
 
 namespace Code.Events
 {
@@ -7,6 +9,8 @@ namespace Code.Events
         public static WaveTimerEvent WaveTimerEvent = new WaveTimerEvent();
         public static WaveInfoEvent WaveInfoEvent = new WaveInfoEvent();
         public static ChangeWaveProgress ChangeWaveProgress = new ChangeWaveProgress();
+        public static SelectStageEvent SelectStageEvent = new SelectStageEvent();
+        public static StageClearEvent StageClearEvent = new StageClearEvent();
     }
 
     public class WaveTimerEvent : GameEvent
@@ -42,5 +46,23 @@ namespace Code.Events
             this.inProgress = inProgress;
             return this;
         }
+    }
+
+    public class SelectStageEvent : GameEvent
+    {
+        public Vector3 position;
+        public SceneData data;
+        
+        public SelectStageEvent Initializer(Vector3 position, SceneData data)
+        {
+            this.position = position;
+            this.data = data;
+            return this;
+        }
+    }
+
+    public class StageClearEvent : GameEvent
+    {
+        
     }
 }

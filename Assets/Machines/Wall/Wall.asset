@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wall
   m_EditorClassIdentifier: 
   machineName: Wall Preview
+  <Icon>k__BackingField: {fileID: 21300000, guid: 033e81bf292d842d68e2c2917141c138, type: 3}
   machinePreviewPrefab: {fileID: 6928097342300763517, guid: 15f87b8fdae8d66448b077b8b52b2676, type: 3}
   machinePrefab: {fileID: 5363910297457102516, guid: b9023497fa673a84385d695b21bc8a12, type: 3}
   size: {x: 1, y: 1}

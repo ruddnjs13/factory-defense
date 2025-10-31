@@ -86,7 +86,7 @@ MonoBehaviour:
   soundChannel: {fileID: 11400000, guid: 4e0ab403785d797419f1f4574d0a16fb, type: 2}
   isExplosive: 1
   explosionCaster: {fileID: 3719133232014724533}
-  explosionSound: {fileID: 0}
+  explosionSound: {fileID: 11400000, guid: b3d12304630228b4eb4b46f17bc191d1, type: 2}
   <PoolingType>k__BackingField: {fileID: 11400000, guid: 8711d11e3b6b6f748a12c727d2ed30bf, type: 2}
 --- !u!135 &4962802047300029549
 SphereCollider:

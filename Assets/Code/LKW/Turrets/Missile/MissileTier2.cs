@@ -59,6 +59,10 @@ namespace Code.LKW.Turrets
                 Quaternion.Euler(firePos[_shootIdx].forward), muzzleParticleItem , 0.4f );
             
             effectChannel.RaiseEvent(evt);
+            
+            var soundEvt = SoundsEvents.PlaySfxEvent.Init(firePos[_shootIdx].position, shootSound);
+            
+            soundChannel.RaiseEvent(soundEvt);
             Recoil();
 
             Recoil();

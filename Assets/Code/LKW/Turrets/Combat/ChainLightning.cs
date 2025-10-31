@@ -5,6 +5,7 @@ using Code.Sounds;
 using Core.GameEvent;
 using RuddnjsPool;
 using System.Threading.Tasks;
+using Code.Events;
 
 namespace Code.Combat
 {
@@ -70,6 +71,9 @@ namespace Code.Combat
             _chainTargets.Add(other.transform);
 
             _canHit = false;
+            
+            var sfxEvt = SoundsEvents.PlaySfxEvent.Init(transform.position, explosionSound);
+            soundChannel.RaiseEvent(sfxEvt);
             _ = ChainTargetsAsync(other.transform);
         }
 

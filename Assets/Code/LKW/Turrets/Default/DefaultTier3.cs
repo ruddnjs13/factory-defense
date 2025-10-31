@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Code.Combat;
+using Code.Events;
 using DG.Tweening;
 using RuddnjsPool;
 using UnityEngine;
@@ -55,6 +56,15 @@ namespace Code.LKW.Turrets
                 firePos[_shootIdx].position,
                 Quaternion.LookRotation(firePos[_shootIdx].forward),
                 firePos[_shootIdx].forward * turretData.bulletSpeed);
+
+            var evt = EffectEvents.PlayPoolEffect.Initializer(firePos[_shootIdx].position,
+                Quaternion.Euler(firePos[_shootIdx].forward), muzzleParticleItem , 0.4f );
+            
+            var soundEvt = SoundsEvents.PlaySfxEvent.Init(firePos[_shootIdx].position, shootSound);
+            
+            soundChannel.RaiseEvent(soundEvt);
+            
+            effectChannel.RaiseEvent(evt);
 
             Recoil();
         }

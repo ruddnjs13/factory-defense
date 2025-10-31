@@ -275,9 +275,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: -1
+  m_PreferredHeight: 150
   m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!114 &78028626852519711
 MonoBehaviour:
@@ -292,5 +292,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuButton: {fileID: 3319021876776254726}
-  selectBox: {fileID: 0}
   <TargetPanel>k__BackingField: {fileID: 0}

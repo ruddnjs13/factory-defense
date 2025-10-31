@@ -26,6 +26,10 @@ namespace Code.LKW.Turrets
             var evt = EffectEvents.PlayPoolEffect.Initializer(firePos.position,
                 Quaternion.Euler(firePos.forward), muzzleParticleItem , 0.4f );
             
+            var soundEvt = SoundsEvents.PlaySfxEvent.Init(firePos.position, shootSound);
+            
+            soundChannel.RaiseEvent(soundEvt);
+            
             effectChannel.RaiseEvent(evt);
             Recoil();
         }
