@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -17,8 +18,13 @@ namespace Code.LKW.UI
         {
             _rectTrm = GetComponent<RectTransform>();
         }
-        
-     
+
+        private void Start()
+        {
+            _rectTrm.anchoredPosition = new Vector2(_rectTrm.anchoredPosition.x, -panelHeight);
+        }
+
+
         public virtual void OpenPanel(bool isTween)
         {
             if (_isOpen || _isMoving)
