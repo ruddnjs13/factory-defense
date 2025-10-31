@@ -26,6 +26,10 @@ namespace Code.LKW.Turrets.Lightning
                 Quaternion.Euler(firePos.forward), muzzleParticleItem , 0.4f );
             
             effectChannel.RaiseEvent(evt);
+            
+            var soundEvt = SoundsEvents.PlaySfxEvent.Init(firePos.position, shootSound);
+            
+            soundChannel.RaiseEvent(soundEvt);
             Recoil();
         }
 

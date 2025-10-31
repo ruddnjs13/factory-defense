@@ -1,5 +1,6 @@
 using Code.Combat;
 using Code.Entities;
+using Code.Events;
 using RuddnjsPool;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -42,6 +43,9 @@ namespace Code.LKW.Turrets.Catapult
             Projectile bombProjectile = poolManager.Pop(bulletItem.poolType) as Projectile;
             bombProjectile.SetupProjectile(this,damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat)
                 ,attackData),firePos.position ,Quaternion.LookRotation(firePos.forward),shootVelocity *  turretData.bulletSpeed);
+            var soundEvt = SoundsEvents.PlaySfxEvent.Init(firePos.position, shootSound);
+            
+            soundChannel.RaiseEvent(soundEvt);
         }
         
         

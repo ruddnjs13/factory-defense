@@ -331,6 +331,8 @@ MonoBehaviour:
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
   sphereCollider: {fileID: 6301942620991416375}
   roundDecal: {fileID: 8955328248088275642}
+  soundChannel: {fileID: 11400000, guid: 4e0ab403785d797419f1f4574d0a16fb, type: 2}
+  shootSound: {fileID: 11400000, guid: fdb741286895734409b78b12ddbd6baf, type: 2}
   _targets: []
   recoilAmount: 0.4
   firePos: {fileID: 5088545461537808865}

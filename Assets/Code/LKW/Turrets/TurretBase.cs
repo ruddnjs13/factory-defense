@@ -6,6 +6,7 @@ using Code.EJY.Enemies;
 using Code.Entities;
 using Code.LKW.ETC;
 using Code.SHS.Machines;
+using Code.Sounds;
 using Core.GameEvent;
 using RuddnjsPool;
 using Unity.VisualScripting;
@@ -27,6 +28,8 @@ namespace Code.LKW.Turrets
         [SerializeField] protected PoolingItemSO muzzleParticleItem;
         [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private RoundDecal roundDecal;
+        [SerializeField] protected GameEventChannelSO soundChannel;
+        [SerializeField] protected SoundSO shootSound;
         [Space]
         [Space]
         
