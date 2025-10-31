@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Chipmunk.GameEvents;
+using Code.LKW.GameEvents;
+using Code.SHS.Extensions;
 using Code.SHS.Machines;
 using Code.SHS.Machines.Events;
 using UnityEngine;
@@ -10,6 +12,23 @@ namespace Code.SHS.Worlds
     public class WorldGrid : MonoSingleton<WorldGrid>
     {
         private Dictionary<Vector2Int, GridTile> tiles = new Dictionary<Vector2Int, GridTile>();
+
+        private void Awake()
+        {
+            EventBus<BuildRequestEvent>.OnEvent += OnBuildRequested;
+        }
+
+        private void OnDestroy()
+        {
+            EventBus<BuildRequestEvent>.OnEvent -= OnBuildRequested;
+        }
+
+        private void OnBuildRequested(BuildRequestEvent evt)
+        {
+            BaseMachine machine = Instantiate(evt.BuildingSO.machinePrefab).GetComponent<BaseMachine>();
+            InstallMachineAt(Vector3Int.RoundToInt(evt.Position).ToXZ(), machine);
+        }
+
 
         public GridTile GetTile(Vector2Int pos)
         {
@@ -28,6 +47,7 @@ namespace Code.SHS.Worlds
 
         public GridTile GetTile(Vector3 pos)
             => GetTile(Vector2Int.RoundToInt(new Vector2(pos.x, pos.z)));
+
         public void InstallMachineAt(Vector2Int pos, BaseMachine machine)
         {
             for (int x = 0; x < machine.Size.x; x++)
@@ -40,6 +60,7 @@ namespace Code.SHS.Worlds
                     SetTile(tilePos, tile);
                 }
             }
+
             EventBus.Raise(new MachineConstructedEvent(machine));
         }
 
