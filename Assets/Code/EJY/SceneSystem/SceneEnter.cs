@@ -16,6 +16,7 @@ namespace Code.SceneSystem
         [Header("Present Lock Settings")]
         [SerializeField] private bool isPresentLocked = false;
         [SerializeField] private Color lockedColor = Color.gray;
+        [SerializeField] private Image lockedImage;
         private Image _sceneEnterImage;
         private TextMeshProUGUI _sceneEnterText;
 
@@ -30,6 +31,7 @@ namespace Code.SceneSystem
             {
                 if (!sceneData.canEnter)
                 {
+                    lockedImage.gameObject.SetActive(true);
                     _sceneEnterImage.color = lockedColor;
                     _sceneEnterText.color = lockedColor;
                 }
