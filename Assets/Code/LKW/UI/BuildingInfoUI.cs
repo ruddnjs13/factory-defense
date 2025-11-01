@@ -1,4 +1,6 @@
+using Chipmunk.GameEvents;
 using Chipmunk.Player;
+using Chipmunk.Player.Events;
 using Code.Combat;
 using Code.LKW.Building;
 using Code.LKW.Turrets;
@@ -61,6 +63,7 @@ namespace Code.LKW.UI.Component
                     {
                         if (turret.UpgradeIndex <= 1)
                         {
+                            Debug.Log(turret.Type);
                             upgradePanel.SetActive(true);
                             upgradeCostText.SetText(turret.UpgradeCost.ToString());
                             _turret = turret;
@@ -113,6 +116,7 @@ namespace Code.LKW.UI.Component
                 Debug.Log("Not has enough resources to upgrade turret.");
                 return;
             }
+            EventBus<ResourceEvent>.Raise(new ResourceEvent(-_turret.UpgradeCost));
             
             Debug.Log(_turret.transform.position);
             UpgradeManager.Instance.Upgrade( _turret.Type, _turret.UpgradeIndex+1,_turret.transform.position);

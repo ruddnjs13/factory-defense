@@ -27,6 +27,7 @@ namespace Code.Managers
 
         public void Upgrade(TurretType turretType, int upgradeIndex, Vector3 position)
         {
+                Debug.Log(turretType);
             switch (turretType)
             {
                 case TurretType.Default:
