@@ -1,4 +1,6 @@
 using System;
+using Chipmunk.GameEvents;
+using Chipmunk.Player.Events;
 using Code.Combat;
 using Code.Entities;
 using Code.Events;
@@ -52,6 +54,7 @@ namespace Code.EJY.Enemies
             {
                 action?.Invoke();
                 OnAnimationDeadEvent?.Invoke();
+                EventBus<ResourceEvent>.Raise(new ResourceEvent(10));
                 _trigger.OnDeadTrigger -= addOnInitAction;
             }
             
