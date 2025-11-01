@@ -266,7 +266,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2620437584540270039}
@@ -1132,7 +1132,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5568662093294864936}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1141,7 +1141,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 0.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -1181,10 +1181,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Height: 1.2
+  m_Radius: 0.2
+  m_Height: 0.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.54, z: 0}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &6204691296320202557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1384,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  cameraChannel: {fileID: 0}
+  cameraChannel: {fileID: 11400000, guid: 12a518d0647c1fd4aaf498caddfb5f19, type: 2}
   explosionEffectPool: {fileID: 11400000, guid: 0ffb137d594d19a4ab107c34c159094e, type: 2}
   effectPlayDuration: 2.5
   BeforeExplodeEvent:
@@ -1416,14 +1416,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImpulseDefinition:
     ImpulseChannel: 1
-    ImpulseShape: 2
+    ImpulseShape: 3
     CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ImpulseDuration: 0.2
+    ImpulseDuration: 0.15
     ImpulseType: 0
     DissipationRate: 0.25
     RawSignal: {fileID: 0}
@@ -1741,11 +1741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3434191393472522852, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: castRadius
-      value: 4.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3434191393472522852, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: maxCollideCount
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3434191393472522852, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: whatIsEnemy.m_Bits
@@ -1923,11 +1923,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: attackRange
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: detectRange
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6569431526516412715, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10508,7 +10508,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4448701727635748224}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.6
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -10557,10 +10557,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.4
+  m_Height: 1.4
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &4595599270548074534
 GameObject:
   m_ObjectHideFlags: 0
@@ -30614,7 +30614,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7884555631498836535}
@@ -35860,7 +35860,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: attackRange
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: detectRange
@@ -36155,7 +36155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1840170608645375122, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4200001
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1840170608645375122, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36188,6 +36188,10 @@ PrefabInstance:
     - target: {fileID: 2933880044635939531, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: m_Name
       value: OverlapDamageCaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434191393472522852, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
+      propertyPath: castRadius
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3434191393472522852, guid: 6cf5ebc0c1b33404aac1ec4784f14375, type: 3}
       propertyPath: whatIsEnemy.m_Bits
