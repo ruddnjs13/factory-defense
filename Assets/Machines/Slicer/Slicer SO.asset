@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Slicer SO
   m_EditorClassIdentifier: 
   machineName: Slicer
+  <Icon>k__BackingField: {fileID: 21300000, guid: 7d0828422d5884b1b8b1608b24ab9a91, type: 3}
   machinePreviewPrefab: {fileID: 4010286319166152388, guid: 475683f247b00ef4ea83a1c5834bb62d, type: 3}
   machinePrefab: {fileID: 603019475515129188, guid: 727ac60aee3ef024aafe22cb155b306b, type: 3}
   size: {x: 1, y: 1}
   offset: {x: 0, y: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   cost: 20
