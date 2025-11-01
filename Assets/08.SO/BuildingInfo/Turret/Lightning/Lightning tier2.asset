@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Lightning tier2
   m_EditorClassIdentifier: 
   buildingName: Lightning Tier2
-  maxHealth: 200
+  maxHealth: 220
   isCombatBuilding: 1
-  damage: 30
-  range: 30
+  damage: 10
+  range: 18
   iconSprite: {fileID: 21300000, guid: a2802231de1604f208f2c713bd6e667d, type: 3}
-  description: 'elelelee alalaldldl d ds a '
+  description: "\uC5F0\uC1C4 \uAC1C\uC218\uAC00 \uC99D\uAC00\uD574 \uB354\uC6B1 \uB9CE\uC740
+    \uC801\uC744 \uC190\uC27D\uAC8C \uCC98\uCE58\uAC00 \uAC00\uB2A5\uD558\uB2E4"

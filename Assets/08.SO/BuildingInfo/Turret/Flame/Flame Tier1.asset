@@ -15,7 +15,8 @@ MonoBehaviour:
   buildingName: Flame Tier1
   maxHealth: 200
   isCombatBuilding: 1
-  damage: 4
+  damage: 2
   range: 14
   iconSprite: {fileID: 21300000, guid: 33e82704c74834d9290ecbba2b001b95, type: 3}
-  description: 'very very strong and owesome triple turret '
+  description: "\uADFC\uC811 \uC804\uBC29 \uAD11\uC5ED \uC9C0\uC18D\uD654\uC5FC.
+    \uC801\uC744 \uD0DC\uC6B0\uBA70 \uC2DC\uAC04\uCC28 \uD53C\uD574\uB97C \uB204\uC801\uC2DC\uD0A8\uB2E4."

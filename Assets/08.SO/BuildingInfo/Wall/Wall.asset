@@ -18,5 +18,5 @@ MonoBehaviour:
   damage: 0
   range: 0
   iconSprite: {fileID: 21300000, guid: f60c9fd863cca4f1da3772880b948a06, type: 3}
-  description: "\uC0DD\uC0B0 \uAC74\uBB3C\uACE0 \uACF5\uACA9\uACAC\uBB3C\uB4E4\uC744
+  description: "\uC0DD\uC0B0 \uAC74\uBB3C\uACFC \uACF5\uACA9\uACAC\uBB3C\uB4E4\uC744
     \uC9C0\uD0A4\uAE30 \uC704\uD574 \uD544\uC694\uD55C \uBCBD\uC774\uB2E4"

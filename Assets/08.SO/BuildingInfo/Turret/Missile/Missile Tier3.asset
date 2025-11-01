@@ -15,7 +15,8 @@ MonoBehaviour:
   buildingName: Missile Tier3
   maxHealth: 200
   isCombatBuilding: 1
-  damage: 30
+  damage: 6
   range: 30
   iconSprite: {fileID: 21300000, guid: fac12d4eac6e74c04b4d89748f96afc9, type: 3}
-  description: 'very very strong and owesome triple turret '
+  description: "\uBB34\uB824 \uCD1D\uAD6C\uAC00 4\uAC1C\uAE4C\uC9C0 \uB298\uC5B4\uB09C
+    \uCD5C\uC7A5 \uAC70\uB9AC \uACAC\uC81C\uAC00 \uAC00\uB2A5\uD55C \uD3EC\uD0D1\uC774\uB2E4"

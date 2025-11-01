@@ -16,6 +16,8 @@ MonoBehaviour:
   maxHealth: 150
   isCombatBuilding: 1
   damage: 5
-  range: 8
+  range: 12
   iconSprite: {fileID: 21300000, guid: 3510db5cd13b541f293b879c714a5a5c, type: 3}
-  description: 'very very strong and owesome triple turret '
+  description: "\uC800\uC18D \uB2E8\uC77C \uD45C\uC801 \uBC1C\uC0AC. \uC548\uC815\uC801\uC778
+    \uC5F0\uC0AC\uC640 \uAE30\uBCF8 \uACF5\uACA9\uB825\uC73C\uB85C \uCD08\uBC18 \uBC29\uC5B4\uB97C
+    \uB2F4\uB2F9\uD55C\uB2E4."
