@@ -23,9 +23,9 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/00.Scenes/BuildScenes/Title.unity
   - m_enabled: 1
-    m_path: Assets/00.Scenes/BuildScenes/InGame.unity
-  - m_enabled: 1
     m_path: Assets/00.Scenes/BuildScenes/StageSelectScene.unity
+  - m_enabled: 1
+    m_path: Assets/00.Scenes/BuildScenes/Stage1.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []
