@@ -5,6 +5,7 @@ using Code.Events;
 using Core.GameEvent;
 using RuddnjsPool;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Code.EJY.Enemies
 {
@@ -21,6 +22,8 @@ namespace Code.EJY.Enemies
         
         public void SetTarget(Transform targetTrm) => TargetTrm = targetTrm;
         public GameObject GameObject => gameObject;
+
+        public UnityEvent OnAnimationDeadEvent;
         
         private Pool _myPool;
         private int _deadBodyLayer;
@@ -48,6 +51,7 @@ namespace Code.EJY.Enemies
             void addOnInitAction()
             {
                 action?.Invoke();
+                OnAnimationDeadEvent?.Invoke();
                 _trigger.OnDeadTrigger -= addOnInitAction;
             }
             

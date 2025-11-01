@@ -6,6 +6,7 @@ using Code.Entities;
 using Core.GameEvent;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Code.EJY.Enemies
 {
@@ -15,6 +16,8 @@ namespace Code.EJY.Enemies
         [SerializeField] protected AttackDataSO attackData;
         [SerializeField] protected StatSO damageStat;
         [SerializeField] protected float attackInterval = 0.5f;
+        [SerializeField] private float maxFireDelay = 1f;
+        [SerializeField] private float minFireDelay = 0.4f;
         
         protected Enemy _enemy;
         protected DamageCompo _damageCompo;
@@ -51,6 +54,7 @@ namespace Code.EJY.Enemies
         public virtual void Attack()
         {
             _lastAttackTime = Time.time;
+            attackInterval = Random.Range(minFireDelay, maxFireDelay);
         }
 
         private void HandleOnAttackEvent() => OnAttackEvent?.Invoke();
