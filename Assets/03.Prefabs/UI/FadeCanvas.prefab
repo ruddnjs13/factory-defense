@@ -194,7 +194,7 @@ MonoBehaviour:
   fadeImage: {fileID: 4207385228705143460}
   canvasGroup: {fileID: 6357258415880848982}
   sceneChannel: {fileID: 11400000, guid: 0a43d6935ba47074d9b32d51fb3dbf3f, type: 2}
-  duration: 3
+  duration: 1.5
   inStartFadeIn: 0
 --- !u!225 &6357258415880848982
 CanvasGroup:

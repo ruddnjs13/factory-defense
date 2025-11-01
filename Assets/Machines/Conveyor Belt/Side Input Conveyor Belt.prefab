@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.9455972
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -194,10 +194,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e2e8c41aae0bda41aa91761fc142896, type: 2}
     - target: {fileID: -5754084199372789682, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -3048586017762688902, guid: 55b4a8a4c5501974b8c21cfefd499f37, type: 3}
+      objectReference: {fileID: 4300000, guid: eebab14f79d6fdf4f8cfbfcf0110cc42, type: 2}
     - target: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_Name
       value: Side Input Conveyor Belt
@@ -237,6 +245,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3625497278647495605}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2415617128203814426}
   m_SourcePrefab: {fileID: 100100000, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
 --- !u!4 &2486331255356719400 stripped
 Transform:
@@ -382,6 +393,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2415617128203814426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011476269277469586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7741ef6e4a1fc7240a115c24394029ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!23 &3659761588034009671 stripped
