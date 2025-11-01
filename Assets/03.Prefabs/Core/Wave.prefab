@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimeBetweenWaves: 120
-  spawnTerm: 0.1
+  spawnTerm: 3
   targetTrm: {fileID: 0}
   spawnTrm:
   - {fileID: 8938694129841791089}

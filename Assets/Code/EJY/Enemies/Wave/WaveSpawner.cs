@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Code.Enemies;
 using Code.Events;
@@ -6,13 +5,15 @@ using Core.GameEvent;
 using RuddnjsLib.Dependencies;
 using RuddnjsPool.RuddnjsLib.Pool.RunTime;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.EJY.Enemies.Wave
 {
     public class WaveSpawner : MonoBehaviour
     {
         [SerializeField] private float spawnTimeBetweenWaves = 120f, spawnTerm = 0.5f;
-        [SerializeField] private Transform spawnTrm, targetTrm;
+        [SerializeField] private Transform targetTrm;
+        [SerializeField] private Transform[] spawnTrm;
         [SerializeField] private StageWaveDataSO spawnData;
         [SerializeField] private GameEventChannelSO uiChannel;
 
@@ -94,9 +95,10 @@ namespace Code.EJY.Enemies.Wave
             {
                 for (int i = 0; i < data.spawnCnt; i++)
                 {
+                    int randomIdx = Random.Range(0, spawnTrm.Length);
                     FSMEnemy enemy =
                         _poolManager.Pop<FSMEnemy>(data.enemyData.enemyPoolItem);
-                    enemy.transform.position = spawnTrm.position;
+                    enemy.transform.position = spawnTrm[randomIdx].position;
                     enemy.Init(targetTrm,CheckInProgress);
 
                     yield return new WaitForSeconds(spawnTerm);
