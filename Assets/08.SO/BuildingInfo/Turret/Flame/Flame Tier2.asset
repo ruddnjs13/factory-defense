@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1274b1150c4c38838c23029b8ecba7, type: 3}
   m_Name: Flame Tier2
   m_EditorClassIdentifier: 
-  buildingName: Default Turret 2
-  maxHealth: 200
+  buildingName: Flame Tier2
+  maxHealth: 240
   isCombatBuilding: 1
-  damage: 10
+  damage: 8
   range: 14
   iconSprite: {fileID: 21300000, guid: 33e82704c74834d9290ecbba2b001b95, type: 3}
   description: 'very very strong and owesome triple turret '

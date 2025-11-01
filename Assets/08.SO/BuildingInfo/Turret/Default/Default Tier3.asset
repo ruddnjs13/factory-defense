@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1274b1150c4c38838c23029b8ecba7, type: 3}
   m_Name: Default Tier3
   m_EditorClassIdentifier: 
-  buildingName: Default Turret Tier3
+  buildingName: Default Tier3
   maxHealth: 210
   isCombatBuilding: 1
   damage: 14

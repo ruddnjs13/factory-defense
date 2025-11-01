@@ -12,8 +12,11 @@ namespace Code.Managers
         Default,
         Catapult,
         Missile,
-        Flame
+        Flame,
+        Lightning,
     }
+    
+    
     
     public class UpgradeManager : MonoSingleton<UpgradeManager>
     {
@@ -21,6 +24,7 @@ namespace Code.Managers
         [SerializeField] private List<MachineSO> catapultTurrets;
         [SerializeField] private List<MachineSO> missileTurrets;
         [SerializeField] private List<MachineSO> flameTurrets;
+        [SerializeField] private List<MachineSO> lightningTurrets;
 
 
         public void Upgrade(TurretType turretType, int upgradeIndex, Vector3 position)
@@ -38,6 +42,9 @@ namespace Code.Managers
                     break;
                 case TurretType.Flame:
                     EventBus.Raise(new BuildRequestEvent(flameTurrets[upgradeIndex], position));
+                    break;
+                case TurretType.Lightning:
+                    EventBus.Raise(new BuildRequestEvent(lightningTurrets[upgradeIndex], position));
                     break;
             }
         }

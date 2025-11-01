@@ -1,3 +1,4 @@
+using Code.Managers;
 using UnityEngine;
 
 namespace Code.LKW.Turrets
@@ -12,8 +13,8 @@ namespace Code.LKW.Turrets
         public float bulletSpeed;
         public float shootAllowanceAngle;
 
-        [Space]
-        [Header("Upgrade")]
+        [Space] [Header("Upgrade")] 
+        public TurretType type;
         public int upgradeIndex;
         public int upgradeCost;
         //public 

@@ -2,6 +2,7 @@ using System;
 using Code.Combat;
 using Code.LKW.Building;
 using Code.LKW.Turrets;
+using Code.Managers;
 using Code.SHS.Machines;
 using TMPro;
 using UnityEngine;
@@ -27,6 +28,8 @@ namespace Code.LKW.UI.Component
         [Header("Upgrade Info")]
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private TextMeshProUGUI upgradeCostText;
+
+        private TurretBase _turret;
         
         
         private EntityHealth entityHealth;
@@ -60,6 +63,8 @@ namespace Code.LKW.UI.Component
                         {
                             upgradePanel.SetActive(true);
                             upgradeCostText.SetText(turret.UpgradeCost.ToString());
+                            _turret = turret;
+                            
                         }
                     }
                 }
@@ -98,6 +103,11 @@ namespace Code.LKW.UI.Component
             
             healthText.text = $"{current}/{max}";
             fill.localScale = new Vector2(current / max,1);
+        }
+
+        public void UpgradeTurret()
+        {
+            //UpgradeManager.Instance.Upgrade(_turret.transform.position, _turret.UpgradeIndex, _turret.Type);
         }
 
        

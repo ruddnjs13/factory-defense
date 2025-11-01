@@ -137,6 +137,8 @@ MonoBehaviour:
   muzzleParticleItem: {fileID: 11400000, guid: c156cb473ae23174b833241cd3ae51b7, type: 2}
   sphereCollider: {fileID: 9057889711318436033}
   roundDecal: {fileID: 1675417023960495473}
+  soundChannel: {fileID: 0}
+  shootSound: {fileID: 0}
   _targets: []
   damageTrigger: {fileID: 3361953803228065329}
   flameParticle: {fileID: 8688366371312970502}
@@ -700,7 +702,7 @@ MonoBehaviour:
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 100
+    overrideBaseValue: 200
   - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
     isUseOverride: 1
     overrideBaseValue: 4

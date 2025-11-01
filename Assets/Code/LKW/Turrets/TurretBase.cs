@@ -5,6 +5,7 @@ using Code.Core.StatSystem;
 using Code.EJY.Enemies;
 using Code.Entities;
 using Code.LKW.ETC;
+using Code.Managers;
 using Code.SHS.Machines;
 using Code.Sounds;
 using Core.GameEvent;
@@ -46,6 +47,7 @@ namespace Code.LKW.Turrets
 
         private bool _isShootAngle = false;
 
+        public TurretType Type { get; set; }
         public int UpgradeIndex { get; set; }
         public int UpgradeCost { get; set; }
 
@@ -58,6 +60,7 @@ namespace Code.LKW.Turrets
         {
             UpgradeIndex = turretData.upgradeIndex;
             UpgradeCost = turretData.upgradeCost;
+            Type = turretData.type;
         }
 
         public virtual void Tick()
