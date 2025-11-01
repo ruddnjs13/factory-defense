@@ -241,6 +241,8 @@ MonoBehaviour:
   attackData: {fileID: 11400000, guid: 85ce67a81e289fe4d986bdf65f17c4ad, type: 2}
   damageStat: {fileID: 11400000, guid: 73a5c8d399a4c3441bbbc98438dfbb27, type: 2}
   attackInterval: 0.5
+  maxFireDelay: 1
+  minFireDelay: 0.4
   OnAttackEvent:
     m_PersistentCalls:
       m_Calls:
@@ -588,6 +590,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2534813976427511505}
         m_TargetAssemblyTypeName: Code.Feedbacks.SFXFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7623086096301838043}
+        m_TargetAssemblyTypeName: Code.Feedbacks.CameraShakeFeedback, Assembly-CSharp
         m_MethodName: CreateFeedback
         m_Mode: 1
         m_Arguments:
@@ -65565,14 +65579,93 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5646466757550986418, guid: 091a4848865b4ff469304e1938f0fe73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5497395200074472695}
+    - targetCorrespondingSourceObject: {fileID: 5646466757550986418, guid: 091a4848865b4ff469304e1938f0fe73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7623086096301838043}
   m_SourcePrefab: {fileID: 100100000, guid: 091a4848865b4ff469304e1938f0fe73, type: 3}
+--- !u!1 &1551858160826225468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646466757550986418, guid: 091a4848865b4ff469304e1938f0fe73, type: 3}
+  m_PrefabInstance: {fileID: 6617205535248107406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5497395200074472695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551858160826225468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 3
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &7623086096301838043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551858160826225468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ead0dfb5e60497eab45f0c99126d799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionData: {fileID: 7911884006155149679}
+  onlyPlayPowerAttack: 0
+  impulseForce: 0.6
 --- !u!114 &2534813976427511505 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8716856434804816223, guid: 091a4848865b4ff469304e1938f0fe73, type: 3}
   m_PrefabInstance: {fileID: 6617205535248107406}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1551858160826225468}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcda89cb8a164b25bdd43675911c8581, type: 3}
