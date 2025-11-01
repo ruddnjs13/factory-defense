@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1441bde0b5d4e91a5a96e736f994e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 8
+  lifeTime: 5
   damageCaster: {fileID: 9221074340900929686}
   attackData: {fileID: 11400000, guid: 0ce41afebbb061048a17bdb55b341717, type: 2}
   rbCompo: {fileID: 4427114128041080013}
