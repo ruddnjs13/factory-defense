@@ -11,8 +11,6 @@ namespace Code.EJY.Enemies
         [SerializeField] private PoolingItemSO muzzlePool;
         [SerializeField] private Transform firePos;
         [SerializeField] private float bulletSpeed = 8f;
-        [SerializeField] private float maxFireDelay = 1f;
-        [SerializeField] private float minFireDelay = 0.4f;
         [SerializeField] private PoolManagerSO poolManager;
 
         private DamageData _currentDamageData;
