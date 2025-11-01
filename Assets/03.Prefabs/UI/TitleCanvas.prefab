@@ -320,6 +320,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5579929941582713234}
+        m_TargetAssemblyTypeName: Code.LKW.ETC.SoundFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 3593030558340855605}
         m_TargetAssemblyTypeName: Code.LKW.ETC.GameExit, Assembly-CSharp
         m_MethodName: ExitGame
@@ -499,7 +511,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4918390893201705718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5579929941582713234}
+        m_TargetAssemblyTypeName: Code.LKW.ETC.SoundFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &505828059007877020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,6 +830,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5579929941582713234}
+        m_TargetAssemblyTypeName: Code.LKW.ETC.SoundFeedback, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7993716735869375614}
         m_TargetAssemblyTypeName: Code.UI.FadeSystem.SceneChangeEvt, Assembly-CSharp
         m_MethodName: SceneChange
@@ -898,6 +934,7 @@ RectTransform:
   - {fileID: 4416907898835152171}
   - {fileID: 2817564463725160325}
   - {fileID: 765119062248039448}
+  - {fileID: 754012923434789476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1765,3 +1802,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PanelData>k__BackingField: {fileID: 11400000, guid: abefc6cd05310374cbeac2ff62b03a66, type: 2}
   moveAmount: 770
+--- !u!1001 &8917368606898985870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4488330663706757403}
+    m_Modifications:
+    - target: {fileID: 2865746463458476423, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_Name
+      value: BtnSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+--- !u!4 &754012923434789476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8193755548153115114, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+  m_PrefabInstance: {fileID: 8917368606898985870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5579929941582713234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3940437707229334044, guid: 6096a7993eb53594a90747ba2d9947da, type: 3}
+  m_PrefabInstance: {fileID: 8917368606898985870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087d58ebe7ef4c7a8843ac8e8a4febeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

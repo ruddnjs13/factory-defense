@@ -15,21 +15,22 @@ namespace Code.SHS.Machines.Construction.Previews
         protected MachineConstructor constructor;
         [SerializeField] private Material previewMaterial;
         [SerializeField] private Material cannotPlaceMaterial;
-        private MeshRenderer[] meshRenderers;
+        private Renderer[] meshRenderers = null;
 
         public Vector2Int Position { get; private set; }
 
         private void Awake()
         {
-            meshRenderers = GetComponentsInChildren<MeshRenderer>();
-            // previewMaterial = meshRenderers[0].material;
         }
 
         public virtual void Initialize(MachineSO machineSO, MachineConstructor constructor, Vector2Int position)
         {
+            if (meshRenderers == null)
+                meshRenderers = GetComponentsInChildren<Renderer>();
+
             MachineSO = machineSO;
             this.constructor = constructor;
-            Position = position + machineSO.offset;
+            UpdatePosition(position);
         }
 
         public void UpdatePosition(Vector2Int newPosition)
@@ -40,9 +41,22 @@ namespace Code.SHS.Machines.Construction.Previews
             Material targetMaterial = CanPlaceMachine()
                 ? previewMaterial
                 : cannotPlaceMaterial;
-            foreach (MeshRenderer meshRenderer in meshRenderers)
+            foreach (Renderer meshRenderer in meshRenderers)
             {
-                meshRenderer.material = targetMaterial;
+                if (meshRenderer.materials.Length > 1)
+                {
+                    Material[] materials = meshRenderer.materials;
+                    for (int i = 0; i < materials.Length; i++)
+                    {
+                        materials[i] = targetMaterial;
+                    }
+
+                    meshRenderer.materials = materials;
+                }
+                else
+                {
+                    meshRenderer.material = targetMaterial;
+                }
             }
         }
 
@@ -57,13 +71,18 @@ namespace Code.SHS.Machines.Construction.Previews
                 {
                     Vector2Int tilePos = Position + new Vector2Int(x, y);
                     GridTile tile = WorldGrid.Instance.GetTile(tilePos);
-                    if (tile.Machine != null)
-                    {
-                        Debug.Log("Checking tile at position: " + tilePos);
+                    if (CheckCanPlaceAt(tilePos, tile) == false)
                         return false;
-                    }
                 }
             }
+
+            return true;
+        }
+
+        protected virtual bool CheckCanPlaceAt(Vector2Int tilePos, GridTile tile)
+        {
+            if (tile.Machine != null || tile.Ground is ResourceGroundSO)
+                return false;
 
             return true;
         }

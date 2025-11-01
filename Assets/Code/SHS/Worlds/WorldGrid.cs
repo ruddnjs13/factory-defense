@@ -25,7 +25,7 @@ namespace Code.SHS.Worlds
 
         private void OnBuildRequested(BuildRequestEvent evt)
         {
-            BaseMachine machine = Instantiate(evt.BuildingSO.machinePrefab).GetComponent<BaseMachine>();
+            BaseMachine machine = Instantiate(evt.BuildingSO.machinePrefab, evt.Position, Quaternion.identity).GetComponent<BaseMachine>();
             InstallMachineAt(Vector3Int.RoundToInt(evt.Position).ToXZ(), machine);
         }
 
