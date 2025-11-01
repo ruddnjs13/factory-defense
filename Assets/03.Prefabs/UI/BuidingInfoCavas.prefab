@@ -863,7 +863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: a;ldsfjklkajsfdkjfa lkasdjfkja;dkasdlfjlkadjsjadlksflkasdjlksdajfkljsladjfa;dslfjkasdjfklajsdfkljld
+  m_text: "\u3134\u3139\u3147\u3141\u3147\u3134"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 60b3cabbe6695374f8f7615101e30444, type: 2}
   m_sharedMaterial: {fileID: -6859219408651213152, guid: 60b3cabbe6695374f8f7615101e30444, type: 2}
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
