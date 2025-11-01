@@ -45,9 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimeBetweenWaves: 240
-  spawnTerm: 4
+  spawnTerm: 1
   targetTrm: {fileID: 0}
   spawnTrm:
-  - {fileID: 8938694129841791089}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnData: {fileID: 11400000, guid: cb3c265bcf343c747a72363869e532ce, type: 2}
   uiChannel: {fileID: 11400000, guid: ba36cdd2b16fd364581ef7474741e7f2, type: 2}

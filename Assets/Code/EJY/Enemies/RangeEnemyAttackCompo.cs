@@ -29,6 +29,7 @@ namespace Code.EJY.Enemies
 
         private void AttackBullet()
         {
+            if(_detector.CurrentTarget.Value == null) return;
             effectChannel.RaiseEvent(EffectEvents.PlayPoolEffect.Initializer(firePos.position, firePos.rotation, muzzlePool, 1.5f));
             
             Vector3 direction = (_detector.CurrentTarget.Value.position - firePos.position).normalized;

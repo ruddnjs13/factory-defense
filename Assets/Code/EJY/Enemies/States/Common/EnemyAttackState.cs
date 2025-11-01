@@ -33,6 +33,8 @@ namespace Code.EJY.Enemies.States
             _animator.SetAnimator(false);
             while (true)
             {
+                if (_detector.CurrentTarget.Value == null) yield break;
+                
                 var target = _detector.CurrentTarget.Value.position;
                 target.y = 0;
                 _movement.LookAtTarget(target);
