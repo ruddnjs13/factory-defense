@@ -11,7 +11,7 @@ namespace Code.EJY.Enemies.States
         private EnemyAttackCompo _attackCompo;
         private NavMovement _movement;
         private TargetDetector _detector;
-
+        
         private const float ANGLETHRESHOLD = 5f;
 
         public EnemyAttackState(Entity entity, int animationHash) : base(entity, animationHash)

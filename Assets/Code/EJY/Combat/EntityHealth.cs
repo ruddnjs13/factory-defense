@@ -41,6 +41,8 @@ namespace Code.Combat
             _statCompo = entity.GetCompo<EntityStatCompo>();
         }
 
+        public void Init() => currentHealth = maxHealth;
+        
         public void AfterInitialize()
         {
             currentHealth = maxHealth = _statCompo.SubscribeStat(hpStat, HandleMaxHPChange, 100f);
