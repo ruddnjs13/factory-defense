@@ -21,11 +21,11 @@ namespace Code.Combat
         [SerializeField] private float currentHealth;
 
         public delegate void OnHealthChanged(float current, float max);
+
         public event OnHealthChanged onHealthChangedEvent;
-        
+
         public float MaxHealth => maxHealth;
         public float CurrentHealth => currentHealth;
-        
 
 
         public ComponentContainer ComponentContainer { get; set; }
@@ -33,6 +33,7 @@ namespace Code.Combat
         public void OnInitialize(ComponentContainer componentContainer)
         {
         }
+
         public void Initialize(Entity entity)
         {
             _entity = entity;
@@ -40,6 +41,8 @@ namespace Code.Combat
             _statCompo = entity.GetCompo<EntityStatCompo>();
         }
 
+        public void Init() => currentHealth = maxHealth;
+        
         public void AfterInitialize()
         {
             currentHealth = maxHealth = _statCompo.SubscribeStat(hpStat, HandleMaxHPChange, 100f);
@@ -48,7 +51,7 @@ namespace Code.Combat
         private void OnDestroy()
         {
             _statCompo.UnSubscribeStat(hpStat, HandleMaxHPChange);
-            onHealthChangedEvent?.Invoke(0,maxHealth);
+            onHealthChangedEvent?.Invoke(0, maxHealth);
         }
 
         private void HandleMaxHPChange(StatSO stat, float currentValue, float previousValue)
@@ -61,10 +64,13 @@ namespace Code.Combat
         public void ApplyDamage(DamageData damageData, Vector3 hitPoint, Vector3 hitNormal, AttackDataSO attackData,
             Entity dealer)
         {
-            _actionData.HitNormal = hitNormal;
-            _actionData.HitPoint = hitPoint;
-            _actionData.HitByPowerAttack = attackData.isPowerAttack;
-            _actionData.DamageData = damageData;
+            if (_actionData != null)
+            {
+                _actionData.HitNormal = hitNormal;
+                _actionData.HitPoint = hitPoint;
+                _actionData.HitByPowerAttack = attackData.isPowerAttack;
+                _actionData.DamageData = damageData;
+            }
 
             currentHealth = Mathf.Clamp(currentHealth - damageData.damage, 0, maxHealth);
 
@@ -76,9 +82,9 @@ namespace Code.Combat
                 textChannel.RaiseEvent(TextEvents.PopupTextEvent
                     .Initializer(damageData.damage.ToString("#,#"), damageTextInfo.nameHash, showPos, 0.6f));
             }
-            
+
             onHealthChangedEvent?.Invoke(currentHealth, maxHealth);
-            
+
             if (currentHealth <= 0)
             {
                 _entity.OnDeathEvent?.Invoke();

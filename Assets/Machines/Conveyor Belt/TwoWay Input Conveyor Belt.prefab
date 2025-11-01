@@ -125,6 +125,10 @@ PrefabInstance:
       value: TwoWay Input Conveyor Belt
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -159,6 +163,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2415617128203814426}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3251285137377774171}
   m_SourcePrefab: {fileID: 100100000, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}
 --- !u!4 &2486331255356719400 stripped
 Transform:
@@ -201,7 +208,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 4835935e65b0295468d285a204727d5a, type: 2}
-  <BuildingInfo>k__BackingField: {fileID: 0}
+  <BuildingInfo>k__BackingField: {fileID: 11400000, guid: d7ba9c47bac11a740afad9e12653270f, type: 2}
   inputPorts:
   - {fileID: 8349701887768131672}
   - {fileID: 6394611064542520115}
@@ -295,6 +302,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7741ef6e4a1fc7240a115c24394029ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-3251285137377774171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011476269277469586}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.065031, y: 0.3737601, z: 1.6704869}
+  m_Center: {x: -0.000000059604645, y: 0.18688002, z: 0.19727159}
 --- !u!23 &3659761588034009671 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e838a3271c7dfd047b9a423592b83a47, type: 3}

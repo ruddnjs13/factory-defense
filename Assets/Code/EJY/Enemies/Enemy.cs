@@ -1,4 +1,5 @@
 using System;
+using Code.Combat;
 using Code.Entities;
 using Code.Events;
 using Core.GameEvent;
@@ -16,6 +17,7 @@ namespace Code.EJY.Enemies
         
         [SerializeField] protected GameEventChannelSO effectChannel;
         protected EntityAnimatorTrigger _trigger;
+        protected EntityHealth _entityHealth;
         
         public void SetTarget(Transform targetTrm) => TargetTrm = targetTrm;
         public GameObject GameObject => gameObject;
@@ -28,6 +30,7 @@ namespace Code.EJY.Enemies
         {
             base.Awake();
             _trigger = GetCompo<EntityAnimatorTrigger>();
+            _entityHealth = GetCompo<EntityHealth>();
             _trigger.OnDeadTrigger += OnDeadInAnimation;
             _deadBodyLayer = LayerMask.NameToLayer("DeadBody");
             _enemyLayer = LayerMask.NameToLayer("Enemy");
@@ -41,7 +44,7 @@ namespace Code.EJY.Enemies
         public virtual void Init(Transform targetTrm, Action action)
         {
             gameObject.layer = _enemyLayer;
-            
+            _entityHealth.Init();
             void addOnInitAction()
             {
                 action?.Invoke();

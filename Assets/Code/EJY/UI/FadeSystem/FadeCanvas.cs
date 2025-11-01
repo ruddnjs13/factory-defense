@@ -68,9 +68,10 @@ namespace Code.UI.FadeSystem
             SetCanvasGroup(true);
 
             Sequence seq = DOTween.Sequence();
-
-            seq.Append(fadeImage.material.DOFloat(endScrollValue, _scrollHash, duration)
-                    .SetUpdate(true)
+            
+            seq.SetUpdate(true);
+            seq.Append(fadeImage.material.DOFloat(endScrollValue, _scrollHash, duration))
+                .Join(fadeImage.material.DOFloat(endRotateValue, _rotateHash, duration))
                     .OnComplete(() =>
                     {
                         if (isFadeIn && !string.IsNullOrEmpty(sceneName))
@@ -82,8 +83,7 @@ namespace Code.UI.FadeSystem
                         {
                             SetCanvasGroup(false);
                         }
-                    }))
-                .Join(fadeImage.material.DOFloat(endRotateValue, _rotateHash, duration).SetUpdate(true));
+                    });
         }
     }
 }
