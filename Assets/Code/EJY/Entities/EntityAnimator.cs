@@ -40,5 +40,7 @@ namespace Code.Entities
         {
             animator.enabled = isOn;
         }
+
+        public bool IsActive() => animator.enabled;
     }
 }

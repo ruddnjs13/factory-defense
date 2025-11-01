@@ -59,8 +59,10 @@ namespace Code.EJY.Enemies.States
         
         public override void Exit()
         {
-            base.Exit();
+            if(!_animator.IsActive())
+                _animator.SetAnimator(true);
             _attackCompo.Attack();
+            base.Exit();
         }
     }
 }
