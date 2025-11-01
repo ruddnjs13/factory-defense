@@ -13,11 +13,14 @@ namespace Code.LKW.Turrets.Lightning
         [SerializeField] private Transform shooter;
         [SerializeField] private PoolManagerSO poolManager;
         [SerializeField] private PoolingItemSO bulletItem;
+        [SerializeField] protected int maxChains;
         
         
         protected override void Shoot()
         {
             ChainLightning bullet = poolManager.Pop(bulletItem.poolType) as ChainLightning;
+            
+            bullet.maxChains = maxChains;
             
             bullet.SetupProjectile(this,damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat)
                 ,attackData),firePos.position ,Quaternion.LookRotation(firePos.forward),firePos.forward *  turretData.bulletSpeed);

@@ -15,7 +15,7 @@ namespace Code.Combat
         [Header("Chain Settings")]
         [SerializeField] private LayerMask targetLayer;
         [SerializeField] private float chainRadius = 10f;
-        [SerializeField] private int maxChains = 4;
+        [field: SerializeField] public int maxChains { get; set; } = 4;
         [SerializeField] private float chainDelay = 0.1f;
         [SerializeField] private GameObject projectile;
 
@@ -33,7 +33,7 @@ namespace Code.Combat
             _lineRenderer = GetComponent<LineRenderer>();
             _lineRenderer.enabled = false;
         }
-
+        
         protected override void Update()
         {
             base.Update();

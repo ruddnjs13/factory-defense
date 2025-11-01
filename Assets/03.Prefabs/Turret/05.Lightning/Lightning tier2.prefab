@@ -339,6 +339,7 @@ MonoBehaviour:
   shooter: {fileID: 6347771576732950736}
   poolManager: {fileID: 11400000, guid: 20d4958a93554864f90e604391087170, type: 2}
   bulletItem: {fileID: 11400000, guid: 66762b609130d9e44b7bcd878b94bfe7, type: 2}
+  maxChains: 4
 --- !u!1 &2200001683180113032
 GameObject:
   m_ObjectHideFlags: 0
