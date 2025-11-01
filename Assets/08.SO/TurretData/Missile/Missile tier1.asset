@@ -19,4 +19,4 @@ MonoBehaviour:
   shootAllowanceAngle: 12
   type: 2
   upgradeIndex: 0
-  upgradeCost: 220
+  upgradeCost: 90

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91403014b80540929ca4d2d1b4660526, type: 3}
   m_Name: LIghtning Tier1
   m_EditorClassIdentifier: 
-  range: 12
+  range: 16
   reloadTimer: 1.8
   rotationSpeed: 160
   bulletSpeed: 8
   shootAllowanceAngle: 2
   type: 4
   upgradeIndex: 0
-  upgradeCost: 180
+  upgradeCost: 70
