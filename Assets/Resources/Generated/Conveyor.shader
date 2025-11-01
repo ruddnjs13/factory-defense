@@ -94,7 +94,9 @@ Shader "Custom/BeltScrollShader"
                 // per-instance scroll speed with material fallback
                 float scrollSpeed = _ScrollSpeed;
                 #if defined(UNITY_INSTANCING_ENABLED)
-                    scrollSpeed = UNITY_ACCESS_INSTANCED_PROP(PerInstance, _ScrollSpeed_Inst);
+                    float inst = UNITY_ACCESS_INSTANCED_PROP(PerInstance, _ScrollSpeed_Inst);
+                    if (abs(inst) > 1e-6)
+                        scrollSpeed = inst;
                 #endif
                 
                 float2 uv = input.uv;
@@ -106,7 +108,9 @@ Shader "Custom/BeltScrollShader"
 
                 // 로컬 UV로 변환
                 float2 localUV = (uv - beltMin) / max(beltSize, float2(1e-5, 1e-5));
-                localUV.y = frac(localUV.y + scrollSpeed * _Time.y);
+                // 시간 소스는 URP 권장 변수 사용
+                float t = _TimeParameters.x * scrollSpeed;
+                localUV.y = frac(localUV.y + t);
                 float2 scrolledUV = beltMin + localUV * beltSize;
 
                 half4 baseCol = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
