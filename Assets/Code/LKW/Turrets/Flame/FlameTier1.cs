@@ -10,8 +10,10 @@ namespace Code.LKW.Turrets.Flame
 
         private bool _isFire = false;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+            
             damageTrigger.InitTrigger(damageCompo.CalculateDamage(EntityStatCompo.GetStat(turretDamageStat),
             attackData,
             attackData.damageMultiplier),

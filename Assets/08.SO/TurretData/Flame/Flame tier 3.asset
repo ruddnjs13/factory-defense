@@ -18,5 +18,5 @@ MonoBehaviour:
   bulletSpeed: 18
   shootAllowanceAngle: 12
   type: 3
-  upgradeIndex: 0
+  upgradeIndex: 2
   upgradeCost: 0

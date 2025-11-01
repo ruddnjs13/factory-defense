@@ -47,7 +47,7 @@ MonoBehaviour:
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 150
+    overrideBaseValue: 220
   - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
     isUseOverride: 1
     overrideBaseValue: 10
@@ -320,7 +320,7 @@ MonoBehaviour:
         m_CallState: 2
   <MachineSo>k__BackingField: {fileID: 11400000, guid: 4674292d0b35d3e448a19b70e9123301, type: 2}
   <BuildingInfo>k__BackingField: {fileID: 11400000, guid: fc630ec2f29329649a64e63643017ede, type: 2}
-  turretData: {fileID: 11400000, guid: 2781257118bdf4b40a9c746518686181, type: 2}
+  turretData: {fileID: 11400000, guid: 5f7727e4b81cb764d87d0e47a4c3c338, type: 2}
   attackData: {fileID: 11400000, guid: 0ce41afebbb061048a17bdb55b341717, type: 2}
   turretDamageStat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
   targetLayer:

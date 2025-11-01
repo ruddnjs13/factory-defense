@@ -56,7 +56,7 @@ namespace Code.LKW.Turrets
             Tick();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             UpgradeIndex = turretData.upgradeIndex;
             UpgradeCost = turretData.upgradeCost;
