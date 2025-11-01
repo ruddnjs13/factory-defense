@@ -1,4 +1,5 @@
 using System;
+using Chipmunk.Player;
 using Code.Combat;
 using Code.LKW.Building;
 using Code.LKW.Turrets;
@@ -86,6 +87,7 @@ namespace Code.LKW.UI.Component
         {
             buildingInfoPanel.SetActive(false);
             upgradePanel.SetActive(false);
+            _turret = null;
             if (entityHealth != null)
             {
                 entityHealth.onHealthChangedEvent -= HandleHealthChanged;
@@ -107,7 +109,15 @@ namespace Code.LKW.UI.Component
 
         public void UpgradeTurret()
         {
-            //UpgradeManager.Instance.Upgrade(_turret.transform.position, _turret.UpgradeIndex, _turret.Type);
+            if (PlayerResource.Instance.HasEnoughResource(_turret.UpgradeCost) == false)
+            {
+                Debug.Log("Not has enough resources to upgrade turret.");
+                return;
+            }
+            
+            Debug.Log(_turret.transform.position);
+            UpgradeManager.Instance.Upgrade( _turret.Type, _turret.UpgradeIndex+1,_turret.transform.position);
+            
         }
 
        

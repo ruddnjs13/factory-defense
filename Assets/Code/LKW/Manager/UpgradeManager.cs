@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Code.LKW.GameEvents;
 using Code.SHS.Machines;
-using Unity.VisualScripting;
 using UnityEngine;
 using EventBus = Chipmunk.GameEvents.EventBus;
 
@@ -25,7 +24,6 @@ namespace Code.Managers
         [SerializeField] private List<MachineSO> missileTurrets;
         [SerializeField] private List<MachineSO> flameTurrets;
         [SerializeField] private List<MachineSO> lightningTurrets;
-
 
         public void Upgrade(TurretType turretType, int upgradeIndex, Vector3 position)
         {

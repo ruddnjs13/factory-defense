@@ -17,5 +17,6 @@ MonoBehaviour:
   rotationSpeed: 160
   bulletSpeed: 1
   shootAllowanceAngle: 5
-  upgradeIndex: 0
-  upgradeCost: 0
+  type: 1
+  upgradeIndex: 1
+  upgradeCost: 240
