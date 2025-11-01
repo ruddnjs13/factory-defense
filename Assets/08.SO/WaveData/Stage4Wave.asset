@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ed9e0d3d424ed2ac045640c3f44d44, type: 3}
+  m_Name: Stage4Wave
+  m_EditorClassIdentifier: 
+  stageSpawnData:
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 10
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 5
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 8
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 18
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 10
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 15
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 25
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 15
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 20
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 30
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 20
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 23
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 5
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 25
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 18
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 25
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 10
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 28
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 22
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 30
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 15
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 30
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 25
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 30
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 15
+    - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
+      spawnCnt: 25
+    - enemyData: {fileID: 11400000, guid: 2e2402113e75d5941b400bf91b8e5191, type: 2}
+      spawnCnt: 2
+    - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
+      spawnCnt: 20
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 30
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 15
+    - enemyData: {fileID: 11400000, guid: 2e2402113e75d5941b400bf91b8e5191, type: 2}
+      spawnCnt: 4
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 35
+  - dataList:
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 20
+    - enemyData: {fileID: 11400000, guid: 2e2402113e75d5941b400bf91b8e5191, type: 2}
+      spawnCnt: 6
+    - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
+      spawnCnt: 40

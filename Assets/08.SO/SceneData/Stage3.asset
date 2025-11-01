@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1931f4d4465e446eb34b37fa154450c7, type: 3}
   m_Name: Stage3
   m_EditorClassIdentifier: 
+  waveData: {fileID: 11400000, guid: afcf6896b28d23446997f1494518a2e4, type: 2}
   sceneName: Stage3
   displayName: "\uC139\uD130 C"
   canEnter: 0
