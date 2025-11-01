@@ -211,6 +211,7 @@ MonoBehaviour:
   buttonContainer: {fileID: 3401262894737270323}
   iconImage: {fileID: 5733582955536330053}
   buttonPrefab: {fileID: 991346147502158132, guid: fa288f56dfbb54346841a294616ac681, type: 3}
+  backgroundImage: {fileID: 5067545722119519611}
   selectedColor: {r: 0.2784314, g: 0.36862746, b: 0.4745098, a: 1}
 --- !u!1 &5228835062583566725
 GameObject:
