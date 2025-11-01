@@ -19,6 +19,11 @@ namespace Chipmunk.UI
             DisableAllButtons();
         }
 
+        private void OnDestroy()
+        {
+            inputReader.OnNumberKeyEvent -= ONumberKeyHandler;
+        }
+
 
         private void ONumberKeyHandler(int obj)
         {
