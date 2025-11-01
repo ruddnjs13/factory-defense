@@ -109,7 +109,7 @@ namespace Code.EJY.Enemies.Wave
             _deadEnemyCnt++;
             _inProgress.Value = _currentWaveTotalEnemyCnt != _deadEnemyCnt;
 
-            if (EndWave)
+            if (EndWave && !_inProgress.Value)
             {
                 Debug.Log("스테이지 클리어");
                 uiChannel.RaiseEvent(UIEvents.GameResultEvent.Initializer(true));

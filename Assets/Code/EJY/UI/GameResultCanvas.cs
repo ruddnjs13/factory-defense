@@ -4,6 +4,7 @@ using Chipmunk.GameEvents;
 using Chipmunk.Player.Events;
 using Code.Events;
 using Core.GameEvent;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -49,28 +50,30 @@ namespace Code.UI
             float clearTime = Time.time;
             int min = (int)clearTime / 60;
             int sec = (int)clearTime % 60;
-            Time.timeScale = 0f;
             
             sb.Append("클리어 시간 ").Append(min.ToString("D2")).Append(":").Append(sec.ToString("D2"));
             clearTimeText.SetText(sb.ToString());
             
             totalResourceText.SetText($"총 생산량 : {_totalResource}");
-            
-            SetCanvasGroup(totalCanvasGroup, true);
-            
-            if (evt.isClear)
+
+            DOVirtual.DelayedCall(0.5f, () =>
             {
-                SetCanvasGroup(failCanvasGroup, false);
-                SetCanvasGroup(clearCanvasGroup, true);
-                Clear();
-            }
-            else
-            {
-                SetCanvasGroup(clearCanvasGroup, false);
-                SetCanvasGroup(failCanvasGroup, true);
-                Fail();
-            }
+                Time.timeScale = 0f;
+                SetCanvasGroup(totalCanvasGroup, true);
             
+                if (evt.isClear)
+                {
+                    SetCanvasGroup(failCanvasGroup, false);
+                    SetCanvasGroup(clearCanvasGroup, true);
+                    Clear();
+                }
+                else
+                {
+                    SetCanvasGroup(clearCanvasGroup, false);
+                    SetCanvasGroup(failCanvasGroup, true);
+                    Fail();
+                }
+            });
         }
 
         private void Clear() => OnClearEvent?.Invoke();

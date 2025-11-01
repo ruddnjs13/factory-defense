@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324e977ea3074cfea765461481256e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiChannel: {fileID: 11400000, guid: c8634678c97cc494693965510dca0a58, type: 2}
+  uiChannel: {fileID: 11400000, guid: ba36cdd2b16fd364581ef7474741e7f2, type: 2}
   waveText: {fileID: 5561502790943205404}
   timerText: {fileID: 7273574276183457019}
   enemyCntText: {fileID: 6164883279358073105}
