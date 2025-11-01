@@ -483,13 +483,13 @@ MonoBehaviour:
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 1000
+    overrideBaseValue: 110
   - stat: {fileID: 11400000, guid: 73a5c8d399a4c3441bbbc98438dfbb27, type: 2}
-    isUseOverride: 0
-    overrideBaseValue: 0
+    isUseOverride: 1
+    overrideBaseValue: 35
   - stat: {fileID: 11400000, guid: 37efd8fce43c509438e54d047d2e54eb, type: 2}
-    isUseOverride: 0
-    overrideBaseValue: 0
+    isUseOverride: 1
+    overrideBaseValue: 3
 --- !u!1 &960925267548433967
 GameObject:
   m_ObjectHideFlags: 0
