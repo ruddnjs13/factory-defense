@@ -1,4 +1,3 @@
-using System;
 using Chipmunk.GameEvents;
 using Code.LKW.GameEvents;
 using Code.LKW.UI.Component;

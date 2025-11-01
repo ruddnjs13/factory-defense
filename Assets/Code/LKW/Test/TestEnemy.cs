@@ -1,5 +1,4 @@
 using Code.EJY.Enemies;
-using UnityEngine;
 
 namespace Code.LKW.Test
 {
