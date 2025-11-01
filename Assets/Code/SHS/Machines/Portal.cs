@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Chipmunk.GameEvents;
 using Chipmunk.Player.Events;
+using Code.Events;
 using Code.SHS.Extensions;
 using Code.SHS.Machines.Ports;
 using Code.SHS.Machines.ShapeResources;
 using Code.SHS.Worlds;
+using Core.GameEvent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,9 +19,13 @@ namespace Code.SHS.Machines
     {
         [SerializeField] private InputPort[] inputPorts;
         [SerializeField] private List<ShapeResourceSO> allShapeResourceSo;
+        [SerializeField] private GameEventChannelSO uiChannel;
         protected override void Awake()
         {
             base.Awake();
+            
+            // 유니티 이벤트는 알아서 구독해제 해줌
+            OnDeathEvent.AddListener(() => uiChannel.RaiseEvent(UIEvents.GameResultEvent.Initializer(false)));
         }
 
         private void Start()

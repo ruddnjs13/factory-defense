@@ -76316,8 +76316,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6614194344671934764}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.98771685, w: 0.15625441}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9848078, w: 0.17364825}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.7}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -76329,7 +76329,7 @@ Transform:
   - {fileID: 7408576136900408491}
   - {fileID: 3013588349782517404}
   m_Father: {fileID: 487978859536191731}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 162.021}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 160}
 --- !u!198 &1716326117251993165
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -86394,7 +86394,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7950367992650129349}
@@ -102084,7 +102084,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: attackRange
-      value: 1.2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 1885587818761669811, guid: ccd4091b2492ece44af56f3d84271e31, type: 3}
       propertyPath: detectRange
