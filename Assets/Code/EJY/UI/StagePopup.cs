@@ -40,7 +40,7 @@ namespace Code.EJY.UI
 
         private void OnDestroy()
         {
-            uiChannel.AddListener<SelectStageEvent>(HandleSelectStage);
+            uiChannel.RemoveListener<SelectStageEvent>(HandleSelectStage);
             enterButton.onClick.RemoveListener(HandleClickButton);
             
         }
