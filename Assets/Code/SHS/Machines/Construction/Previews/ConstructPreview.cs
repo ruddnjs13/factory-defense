@@ -13,7 +13,7 @@ namespace Code.SHS.Machines.Construction.Previews
     {
         public MachineSO MachineSO { get; protected set; }
         protected MachineConstructor constructor;
-        private Material previewMaterial;
+        [SerializeField] private Material previewMaterial;
         [SerializeField] private Material cannotPlaceMaterial;
         private MeshRenderer[] meshRenderers;
 
@@ -30,20 +30,20 @@ namespace Code.SHS.Machines.Construction.Previews
             MachineSO = machineSO;
             this.constructor = constructor;
             Position = position + machineSO.offset;
-            // Material targetMaterial = CanPlaceMachine(
-            //     Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z)))
-            //     ? previewMaterial
-            //     : cannotPlaceMaterial;
-            // foreach (MeshRenderer meshRenderer in meshRenderers)
-            // {
-            //     meshRenderer.material = previewMaterial;
-            // }
         }
 
         public void UpdatePosition(Vector2Int newPosition)
         {
             Position = newPosition + MachineSO.offset;
             transform.position = new Vector3(newPosition.x, 0f, newPosition.y);
+
+            Material targetMaterial = CanPlaceMachine()
+                ? previewMaterial
+                : cannotPlaceMaterial;
+            foreach (MeshRenderer meshRenderer in meshRenderers)
+            {
+                meshRenderer.material = targetMaterial;
+            }
         }
 
         /// <summary>
