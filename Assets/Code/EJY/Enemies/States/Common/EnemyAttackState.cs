@@ -33,7 +33,7 @@ namespace Code.EJY.Enemies.States
             _animator.SetAnimator(false);
             while (true)
             {
-                if (_detector.CurrentTarget.Value == null) yield break;
+                if (_detector.CurrentTarget.Value == null) break;
                 
                 var target = _detector.CurrentTarget.Value.position;
                 target.y = 0;
@@ -59,8 +59,10 @@ namespace Code.EJY.Enemies.States
         
         public override void Exit()
         {
-            base.Exit();
+            if(!_animator.IsActive())
+                _animator.SetAnimator(true);
             _attackCompo.Attack();
+            base.Exit();
         }
     }
 }
