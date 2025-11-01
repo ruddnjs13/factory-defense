@@ -273,8 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: f344367adbf16f6459fc6b7e0181451f, type: 2}
-  constructionButtons:
-  - {fileID: 0}
 --- !u!1 &3367254344761733322
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,8 +795,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constructionType: {fileID: 11400000, guid: b5120adbfaeb183429f08ae6da2c9193, type: 2}
   buttonContainer: {fileID: 9011351304052121342}
-  iconImage: {fileID: 0}
+  iconImage: {fileID: 5616841127010850238}
   buttonPrefab: {fileID: 991346147502158132, guid: fa288f56dfbb54346841a294616ac681, type: 3}
+  backgroundImage: {fileID: 1681842981078525995}
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7734075230515728772
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ namespace Chipmunk.UI
         private List<ConstructionButton> buttons = new List<ConstructionButton>();
         private ConstructionButton currentButton;
 
-        private Image backgroundImage;
+        [SerializeField] private Image backgroundImage;
         private Color defaultColor;
         [SerializeField] private Color selectedColor;
 
@@ -29,7 +29,6 @@ namespace Chipmunk.UI
                 buttons.Add(button);
             }
 
-            backgroundImage = GetComponent<Image>();
             defaultColor = backgroundImage.color;
         }
 
@@ -37,7 +36,7 @@ namespace Chipmunk.UI
         {
             buttonContainer.gameObject.SetActive(true);
             backgroundImage.color = selectedColor;
-            
+
             currentButton = buttons[0];
             currentButton.Select();
         }
