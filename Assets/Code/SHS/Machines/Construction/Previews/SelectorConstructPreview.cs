@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.SHS.Worlds;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.SHS.Machines.Construction.Previews
 {
@@ -14,9 +15,13 @@ namespace Code.SHS.Machines.Construction.Previews
         public readonly HashSet<PortData> availableWorldInputPorts = new HashSet<PortData>();
         public readonly HashSet<PortData> availableWorldOutputPorts = new HashSet<PortData>();
 
+        [FormerlySerializedAs("arrows")] [SerializeField]
+        private GameObject[] directionArrows = new GameObject[4];
+
         public override void Initialize(MachineSO machineSO, MachineConstructor machineConstructor, Vector2Int position)
         {
             base.Initialize(machineSO, machineConstructor, position);
+            UpdateArrow();
             // transform.rotation = machineSO.rotation;
             //
             // // 4방향 모두 시도하여 최적의 방향 찾기
@@ -184,8 +189,55 @@ namespace Code.SHS.Machines.Construction.Previews
                         meshFilter.mesh = meshFilterComponent.sharedMesh;
                     }
 
+                    UpdateArrow();
+
                     return;
                 }
+            }
+        }
+
+        public void UpdateArrow()
+        {
+            DisableArrows();
+
+            // PortData의 FacingDirection은 머신 로컬 기준이므로,
+            // MachineSO.rotation을 먼저 적용해 프리뷰 오브젝트 로컬 기준 방향을 얻고,
+            // 화살표 인덱스는 이 로컬 기준으로 결정합니다. (자식 오브젝트이므로 transform 회전은 자동 반영)
+            float machineRotationY = MachineSO.rotation.eulerAngles.y;
+
+            // Input 포트: 기본 화살표는 Output 방향을 가리키므로, 입력은 180도 반전
+            foreach (PortData inputPort in MachineSO.inputPorts)
+            {
+                Direction localDir = inputPort.FacingDirection.Rotate(machineRotationY).Opposite();
+                int index = (int)localDir;
+                if (index < 0 || index >= directionArrows.Length) continue;
+
+                GameObject arrow = directionArrows[index];
+                if (arrow == null) continue;
+                arrow.SetActive(true);
+                arrow.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            // Output 포트: 기본 방향 그대로
+            foreach (PortData outputPort in MachineSO.outputPorts)
+            {
+                Direction localDir = outputPort.FacingDirection.Rotate(machineRotationY).Opposite();
+                int index = (int)localDir;
+                if (index < 0 || index >= directionArrows.Length) continue;
+
+                GameObject arrow = directionArrows[index];
+                if (arrow == null) continue;
+                arrow.SetActive(true);
+                arrow.transform.localRotation = Quaternion.identity;
+            }
+        }
+
+        public void DisableArrows()
+        {
+            for (int i = 0; i < directionArrows.Length; i++)
+            {
+                if (directionArrows[i] == null) continue;
+                directionArrows[i].SetActive(false);
             }
         }
 

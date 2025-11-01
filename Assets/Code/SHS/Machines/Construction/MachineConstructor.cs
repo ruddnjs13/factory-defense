@@ -144,7 +144,7 @@ namespace Code.SHS.Machines.Construction
             {
                 {
                     mainPreview.gameObject.SetActive(true);
-                    if (PreviewByPosition.TryGetValue(currentGridPosition, out _ ) == false)
+                    if (PreviewByPosition.TryGetValue(currentGridPosition, out _) == false)
                         AddPreviewAtPosition(currentGridPosition, Direction.None);
                 }
             }
@@ -190,6 +190,11 @@ namespace Code.SHS.Machines.Construction
 
             previewContainer.position = new Vector3(newPosition.x, 0, newPosition.y);
             mainPreview.UpdatePosition(newPosition);
+            // if (mainPreview is SelectorConstructPreview selectorPreview)
+            // {
+            //     selectorPreview.UpdateArrow();
+            // }
+
             currentGridPosition = newPosition;
         }
 
@@ -369,6 +374,7 @@ namespace Code.SHS.Machines.Construction
                 {
                     preview.gameObject.SetActive(false);
                 }
+
                 PreviewByPosition.Remove(gridPosition);
             }
         }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2fec5cdd8ccc07042a785fc9b5240589
+guid: fb6f280a4dbadaf4ebb0bb0aa8f8907a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -17,7 +17,7 @@ ModelImporter:
     second: //RootNode
   - first:
       43: 4300000
-    second: SM_Icon_Arrow_01
+    second: SM_Icon_Multiply_01
   externalObjects: {}
   materials:
     materialImportMode: 0
