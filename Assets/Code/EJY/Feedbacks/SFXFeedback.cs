@@ -2,17 +2,19 @@ using Code.Events;
 using Code.Sounds;
 using Core.GameEvent;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Feedbacks
 {
     public class SFXFeedback : Feedback
     {
         [SerializeField] private GameEventChannelSO soundChannel;
-        [SerializeField] private SoundSO feedbackSound;
+        [SerializeField] private SoundSO[] feedbackSounds;
         
         public override void CreateFeedback()
         {
-            var sfxEvt = SoundsEvents.PlaySfxEvent.Init(transform.position, feedbackSound);
+            int randomIdx = Random.Range(0, feedbackSounds.Length);
+            var sfxEvt = SoundsEvents.PlaySfxEvent.Init(transform.position, feedbackSounds[randomIdx]);
             soundChannel.RaiseEvent(sfxEvt);
         }
 

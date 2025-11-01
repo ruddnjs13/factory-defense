@@ -2,6 +2,7 @@ using Code.Combat;
 using Code.Enemies;
 using Code.Entities;
 using Code.Events;
+using Code.Sounds;
 using Core.GameEvent;
 using RuddnjsPool;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Code.EJY.Enemies
     {
         [SerializeField] private OverlapDamageCaster rushCaster;
         [SerializeField] private GameEventChannelSO cameraChannel;
+        [SerializeField] private GameEventChannelSO soundChannel;
+        [SerializeField] private SoundSO rushHitSound;
         [SerializeField] private AttackDataSO rushAttackData;
         [SerializeField] private PoolingItemSO explosionEffectPool;
         [SerializeField] private float effectPlayDuration;
@@ -26,7 +29,8 @@ namespace Code.EJY.Enemies
             cameraChannel?.RaiseEvent(CameraEvents.ImpulseEvent.Initializer(attackData.impulseForce));
             effectChannel?.RaiseEvent(EffectEvents.PlayPoolEffect
                 .Initializer(rushCaster.transform.position,Quaternion.LookRotation(Vector3.forward, Vector3.up) , explosionEffectPool, effectPlayDuration));
-
+            soundChannel.RaiseEvent(SoundsEvents.PlaySfxEvent.Init(_enemy.transform.position,rushHitSound));
+            
             DamageData damageData = _damageCompo.CalculateDamage(damageStat, rushAttackData);
             
             rushCaster.CastDamage(damageData, _enemy.transform.position, _enemy.transform.forward,attackData);

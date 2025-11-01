@@ -1,6 +1,5 @@
 using Code.Combat;
 using Code.Events;
-using Core.GameEvent;
 using RuddnjsPool;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace Code.EJY.Enemies
         [SerializeField] private PoolingItemSO muzzlePool;
         [SerializeField] private Transform firePos;
         [SerializeField] private float bulletSpeed = 8f;
-        [SerializeField] private float maxFireDelay = 0.8f;
+        [SerializeField] private float maxFireDelay = 1f;
         [SerializeField] private float minFireDelay = 0.4f;
         [SerializeField] private PoolManagerSO poolManager;
 
@@ -28,12 +27,6 @@ namespace Code.EJY.Enemies
         {
             base.OnDestroy();
             _trigger.OnAttackTrigger -= AttackBullet;
-        }
-
-        public override void Attack()
-        {
-            base.Attack();
-            attackInterval = Random.Range(minFireDelay, maxFireDelay);
         }
 
         private void AttackBullet()
