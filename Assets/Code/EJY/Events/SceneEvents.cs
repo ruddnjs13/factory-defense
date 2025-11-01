@@ -24,7 +24,7 @@ namespace Code.Events
     public class ChangeSceneEvent : GameEvent
     {
         public string sceneName;
-        public ChangeSceneEvent Init(string sceneName)
+        public ChangeSceneEvent Initializer(string sceneName)
         {
             this.sceneName = sceneName;
             return this;

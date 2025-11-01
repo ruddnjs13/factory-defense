@@ -3,7 +3,6 @@ using Core.GameEvent;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
 
 namespace Code.UI.FadeSystem
 {
@@ -77,7 +76,7 @@ namespace Code.UI.FadeSystem
                         if (isFadeIn && !string.IsNullOrEmpty(sceneName))
                         {
                             Time.timeScale = 1;
-                            SceneManager.LoadScene(sceneName);
+                            sceneChannel.RaiseEvent(SceneEvents.ChangeSceneEvent.Initializer(sceneName));
                         }
                         else
                         {
