@@ -22,6 +22,22 @@ namespace Code.SceneSystem
         
         private void OnEnable()
         {
+            if(waveData == null) return;
+
+            foreach (var waveDataList in waveData.stageSpawnData)
+            {
+                foreach (var spawnData in waveDataList.dataList)
+                {
+                    if (!_enemyIconDict.ContainsKey(spawnData.enemyData))
+                    {
+                        _enemyIconDict.Add(spawnData.enemyData, spawnData.enemyData.enemyIcon);
+                    }
+                }
+            }
+            
+            _enemyIconDict = _enemyIconDict.OrderBy(data => data.Key.priority)
+                .ToDictionary(data => data.Key, data => data.Value);
+            
             // 입장가능한지 데이터 불러오기
             if(string.IsNullOrEmpty(sceneName) || !PlayerPrefs.HasKey(sceneName) || canEnter) return;
             
@@ -61,22 +77,6 @@ namespace Code.SceneSystem
         private void OnValidate()
         {
             sceneName = name;
-            
-            if(waveData == null) return;
-
-            foreach (var waveDataList in waveData.stageSpawnData)
-            {
-                foreach (var spawnData in waveDataList.dataList)
-                {
-                    if (!_enemyIconDict.ContainsKey(spawnData.enemyData))
-                    {
-                        _enemyIconDict.Add(spawnData.enemyData, spawnData.enemyData.enemyIcon);
-                    }
-                }
-            }
-            
-            _enemyIconDict = _enemyIconDict.OrderBy(data => data.Key.priority)
-                .ToDictionary(data => data.Key, data => data.Value);
         }
     }
 
