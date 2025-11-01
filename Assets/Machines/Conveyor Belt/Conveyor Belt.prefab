@@ -103,11 +103,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 002c0fbbd1fcdaf4fbb1ccc3e779056d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5594980589601295151}
   m_SourcePrefab: {fileID: 100100000, guid: 002c0fbbd1fcdaf4fbb1ccc3e779056d, type: 3}
 --- !u!4 &169264786293283316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 002c0fbbd1fcdaf4fbb1ccc3e779056d, type: 3}
+  m_PrefabInstance: {fileID: 419925551164374559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &653736361052734286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 002c0fbbd1fcdaf4fbb1ccc3e779056d, type: 3}
+  m_PrefabInstance: {fileID: 419925551164374559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5594980589601295151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653736361052734286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef72c8fa1d141c994e9bd42eef6eceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshFilter: {fileID: 3888439331654817361}
+  textures:
+  - {fileID: 2800000, guid: a85ec240ae39bdc4aba910681fa4e3ba, type: 3}
+  - {fileID: 2800000, guid: 9257e9cb459312146a11e833ffce359c, type: 3}
+  outputMaterial: {fileID: 0}
+  atlasMaxSize: 2048
+  padding: 2
+  assignMaterialToRenderer: 1
+--- !u!33 &3888439331654817361 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 002c0fbbd1fcdaf4fbb1ccc3e779056d, type: 3}
   m_PrefabInstance: {fileID: 419925551164374559}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &577967302343629344
