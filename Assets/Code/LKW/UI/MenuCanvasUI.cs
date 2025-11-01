@@ -58,7 +58,9 @@ namespace Code.LKW.UI
         {
             if(_activePanel != null)
                 _activePanel.ClosePanel(true);
-            leftPanel.HandleButtonClick();
+            
+            if(leftPanel != null)
+                leftPanel.HandleButtonClick();
         }
     }
 }

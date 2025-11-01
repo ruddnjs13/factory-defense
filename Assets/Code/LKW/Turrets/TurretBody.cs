@@ -23,6 +23,7 @@ namespace Code.LKW.Turrets
 
         public void DeSelect()
         {
+            if(selectable ==  null) return;
             selectable.DeSelect();
         }
     }

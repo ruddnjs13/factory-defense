@@ -93,7 +93,10 @@ namespace Code.SHS.Machines
         public virtual void DeSelect()
         {
             EventBus<BuildingDeselectEvent>.Raise(new BuildingDeselectEvent());
-            _outlineable.enabled = false;
+            if (_outlineable != null)
+            {
+                _outlineable.enabled = false;
+            }
         }
 
         #endregion
