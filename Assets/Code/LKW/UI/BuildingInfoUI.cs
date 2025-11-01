@@ -117,6 +117,7 @@ namespace Code.LKW.UI.Component
             
             Debug.Log(_turret.transform.position);
             UpgradeManager.Instance.Upgrade( _turret.Type, _turret.UpgradeIndex+1,_turret.transform.position);
+            Destroy(_turret.gameObject);
             
         }
 
