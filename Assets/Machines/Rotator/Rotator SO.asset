@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Rotator SO
   m_EditorClassIdentifier: 
   machineName: Rotator
+  <Icon>k__BackingField: {fileID: 21300000, guid: a95acfcb96b04419ba84bf3f352900ef, type: 3}
   machinePreviewPrefab: {fileID: 6715399901352898762, guid: 5281bd72c8b628342b919656317c34b2, type: 3}
   machinePrefab: {fileID: 1812515574136519828, guid: b962275bff2827044b370dfc6f2f6838, type: 3}
   size: {x: 1, y: 1}
   offset: {x: 0, y: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   cost: 20

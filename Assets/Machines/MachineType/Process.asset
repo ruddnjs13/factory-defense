@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1750f3729fcd9aa40ad7d5a9a7bd8b96, type: 3}
   m_Name: Process
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: d36da2c6ee73b4071ac9e21125db1bb5, type: 3}
   machines:
   - {fileID: 11400000, guid: 5a31502a7f56d344995cf2f4de2672d5, type: 2}
   - {fileID: 11400000, guid: a97b8099e5a94884cb77557d4f6058f7, type: 2}
+  - {fileID: 11400000, guid: dc94769345f157b41b1174b203bcbd61, type: 2}
