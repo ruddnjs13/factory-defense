@@ -43,7 +43,20 @@ namespace Code.SHS.Machines.Construction.Previews
                 : cannotPlaceMaterial;
             foreach (Renderer meshRenderer in meshRenderers)
             {
-                meshRenderer.material = targetMaterial;
+                if (meshRenderer.materials.Length > 1)
+                {
+                    Material[] materials = meshRenderer.materials;
+                    for (int i = 0; i < materials.Length; i++)
+                    {
+                        materials[i] = targetMaterial;
+                    }
+
+                    meshRenderer.materials = materials;
+                }
+                else
+                {
+                    meshRenderer.material = targetMaterial;
+                }
             }
         }
 
@@ -58,13 +71,18 @@ namespace Code.SHS.Machines.Construction.Previews
                 {
                     Vector2Int tilePos = Position + new Vector2Int(x, y);
                     GridTile tile = WorldGrid.Instance.GetTile(tilePos);
-                    if (tile.Machine != null)
-                    {
-                        // Debug.Log("Checking tile at position: " + tilePos);
+                    if (CheckCanPlaceAt(tilePos, tile) == false)
                         return false;
-                    }
                 }
             }
+
+            return true;
+        }
+
+        protected virtual bool CheckCanPlaceAt(Vector2Int tilePos, GridTile tile)
+        {
+            if (tile.Machine != null || tile.Ground is ResourceGroundSO)
+                return false;
 
             return true;
         }
