@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default tier3
   m_EditorClassIdentifier: 
   machineName: Default tier3
-  <Icon>k__BackingField: {fileID: 21300000, guid: a2802231de1604f208f2c713bd6e667d, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 18bd7baecf03a440f9897a9e43ab6ae7, type: 3}
   machinePreviewPrefab: {fileID: 738169086696019639, guid: dd87cf6f0fe874e479c9d2fd04d9560d, type: 3}
   machinePrefab: {fileID: 164262275702242236, guid: ffe3330debb2972439c10e7f11fd5594, type: 3}
   size: {x: 1, y: 1}

@@ -17,5 +17,5 @@ MonoBehaviour:
   isCombatBuilding: 1
   damage: 20
   range: 20
-  iconSprite: {fileID: 21300000, guid: 14ebd7a27a3914778a89ba81abb3d498, type: 3}
+  iconSprite: {fileID: 21300000, guid: fac12d4eac6e74c04b4d89748f96afc9, type: 3}
   description: 'very very strong and owesome triple turret '

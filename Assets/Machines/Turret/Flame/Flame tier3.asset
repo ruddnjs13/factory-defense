@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Flame tier3
   m_EditorClassIdentifier: 
   machineName: Flame tier3
+  <Icon>k__BackingField: {fileID: 21300000, guid: 33e82704c74834d9290ecbba2b001b95, type: 3}
   machinePreviewPrefab: {fileID: 4256863292755577711, guid: 2c7f772acef942f438448e9fe2ba3392, type: 3}
   machinePrefab: {fileID: 1102975139319102931, guid: 6727fd1b96451ee41a8679a22b940527, type: 3}
   size: {x: 1, y: 1}

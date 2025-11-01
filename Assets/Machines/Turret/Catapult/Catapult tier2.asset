@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Catapult tier2
   m_EditorClassIdentifier: 
   machineName: Catapult tier2
+  <Icon>k__BackingField: {fileID: 21300000, guid: c07b9031471ae44b3b1508b9592692a3, type: 3}
   machinePreviewPrefab: {fileID: 5205373042461984604, guid: d844e1d80b0ba664ea044f7e28dbf523, type: 3}
   machinePrefab: {fileID: 9161881887805612793, guid: 0a804d61034a10d4d8ac67faab4c9e1e, type: 3}
   size: {x: 1, y: 1}

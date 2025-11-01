@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Missile tier3
   m_EditorClassIdentifier: 
   machineName: Missile tier3
+  <Icon>k__BackingField: {fileID: 21300000, guid: fac12d4eac6e74c04b4d89748f96afc9, type: 3}
   machinePreviewPrefab: {fileID: 1297329054120244965, guid: dcb8accecb748b54f84371a57dd48feb, type: 3}
   machinePrefab: {fileID: 8906819110330170452, guid: 3fca66ca2debc6042b74e52890f8a5ff, type: 3}
   size: {x: 1, y: 1}
