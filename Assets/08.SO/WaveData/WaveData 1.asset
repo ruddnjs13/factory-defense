@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageSpawnData:
   - dataList:
+    - enemyData: {fileID: 11400000, guid: 2e2402113e75d5941b400bf91b8e5191, type: 2}
+      spawnCnt: 2
+    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
+      spawnCnt: 2
+  - dataList:
     - enemyData: {fileID: 11400000, guid: 894da3842411ff141bdb986defc6ef58, type: 2}
       spawnCnt: 2
     - enemyData: {fileID: 11400000, guid: 5e9d8dda57437e74a896db88c687c75d, type: 2}
-      spawnCnt: 1
+      spawnCnt: 2
     - enemyData: {fileID: 11400000, guid: a6cdbbae6f01c384bbb67faa2007f848, type: 2}
-      spawnCnt: 1
-  - dataList:
-    - enemyData: {fileID: 11400000, guid: 2e2402113e75d5941b400bf91b8e5191, type: 2}
-      spawnCnt: 1
-    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
-      spawnCnt: 3
-    - enemyData: {fileID: 11400000, guid: 515b9a0aff0b96e4e9f2cb12965cb31f, type: 2}
-      spawnCnt: 3
+      spawnCnt: 2
