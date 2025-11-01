@@ -5393,7 +5393,7 @@ MonoBehaviour:
     overrideBaseValue: 180
   - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 10
+    overrideBaseValue: 7
 --- !u!1 &5599978490332395633
 GameObject:
   m_ObjectHideFlags: 0

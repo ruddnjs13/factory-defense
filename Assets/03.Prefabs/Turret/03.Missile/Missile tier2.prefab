@@ -10943,7 +10943,7 @@ MonoBehaviour:
     overrideBaseValue: 180
   - stat: {fileID: 11400000, guid: fc3c4ef5808434448a518f6b63a70747, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 10
+    overrideBaseValue: 5
 --- !u!1001 &1354087337253565990
 PrefabInstance:
   m_ObjectHideFlags: 0
