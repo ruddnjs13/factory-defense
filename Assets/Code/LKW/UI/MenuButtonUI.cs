@@ -1,5 +1,4 @@
 using System;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,7 @@ namespace Code.LKW.UI
             menuButton.onClick.RemoveListener(HandleButtonClick);
         }
 
-        private void HandleButtonClick()
+        public void HandleButtonClick()
         {
             OnButtonClick?.Invoke(TargetPanel);
         }

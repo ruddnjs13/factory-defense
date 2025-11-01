@@ -1,4 +1,3 @@
-using System;
 using Code.Effects;
 using Code.Events;
 using Core.GameEvent;

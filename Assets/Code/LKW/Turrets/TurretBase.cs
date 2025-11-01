@@ -80,7 +80,8 @@ namespace Code.LKW.Turrets
         public override void DeSelect()
         {
             base.DeSelect();
-            roundDecal.SetProjectionActive(false);
+            if(roundDecal != null)
+                roundDecal.SetProjectionActive(false);
         }
 
         #region Init

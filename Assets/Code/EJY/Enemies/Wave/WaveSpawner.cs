@@ -112,7 +112,7 @@ namespace Code.EJY.Enemies.Wave
             if (EndWave)
             {
                 Debug.Log("스테이지 클리어");
-                uiChannel.RaiseEvent(UIEvents.StageClearEvent);
+                uiChannel.RaiseEvent(UIEvents.GameResultEvent.Initializer(true));
             }
             
             if(_inProgress.Value)
