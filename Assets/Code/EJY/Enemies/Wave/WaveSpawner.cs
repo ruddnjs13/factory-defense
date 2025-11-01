@@ -115,7 +115,7 @@ namespace Code.EJY.Enemies.Wave
                 uiChannel.RaiseEvent(UIEvents.GameResultEvent.Initializer(true));
             }
             
-            if(_inProgress.Value)
+            if(!_inProgress.Value)
                 uiChannel.RaiseEvent(UIEvents.WaveInfoEvent.Initializer(GetWaveTotalEnemyCnt(), CurrentWave + 1));
         }
     }
