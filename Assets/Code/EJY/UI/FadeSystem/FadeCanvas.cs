@@ -77,7 +77,6 @@ namespace Code.UI.FadeSystem
                         if (isFadeIn && !string.IsNullOrEmpty(sceneName))
                         {
                             Time.timeScale = 1;
-                            SetCanvasGroup(false);
                             sceneChannel.RaiseEvent(SceneEvents.ChangeSceneEvent.Initializer(sceneName));
                         }
                         else
