@@ -3,6 +3,7 @@ using System.Text;
 using Chipmunk.GameEvents;
 using Chipmunk.Player.Events;
 using Code.Events;
+using Code.SceneSystem;
 using Core.GameEvent;
 using DG.Tweening;
 using TMPro;
@@ -16,6 +17,7 @@ namespace Code.UI
         [SerializeField] private GameEventChannelSO uiChannel;
         [SerializeField] private CanvasGroup totalCanvasGroup, clearCanvasGroup, failCanvasGroup;
         [SerializeField] private TextMeshProUGUI clearTimeText, totalResourceText;
+        [SerializeField] private SceneData sceneData;
 
         public UnityEvent OnClearEvent;
         public UnityEvent OnFailEvent;
@@ -66,6 +68,7 @@ namespace Code.UI
                     SetCanvasGroup(failCanvasGroup, false);
                     SetCanvasGroup(clearCanvasGroup, true);
                     Clear();
+                    sceneData?.SetCanEnter(true);
                 }
                 else
                 {

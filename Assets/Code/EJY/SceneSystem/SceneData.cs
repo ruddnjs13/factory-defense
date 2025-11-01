@@ -29,6 +29,8 @@ namespace Code.SceneSystem
             canEnter = data.canEnter;
         }
 
+        public void SetCanEnter(bool isCanEnter) => this.canEnter = isCanEnter;
+        
         public void SaveData()
         {
             SerializeSceneData data = new SerializeSceneData(canEnter);
