@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3592283392659306287}
   - component: {fileID: 2219040789453135857}
   - component: {fileID: 3321460815861726880}
+  - component: {fileID: 1481057970775717603}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -121,6 +122,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: 0
+--- !u!114 &1481057970775717603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2296767050787466690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &7076890355489503912
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +203,7 @@ GameObject:
   - component: {fileID: 1644219648834655515}
   - component: {fileID: 4415346141397249842}
   - component: {fileID: 4081047001169535965}
+  - component: {fileID: 2663440329216695910}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -269,6 +295,25 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &2663440329216695910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441677559546112308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0e8fd8e6bd42608a51c56b428e8b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: f344367adbf16f6459fc6b7e0181451f, type: 2}
+  selectableLayer:
+    serializedVersion: 2
+    m_Bits: 2304
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1001 &1214160529101797720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,6 +325,10 @@ PrefabInstance:
     - target: {fileID: 2195456274989692664, guid: efb449907014a3140b59a4d9764bf1b2, type: 3}
       propertyPath: m_Name
       value: Resource
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408601983913132012, guid: efb449907014a3140b59a4d9764bf1b2, type: 3}
+      propertyPath: <Amount>k__BackingField
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8472784476858447249, guid: efb449907014a3140b59a4d9764bf1b2, type: 3}
       propertyPath: m_LocalPosition.x
