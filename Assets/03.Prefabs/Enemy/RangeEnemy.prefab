@@ -2533,7 +2533,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
-  m_Height: 1.5
+  m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &6640424636055088248
@@ -2927,8 +2927,6 @@ MonoBehaviour:
   muzzlePool: {fileID: 11400000, guid: 709a1d6d8c8a64e468511bb7d22b28a9, type: 2}
   firePos: {fileID: 1883501716008151565}
   bulletSpeed: 24
-  maxFireDelay: 1
-  minFireDelay: 0.4
   poolManager: {fileID: 11400000, guid: 20d4958a93554864f90e604391087170, type: 2}
 --- !u!1 &8386572425524001281
 GameObject:
@@ -3409,15 +3407,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[1].isUseOverride
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
+      propertyPath: statOverrides.Array.data[2].isUseOverride
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[0].overrideBaseValue
-      value: 10000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
       propertyPath: statOverrides.Array.data[1].overrideBaseValue
-      value: 15
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277220727218758105, guid: 8f333301bc20d2940a46cddf4ed3ca4b, type: 3}
+      propertyPath: statOverrides.Array.data[2].overrideBaseValue
+      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
