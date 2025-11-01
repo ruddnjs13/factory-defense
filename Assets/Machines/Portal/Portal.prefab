@@ -91,7 +91,7 @@ MonoBehaviour:
   statOverrides:
   - stat: {fileID: 11400000, guid: db47f532f4bb39f448cf8842eb8ea226, type: 2}
     isUseOverride: 1
-    overrideBaseValue: 0
+    overrideBaseValue: 1000
 --- !u!1001 &3279696762125388872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,7 +456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_LocalRotation.w
@@ -464,15 +464,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -493,6 +493,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb26246ff5fb224699aca4ed9e6f472, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -597,6 +601,7 @@ MonoBehaviour:
   - {fileID: 6494746162677916782}
   allShapeResourceSo:
   - {fileID: 11400000, guid: ed03958af4631ae4a9d7c0e7dd4aae40, type: 2}
+  uiChannel: {fileID: 11400000, guid: ba36cdd2b16fd364581ef7474741e7f2, type: 2}
 --- !u!114 &7955808350068526971
 MonoBehaviour:
   m_ObjectHideFlags: 0
