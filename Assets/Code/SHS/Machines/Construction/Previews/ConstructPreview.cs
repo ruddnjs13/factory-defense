@@ -15,21 +15,22 @@ namespace Code.SHS.Machines.Construction.Previews
         protected MachineConstructor constructor;
         [SerializeField] private Material previewMaterial;
         [SerializeField] private Material cannotPlaceMaterial;
-        private MeshRenderer[] meshRenderers;
+        private Renderer[] meshRenderers = null;
 
         public Vector2Int Position { get; private set; }
 
         private void Awake()
         {
-            meshRenderers = GetComponentsInChildren<MeshRenderer>();
-            // previewMaterial = meshRenderers[0].material;
         }
 
         public virtual void Initialize(MachineSO machineSO, MachineConstructor constructor, Vector2Int position)
         {
+            if (meshRenderers == null)
+                meshRenderers = GetComponentsInChildren<Renderer>();
+
             MachineSO = machineSO;
             this.constructor = constructor;
-            Position = position + machineSO.offset;
+            UpdatePosition(position);
         }
 
         public void UpdatePosition(Vector2Int newPosition)
@@ -40,7 +41,7 @@ namespace Code.SHS.Machines.Construction.Previews
             Material targetMaterial = CanPlaceMachine()
                 ? previewMaterial
                 : cannotPlaceMaterial;
-            foreach (MeshRenderer meshRenderer in meshRenderers)
+            foreach (Renderer meshRenderer in meshRenderers)
             {
                 meshRenderer.material = targetMaterial;
             }
@@ -59,7 +60,7 @@ namespace Code.SHS.Machines.Construction.Previews
                     GridTile tile = WorldGrid.Instance.GetTile(tilePos);
                     if (tile.Machine != null)
                     {
-                        Debug.Log("Checking tile at position: " + tilePos);
+                        // Debug.Log("Checking tile at position: " + tilePos);
                         return false;
                     }
                 }
