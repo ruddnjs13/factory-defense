@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: a6316366698340a4fae22e7a1c958592
+AssetOrigin:
+  serializedVersion: 1
+  productId: 301599
+  packageName: GameDev Starter Kit - Form Factory
+  packageVersion: v1.1.0
+  assetPath: Assets/Graphics/GameDev Starter Kit - Form Factory/Source File/Floor_01.fbx
+  uploadId: 809354
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -21,8 +28,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -37,7 +42,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -112,10 +117,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 301599
-  packageName: GameDev Starter Kit - Form Factory
-  packageVersion: v1.1.0
-  assetPath: Assets/Graphics/GameDev Starter Kit - Form Factory/Source File/Floor_01.fbx
-  uploadId: 809354
