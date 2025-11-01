@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Default Tier2
   maxHealth: 180
   isCombatBuilding: 1
-  damage: 12
+  damage: 8
   range: 10
   iconSprite: {fileID: 21300000, guid: 18bd7baecf03a440f9897a9e43ab6ae7, type: 3}
   description: 'very very strong and owesome triple turret '
