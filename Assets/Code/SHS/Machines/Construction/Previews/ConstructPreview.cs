@@ -106,9 +106,6 @@ namespace Code.SHS.Machines.Construction.Previews
             Vector2Int position = Vector2Int.RoundToInt(new Vector2(transform.position.x, transform.position.z));
             if (!CanPlaceMachine())
             {
-                Debug.LogError(
-                    $"Cannot place machine at {Position}. One or more tiles are already occupied.");
-                Debug.Log(WorldGrid.Instance.GetTile(position).Machine);
                 return;
             }
 

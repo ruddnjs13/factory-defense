@@ -144,7 +144,7 @@ namespace Code.SHS.Machines.Construction
             {
                 {
                     mainPreview.gameObject.SetActive(true);
-                    if (PreviewByPosition.TryGetValue(currentGridPosition, out ConstructPreview preview) == false)
+                    if (PreviewByPosition.TryGetValue(currentGridPosition, out _ ) == false)
                         AddPreviewAtPosition(currentGridPosition, Direction.None);
                 }
             }
@@ -184,6 +184,7 @@ namespace Code.SHS.Machines.Construction
 
             if (isLeftClicking)
             {
+                // 빠르게 드래그 시 중간 타일이 스킵되지 않도록, from->to 사이 모든 타일을 순차적으로 처리
                 PlacePreviewBetweenPositions(currentGridPosition, newPosition);
             }
 
@@ -202,13 +203,48 @@ namespace Code.SHS.Machines.Construction
 
         private void PlacePreviewBetweenPositions(Vector2Int fromPosition, Vector2Int toPosition)
         {
-            Vector2Int directionVector = toPosition - fromPosition;
-            directionVector.Clamp(-Vector2Int.one, Vector2Int.one);
-            Direction worldDirection = directionVector.ToDirection();
-
-            if (worldDirection == Direction.None)
+            if (fromPosition == toPosition)
                 return;
 
+            Vector2Int cursor = fromPosition;
+            int dx = Mathf.Abs(toPosition.x - fromPosition.x);
+            int dy = Mathf.Abs(toPosition.y - fromPosition.y);
+            int sx = fromPosition.x < toPosition.x ? 1 : -1;
+            int sy = fromPosition.y < toPosition.y ? 1 : -1;
+            int err = dx - dy;
+
+            int guard = 0;
+            while (cursor != toPosition && guard++ < 4096)
+            {
+                int e2 = err * 2;
+                Vector2Int step = Vector2Int.zero;
+                if (e2 > -dy)
+                {
+                    err -= dy;
+                    step = new Vector2Int(sx, 0);
+                }
+                else if (e2 < dx)
+                {
+                    err += dx;
+                    step = new Vector2Int(0, sy);
+                }
+
+                if (step == Vector2Int.zero)
+                    break;
+
+                Vector2Int next = cursor + step;
+                Direction worldDirection = step.ToDirection();
+                if (worldDirection == Direction.None)
+                    break;
+
+                ApplyStep(cursor, next, worldDirection);
+                cursor = next;
+            }
+        }
+
+        // from -> to 한 칸 진행 시, 출력/입력 방향을 정확히 연결
+        private void ApplyStep(Vector2Int fromPosition, Vector2Int toPosition, Direction worldDirection)
+        {
             if (PreviewByPosition.TryGetValue(fromPosition, out ConstructPreview existingPreview))
             {
                 if (existingPreview is SelectorConstructPreview conveyorPreview)
@@ -218,12 +254,14 @@ namespace Code.SHS.Machines.Construction
             }
             else
             {
+                // from 칸에 실제 미리보기 생성 및 출력 방향 기록
                 mainPreview.gameObject.SetActive(true);
                 AddPreviewAtPosition(fromPosition, worldDirection);
             }
 
-            if (PreviewByPosition.TryGetValue(toPosition, out existingPreview) &&
-                existingPreview is SelectorConstructPreview toConveyorPreview)
+            // to 칸에 미리보기가 이미 있으면, 입력 방향 추가
+            if (PreviewByPosition.TryGetValue(toPosition, out ConstructPreview toExisting) &&
+                toExisting is SelectorConstructPreview toConveyorPreview)
             {
                 mainPreview.gameObject.SetActive(false);
                 toConveyorPreview.AddInputDirection(worldDirection.Opposite());
@@ -255,6 +293,9 @@ namespace Code.SHS.Machines.Construction
                 selectorPreview.AddOutputDirection(nextDirection);
             }
 
+            // 실제 배치된 프리뷰의 위치를 그리드 좌표에 맞게 보정
+            preview.UpdatePosition(gridPosition);
+
             preview.gameObject.SetActive(true);
             previewInstances.Add(preview);
             RegisterPreviewAtPosition(gridPosition, preview);
@@ -272,10 +313,14 @@ namespace Code.SHS.Machines.Construction
 
         private bool CanPlaceMachineAtPosition(Vector2Int gridPosition)
         {
+            var grid = WorldGrid.Instance;
+            if (grid == null)
+                return false;
+
             bool canPlace = true;
             IterateTiles(gridPosition, tilePos =>
             {
-                GridTile tile = WorldGrid.Instance.GetTile(tilePos);
+                GridTile tile = grid.GetTile(tilePos);
                 if (tile.Machine != null)
                 {
                     canPlace = false;
@@ -287,6 +332,9 @@ namespace Code.SHS.Machines.Construction
 
         private void IterateTiles(Vector2Int gridPosition, System.Action<Vector2Int> action)
         {
+            if (mainPreview == null || mainPreview.MachineSO == null)
+                return;
+
             Vector2Int size = mainPreview.MachineSO.size;
             Vector2Int offset = mainPreview.MachineSO.offset;
 
@@ -317,17 +365,23 @@ namespace Code.SHS.Machines.Construction
         {
             if (PreviewByPosition.TryGetValue(gridPosition, out ConstructPreview preview))
             {
-                preview.gameObject.SetActive(false);
+                if (preview != null)
+                {
+                    preview.gameObject.SetActive(false);
+                }
                 PreviewByPosition.Remove(gridPosition);
             }
         }
-
 
         private bool TryGetMouseGridPosition(out Vector2Int gridPosition)
         {
             gridPosition = default;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var cam = Camera.main;
+            if (cam == null)
+                return false;
+
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, layerMask))
             {
                 gridPosition = hit.point.ToInt().ToXZ();
@@ -359,7 +413,6 @@ namespace Code.SHS.Machines.Construction
             PreviewByPosition.Clear();
             previewContainer.gameObject.SetActive(false);
         }
-
 
         private void UpdateDestroyRegion(Vector2Int startPos, Vector2Int endPos)
         {
@@ -399,7 +452,7 @@ namespace Code.SHS.Machines.Construction
                     GridTile tile = WorldGrid.Instance.GetTile(tilePos);
                     if (tile.Machine != null)
                     {
-                        machinesToDestroy.Add(tile.Machine as BaseMachine);
+                        machinesToDestroy.Add(tile.Machine);
                     }
                 }
             }
