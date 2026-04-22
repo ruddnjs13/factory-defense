@@ -11,6 +11,7 @@ namespace Code.EJY.Enemies
         [SerializeField] private LayerMask whatIsTarget;
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private float detectRange = 3.5f;
+        [SerializeField, Min(1)] private int maxTargetCount = 16;
 
         private Enemy _enemy;
         private NavMovement _movement;
@@ -31,7 +32,7 @@ namespace Code.EJY.Enemies
         {
             _enemy = entity as Enemy;
             _movement = entity.GetCompo<NavMovement>();
-            _hits = new Collider[1];
+            _hits = new Collider[Mathf.Max(1, maxTargetCount)];
             CurrentTarget.OnValueChanged += HandleTargetingChanged;
         }
 
@@ -44,19 +45,12 @@ namespace Code.EJY.Enemies
         {
             if (!IsTargeting)
             {
-                Array.Clear(_hits, 0, _hits.Length);
+                Transform closestTarget = FindClosestTarget();
 
-                int detectCount = Physics.OverlapSphereNonAlloc(
-                    _enemy.transform.position,
-                    detectRange,
-                    _hits,
-                    whatIsTarget
-                );
-
-                if (detectCount > 0)
+                if (closestTarget != null)
                 {
-                    CurrentTarget.Value = _hits[0]?.transform;
-                    IsTargeting = CurrentTarget.Value != null;
+                    CurrentTarget.Value = closestTarget;
+                    IsTargeting = true;
                 }
             }
             else
@@ -82,6 +76,39 @@ namespace Code.EJY.Enemies
                     InAttackRange = false;
                 }
             }
+        }
+
+        private Transform FindClosestTarget()
+        {
+            Array.Clear(_hits, 0, _hits.Length);
+
+            int detectCount = Physics.OverlapSphereNonAlloc(
+                _enemy.transform.position,
+                detectRange,
+                _hits,
+                whatIsTarget
+            );
+
+            Transform closestTarget = null;
+            float closestSqrDistance = float.MaxValue;
+            Vector3 origin = _enemy.transform.position;
+
+            for (int i = 0; i < detectCount && i < _hits.Length; i++)
+            {
+                Collider hit = _hits[i];
+                if (hit == null) continue;
+
+                Transform target = hit.transform;
+                float sqrDistance = (target.position - origin).sqrMagnitude;
+
+                if (sqrDistance < closestSqrDistance)
+                {
+                    closestSqrDistance = sqrDistance;
+                    closestTarget = target;
+                }
+            }
+
+            return closestTarget;
         }
 
 
